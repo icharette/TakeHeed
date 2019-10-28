@@ -93,27 +93,28 @@ buttonState = digitalRead(buttonPin);
      OSCMessage inMessage;
         
        
-    // Check if data has been received
-      if (udp.parsePacket() > 0) {
+  // Check if data has been received
+      if (size = udp.parsePacket() > 0) {
         Serial.println("receiving message");
-       toggle=!toggle;
-        // Read first char of data received
+        toggle=!toggle;
+     
         char c;
-
-        // Ignore other chars
-        while(udp.available()){
-          
+        while(size--){
           c=udp.read();
           Serial.print(c);
+          inMessage.fill(c);
+          
         }
-      }
-    
-    if(toggle){
- digitalWrite(testPin, HIGH);
-    }else{
- digitalWrite(testPin, LOW);
-    }
+        //this works
+   light(inMessage);
+        if(inMessage.parse()){
 
+          //this doesn't for some reason. 
+          //is it reading/sending the right message?
+          inMessage.route("/buttonIzzy", light);
+        }
+        Serial.println();
+      }
     
   // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
   if (buttonState == HIGH) {
@@ -126,7 +127,7 @@ buttonState = digitalRead(buttonPin);
         pressed = true;
         
         // Publish the off event.
-        Serial.println("Pressing button. Publishing from button script.");
+        Serial.println("Pressing button. Publishing from button_sub script.");
         send();
         Serial.println("message sent");
         // Particle.publish("ledToggle", "on", 60, PUBLIC);
@@ -148,7 +149,7 @@ buttonState = digitalRead(buttonPin);
         pressed = false;
         
         // Publish the on event.
-        Serial.println("NOT Pressing button. Publishing from button script.");
+        // Serial.println("NOT Pressing button. Publishing from button script.");
         // Particle.publish("ledToggle", "off", 60, PUBLIC);
 
     // digitalWrite(LEDpin, LOW);
@@ -164,11 +165,20 @@ void send(){
   IPAddress ipAddress(192,168,0,101);
   unsigned int localPort = 8888;
 
-  OSCMessage outMessage("from sender Particle1");
-  /* OSC DATA */ 
-    // outMessage.addString("a");
-    outMessage.addString("a");
-  /* BANG TO MAX */
+//message specifying to whom it is sent
+  OSCMessage outMessage("/buttonParticle1");
+ 
   outMessage.send(udp, ipAddress, localPort);
-  Serial.println("in send method");
+}
+
+//why need OSCMessage &inMessage arguments?
+void light(OSCMessage &inMessage){
+  Serial.println("in light method");
+  
+    
+      if(toggle){
+        digitalWrite(testPin, HIGH);
+      }else{
+        digitalWrite(testPin, LOW);
+      }
 }

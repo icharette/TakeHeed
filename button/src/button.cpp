@@ -13,6 +13,7 @@
 #include "Particle.h"
 #include "/Users/ninjacat/Documents/Particle/TakeHeed/button/src/simple-OSC.h"
 void send();
+void light(OSCMessage &inMessage);
 #line 10 "/Users/ninjacat/Documents/Particle/TakeHeed/button/src/button.ino"
 #line 1 "/Users/ninjacat/Documents/Particle/button/src/button.ino"
 /*
@@ -102,25 +103,26 @@ buttonState = digitalRead(buttonPin);
         
        
     // Check if data has been received
-      if (udp.parsePacket() > 0) {
+      if (size = udp.parsePacket() > 0) {
         Serial.println("receiving message");
-       toggle=!toggle;
-        // Read first char of data received
+          toggle=!toggle;
+     
         char c;
-
-        // Ignore other chars
-        while(udp.available()){
-          
+        while(size--){
           c=udp.read();
           Serial.print(c);
+          inMessage.fill(c);
+          
         }
+   light(inMessage);
+
+        if(inMessage.parse()){
+          inMessage.route("/buttonParticle1", light);
+        }
+         Serial.println(inMessage.getFloat(0));
+        Serial.println();
       }
-    
-    if(toggle){
- digitalWrite(testPin, HIGH);
-    }else{
- digitalWrite(testPin, LOW);
-    }
+
 
     
   // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
@@ -156,7 +158,7 @@ buttonState = digitalRead(buttonPin);
         pressed = false;
         
         // Publish the on event.
-        Serial.println("NOT Pressing button. Publishing from button script.");
+        // Serial.println("NOT Pressing button. Publishing from button script.");
         // Particle.publish("ledToggle", "off", 60, PUBLIC);
 
     // digitalWrite(LEDpin, LOW);
@@ -172,11 +174,20 @@ void send(){
   IPAddress ipAddress(192,168,0,100);
   unsigned int localPort = 8888;
 
-  OSCMessage outMessage("from sender Izzy");
-  /* OSC DATA */ 
-    // outMessage.addString("a");
-    outMessage.addString("a");
-  /* BANG TO MAX */
+  OSCMessage outMessage("/buttonIzzy");
   outMessage.send(udp, ipAddress, localPort);
   Serial.println("in send method");
+}
+
+
+//why need OSCMessage &inMessage arguments?
+void light(OSCMessage &inMessage){
+  Serial.println("in light method");
+
+    
+      if(toggle){
+        digitalWrite(testPin, HIGH);
+      }else{
+        digitalWrite(testPin, LOW);
+      }
 }

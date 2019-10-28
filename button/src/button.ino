@@ -95,25 +95,27 @@ buttonState = digitalRead(buttonPin);
         
        
     // Check if data has been received
-      if (udp.parsePacket() > 0) {
+      if (size = udp.parsePacket() > 0) {
         Serial.println("receiving message");
-       toggle=!toggle;
-        // Read first char of data received
+          toggle=!toggle;
+     
         char c;
-
-        // Ignore other chars
-        while(udp.available()){
-          
+        while(size--){
           c=udp.read();
           Serial.print(c);
+          inMessage.fill(c);
+          
         }
+   light(inMessage);
+
+        if(inMessage.parse()){
+          inMessage.route("/buttonParticle1", light);
+        }
+        //this prints 0.0
+         Serial.println(inMessage.getFloat(0));
+        Serial.println();
       }
-    
-    if(toggle){
- digitalWrite(testPin, HIGH);
-    }else{
- digitalWrite(testPin, LOW);
-    }
+
 
     
   // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
@@ -165,11 +167,20 @@ void send(){
   IPAddress ipAddress(192,168,0,100);
   unsigned int localPort = 8888;
 
-  OSCMessage outMessage("from sender Izzy");
-  /* OSC DATA */ 
-    // outMessage.addString("a");
-    outMessage.addString("a");
-  /* BANG TO MAX */
+  OSCMessage outMessage("/buttonIzzy");
   outMessage.send(udp, ipAddress, localPort);
   Serial.println("in send method");
+}
+
+
+//why need OSCMessage &inMessage arguments?
+void light(OSCMessage &inMessage){
+  Serial.println("in light method");
+
+    
+      if(toggle){
+        digitalWrite(testPin, HIGH);
+      }else{
+        digitalWrite(testPin, LOW);
+      }
 }
