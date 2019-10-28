@@ -475,11 +475,11 @@ Archive member included to satisfy reference by file (symbol)
 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-memcmp.o)
                               ../../../build/target/platform/platform-6-m//libplatform.a(flash_mal.o) (memcmp)
 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-memcpy-stub.o)
-                              /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o (memcpy)
+                              /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o (memcpy)
 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-memmove.o)
                               ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_json.o) (memmove)
 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-memset.o)
-                              /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o (memset)
+                              /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o (memset)
 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-month_lengths.o)
                               /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-lcltime_r.o) (__month_lengths)
 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-on_exit_args.o)
@@ -667,182 +667,182 @@ SET_TEST_MODE       0x4               ../../../build/target/platform/platform-6-
 
 Discarded input sections
 
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .text          0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .data          0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .bss           0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .text          0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .data          0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .bss           0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
  .text.module_function_
-                0x0000000000000000        0x2 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+                0x0000000000000000        0x2 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
  .text.module_function
-                0x0000000000000000        0x6 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+                0x0000000000000000        0x6 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
  .text.module_index_
-                0x0000000000000000        0x2 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+                0x0000000000000000        0x2 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
  .text.module_index
-                0x0000000000000000        0xa /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+                0x0000000000000000        0xa /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
  .text.module_platform_id
-                0x0000000000000000        0xc /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+                0x0000000000000000        0xc /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
  .text.module_length
-                0x0000000000000000        0x6 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+                0x0000000000000000        0x6 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
  .text.module_scheme
-                0x0000000000000000       0x14 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+                0x0000000000000000       0x14 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
  .text.module_info_matches_platform
-                0x0000000000000000       0x12 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .comment       0x0000000000000000       0x6f /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+                0x0000000000000000       0x12 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .comment       0x0000000000000000       0x6f /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
  .ARM.attributes
-                0x0000000000000000       0x33 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .text          0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .data          0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .bss           0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000000000      0x91c /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000000000      0x174 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000000000       0x22 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000000000       0xfd /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000000000       0x22 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000000000      0x1df /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000000000       0x1c /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .comment       0x0000000000000000       0x6f /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+                0x0000000000000000       0x33 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .text          0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .data          0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .bss           0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000000000      0x91c /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000000000      0x174 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000000000       0x22 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000000000       0xfd /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000000000       0x22 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000000000      0x1df /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000000000       0x1c /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .comment       0x0000000000000000       0x6f /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
  .ARM.attributes
-                0x0000000000000000       0x33 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
- .text          0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
- .data          0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
- .bss           0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
- .debug_macro   0x0000000000000000      0x91c /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
- .comment       0x0000000000000000       0x6f /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
+                0x0000000000000000       0x33 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
+ .text          0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
+ .data          0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
+ .bss           0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
+ .debug_macro   0x0000000000000000      0x91c /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
+ .comment       0x0000000000000000       0x6f /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
  .ARM.attributes
-                0x0000000000000000       0x33 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .text          0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .data          0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .bss           0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .text._Znwj    0x0000000000000000        0x4 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .text._ZdaPv   0x0000000000000000        0x4 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .text._kill    0x0000000000000000        0x6 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .text._getpid  0x0000000000000000        0x4 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .text._exit    0x0000000000000000       0x14 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+                0x0000000000000000       0x33 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .group         0x0000000000000000        0x8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .text          0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .data          0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .bss           0x0000000000000000        0x0 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .text._Znwj    0x0000000000000000        0x4 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .text._ZdaPv   0x0000000000000000        0x4 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .text._kill    0x0000000000000000        0x6 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .text._getpid  0x0000000000000000        0x4 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .text._exit    0x0000000000000000       0x14 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
  .text.__cxa_pure_virtual
-                0x0000000000000000       0x14 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+                0x0000000000000000       0x14 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
  .text.__cxa_guard_abort
-                0x0000000000000000        0x2 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+                0x0000000000000000        0x2 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
  .text._ZN9__gnu_cxx27__verbose_terminate_handlerEv
-                0x0000000000000000        0x6 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x0000000000000000       0x22 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x0000000000000000       0x4c /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x0000000000000000       0xdf /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x0000000000000000       0x35 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x0000000000000000       0x4a /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x0000000000000000       0x52 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x0000000000000000       0x16 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x0000000000000000       0x22 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x0000000000000000      0x187 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x0000000000000000       0x19 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x0000000000000000       0xfd /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x0000000000000000      0x1df /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .comment       0x0000000000000000       0x6f /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+                0x0000000000000000        0x6 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x0000000000000000       0x22 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x0000000000000000       0x4c /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x0000000000000000       0xdf /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x0000000000000000       0x35 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x0000000000000000       0x4a /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x0000000000000000       0x52 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x0000000000000000       0x16 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x0000000000000000       0x22 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x0000000000000000      0x187 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x0000000000000000       0x19 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x0000000000000000       0xfd /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x0000000000000000      0x1df /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .comment       0x0000000000000000       0x6f /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
  .ARM.attributes
-                0x0000000000000000       0x33 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+                0x0000000000000000       0x33 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
  .text          0x0000000000000000        0x0 ../../../hal/src/photon/lib/STM32F2xx_Peripheral_Libraries.a(misc.o)
  .data          0x0000000000000000        0x0 ../../../hal/src/photon/lib/STM32F2xx_Peripheral_Libraries.a(misc.o)
  .bss           0x0000000000000000        0x0 ../../../hal/src/photon/lib/STM32F2xx_Peripheral_Libraries.a(misc.o)
@@ -30592,10 +30592,10 @@ BACKUPSRAM_SYSTEM 0x0000000040024c00 0x0000000000000400 xrw
 
 Linker script and memory map
 
-LOAD /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
-LOAD /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
-LOAD /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
-LOAD /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+LOAD /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+LOAD /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+LOAD /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
+LOAD /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
 LOAD ../../../hal/src/photon/lib/STM32F2xx_Peripheral_Libraries.a
 LOAD ../../../build/target/user/platform-6-m/button//libuser.a
 LOAD ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a
@@ -30694,7 +30694,7 @@ END GROUP
                 0x00000000080a0000                link_module_info_start = .
  *.o(.modinfo.module_info)
  .modinfo.module_info
-                0x00000000080a0000       0x18 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+                0x00000000080a0000       0x18 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
                 0x00000000080a0000                module_info
                 0x00000000080a0018                link_module_info_end = .
 
@@ -30703,7 +30703,7 @@ END GROUP
                 0x00000000080a0018                link_dynalib_start = .
  *(*.user_part_module)
  .rodata.user_part_module
-                0x00000000080a0018        0x4 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
+                0x00000000080a0018        0x4 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
                 0x00000000080a0018                user_part_module
                 0x00000000080a001c                link_dynalib_end = .
 
@@ -30713,26 +30713,26 @@ END GROUP
  *(.text.irq)
  *(.text .text.* .gnu.linkonce.t.*)
  .text.module_user_pre_init
-                0x00000000080a001c       0x40 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+                0x00000000080a001c       0x40 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
                 0x00000000080a001c                module_user_pre_init
  .text.module_user_init
-                0x00000000080a005c       0x2c /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+                0x00000000080a005c       0x2c /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
                 0x00000000080a005c                module_user_init
  .text.module_user_setup
-                0x00000000080a0088        0x4 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+                0x00000000080a0088        0x4 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
                 0x00000000080a0088                module_user_setup
  .text.module_user_loop
-                0x00000000080a008c        0xe /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+                0x00000000080a008c        0xe /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
                 0x00000000080a008c                module_user_loop
- .text._Znaj    0x00000000080a009a        0x4 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .text._Znaj    0x00000000080a009a        0x4 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
                 0x00000000080a009a                operator new[](unsigned int)
- .text._ZdlPv   0x00000000080a009e        0x4 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .text._ZdlPv   0x00000000080a009e        0x4 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
                 0x00000000080a009e                operator delete(void*)
  .text.__cxa_guard_acquire
-                0x00000000080a00a2        0xa /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+                0x00000000080a00a2        0xa /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
                 0x00000000080a00a2                __cxa_guard_acquire
  .text.__cxa_guard_release
-                0x00000000080a00ac        0x6 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+                0x00000000080a00ac        0x6 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
                 0x00000000080a00ac                __cxa_guard_release
  .text._ZN9IPAddressD2Ev
                 0x00000000080a00b2        0x2 ../../../build/target/user/platform-6-m/button//libuser.a(button.o)
@@ -31454,7 +31454,7 @@ END GROUP
                 0x00000000080a2038                link_const_variable_data_location = .
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.dynalib_user
-                0x00000000080a2038       0x14 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+                0x00000000080a2038       0x14 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
                 0x00000000080a2038                dynalib_user
  .rodata.str1.1
                 0x00000000080a204c       0x8c ../../../build/target/user/platform-6-m/button//libuser.a(button.o)
@@ -31540,7 +31540,7 @@ END GROUP
  *fill*         0x00000000080a2414        0xc 
 
 .iplt           0x00000000080a2420        0x0
- .iplt          0x00000000080a2420        0x0 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .iplt          0x00000000080a2420        0x0 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
 
 .ARM.exidx      0x00000000080a2420        0x0
                 0x00000000080a2420                __exidx_start = ALIGN (0x4)
@@ -31589,13 +31589,13 @@ END GROUP
                 0x000000002000007c                . = ALIGN (., 0x4)
 
 .igot.plt       0x000000002000007c        0x0 load address 0x00000000080a24a0
- .igot.plt      0x000000002000007c        0x0 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .igot.plt      0x000000002000007c        0x0 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
 
 .bss            0x000000002000007c      0x600
                 0x000000002000007c                link_bss_location = ALIGN (., 0x4)
  *(.bss*)
  .bss.__dso_handle
-                0x000000002000007c        0x4 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+                0x000000002000007c        0x4 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
                 0x000000002000007c                __dso_handle
  .bss.pressed   0x0000000020000080        0x1 ../../../build/target/user/platform-6-m/button//libuser.a(button.o)
                 0x0000000020000080                pressed
@@ -31814,7 +31814,7 @@ END GROUP
                 0x00000000080a24a4                link_module_info_suffix_start = .
  *.o(.modinfo.module_info_suffix)
  .modinfo.module_info_suffix
-                0x00000000080a24a4       0x24 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+                0x00000000080a24a4       0x24 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
                 0x00000000080a24a4                module_info_suffix
                 0x00000000080a24c8                link_module_info_suffix_end = .
 
@@ -31826,12 +31826,12 @@ END GROUP
                 0x00000000080a24c8                link_module_info_crc_start = .
  *.o(.modinfo.module_info_crc)
  .modinfo.module_info_crc
-                0x00000000080a24c8        0x4 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+                0x00000000080a24c8        0x4 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
                 0x00000000080a24c8                module_info_crc
                 0x00000000080a24cc                link_module_info_crc_end = .
 
 .rel.dyn        0x00000000080a24cc        0x0
- .rel.iplt      0x00000000080a24cc        0x0 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .rel.iplt      0x00000000080a24cc        0x0 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
 
 /DISCARD/
  *(.ARM.attributes*)
@@ -31873,13 +31873,13 @@ END GROUP
                 0x0000000000000001                ASSERT ((user_sram_end == _system_static_ram_start), end of user SRAM should be at the start of system sram)
                 0x0000000000000001                ASSERT ((((link_module_info_suffix_start - link_module_info_static_start) == 0x4) || ((link_module_info_suffix_start - link_module_info_static_start) == 0x8)), module info static details not linked)
                 0x0000000000000001                ASSERT (((ORIGIN (SRAM) >= _ram_start) && ((ORIGIN (SRAM) + LENGTH (SRAM)) <= _ram_end)), Static RAM region doesn't fit into RAM)
-OUTPUT(/Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon/button.elf elf32-littlearm)
+OUTPUT(/Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon/button.elf elf32-littlearm)
 
 .debug_info     0x0000000000000000    0xaa1dc
- .debug_info    0x0000000000000000      0x4dd /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .debug_info    0x00000000000004dd      0x471 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_info    0x000000000000094e       0x79 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
- .debug_info    0x00000000000009c7      0x3eb /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_info    0x0000000000000000      0x4dd /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .debug_info    0x00000000000004dd      0x471 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_info    0x000000000000094e       0x79 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
+ .debug_info    0x00000000000009c7      0x3eb /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
  .debug_info    0x0000000000000db2     0x941d ../../../build/target/user/platform-6-m/button//libuser.a(button.o)
  .debug_info    0x000000000000a1cf     0x7167 ../../../build/target/user/platform-6-m/button//libuser.a(simple-OSC.o)
  .debug_info    0x0000000000011336      0x70d ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_concurrent.o)
@@ -31919,10 +31919,10 @@ OUTPUT(/Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon/button
  .debug_info    0x00000000000a4714     0x5ac8 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_spi.o)
 
 .debug_abbrev   0x0000000000000000     0xfa70
- .debug_abbrev  0x0000000000000000      0x159 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .debug_abbrev  0x0000000000000159      0x17d /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_abbrev  0x00000000000002d6       0x6c /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
- .debug_abbrev  0x0000000000000342      0x203 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_abbrev  0x0000000000000000      0x159 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .debug_abbrev  0x0000000000000159      0x17d /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_abbrev  0x00000000000002d6       0x6c /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
+ .debug_abbrev  0x0000000000000342      0x203 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
  .debug_abbrev  0x0000000000000545      0xcaf ../../../build/target/user/platform-6-m/button//libuser.a(button.o)
  .debug_abbrev  0x00000000000011f4      0xba4 ../../../build/target/user/platform-6-m/button//libuser.a(simple-OSC.o)
  .debug_abbrev  0x0000000000001d98       0x62 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_concurrent.o)
@@ -31962,9 +31962,9 @@ OUTPUT(/Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon/button
  .debug_abbrev  0x000000000000f0b2      0x9be ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_spi.o)
 
 .debug_loc      0x0000000000000000    0x1436d
- .debug_loc     0x0000000000000000      0x182 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .debug_loc     0x0000000000000182       0x8b /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_loc     0x000000000000020d      0x105 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_loc     0x0000000000000000      0x182 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .debug_loc     0x0000000000000182       0x8b /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_loc     0x000000000000020d      0x105 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
  .debug_loc     0x0000000000000312      0x25a ../../../build/target/user/platform-6-m/button//libuser.a(button.o)
  .debug_loc     0x000000000000056c      0xbf4 ../../../build/target/user/platform-6-m/button//libuser.a(simple-OSC.o)
  .debug_loc     0x0000000000001160      0x174 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring.o)
@@ -31992,13 +31992,13 @@ OUTPUT(/Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon/button
 
 .debug_aranges  0x0000000000000000     0x2048
  .debug_aranges
-                0x0000000000000000       0x58 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+                0x0000000000000000       0x58 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
  .debug_aranges
-                0x0000000000000058       0x38 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+                0x0000000000000058       0x38 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
  .debug_aranges
-                0x0000000000000090       0x18 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
+                0x0000000000000090       0x18 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
  .debug_aranges
-                0x00000000000000a8       0x68 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+                0x00000000000000a8       0x68 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
  .debug_aranges
                 0x0000000000000110       0x58 ../../../build/target/user/platform-6-m/button//libuser.a(button.o)
  .debug_aranges
@@ -32075,9 +32075,9 @@ OUTPUT(/Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon/button
                 0x0000000000002018       0x30 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_spi.o)
 
 .debug_ranges   0x0000000000000000     0x33d0
- .debug_ranges  0x0000000000000000       0x48 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .debug_ranges  0x0000000000000048       0x28 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_ranges  0x0000000000000070       0x58 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_ranges  0x0000000000000000       0x48 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .debug_ranges  0x0000000000000048       0x28 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_ranges  0x0000000000000070       0x58 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
  .debug_ranges  0x00000000000000c8       0xd8 ../../../build/target/user/platform-6-m/button//libuser.a(button.o)
  .debug_ranges  0x00000000000001a0      0x110 ../../../build/target/user/platform-6-m/button//libuser.a(simple-OSC.o)
  .debug_ranges  0x00000000000002b0       0xf8 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_concurrent.o)
@@ -32117,95 +32117,95 @@ OUTPUT(/Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon/button
  .debug_ranges  0x0000000000003398       0x38 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_spi.o)
 
 .debug_macro    0x0000000000000000    0x24775
- .debug_macro   0x0000000000000000       0x8d /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .debug_macro   0x000000000000008d      0x91c /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .debug_macro   0x00000000000009a9       0x1c /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .debug_macro   0x00000000000009c5      0x174 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .debug_macro   0x0000000000000b39       0x22 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .debug_macro   0x0000000000000b5b       0xd9 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .debug_macro   0x0000000000000c34       0x44 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .debug_macro   0x0000000000000c78       0xfd /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .debug_macro   0x0000000000000d75       0x22 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .debug_macro   0x0000000000000d97      0x1df /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .debug_macro   0x0000000000000f76       0x40 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .debug_macro   0x0000000000000fb6       0x11 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .debug_macro   0x0000000000000fc7      0x329 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x00000000000012f0       0x40 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000001330       0x22 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000001352       0x4c /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000139e       0xdf /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000147d       0x35 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x00000000000014b2       0x9c /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000154e       0x4a /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000001598       0x52 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x00000000000015ea       0x16 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000001600       0x43 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000001643      0x187 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x00000000000017ca      0x30d /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000001ad7       0x10 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000001ae7       0x35 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000001b1c       0x19 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000001b35       0x16 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000001b4b       0x70 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000001bbb       0x56 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000001c11       0x3a /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000001c4b       0x18 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000001c63      0xbb1 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x0000000000002814     0x7f9a /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000a7ae      0x44f /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000abfd      0x3cf /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000afcc      0x111 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000b0dd      0x188 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000b265       0xb2 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000b317      0x149 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000b460      0x477 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000b8d7       0xae /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000b985      0x242 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000bbc7      0x279 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000be40       0xb5 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000bef5      0x25e /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000c153      0x2b3 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000c406       0x64 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000c46a       0x88 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000c4f2      0x536 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000ca28       0x40 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000ca68      0x3f3 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000ce5b      0x342 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000d19d      0x357 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000d4f4       0xe1 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000d5d5      0x73b /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000dd10      0x221 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000df31       0x34 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000df65       0x82 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000dfe7       0x35 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000e01c       0x64 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000e080      0x104 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000e184       0x22 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000e1a6      0x112 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000e2b8       0x16 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000e2ce       0x16 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_macro   0x000000000000e2e4       0x1a /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
- .debug_macro   0x000000000000e2fe       0x28 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
- .debug_macro   0x000000000000e326      0x1bd /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000e4e3      0x9e2 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000eec5       0x9c /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000ef61      0x17b /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000f0dc      0x337 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000f413       0x43 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000f456       0x22 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000f478       0x79 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000f4f1       0x16 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000f507       0x35 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000f53c       0x16 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000f552       0x29 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000f57b       0x16 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000f591       0x1c /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000f5ad       0x58 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000f605       0x10 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000f615       0x2e /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000f643      0x317 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000f95a      0x107 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_macro   0x000000000000fa61       0x34 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x0000000000000000       0x8d /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .debug_macro   0x000000000000008d      0x91c /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .debug_macro   0x00000000000009a9       0x1c /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .debug_macro   0x00000000000009c5      0x174 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .debug_macro   0x0000000000000b39       0x22 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .debug_macro   0x0000000000000b5b       0xd9 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .debug_macro   0x0000000000000c34       0x44 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .debug_macro   0x0000000000000c78       0xfd /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .debug_macro   0x0000000000000d75       0x22 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .debug_macro   0x0000000000000d97      0x1df /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .debug_macro   0x0000000000000f76       0x40 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .debug_macro   0x0000000000000fb6       0x11 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .debug_macro   0x0000000000000fc7      0x329 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x00000000000012f0       0x40 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000001330       0x22 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000001352       0x4c /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000139e       0xdf /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000147d       0x35 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x00000000000014b2       0x9c /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000154e       0x4a /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000001598       0x52 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x00000000000015ea       0x16 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000001600       0x43 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000001643      0x187 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x00000000000017ca      0x30d /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000001ad7       0x10 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000001ae7       0x35 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000001b1c       0x19 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000001b35       0x16 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000001b4b       0x70 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000001bbb       0x56 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000001c11       0x3a /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000001c4b       0x18 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000001c63      0xbb1 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x0000000000002814     0x7f9a /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000a7ae      0x44f /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000abfd      0x3cf /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000afcc      0x111 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000b0dd      0x188 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000b265       0xb2 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000b317      0x149 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000b460      0x477 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000b8d7       0xae /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000b985      0x242 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000bbc7      0x279 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000be40       0xb5 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000bef5      0x25e /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000c153      0x2b3 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000c406       0x64 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000c46a       0x88 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000c4f2      0x536 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000ca28       0x40 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000ca68      0x3f3 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000ce5b      0x342 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000d19d      0x357 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000d4f4       0xe1 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000d5d5      0x73b /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000dd10      0x221 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000df31       0x34 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000df65       0x82 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000dfe7       0x35 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000e01c       0x64 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000e080      0x104 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000e184       0x22 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000e1a6      0x112 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000e2b8       0x16 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000e2ce       0x16 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_macro   0x000000000000e2e4       0x1a /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
+ .debug_macro   0x000000000000e2fe       0x28 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
+ .debug_macro   0x000000000000e326      0x1bd /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000e4e3      0x9e2 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000eec5       0x9c /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000ef61      0x17b /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000f0dc      0x337 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000f413       0x43 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000f456       0x22 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000f478       0x79 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000f4f1       0x16 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000f507       0x35 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000f53c       0x16 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000f552       0x29 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000f57b       0x16 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000f591       0x1c /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000f5ad       0x58 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000f605       0x10 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000f615       0x2e /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000f643      0x317 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000f95a      0x107 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_macro   0x000000000000fa61       0x34 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
  .debug_macro   0x000000000000fa95     0x10a5 ../../../build/target/user/platform-6-m/button//libuser.a(button.o)
  .debug_macro   0x0000000000010b3a      0xa0c ../../../build/target/user/platform-6-m/button//libuser.a(button.o)
  .debug_macro   0x0000000000011546       0x10 ../../../build/target/user/platform-6-m/button//libuser.a(button.o)
@@ -32380,137 +32380,137 @@ OUTPUT(/Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon/button
  .debug_macro   0x0000000000023545      0x560 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_ipaddress.o)
  .debug_macro   0x0000000000023aa5      0xcd0 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_spi.o)
 
-.debug_line     0x0000000000000000    0x23a62
- .debug_line    0x0000000000000000      0x2f4 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .debug_line    0x00000000000002f4      0x832 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_line    0x0000000000000b26       0x54 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
- .debug_line    0x0000000000000b7a      0x3db /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
- .debug_line    0x0000000000000f55     0x1f11 ../../../build/target/user/platform-6-m/button//libuser.a(button.o)
- .debug_line    0x0000000000002e66     0x1fa8 ../../../build/target/user/platform-6-m/button//libuser.a(simple-OSC.o)
- .debug_line    0x0000000000004e0e      0x25a ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_concurrent.o)
- .debug_line    0x0000000000005068      0x20b ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_dynalib.o)
- .debug_line    0x0000000000005273      0x2d1 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_gpio.o)
- .debug_line    0x0000000000005544      0x2be ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_i2c.o)
- .debug_line    0x0000000000005802      0x1f7 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_socket.o)
- .debug_line    0x00000000000059f9      0x16a ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_spi.o)
- .debug_line    0x0000000000005b63      0x243 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_usart.o)
- .debug_line    0x0000000000005da6      0x760 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_usb.o)
- .debug_line    0x0000000000006506      0x2d6 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_wlan.o)
- .debug_line    0x00000000000067dc      0x574 ../../../build/target/system-dynalib/platform-6-m//libsystem-dynalib.a(system_dynalib.o)
- .debug_line    0x0000000000006d50      0x359 ../../../build/target/system-dynalib/platform-6-m//libsystem-dynalib.a(system_dynalib_cloud.o)
- .debug_line    0x00000000000070a9      0x17b ../../../build/target/system-dynalib/platform-6-m//libsystem-dynalib.a(system_dynalib_net.o)
- .debug_line    0x0000000000007224      0x373 ../../../build/target/rt-dynalib/platform-6-m//librt-dynalib.a(rt_dynalib.o)
- .debug_line    0x0000000000007597     0x17a2 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring.o)
- .debug_line    0x0000000000008d39     0x1b88 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_cloud.o)
- .debug_line    0x000000000000a8c1     0x137b ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_i2c.o)
- .debug_line    0x000000000000bc3c      0xcf8 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_ipaddress.o)
- .debug_line    0x000000000000c934     0x2af2 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_logging.o)
- .debug_line    0x000000000000f426     0x1010 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_network.o)
- .debug_line    0x0000000000010436      0xdaa ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_print.o)
- .debug_line    0x00000000000111e0     0x101b ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_rgb.o)
- .debug_line    0x00000000000121fb     0x1a49 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_spi.o)
- .debug_line    0x0000000000013c44     0x1563 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_string.o)
- .debug_line    0x00000000000151a7     0x19b2 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_system.o)
- .debug_line    0x0000000000016b59     0x18a5 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_time.o)
- .debug_line    0x00000000000183fe     0x104d ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_udp.o)
- .debug_line    0x000000000001944b      0xda9 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_usartserial.o)
- .debug_line    0x000000000001a1f4     0x1627 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_usbserial.o)
- .debug_line    0x000000000001b81b     0x1287 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_wifi.o)
- .debug_line    0x000000000001caa2     0x1744 ../../../build/target/wiring/platform-6-m//libwiring.a(user.o)
- .debug_line    0x000000000001e1e6     0x19ad ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(spark_wiring_gpio.o)
- .debug_line    0x000000000001fb93      0xc43 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(spark_wiring_watchdog.o)
- .debug_line    0x00000000000207d6      0xf48 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_i2c.o)
- .debug_line    0x000000000002171e      0xb95 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_ipaddress.o)
- .debug_line    0x00000000000222b3     0x17af ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_spi.o)
+.debug_line     0x0000000000000000    0x23aab
+ .debug_line    0x0000000000000000      0x2f4 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .debug_line    0x00000000000002f4      0x832 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_line    0x0000000000000b26       0x54 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
+ .debug_line    0x0000000000000b7a      0x3db /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_line    0x0000000000000f55     0x1f51 ../../../build/target/user/platform-6-m/button//libuser.a(button.o)
+ .debug_line    0x0000000000002ea6     0x1fb1 ../../../build/target/user/platform-6-m/button//libuser.a(simple-OSC.o)
+ .debug_line    0x0000000000004e57      0x25a ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_concurrent.o)
+ .debug_line    0x00000000000050b1      0x20b ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_dynalib.o)
+ .debug_line    0x00000000000052bc      0x2d1 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_gpio.o)
+ .debug_line    0x000000000000558d      0x2be ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_i2c.o)
+ .debug_line    0x000000000000584b      0x1f7 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_socket.o)
+ .debug_line    0x0000000000005a42      0x16a ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_spi.o)
+ .debug_line    0x0000000000005bac      0x243 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_usart.o)
+ .debug_line    0x0000000000005def      0x760 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_usb.o)
+ .debug_line    0x000000000000654f      0x2d6 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_wlan.o)
+ .debug_line    0x0000000000006825      0x574 ../../../build/target/system-dynalib/platform-6-m//libsystem-dynalib.a(system_dynalib.o)
+ .debug_line    0x0000000000006d99      0x359 ../../../build/target/system-dynalib/platform-6-m//libsystem-dynalib.a(system_dynalib_cloud.o)
+ .debug_line    0x00000000000070f2      0x17b ../../../build/target/system-dynalib/platform-6-m//libsystem-dynalib.a(system_dynalib_net.o)
+ .debug_line    0x000000000000726d      0x373 ../../../build/target/rt-dynalib/platform-6-m//librt-dynalib.a(rt_dynalib.o)
+ .debug_line    0x00000000000075e0     0x17a2 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring.o)
+ .debug_line    0x0000000000008d82     0x1b88 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_cloud.o)
+ .debug_line    0x000000000000a90a     0x137b ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_i2c.o)
+ .debug_line    0x000000000000bc85      0xcf8 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_ipaddress.o)
+ .debug_line    0x000000000000c97d     0x2af2 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_logging.o)
+ .debug_line    0x000000000000f46f     0x1010 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_network.o)
+ .debug_line    0x000000000001047f      0xdaa ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_print.o)
+ .debug_line    0x0000000000011229     0x101b ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_rgb.o)
+ .debug_line    0x0000000000012244     0x1a49 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_spi.o)
+ .debug_line    0x0000000000013c8d     0x1563 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_string.o)
+ .debug_line    0x00000000000151f0     0x19b2 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_system.o)
+ .debug_line    0x0000000000016ba2     0x18a5 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_time.o)
+ .debug_line    0x0000000000018447     0x104d ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_udp.o)
+ .debug_line    0x0000000000019494      0xda9 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_usartserial.o)
+ .debug_line    0x000000000001a23d     0x1627 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_usbserial.o)
+ .debug_line    0x000000000001b864     0x1287 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_wifi.o)
+ .debug_line    0x000000000001caeb     0x1744 ../../../build/target/wiring/platform-6-m//libwiring.a(user.o)
+ .debug_line    0x000000000001e22f     0x19ad ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(spark_wiring_gpio.o)
+ .debug_line    0x000000000001fbdc      0xc43 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(spark_wiring_watchdog.o)
+ .debug_line    0x000000000002081f      0xf48 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_i2c.o)
+ .debug_line    0x0000000000021767      0xb95 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_ipaddress.o)
+ .debug_line    0x00000000000222fc     0x17af ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_spi.o)
 
-.debug_str      0x0000000000000000    0xa58fd
- .debug_str     0x0000000000000000     0x3ca9 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+.debug_str      0x0000000000000000    0xa590f
+ .debug_str     0x0000000000000000     0x3ca9 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
                                        0x3ee0 (size before relaxing)
- .debug_str     0x0000000000003ca9    0x559e0 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_str     0x0000000000003ca9    0x559e0 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
                                       0x59465 (size before relaxing)
- .debug_str     0x0000000000059689       0x23 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
+ .debug_str     0x0000000000059689       0x23 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_module.o
                                        0x29c8 (size before relaxing)
- .debug_str     0x00000000000596ac     0xdd68 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_str     0x00000000000596ac     0xdd68 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
                                       0x13cac (size before relaxing)
- .debug_str     0x0000000000067414    0x14a2d ../../../build/target/user/platform-6-m/button//libuser.a(button.o)
-                                      0x7b507 (size before relaxing)
- .debug_str     0x000000000007be41      0x1e1 ../../../build/target/user/platform-6-m/button//libuser.a(simple-OSC.o)
-                                      0x78563 (size before relaxing)
- .debug_str     0x000000000007c022      0x955 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_concurrent.o)
+ .debug_str     0x0000000000067414    0x14a36 ../../../build/target/user/platform-6-m/button//libuser.a(button.o)
+                                      0x7b510 (size before relaxing)
+ .debug_str     0x000000000007be4a      0x1ea ../../../build/target/user/platform-6-m/button//libuser.a(simple-OSC.o)
+                                      0x7856c (size before relaxing)
+ .debug_str     0x000000000007c034      0x955 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_concurrent.o)
                                        0x338c (size before relaxing)
- .debug_str     0x000000000007c977      0x43d ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_dynalib.o)
+ .debug_str     0x000000000007c989      0x43d ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_dynalib.o)
                                        0x32e4 (size before relaxing)
- .debug_str     0x000000000007cdb4      0x666 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_gpio.o)
+ .debug_str     0x000000000007cdc6      0x666 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_gpio.o)
                                        0x363d (size before relaxing)
- .debug_str     0x000000000007d41a      0x63a ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_i2c.o)
+ .debug_str     0x000000000007d42c      0x63a ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_i2c.o)
                                        0x35f9 (size before relaxing)
- .debug_str     0x000000000007da54      0x2fd ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_socket.o)
+ .debug_str     0x000000000007da66      0x2fd ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_socket.o)
                                        0x38e8 (size before relaxing)
- .debug_str     0x000000000007dd51      0x2c2 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_spi.o)
+ .debug_str     0x000000000007dd63      0x2c2 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_spi.o)
                                        0x30b0 (size before relaxing)
- .debug_str     0x000000000007e013      0x43f ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_usart.o)
+ .debug_str     0x000000000007e025      0x43f ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_usart.o)
                                        0x3b82 (size before relaxing)
- .debug_str     0x000000000007e452      0x578 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_usb.o)
+ .debug_str     0x000000000007e464      0x578 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_usb.o)
                                       0x56be1 (size before relaxing)
- .debug_str     0x000000000007e9ca      0x585 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_wlan.o)
+ .debug_str     0x000000000007e9dc      0x585 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_wlan.o)
                                        0x3cde (size before relaxing)
- .debug_str     0x000000000007ef4f      0x829 ../../../build/target/system-dynalib/platform-6-m//libsystem-dynalib.a(system_dynalib.o)
+ .debug_str     0x000000000007ef61      0x829 ../../../build/target/system-dynalib/platform-6-m//libsystem-dynalib.a(system_dynalib.o)
                                        0x4ffd (size before relaxing)
- .debug_str     0x000000000007f778      0x30e ../../../build/target/system-dynalib/platform-6-m//libsystem-dynalib.a(system_dynalib_cloud.o)
+ .debug_str     0x000000000007f78a      0x30e ../../../build/target/system-dynalib/platform-6-m//libsystem-dynalib.a(system_dynalib_cloud.o)
                                        0x3f95 (size before relaxing)
- .debug_str     0x000000000007fa86      0x2b8 ../../../build/target/system-dynalib/platform-6-m//libsystem-dynalib.a(system_dynalib_net.o)
+ .debug_str     0x000000000007fa98      0x2b8 ../../../build/target/system-dynalib/platform-6-m//libsystem-dynalib.a(system_dynalib_net.o)
                                        0x3062 (size before relaxing)
- .debug_str     0x000000000007fd3e      0x360 ../../../build/target/rt-dynalib/platform-6-m//librt-dynalib.a(rt_dynalib.o)
+ .debug_str     0x000000000007fd50      0x360 ../../../build/target/rt-dynalib/platform-6-m//librt-dynalib.a(rt_dynalib.o)
                                        0x5ea2 (size before relaxing)
- .debug_str     0x000000000008009e      0x27c ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring.o)
+ .debug_str     0x00000000000800b0      0x27c ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring.o)
                                       0x730cf (size before relaxing)
- .debug_str     0x000000000008031a     0xd063 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_cloud.o)
+ .debug_str     0x000000000008032c     0xd063 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_cloud.o)
                                       0x7f2b4 (size before relaxing)
- .debug_str     0x000000000008d37d      0x4bc ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_i2c.o)
+ .debug_str     0x000000000008d38f      0x4bc ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_i2c.o)
                                       0x619f1 (size before relaxing)
- .debug_str     0x000000000008d839      0x3c5 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_ipaddress.o)
+ .debug_str     0x000000000008d84b      0x3c5 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_ipaddress.o)
                                        0xc9bf (size before relaxing)
- .debug_str     0x000000000008dbfe     0xf3ce ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_logging.o)
+ .debug_str     0x000000000008dc10     0xf3ce ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_logging.o)
                                       0x83dcd (size before relaxing)
- .debug_str     0x000000000009cfcc      0x38b ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_network.o)
+ .debug_str     0x000000000009cfde      0x38b ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_network.o)
                                       0x1c17b (size before relaxing)
- .debug_str     0x000000000009d357      0x2ca ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_print.o)
+ .debug_str     0x000000000009d369      0x2ca ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_print.o)
                                        0xc1d9 (size before relaxing)
- .debug_str     0x000000000009d621     0x105d ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_rgb.o)
+ .debug_str     0x000000000009d633     0x105d ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_rgb.o)
                                       0x5ed12 (size before relaxing)
- .debug_str     0x000000000009e67e      0x9a7 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_spi.o)
+ .debug_str     0x000000000009e690      0x9a7 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_spi.o)
                                       0x73eb8 (size before relaxing)
- .debug_str     0x000000000009f025      0xa3b ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_string.o)
+ .debug_str     0x000000000009f037      0xa3b ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_string.o)
                                        0xd095 (size before relaxing)
- .debug_str     0x000000000009fa60      0x5d9 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_system.o)
+ .debug_str     0x000000000009fa72      0x5d9 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_system.o)
                                       0x75ff6 (size before relaxing)
- .debug_str     0x00000000000a0039      0x8a8 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_time.o)
+ .debug_str     0x00000000000a004b      0x8a8 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_time.o)
                                       0x7c096 (size before relaxing)
- .debug_str     0x00000000000a08e1      0x3f8 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_udp.o)
+ .debug_str     0x00000000000a08f3      0x3f8 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_udp.o)
                                       0x19f9e (size before relaxing)
- .debug_str     0x00000000000a0cd9      0x36c ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_usartserial.o)
+ .debug_str     0x00000000000a0ceb      0x36c ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_usartserial.o)
                                        0xea2d (size before relaxing)
- .debug_str     0x00000000000a1045      0x3da ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_usbserial.o)
+ .debug_str     0x00000000000a1057      0x3da ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_usbserial.o)
                                       0x70399 (size before relaxing)
- .debug_str     0x00000000000a141f      0x882 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_wifi.o)
+ .debug_str     0x00000000000a1431      0x882 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_wifi.o)
                                       0x1f10d (size before relaxing)
- .debug_str     0x00000000000a1ca1     0x3629 ../../../build/target/wiring/platform-6-m//libwiring.a(user.o)
+ .debug_str     0x00000000000a1cb3     0x3629 ../../../build/target/wiring/platform-6-m//libwiring.a(user.o)
                                       0x75799 (size before relaxing)
- .debug_str     0x00000000000a52ca      0x391 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(spark_wiring_gpio.o)
+ .debug_str     0x00000000000a52dc      0x391 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(spark_wiring_gpio.o)
                                       0x75859 (size before relaxing)
- .debug_str     0x00000000000a565b      0x1d4 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(spark_wiring_watchdog.o)
+ .debug_str     0x00000000000a566d      0x1d4 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(spark_wiring_watchdog.o)
                                       0x10a55 (size before relaxing)
- .debug_str     0x00000000000a582f       0x64 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_i2c.o)
+ .debug_str     0x00000000000a5841       0x64 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_i2c.o)
                                       0x5e25d (size before relaxing)
- .debug_str     0x00000000000a5893       0x3c ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_ipaddress.o)
+ .debug_str     0x00000000000a58a5       0x3c ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_ipaddress.o)
                                        0xb8b1 (size before relaxing)
- .debug_str     0x00000000000a58cf       0x2e ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_spi.o)
+ .debug_str     0x00000000000a58e1       0x2e ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_spi.o)
                                       0x739a3 (size before relaxing)
 
 .debug_frame    0x0000000000000000     0xba0c
- .debug_frame   0x0000000000000000       0x90 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
- .debug_frame   0x0000000000000090       0x70 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
- .debug_frame   0x0000000000000100       0xe8 /Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
+ .debug_frame   0x0000000000000000       0x90 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/module_info.o
+ .debug_frame   0x0000000000000090       0x70 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/user_export.o
+ .debug_frame   0x0000000000000100       0xe8 /Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o
  .debug_frame   0x00000000000001e8       0xf4 ../../../build/target/user/platform-6-m/button//libuser.a(button.o)
  .debug_frame   0x00000000000002dc      0x20c ../../../build/target/user/platform-6-m/button//libuser.a(simple-OSC.o)
  .debug_frame   0x00000000000004e8      0x1f0 ../../../build/target/hal-dynalib/platform-6-m//libhal-dynalib.a(hal_concurrent.o)

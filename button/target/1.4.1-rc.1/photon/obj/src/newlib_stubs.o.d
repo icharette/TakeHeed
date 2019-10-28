@@ -1,4 +1,4 @@
-/Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o: \
+/Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon//obj/src/newlib_stubs.o: \
  src/newlib_stubs.cpp \
  /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/arm-none-eabi/include/sys/types.h \
  /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/arm-none-eabi/include/_ansi.h \

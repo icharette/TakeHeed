@@ -1,10 +1,43 @@
+/******************************************************/
+//       THIS IS A GENERATED FILE - DO NOT EDIT       //
+/******************************************************/
+
+#line 1 "/Users/ninjacat/Documents/Particle/TakeHeed/button_subscriber/src/button_sub.ino"
+/******************************************************/
+//       THIS IS A GENERATED FILE - DO NOT EDIT       //
+/******************************************************/
 
 #include "application.h"
 // #include "OSCMessage.h"
 
 #include "Particle.h"
-#include "/Users/ninjacat/Documents/Particle/button/src/simple-OSC.h"
+#include "/Users/ninjacat/Documents/Particle/TakeHeed/button/src/simple-OSC.h"
+/*
+  Button
 
+  Turns on and off a light emitting diode(LED) connected to digital pin 13,
+  when pressing a pushbutton attached to pin 2.
+
+  The circuit:
+  - LED attached from pin 13 to ground
+  - pushbutton attached to pin 2 from +5V
+  - 10K resistor attached to pin 2 from ground
+
+  - Note: on most Arduinos there is already an LED on the board
+    attached to pin 13.
+
+  created 2005
+  by DojoDave <http://www.0j0.org>
+  modified 30 Aug 2011
+  by Tom Igoe
+
+  This example code is in the public domain.
+
+  http://www.arduino.cc/en/Tutorial/Button
+*/
+
+void send();
+#line 34 "/Users/ninjacat/Documents/Particle/TakeHeed/button_subscriber/src/button_sub.ino"
 bool pressed = false;
 bool toggle = true;
 int period = 100;
@@ -135,10 +168,10 @@ buttonState = digitalRead(buttonPin);
 }
 
 void send(){
-  IPAddress ipAddress(192,168,0,100);
+  IPAddress ipAddress(192,168,0,101);
   unsigned int localPort = 8888;
 
-  OSCMessage outMessage("from sender Izzy");
+  OSCMessage outMessage("from sender Particle1");
   /* OSC DATA */ 
     // outMessage.addString("a");
     outMessage.addString("a");

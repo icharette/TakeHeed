@@ -1,5 +1,5 @@
 
-/Users/ninjacat/Documents/Particle/button/target/1.4.1-rc.1/photon/button.elf:     file format elf32-littlearm
+/Users/ninjacat/Documents/Particle/TakeHeed/button/target/1.4.1-rc.1/photon/button.elf:     file format elf32-littlearm
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
@@ -31,11 +31,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  13 .debug_macro  00024775  00000000  00000000  000f589d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_line   00023a62  00000000  00000000  0011a012  2**0
+ 14 .debug_line   00023aab  00000000  00000000  0011a012  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_str    000a58fd  00000000  00000000  0013da74  2**0
+ 15 .debug_str    000a590f  00000000  00000000  0013dabd  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_frame  0000ba0c  00000000  00000000  001e3374  2**2
+ 16 .debug_frame  0000ba0c  00000000  00000000  001e33cc  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -237,43 +237,23 @@ public:
 	...
 
 080a00f8 <setup>:
-SYSTEM_THREAD(ENABLED);
-SYSTEM_MODE(SEMI_AUTOMATIC);
-
-
-unsigned int localPort = 8888;
-IPAddress ipAddress;
  80a00f8:	b570      	push	{r4, r5, r6, lr}
  80a00fa:	b096      	sub	sp, #88	; 0x58
-int port;
  80a00fc:	f001 f9f8 	bl	80a14f0 <_Z16_fetch_usbserialv>
  80a0100:	f44f 5116 	mov.w	r1, #9600	; 0x2580
  80a0104:	f001 f9d4 	bl	80a14b0 <_ZN9USBSerial5beginEl>
-UDP udp;
-
-// variables will change:
-int buttonState = 0;         // variable for reading the pushbutton status
  80a0108:	4b30      	ldr	r3, [pc, #192]	; (80a01cc <setup+0xd4>)
  80a010a:	2101      	movs	r1, #1
  80a010c:	8818      	ldrh	r0, [r3, #0]
  80a010e:	f001 fb71 	bl	80a17f4 <pinMode>
-int LEDpin = D2;
  80a0112:	4b2f      	ldr	r3, [pc, #188]	; (80a01d0 <setup+0xd8>)
  80a0114:	2101      	movs	r1, #1
  80a0116:	8818      	ldrh	r0, [r3, #0]
  80a0118:	f001 fb6c 	bl	80a17f4 <pinMode>
-int buttonPin = D0;
-
  80a011c:	4b2d      	ldr	r3, [pc, #180]	; (80a01d4 <setup+0xdc>)
  80a011e:	2100      	movs	r1, #0
  80a0120:	8818      	ldrh	r0, [r3, #0]
  80a0122:	f001 fb67 	bl	80a17f4 <pinMode>
-int testPin =D7;
-void setup() {
-  Serial.begin(9600);
-   bool pressed = false;
-  
-    // initialize the LED pin as an output:
  80a0126:	f001 f9e3 	bl	80a14f0 <_Z16_fetch_usbserialv>
  80a012a:	f001 f9c8 	bl	80a14be <_ZN9USBSerialcvbEv>
  80a012e:	2800      	cmp	r0, #0
@@ -301,17 +281,11 @@ void setup() {
  80a0144:	6860      	ldr	r0, [r4, #4]
  80a0146:	4d24      	ldr	r5, [pc, #144]	; (80a01d8 <setup+0xe0>)
  80a0148:	f000 fbf4 	bl	80a0934 <network_ready>
-  pinMode(LEDpin, OUTPUT);     
-    pinMode(testPin, OUTPUT);                                            
-  // initialize the pushbutton pin as an input:
-  pinMode(buttonPin, INPUT);
  80a014c:	2800      	cmp	r0, #0
  80a014e:	d0f7      	beq.n	80a0140 <setup+0x48>
-
  80a0150:	f001 f9ce 	bl	80a14f0 <_Z16_fetch_usbserialv>
  80a0154:	4921      	ldr	r1, [pc, #132]	; (80a01dc <setup+0xe4>)
  80a0156:	f000 fdb8 	bl	80a0cca <_ZN5Print7printlnEPKc>
-  
  80a015a:	4b21      	ldr	r3, [pc, #132]	; (80a01e0 <setup+0xe8>)
  80a015c:	2200      	movs	r2, #0
  80a015e:	8819      	ldrh	r1, [r3, #0]
@@ -328,8 +302,6 @@ void setup() {
  80a016a:	4a1f      	ldr	r2, [pc, #124]	; (80a01e8 <setup+0xf0>)
  80a016c:	6868      	ldr	r0, [r5, #4]
  80a016e:	f000 fc19 	bl	80a09a4 <network_set_hostname>
-
-    //waiting for serial to correctly initialze and allocate memory
  80a0172:	f001 f9bd 	bl	80a14f0 <_Z16_fetch_usbserialv>
  80a0176:	4606      	mov	r6, r0
 
@@ -365,7 +337,6 @@ void setup() {
  80a019e:	f000 fd94 	bl	80a0cca <_ZN5Print7printlnEPKc>
  80a01a2:	a802      	add	r0, sp, #8
  80a01a4:	f000 fe05 	bl	80a0db2 <_ZN6StringD1Ev>
-    //serial object
  80a01a8:	f001 f9a2 	bl	80a14f0 <_Z16_fetch_usbserialv>
     WiFiClass() :
             NetworkClass(NETWORK_INTERFACE_WIFI_STA) {
@@ -390,12 +361,6 @@ void setup() {
  80a01c0:	a906      	add	r1, sp, #24
  80a01c2:	4630      	mov	r0, r6
  80a01c4:	f000 fd8b 	bl	80a0cde <_ZN5Print7printlnERK9Printable>
-    WiFi.connect();
-
-    //wifi function
-    while(!WiFi.ready());
-    Serial.println("Setup");
-   udp.begin(localPort);
  80a01c8:	b016      	add	sp, #88	; 0x58
  80a01ca:	bd70      	pop	{r4, r5, r6, pc}
  80a01cc:	20000000 	.word	0x20000000
@@ -408,38 +373,18 @@ void setup() {
  80a01e8:	080a2052 	.word	0x080a2052
 
 080a01ec <_Z4sendv>:
-        pressed = false;
-        
-        // Publish the on event.
-        Serial.println("NOT Pressing button. Publishing from button script.");
-        // Particle.publish("ledToggle", "off", 60, PUBLIC);
-
  80a01ec:	b530      	push	{r4, r5, lr}
-    // digitalWrite(LEDpin, LOW);
  80a01ee:	2364      	movs	r3, #100	; 0x64
-        pressed = false;
-        
-        // Publish the on event.
-        Serial.println("NOT Pressing button. Publishing from button script.");
-        // Particle.publish("ledToggle", "off", 60, PUBLIC);
-
  80a01f0:	b0a5      	sub	sp, #148	; 0x94
-    // digitalWrite(LEDpin, LOW);
  80a01f2:	22a8      	movs	r2, #168	; 0xa8
  80a01f4:	9300      	str	r3, [sp, #0]
  80a01f6:	21c0      	movs	r1, #192	; 0xc0
  80a01f8:	2300      	movs	r3, #0
  80a01fa:	a803      	add	r0, sp, #12
  80a01fc:	f000 fc98 	bl	80a0b30 <_ZN9IPAddressC1Ehhhh>
-
-    //     digitalWrite(testPin, LOW);
-    // Serial.println("LOW");
  80a0200:	4910      	ldr	r1, [pc, #64]	; (80a0244 <_Z4sendv+0x58>)
  80a0202:	a80f      	add	r0, sp, #60	; 0x3c
  80a0204:	f000 f8ea 	bl	80a03dc <_ZN10OSCMessageC1EPKc>
-  }
-
-  delay(period);
  80a0208:	a80f      	add	r0, sp, #60	; 0x3c
  80a020a:	490f      	ldr	r1, [pc, #60]	; (80a0248 <_Z4sendv+0x5c>)
  80a020c:	f000 f92e 	bl	80a046c <_ZN10OSCMessage9addStringEPKc>
@@ -456,32 +401,17 @@ class IPAddress : public Printable {
  80a0218:	cd0f      	ldmia	r5!, {r0, r1, r2, r3}
  80a021a:	c40f      	stmia	r4!, {r0, r1, r2, r3}
  80a021c:	682b      	ldr	r3, [r5, #0]
-}
-
  80a021e:	aa09      	add	r2, sp, #36	; 0x24
  80a0220:	7023      	strb	r3, [r4, #0]
  80a0222:	490b      	ldr	r1, [pc, #44]	; (80a0250 <_Z4sendv+0x64>)
  80a0224:	f242 23b8 	movw	r3, #8888	; 0x22b8
  80a0228:	a80f      	add	r0, sp, #60	; 0x3c
  80a022a:	f000 f953 	bl	80a04d4 <_ZN10OSCMessage4sendER3UDP9IPAddressj>
-void send(){
  80a022e:	f001 f95f 	bl	80a14f0 <_Z16_fetch_usbserialv>
  80a0232:	4908      	ldr	r1, [pc, #32]	; (80a0254 <_Z4sendv+0x68>)
  80a0234:	f000 fd49 	bl	80a0cca <_ZN5Print7printlnEPKc>
-        // Particle.publish("ledToggle", "off", 60, PUBLIC);
-
-    // digitalWrite(LEDpin, LOW);
-
-    //     digitalWrite(testPin, LOW);
-    // Serial.println("LOW");
  80a0238:	a80f      	add	r0, sp, #60	; 0x3c
  80a023a:	f000 f900 	bl	80a043e <_ZN10OSCMessageD1Ev>
-
-  delay(period);
-}
-
-void send(){
-  IPAddress ipAddress(192,168,0,100);
  80a023e:	b025      	add	sp, #148	; 0x94
  80a0240:	bd30      	pop	{r4, r5, pc}
  80a0242:	bf00      	nop
@@ -492,164 +422,69 @@ void send(){
  80a0254:	080a2076 	.word	0x080a2076
 
 080a0258 <loop>:
-    //wifi function
-    while(!WiFi.ready());
-    Serial.println("Setup");
-   udp.begin(localPort);
-    WiFi.setHostname("HQRouter_PUBLISH");
-    Serial.println(WiFi.hostname());
  80a0258:	b570      	push	{r4, r5, r6, lr}
-    Serial.println(WiFi.localIP());
  80a025a:	4b29      	ldr	r3, [pc, #164]	; (80a0300 <loop+0xa8>)
-    //wifi function
-    while(!WiFi.ready());
-    Serial.println("Setup");
-   udp.begin(localPort);
-    WiFi.setHostname("HQRouter_PUBLISH");
-    Serial.println(WiFi.hostname());
  80a025c:	b096      	sub	sp, #88	; 0x58
-    Serial.println(WiFi.localIP());
  80a025e:	8818      	ldrh	r0, [r3, #0]
  80a0260:	f001 faf2 	bl	80a1848 <digitalRead>
  80a0264:	4c27      	ldr	r4, [pc, #156]	; (80a0304 <loop+0xac>)
  80a0266:	4d28      	ldr	r5, [pc, #160]	; (80a0308 <loop+0xb0>)
  80a0268:	6020      	str	r0, [r4, #0]
-
-    
-    // Set the initial state of subscriber
  80a026a:	a801      	add	r0, sp, #4
  80a026c:	f000 f898 	bl	80a03a0 <_ZN10OSCMessageC1Ev>
-    // to off just in case.
-    //  Particle.publish("elaEvent", "high", 60, PUBLIC); //PUBLIC OR PRIVATE OR DEVICE ID
-    //  Particle.publish("ledToggle", "off", 60, PUBLIC);
-}
  80a0270:	2100      	movs	r1, #0
  80a0272:	4826      	ldr	r0, [pc, #152]	; (80a030c <loop+0xb4>)
  80a0274:	f001 f829 	bl	80a12ca <_ZN3UDP11parsePacketEm>
  80a0278:	2800      	cmp	r0, #0
  80a027a:	dd16      	ble.n	80a02aa <loop+0x52>
-
  80a027c:	f001 f938 	bl	80a14f0 <_Z16_fetch_usbserialv>
  80a0280:	4923      	ldr	r1, [pc, #140]	; (80a0310 <loop+0xb8>)
  80a0282:	f000 fd22 	bl	80a0cca <_ZN5Print7printlnEPKc>
-void loop() {
  80a0286:	782b      	ldrb	r3, [r5, #0]
  80a0288:	f083 0301 	eor.w	r3, r3, #1
  80a028c:	702b      	strb	r3, [r5, #0]
-buttonState = digitalRead(buttonPin);
-  //RECEIVE
-     int size = 0;
-     OSCMessage inMessage;
-        
  80a028e:	481f      	ldr	r0, [pc, #124]	; (80a030c <loop+0xb4>)
  80a0290:	f000 fe3f 	bl	80a0f12 <_ZN3UDP9availableEv>
  80a0294:	b148      	cbz	r0, 80a02aa <loop+0x52>
-       
-    // Check if data has been received
  80a0296:	481d      	ldr	r0, [pc, #116]	; (80a030c <loop+0xb4>)
  80a0298:	f000 fe4a 	bl	80a0f30 <_ZN3UDP4readEv>
  80a029c:	4606      	mov	r6, r0
-      if (udp.parsePacket() > 0) {
  80a029e:	f001 f927 	bl	80a14f0 <_Z16_fetch_usbserialv>
  80a02a2:	b2f1      	uxtb	r1, r6
  80a02a4:	f000 fcfc 	bl	80a0ca0 <_ZN5Print5printEc>
-void loop() {
-buttonState = digitalRead(buttonPin);
-  //RECEIVE
-     int size = 0;
-     OSCMessage inMessage;
-        
  80a02a8:	e7f1      	b.n	80a028e <loop+0x36>
-    // Check if data has been received
-      if (udp.parsePacket() > 0) {
-        Serial.println("receiving message");
-       toggle=!toggle;
-        // Read first char of data received
-        char c;
  80a02aa:	7829      	ldrb	r1, [r5, #0]
  80a02ac:	4b19      	ldr	r3, [pc, #100]	; (80a0314 <loop+0xbc>)
  80a02ae:	b101      	cbz	r1, 80a02b2 <loop+0x5a>
-
  80a02b0:	2101      	movs	r1, #1
-        // Ignore other chars
-        while(udp.available()){
  80a02b2:	8818      	ldrh	r0, [r3, #0]
  80a02b4:	f001 faaf 	bl	80a1816 <digitalWrite>
-          
-          c=udp.read();
-          Serial.print(c);
-        }
-      }
  80a02b8:	6822      	ldr	r2, [r4, #0]
  80a02ba:	4b17      	ldr	r3, [pc, #92]	; (80a0318 <loop+0xc0>)
  80a02bc:	2a01      	cmp	r2, #1
  80a02be:	d10d      	bne.n	80a02dc <loop+0x84>
-    
-    if(toggle){
  80a02c0:	7819      	ldrb	r1, [r3, #0]
  80a02c2:	b9c1      	cbnz	r1, 80a02f6 <loop+0x9e>
- digitalWrite(testPin, HIGH);
-    }else{
- digitalWrite(testPin, LOW);
-    }
-
  80a02c4:	701a      	strb	r2, [r3, #0]
-    
-  // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
-  if (buttonState == HIGH) {
  80a02c6:	f001 f913 	bl	80a14f0 <_Z16_fetch_usbserialv>
  80a02ca:	4914      	ldr	r1, [pc, #80]	; (80a031c <loop+0xc4>)
  80a02cc:	f000 fcfd 	bl	80a0cca <_ZN5Print7printlnEPKc>
-
  80a02d0:	f7ff ff8c 	bl	80a01ec <_Z4sendv>
-      if(pressed == true)
  80a02d4:	f001 f90c 	bl	80a14f0 <_Z16_fetch_usbserialv>
  80a02d8:	4911      	ldr	r1, [pc, #68]	; (80a0320 <loop+0xc8>)
  80a02da:	e006      	b.n	80a02ea <loop+0x92>
-        // Publish the off event.
-        Serial.println("Pressing button. Publishing from button script.");
-        send();
-        Serial.println("message sent");
-        // Particle.publish("ledToggle", "on", 60, PUBLIC);
-
  80a02dc:	781a      	ldrb	r2, [r3, #0]
  80a02de:	b152      	cbz	r2, 80a02f6 <loop+0x9e>
-
-    // // turn LED on:
-    // digitalWrite(LEDpin, HIGH);
-
-    //     digitalWrite(testPin, HIGH);
  80a02e0:	2200      	movs	r2, #0
  80a02e2:	701a      	strb	r2, [r3, #0]
-    // Serial.println("HIGH");
-  } else {
-    // turn LED off:
  80a02e4:	f001 f904 	bl	80a14f0 <_Z16_fetch_usbserialv>
  80a02e8:	490e      	ldr	r1, [pc, #56]	; (80a0324 <loop+0xcc>)
  80a02ea:	f000 fcee 	bl	80a0cca <_ZN5Print7printlnEPKc>
-        
-        // The flag has not been set so set it now.
-        
-        pressed = false;
-        
-        // Publish the on event.
  80a02ee:	4b0e      	ldr	r3, [pc, #56]	; (80a0328 <loop+0xd0>)
  80a02f0:	6818      	ldr	r0, [r3, #0]
  80a02f2:	f000 fb7f 	bl	80a09f4 <delay>
-          Serial.print(c);
-        }
-      }
-    
-    if(toggle){
- digitalWrite(testPin, HIGH);
  80a02f6:	a801      	add	r0, sp, #4
  80a02f8:	f000 f8a1 	bl	80a043e <_ZN10OSCMessageD1Ev>
-        // The flag has not been set so set it now.
-        
-        pressed = false;
-        
-        // Publish the on event.
-        Serial.println("NOT Pressing button. Publishing from button script.");
  80a02fc:	b016      	add	sp, #88	; 0x58
  80a02fe:	bd70      	pop	{r4, r5, r6, pc}
  80a0300:	20000088 	.word	0x20000088
@@ -665,12 +500,6 @@ buttonState = digitalRead(buttonPin);
  80a0328:	2000000c 	.word	0x2000000c
 
 080a032c <_GLOBAL__sub_I_pressed>:
-
-  delay(period);
-}
-
-void send(){
-  IPAddress ipAddress(192,168,0,100);
  80a032c:	b538      	push	{r3, r4, r5, lr}
 inline int32_t pinReadFast(pin_t _pin)
 {
@@ -679,12 +508,6 @@ inline int32_t pinReadFast(pin_t _pin)
 #elif defined(STM32F2XX)
 static Hal_Pin_Info* PIN_MAP = HAL_Pin_Map();
  80a032e:	f000 f983 	bl	80a0638 <HAL_Pin_Map>
-  by Tom Igoe
-
-  This example code is in the public domain.
-
-  http://www.arduino.cc/en/Tutorial/Button
-*/
  80a0332:	2100      	movs	r1, #0
  80a0334:	2001      	movs	r0, #1
  80a0336:	f000 fab9 	bl	80a08ac <system_thread_set_state>
@@ -699,11 +522,6 @@ struct SleepResult {
  80a033e:	701a      	strb	r2, [r3, #0]
  80a0340:	805a      	strh	r2, [r3, #2]
  80a0342:	f64f 72ff 	movw	r2, #65535	; 0xffff
-
-bool pressed = false;
-bool toggle = true;
-int period = 100;
-
  80a0346:	4c0d      	ldr	r4, [pc, #52]	; (80a037c <_GLOBAL__sub_I_pressed+0x50>)
  80a0348:	809a      	strh	r2, [r3, #4]
 
@@ -718,37 +536,15 @@ public:
  80a0352:	4620      	mov	r0, r4
  80a0354:	f000 fbb6 	bl	80a0ac4 <_ZN9IPAddressC1Ev>
  80a0358:	4620      	mov	r0, r4
-
-void setup();
  80a035a:	4c0a      	ldr	r4, [pc, #40]	; (80a0384 <_GLOBAL__sub_I_pressed+0x58>)
-*/
-
-bool pressed = false;
-bool toggle = true;
-int period = 100;
-
  80a035c:	462a      	mov	r2, r5
  80a035e:	490a      	ldr	r1, [pc, #40]	; (80a0388 <_GLOBAL__sub_I_pressed+0x5c>)
  80a0360:	f001 fae0 	bl	80a1924 <__aeabi_atexit>
-
-void setup();
  80a0364:	4620      	mov	r0, r4
  80a0366:	f000 ff4f 	bl	80a1208 <_ZN3UDPC1Ev>
  80a036a:	462a      	mov	r2, r5
  80a036c:	4620      	mov	r0, r4
-
-  delay(period);
-}
-
-void send(){
-  IPAddress ipAddress(192,168,0,100);
  80a036e:	e8bd 4038 	ldmia.w	sp!, {r3, r4, r5, lr}
-bool pressed = false;
-bool toggle = true;
-int period = 100;
-
-
-void setup();
  80a0372:	4906      	ldr	r1, [pc, #24]	; (80a038c <_GLOBAL__sub_I_pressed+0x60>)
  80a0374:	f001 bad6 	b.w	80a1924 <__aeabi_atexit>
  80a0378:	20000082 	.word	0x20000082
@@ -780,6 +576,7 @@ void OSCMessage::setupMessage()
 	...
 
 080a03a0 <_ZN10OSCMessageC1Ev>:
+//SOURCE: https://github.com/ameisso/simple-OSC
 #include "simple-OSC.h"
 
 OSCMessage::OSCMessage()

@@ -2,19 +2,11 @@
 //       THIS IS A GENERATED FILE - DO NOT EDIT       //
 /******************************************************/
 
-#line 1 "/Users/ninjacat/Documents/Particle/button_subscriber/src/button_subscriber.ino"
-/******************************************************/
-//       THIS IS A GENERATED FILE - DO NOT EDIT       //
-/******************************************************/
-
 #include "application.h"
 // #include "OSCMessage.h"
 
 #include "Particle.h"
-#include "/Users/ninjacat/Documents/Particle/button/src/simple-OSC.h"
-void send();
-#line 10 "/Users/ninjacat/Documents/Particle/button_subscriber/src/button_subscriber.ino"
-#line 1 "/Users/ninjacat/Documents/Particle/button/src/button.ino"
+#include "/Users/ninjacat/Documents/Particle/TakeHeed/button/src/simple-OSC.h"
 /*
   Button
 
@@ -40,7 +32,7 @@ void send();
 */
 
 bool pressed = false;
-
+bool toggle = true;
 int period = 100;
 
 
@@ -62,7 +54,6 @@ int LEDpin = D2;
 int buttonPin = D0;
 
 int testPin =D7;
-bool toggle = true;
 void setup() {
   Serial.begin(9600);
    bool pressed = false;
@@ -96,35 +87,34 @@ void setup() {
 }
 
 void loop() {
-  // read the state of the pushbutton value:
-  buttonState = digitalRead(buttonPin);
-  // digitalWrite(testPin, HIGH);
-    
-        
-     //RECEIVE
+buttonState = digitalRead(buttonPin);
+  //RECEIVE
      int size = 0;
      OSCMessage inMessage;
         
+       
     // Check if data has been received
       if (udp.parsePacket() > 0) {
-        toggle=!toggle;
         Serial.println("receiving message");
+       toggle=!toggle;
         // Read first char of data received
         char c;
 
         // Ignore other chars
         while(udp.available()){
+          
           c=udp.read();
           Serial.print(c);
         }
       }
-
-         if(toggle){
+    
+    if(toggle){
  digitalWrite(testPin, HIGH);
     }else{
  digitalWrite(testPin, LOW);
     }
 
+    
   // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
   if (buttonState == HIGH) {
 
@@ -174,7 +164,7 @@ void send(){
   IPAddress ipAddress(192,168,0,101);
   unsigned int localPort = 8888;
 
-  OSCMessage outMessage("from sender particle1");
+  OSCMessage outMessage("from sender Particle1");
   /* OSC DATA */ 
     // outMessage.addString("a");
     outMessage.addString("a");

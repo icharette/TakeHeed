@@ -6,7 +6,7 @@
 // #include "OSCMessage.h"
 
 #include "Particle.h"
-#include "/Users/ninjacat/Documents/Particle/button/src/simple-OSC.h"
+#include "/Users/ninjacat/Documents/Particle/TakeHeed/button/src/simple-OSC.h"
 #line 1 "/Users/ninjacat/Documents/Particle/button/src/button.ino"
 /*
   Button
@@ -149,7 +149,7 @@ buttonState = digitalRead(buttonPin);
         pressed = false;
         
         // Publish the on event.
-        Serial.println("NOT Pressing button. Publishing from button script.");
+        // Serial.println("NOT Pressing button. Publishing from button script.");
         // Particle.publish("ledToggle", "off", 60, PUBLIC);
 
     // digitalWrite(LEDpin, LOW);
