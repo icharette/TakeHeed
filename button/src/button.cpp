@@ -103,22 +103,27 @@ buttonState = digitalRead(buttonPin);
         
        
     // Check if data has been received
-      if (size = udp.parsePacket() > 0) {
+      if ((size = udp.parsePacket()) > 0) {
         Serial.println("receiving message");
+        Serial.println("size: " + size);
           toggle=!toggle;
      
         char c;
         while(size--){
+          Serial.println("IN WHILE");
           c=udp.read();
           Serial.print(c);
           inMessage.fill(c);
           
         }
-   light(inMessage);
+  //  àlight(inMessage);
 
+      Serial.println(inMessage.parse());
         if(inMessage.parse()){
-          inMessage.route("/buttonParticle1", light);
+          Serial.println("if parse is TRUE");
+          inMessage.route("/particle1", light);
         }
+        //this prints 0.0
          Serial.println(inMessage.getFloat(0));
         Serial.println();
       }
@@ -169,12 +174,14 @@ buttonState = digitalRead(buttonPin);
 
   delay(period);
 }
-
+ 
 void send(){
   IPAddress ipAddress(192,168,0,100);
   unsigned int localPort = 8888;
 
-  OSCMessage outMessage("/buttonIzzy");
+///from 
+  OSCMessage outMessage("/izzyParticle");
+  outMessage.addString("test");
   outMessage.send(udp, ipAddress, localPort);
   Serial.println("in send method");
 }

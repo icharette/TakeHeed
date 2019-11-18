@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "TakeHeed_ParticleSetup"
+		},
+		{
+			"path": "button_subscriber"
+		},
+		{
+			"path": "button"
+		},
+		{
+			"path": "algo_nina"
+		}
+	],
+	"settings": {
+		"extensions.ignoreRecommendations": true,
+		"cortex-debug.openocdPath": "${command:particle.getDebuggerOpenocdPath}",
+		"files.associations": {
+			"*.ino": "cpp"
+		}
+	}
+}

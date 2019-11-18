@@ -63,6 +63,7 @@ bool OSCMessage::parse()
             char charAddress[i-1];
             memcpy(charAddress,incomingBuffer,i-1);
             inputAddress = charAddress;
+            Serial.println("inputAddress: " + inputAddress);
             addressLocation = i;
             //Serial.print("address : ");  Serial.println(inputAddress);
         }

@@ -47,22 +47,26 @@ void OSCMessage::fill(char incomingByte)
 
 bool OSCMessage::parse()
 {
-    // Serial.print("got : ");
+    Serial.print("got : ");
     int addressLocation = -1;
     int typesLocation = -1;
     int dataLocation = -1;
-    /*for(int i = 0 ; i < incomingBufferSize ; i++)
+    Serial.println(incomingBufferSize);
+    for(int i = 0 ; i < incomingBufferSize ; i++)
      {
      Serial.print (incomingBuffer[i],DEC);  Serial.print(" ");
      }
-     Serial.println();*/
+     Serial.println();
     for(int i = 0 ; i < incomingBufferSize ; i++)
     {
+
         if (incomingBuffer[i] == 44)
         {
+
             char charAddress[i-1];
             memcpy(charAddress,incomingBuffer,i-1);
             inputAddress = charAddress;
+            Serial.println("InputAddress:" + inputAddress);
             addressLocation = i;
             //Serial.print("address : ");  Serial.println(inputAddress);
         }
