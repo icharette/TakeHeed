@@ -54,11 +54,16 @@ int buttonState = 0;         // variable for reading the pushbutton status
 int LEDpin = D2;
 int buttonPin = D0;
 
+int emitter = D1;
+int sensorIR = A0;
+
 int testPin =D7;
 void setup() {
   Serial.begin(9600);
    bool pressed = false;
   
+   pinMode(emitter, OUTPUT);
+   pinMode(sensorIR, INPUT);
     // initialize the LED pin as an output:
   pinMode(LEDpin, OUTPUT);     
     pinMode(testPin, OUTPUT);                                            
@@ -86,86 +91,93 @@ void setup() {
     //  Particle.publish("elaEvent", "high", 60, PUBLIC); //PUBLIC OR PRIVATE OR DEVICE ID
     //  Particle.publish("ledToggle", "off", 60, PUBLIC);
 }
-
-void loop() {
-buttonState = digitalRead(buttonPin);
-  //RECEIVE
-     int size = 0;
-     OSCMessage inMessage;
+void loop(){
+  digitalWrite(D1, HIGH);
+  float value = analogRead(sensorIR);
+  Serial.print("VALUE: ");
+  value-=1000;
+  Serial.println(value);
+}
+// void loop() {
+// digitalWrite(testPin, HIGH);
+// buttonState = digitalRead(buttonPin);
+//   //RECEIVE
+//      int size = 0;
+//      OSCMessage inMessage;
         
        
-    // Check if data has been received
-      if ((size = udp.parsePacket()) > 0) {
-        Serial.println("receiving message");
-        Serial.println("size: " + size);
-          toggle=!toggle;
+//     // Check if data has been received
+//       if ((size = udp.parsePacket()) > 0) {
+//         Serial.println("receiving message");
+//         Serial.println("size: " + size);
+//           toggle=!toggle;
      
-        char c;
-        while(size--){
-          Serial.println("IN WHILE");
-          c=udp.read();
-          Serial.print(c);
-          inMessage.fill(c);
+//         char c;
+//         while(size--){
+//           Serial.println("IN WHILE");
+//           c=udp.read();
+//           Serial.print(c);
+//           inMessage.fill(c);
           
-        }
-  //  àlight(inMessage);
+//         }
+//   //  àlight(inMessage);
 
-      Serial.println(inMessage.parse());
-        if(inMessage.parse()){
-          Serial.println("if parse is TRUE");
-          inMessage.route("/particle1", light);
-        }
-        //this prints 0.0
-         Serial.println(inMessage.getFloat(0));
-        Serial.println();
-      }
+//       Serial.println(inMessage.parse());
+//         if(inMessage.parse()){
+//           Serial.println("if parse is TRUE");
+//           inMessage.route("/particle1", light);
+//         }
+//         //this prints 0.0
+//          Serial.println(inMessage.getFloat(0));
+//         Serial.println();
+//       }
 
 
     
-  // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
-  if (buttonState == HIGH) {
+//   // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
+//   if (buttonState == HIGH) {
 
-      if(pressed == true)
-            return;
+//       if(pressed == true)
+//             return;
         
-        // The flag has not been set so set it now.
+//         // The flag has not been set so set it now.
         
-        pressed = true;
+//         pressed = true;
         
-        // Publish the off event.
-        Serial.println("Pressing button. Publishing from button script.");
-        send();
-        Serial.println("message sent");
-        // Particle.publish("ledToggle", "on", 60, PUBLIC);
+//         // Publish the off event.
+//         Serial.println("Pressing button. Publishing from button script.");
+//         send();
+//         Serial.println("message sent");
+//         // Particle.publish("ledToggle", "on", 60, PUBLIC);
 
 
-    // // turn LED on:
-    // digitalWrite(LEDpin, HIGH);
+//     // // turn LED on:
+//     // digitalWrite(LEDpin, HIGH);
 
-    //     digitalWrite(testPin, HIGH);
-    // Serial.println("HIGH");
-  } else {
-    // turn LED off:
+//     //     digitalWrite(testPin, HIGH);
+//     // Serial.println("HIGH");
+//   } else {
+//     // turn LED off:
      
-         if(pressed == false)
-            return;
+//          if(pressed == false)
+//             return;
         
-        // The flag has not been set so set it now.
+//         // The flag has not been set so set it now.
         
-        pressed = false;
+//         pressed = false;
         
-        // Publish the on event.
-        // Serial.println("NOT Pressing button. Publishing from button script.");
-        // Particle.publish("ledToggle", "off", 60, PUBLIC);
+//         // Publish the on event.
+//         // Serial.println("NOT Pressing button. Publishing from button script.");
+//         // Particle.publish("ledToggle", "off", 60, PUBLIC);
 
-    // digitalWrite(LEDpin, LOW);
+//     // digitalWrite(LEDpin, LOW);
 
-    //     digitalWrite(testPin, LOW);
-    // Serial.println("LOW");
-  }
+//     //     digitalWrite(testPin, LOW);
+//     // Serial.println("LOW");
+//   }
 
-  delay(period);
-}
+//   delay(period);
+// }
  
 void send(){
   IPAddress ipAddress(192,168,0,100);

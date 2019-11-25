@@ -11,6 +11,15 @@
 		},
 		{
 			"path": "algo_nina"
+		},
+		{
+			"path": "IMU"
+		},
+		{
+			"path": "LSM9DS1_Breakout-master"
+		},
+		{
+			"path": "neopixelActivity"
 		}
 	],
 	"settings": {

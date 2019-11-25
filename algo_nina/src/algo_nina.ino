@@ -16,29 +16,34 @@ Jumpers on the breakout board will do this for you.)
 
 // The SFE_LSM9DS1 library requires both Wire and SPI be
 // included BEFORE including the 9DS1 library.
-// #include "/Users/ninjacat/Documents/Particle/TakeHeed/Arduino-master/libraries/Wire/Wire.h"
-//  #include "/Users/ninjacat/Documents/Particle/TakeHeed/Arduino-master/libraries/SPI/SPI.h"
+// #include </Users/ninjacat/Documents/Particle/TakeHeed/Arduino-master/libraries/Wire/Wire.h>
+//  #include </Users/ninjacat/Documents/Particle/TakeHeed/Arduino-master/libraries/SPI/SPI.h>
 #include <Particle.h>
+#include <Arduino.h>
 #include <math.h>
 // #include "/Users/ninjacat/Documents/Particle/TakeHeed/LSM9DS1_Breakout-master/Libraries/Particle/firmware/SparkFunLSM9DS1.h"
 
 //  #include "/Users/ninjacat/Documents/Particle/TakeHeed/Particle-NeoPixel-master/src/neopixel.h"
 // #include "libfixmath.h"
 #include "neopixel.h"
+
 #include "SparkFunLSM9DS1.h"
 #ifdef __AVR__
 #include <avr/power.h>
 #endif
-
+#define M_PI 3.14159265358979323846
 LSM9DS1 imu;
 // #define LED_PIN 8
-#define LED_PIN D6
+#define LED_PIN D5
 #define NUM_LED 20
 // Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LED, 8, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LED, 8, WS2812B);
+// Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LED, LED_PIN, WS2812B);
 bool pixels[NUM_LED];
 int pixelPointer;
 
+#define PIN D5
+#define N_LEDS 20
+ Adafruit_NeoPixel strip = Adafruit_NeoPixel(N_LEDS, PIN, WS2812B);
 
 #define LSM9DS1_M 0x1E // Would be 0x1C if SDO_M is LOW
 #define LSM9DS1_AG  0x6B // Would be 0x6A if SDO_AG is LOW
@@ -116,11 +121,37 @@ void setupNeopixel(){
   pixelPointer = 20;
 }
 
+SYSTEM_THREAD(ENABLED);
+SYSTEM_MODE(SEMI_AUTOMATIC);
+
+
+unsigned int localPort = 8888;
+IPAddress ipAddress;
+int port;
+UDP udp;
+
+int Index;
+
+// Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LED, 8, NEO_GRB + NEO_KHZ800);
+
+
 void setup() 
 {
+  //waiting for serial to correctly initialze and allocate memory
+    //serial object
+    while(!Serial);
+    WiFi.connect();
+
+    //wifi function
+    while(!WiFi.ready());
+    Serial.println("Setup");
+   udp.begin(localPort);
+    WiFi.setHostname("HQRouter_PUBLISH");
+    Serial.println(WiFi.hostname());
+    Serial.println(WiFi.localIP());
   Serial.begin(115200);
   setupImu();
-  calibrateSensor();
+  // calibrateSensor();
   setupMotor();
   setupNeopixel();
   state = 0;
@@ -128,180 +159,221 @@ void setup()
   lossThreshold = 2;
 }
 
+// Simple NeoPixel test.  Lights just a few pixels at a time so a
+// 1m strip can safely be powered from Arduino 5V pin.  Arduino
+// may nonetheless hiccup when LEDs are first connected and not
+// accept code.  So upload code first, unplug USB, connect pixels
+// to GND FIRST, then +5V and digital pin 6, then re-plug USB.
+// A working strip will show a few pixels moving down the line,
+// cycling between red, green and blue.  If you get no response,
+// might be connected to wrong end of strip (the end wires, if
+// any, are no indication -- look instead for the data direction
+// arrows printed on the strip).
+
+ 
+// Adafruit_NeoPixel strip = Adafruit_NeoPixel(N_LEDS, PIN, NEO_GRB + NEO_KHZ800);
+ 
+// void setup() {
+//   strip.begin();
+// }
+ 
 void loop()
 {
-  Serial.print("pixelPointer");
-  Serial.println(pixelPointer);
-  getMouvement();
-  getState();
-  switch(state){
-    case 0: {
-      prosperity();
-      break;
-    }
-    case 1: {
-      maintaining(); 
-      break;
-    }
-    case 2:{
-      endangered(); 
-      break;
-    }
-    case 3: {
-      bleach();
-      break;
-    }
+setPixels(strip.Color(0,255,0));
+
   }
-}
+
+// void loop()
+// {
+//    getMouvement();
+//  printAttitude(imu.ax, imu.ay, imu.az, imu.mx, imu.my, imu.mz);
+//   if ( imu.accelAvailable())
+//     {
+//       imu.readAccel();
+//     }
+//     Serial.print("DIRECTION=========");
+//     Serial.println(imu.calcGyro(imu.gy)); 
+//     prosperity();
+//   // Serial.print("pixelPointer");
+//   // Serial.println(pixelPointer);
+//   // getMouvement();
+//   // getState();
+//   // switch(state){
+//   //   case 0: {
+//   //     prosperity();
+//   //     break;
+//   //   }
+//   //   case 1: {
+//   //     maintaining(); 
+//   //     break;
+//   //   }
+//   //   case 2:{
+//   //     endangered(); 
+//   //     break;
+//   //   }
+//   //   case 3: {
+//   //     bleach();
+//   //     break;
+//   //   }
+//   // }
+// }
 
 
-void printAccel()
-{  
-  // Now we can use the ax, ay, and az variables as we please.
-  // Either print them as raw ADC values, or calculated in g's.
-  Serial.print("A: ");
-#ifdef PRINT_CALCULATED
-  // If you want to print calculated values, you can use the
-  // calcAccel helper function to convert a raw ADC value to
-  // g's. Give the function the value that you want to convert.
-  Serial.print(imu.calcAccel(imu.ax), 2);
-  Serial.print(", ");
-  Serial.print(imu.calcAccel(imu.ay), 2);
-  Serial.print(", ");
-  Serial.print(imu.calcAccel(imu.az), 2);
-  Serial.println(" g");
-#elif defined PRINT_RAW 
-  Serial.print(imu.ax);
-  Serial.print(", ");
-  Serial.print(imu.ay);
-  Serial.print(", ");
-  Serial.println(imu.az);
-#endif
+// void printAccel()
+// {  
+//   // Now we can use the ax, ay, and az variables as we please.
+//   // Either print them as raw ADC values, or calculated in g's.
+//   Serial.print("A: ");
+// #ifdef PRINT_CALCULATED
+//   // If you want to print calculated values, you can use the
+//   // calcAccel helper function to convert a raw ADC value to
+//   // g's. Give the function the value that you want to convert.
+//   Serial.print(imu.calcAccel(imu.ax), 2);
+//   Serial.print(", ");
+//   Serial.print(imu.calcAccel(imu.ay), 2);
+//   Serial.print(", ");
+//   Serial.print(imu.calcAccel(imu.az), 2);
+//   Serial.println(" g");
+// #elif defined PRINT_RAW 
+//   Serial.print(imu.ax);
+//   Serial.print(", ");
+//   Serial.print(imu.ay);
+//   Serial.print(", ");
+//   Serial.println(imu.az);
+// #endif
 
-}
+// }
 
 
-// Calculate pitch, roll, and heading.
-// Pitch/roll calculations take from this app note:
-// http://cache.freescale.com/files/sensors/doc/app_note/AN3461.pdf?fpsp=1
-// Heading calculations taken from this app note:
-// http://www51.honeywell.com/aero/common/documents/myaerospacecatalog-documents/Defense_Brochures-documents/Magnetic__Literature_Application_notes-documents/AN203_Compass_Heading_Using_Magnetometers.pdf
-void printAttitude(float ax, float ay, float az, float mx, float my, float mz)
-{
-  float roll = atan2(ay, az);
-  float pitch = atan2(-ax, sqrt(ay * ay + az * az));
-  
-  float heading;
-  if (my == 0)
-    heading = (mx < 0) ? M_PI : 0;
-  else
-    heading = atan2(mx, my);
+// // Calculate pitch, roll, and heading.
+// // Pitch/roll calculations take from this app note:
+// // http://cache.freescale.com/files/sensors/doc/app_note/AN3461.pdf?fpsp=1
+// // Heading calculations taken from this app note:
+// // http://www51.honeywell.com/aero/common/documents/myaerospacecatalog-documents/Defense_Brochures-documents/Magnetic__Literature_Application_notes-documents/AN203_Compass_Heading_Using_Magnetometers.pdf
+// void printAttitude(float ax, float ay, float az, float mx, float my, float mz)
+// {
+//   float roll = atan2(ay, az);
+//   float pitch = atan2(-ax, sqrt(ay * ay + az * az));
+// //   float roll = 180 * atan2(ay, sqrt(ax*ax + az*az))/M_PI;
+// //   float pitch = 180 * atan2(ax, sqrt(ay*ay + az*az))/M_PI;
+// // float mag_x = mx*cos(pitch) + my*sin(roll)*sin(pitch) + mz*cos(roll)*sin(pitch);
+// // float mag_y = my * cos(roll) - mz * sin(roll);
+// // float yaw = 180 * atan2(-mag_y,mag_x)/M_PI;
+// // yaw = map((int)yaw, -1000,1000,0,255 );
+// // pitch = map((int)pitch, -1000,1000,0,255);
+//   float heading;
+//   if (my == 0)
+//     heading = (mx < 0) ? M_PI : 0;
+//   else
+//     heading = atan2(mx, my);
     
-  heading -= DECLINATION * M_PI / 180;
+//   heading -= DECLINATION * M_PI / 180;
   
-  if (heading > M_PI) heading -= (2 * M_PI);
-  else if (heading < -M_PI) heading += (2 * M_PI);
+//   if (heading > M_PI) heading -= (2 * M_PI);
+//   else if (heading < -M_PI) heading += (2 * M_PI);
   
-  // Convert everything from radians to degrees:
-  heading *= 180.0 / M_PI;
-  pitch *= 180.0 / M_PI;
-  roll  *= 180.0 / M_PI;
+//   // Convert everything from radians to degrees:
+//   heading *= 180.0 / M_PI;
+//   pitch *= 180.0 / M_PI;
+//   roll  *= 180.0 / M_PI;
   
-  Serial.print("Pitch, Roll: ");
-  Serial.print(pitch, 2);
-  Serial.print(", ");
-  Serial.println(roll, 2);
-  Serial.print("Heading: "); Serial.println(heading, 2);
-}
+//   Serial.print("Pitch, Roll: ");
+//   Serial.print(pitch, 2);
+//   Serial.print(", ");
+//   Serial.println(roll, 2);
+//   Serial.print("YAW: "); 
+//   Serial.println(heading, 2);
+// }
 
-void calibrateSensor(){
-  Serial.print("calibrating sensor...");
-  for(int i = 0; i < 10; i++){
-    if ( imu.accelAvailable() )
-    {
-      imu.readAccel();
-    }
-    refX += imu.calcAccel(imu.ax);
-    refY += imu.calcAccel(imu.ay);
-    refZ += imu.calcAccel(imu.az);
-  }
-  refX = refX / 10;
-  refY = refY / 10;
-  refZ = refZ / 10; 
-  Serial.println("done");
-//  Serial.print("ref X: ");
-//  Serial.print(refX);
-//  Serial.print(" refY: ");
-//  Serial.print(refY);
-//  Serial.print(" refZ: ");
-//  Serial.print(refZ);
-//  Serial.println(" ");
-}
+// void calibrateSensor(){
+//   Serial.print("calibrating sensor...");
+//   for(int i = 0; i < 10; i++){
+//     if ( imu.accelAvailable() )
+//     {
+//       imu.readAccel();
+//     }
+//     refX += imu.calcAccel(imu.ax);
+//     refY += imu.calcAccel(imu.ay);
+//     refZ += imu.calcAccel(imu.az);
+//   }
+//   refX = refX / 10;
+//   refY = refY / 10;
+//   refZ = refZ / 10; 
+//   Serial.println("done");
+// //  Serial.print("ref X: ");
+// //  Serial.print(refX);
+// //  Serial.print(" refY: ");
+// //  Serial.print(refY);
+// //  Serial.print(" refZ: ");
+// //  Serial.print(refZ);
+// //  Serial.println(" ");
+// }
 
-void getMouvement(){
-//    reset values
-    dX = 0;
-    dY = 0;
-    dZ = 0;
-    avMvmt = 0;
-    for (int i = 0; i < 10; i++){
-    if ( imu.accelAvailable() )
-    {
-      imu.readAccel();
-    }
-    dX += abs(imu.calcAccel(imu.ax) - refX);
-    dY += abs(imu.calcAccel(imu.ay) - refY);
-    dZ += abs(imu.calcAccel(imu.az) - refZ);
-    avMvmt = (dX + dY + dZ) / 3;
-    delay(100);
-    }
-    if (avMvmt < gainThreshold && pixelPointer <= NUM_LED){
-      pixels[pixelPointer] = 1;
-      pixelPointer++;
-    }
-    if (avMvmt > lossThreshold && pixelPointer >= 0){
-      pixels[pixelPointer] = 0;
-      pixelPointer--;
-    }
-    printMvmt();
-}
+// void getMouvement(){
+// //    reset values
+//     dX = 0;
+//     dY = 0;
+//     dZ = 0;
+//     avMvmt = 0;
+//     for (int i = 0; i < 10; i++){
+//     if ( imu.accelAvailable() )
+//     {
+//       imu.readAccel();
+//     }
+//     dX += abs(imu.calcAccel(imu.ax) - refX);
+//     dY += abs(imu.calcAccel(imu.ay) - refY);
+//     dZ += abs(imu.calcAccel(imu.az) - refZ);
+   
+//     avMvmt = (dX + dY + dZ) / 3;
+//     // delay(100);
+//     }
+//     if (avMvmt < gainThreshold && pixelPointer <= NUM_LED){
+//       pixels[pixelPointer] = 1;
+//       pixelPointer++;
+//     }
+//     if (avMvmt > lossThreshold && pixelPointer >= 0){
+//       pixels[pixelPointer] = 0;
+//       pixelPointer--;
+//     }
+//     printMvmt();
+// }
 
-void getState(){
-  float average = 0;
-  for(int i = 0; i < NUM_LED; i++){
-    average += pixels[i];
-  }
-  average = average / NUM_LED;
-  if (average > 0.8) state = 0;
-  if (average <= 0.8 && average > 0.5) state = 1;
-  if (average <=0.5 && average > 0.2) state = 2;
-  if (average <= 0.2) state = 3;
-}
+// void getState(){
+//   float average = 0;
+//   for(int i = 0; i < NUM_LED; i++){
+//     average += pixels[i];
+//   }
+//   average = average / NUM_LED;
+//   if (average > 0.8) state = 0;
+//   if (average <= 0.8 && average > 0.5) state = 1;
+//   if (average <=0.5 && average > 0.2) state = 2;
+//   if (average <= 0.2) state = 3;
+// }
 
-void prosperity(){
-  Serial.println("prosperity");
-  setPixels(strip.Color(0,255,0));
-  spinStepper(500);
-}
+// void prosperity(){
+//   Serial.println("prosperity");
+//   setPixels(strip.Color(0,255,0));
+//   spinStepper(500);
+// }
 
-void maintaining(){
-  Serial.println("prosperity");
-  setPixels(strip.Color(0,0,255));
-  spinStepper(1000);
-}
+// void maintaining(){
+//   Serial.println("prosperity");
+//   setPixels(strip.Color(0,0,255));
+//   spinStepper(1000);
+// }
 
-void endangered(){
-  Serial.println("endangered");
-  setPixels(strip.Color(255,255,0));
-  spinStepper(2000);
-}
+// void endangered(){
+//   Serial.println("endangered");
+//   setPixels(strip.Color(255,255,0));
+//   spinStepper(2000);
+// }
 
-void bleach() {
-  Serial.println("bleach");
-  setPixels(strip.Color(255, 0, 0));
-}
+// void bleach() {
+//   Serial.println("bleach");
+//   setPixels(strip.Color(255, 0, 0));
+// }
 
-// Fill the dots one after the other with a color
+// // Fill the dots one after the other with a color
 void setPixels(uint32_t c) {
   for(uint16_t i=0; i<strip.numPixels(); i++) {
     if (pixels[i]) strip.setPixelColor(i, c);
@@ -310,39 +382,39 @@ void setPixels(uint32_t c) {
   }
 }
 
-void spinStepper(int pace){
-  digitalWrite(4,HIGH);
+// void spinStepper(int pace){
+//   digitalWrite(4,HIGH);
 
-  for(stepperIndex = 0; stepperIndex < 2000; stepperIndex++)
-  {
-    digitalWrite(5,HIGH);
-    delayMicroseconds(pace);
-    digitalWrite(5,LOW);
-    delayMicroseconds(pace);
-  }
-  delay(1000);
+//   for(stepperIndex = 0; stepperIndex < 2000; stepperIndex++)
+//   {
+//     digitalWrite(5,HIGH);
+//     delayMicroseconds(pace);
+//     digitalWrite(5,LOW);
+//     delayMicroseconds(pace);
+//   }
+//   delay(1000);
 
-  digitalWrite(4,LOW);
+//   digitalWrite(4,LOW);
 
-  for(stepperIndex = 0; stepperIndex < 2000; stepperIndex++)
-  {
-    digitalWrite(5,HIGH);
-    delayMicroseconds(pace);
-    digitalWrite(5,LOW);
-    delayMicroseconds(pace);
-  }
-  delay(1000);
-}
+//   for(stepperIndex = 0; stepperIndex < 2000; stepperIndex++)
+//   {
+//     digitalWrite(5,HIGH);
+//     delayMicroseconds(pace);
+//     digitalWrite(5,LOW);
+//     delayMicroseconds(pace);
+//   }
+//   delay(1000);
+// }
 
 
-void printMvmt(){
-    Serial.print("x: ");
-    Serial.print(dX);
-    Serial.print( " Y:");
-    Serial.print(dY);
-    Serial.print(" Z:");
-    Serial.print(dZ);
-    Serial.print(" av: ");
-    Serial.print(avMvmt);
-    Serial.println(" ");
-}
+// void printMvmt(){
+//     Serial.print("x: ");
+//     Serial.print(dX);
+//     Serial.print( " Y:");
+//     Serial.print(dY);
+//     Serial.print(" Z:");
+//     Serial.print(dZ);
+//     Serial.print(" av: ");
+//     Serial.print(avMvmt);
+//     Serial.println(" ");
+// }
