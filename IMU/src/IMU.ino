@@ -450,9 +450,15 @@ void loop() {
     Serial.println("");
     Serial.print("Accepted range: : ");
     float acceptedRange = heading + offset;
+    if(acceptedRange < 0){
+      acceptedRange = heading + 360;
+    }
     Serial.print(acceptedRange);
     Serial.print(" , ");
     acceptedRange = heading - offset;
+     if(acceptedRange < 0){
+      acceptedRange = heading + 360;
+    }
     Serial.println(acceptedRange);
     delay(1000);
 

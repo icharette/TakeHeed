@@ -177,9 +177,9 @@ void setup()
   // {
   //   Serial.println("Failed to communicate with LSM9DS1.");
   //   Serial.println("Double-check wiring.");
-  //   Serial.println("Default settings in this sketch will " \
-  //                 "work for an out of the box LSM9DS1 " \
-  //                 "Breakout, but may need to be modified " \
+  //   Serial.println("Default settings in this sketch will " 
+  //                 "work for an out of the box LSM9DS1 " 
+  //                 "Breakout, but may need to be modified " 
   //                 "if the board jumpers are.");
   //   while (1)
   //     ;
@@ -463,9 +463,15 @@ void loop() {
     Serial.println("");
     Serial.print("Accepted range: : ");
     float acceptedRange = heading + offset;
+    if(acceptedRange < 0){
+      acceptedRange = heading + 360;
+    }
     Serial.print(acceptedRange);
     Serial.print(" , ");
     acceptedRange = heading - offset;
+     if(acceptedRange < 0){
+      acceptedRange = heading + 360;
+    }
     Serial.println(acceptedRange);
     delay(1000);
 

@@ -27,6 +27,8 @@
 #include "neopixel.h"
 
 void setup();
+void colorAll(uint32_t c, uint8_t wait);
+static void chase(uint32_t c);
 void loop();
 void whiteOverRainbow(uint8_t wait, uint8_t whiteSpeed, uint8_t whiteLength );
 #line 24 "/Users/ninjacat/Documents/Particle/TakeHeed/neopixelActivity/src/neopixelActivity.ino"
@@ -63,7 +65,7 @@ void rainbow(uint8_t wait);
 #define PIXEL_TYPE SK6812RGBW
 #define BRIGHTNESS 50 // 0 - 255
 
-Adafruit_NeoPixel strip(PIXEL_COUNT, PIXEL_PIN, PIXEL_TYPE);
+Adafruit_NeoPixel strip(PIXEL_COUNT, PIXEL_PIN);
 
 int gamma[] = {
     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
@@ -102,12 +104,42 @@ void setup() {
   strip.show(); // Initialize all pixels to 'off'
 }
 
+// Set all pixels in the strip to a solid color, then wait (ms)
+void colorAll(uint32_t c, uint8_t wait) {
+  uint16_t i;
+
+  for(i=0; i<strip.numPixels(); i++) {
+    strip.setPixelColor(i, c);
+  }
+  strip.show();
+  delay(wait);
+}
+
+// void loop() {
+//   chase(strip.Color(255, 0, 0)); // Red
+//   // chase(strip.Color(0, 255, 0)); // Green
+//   chase(strip.Color(0, 0, 255)); // Blue
+//   //  colorAll(strip.Color(255, 0, 0),50);
+// }
+ 
+static void chase(uint32_t c) {
+  for(uint16_t i=0; i<strip.numPixels()+4; i++) {
+      strip.setPixelColor(i  , c); // Draw new pixel
+      strip.setPixelColor(i-4, 0); // Erase pixel a few steps back
+      strip.show();
+      delay(250);
+  }
+}
 void loop() {
-  // Some example procedures showing how to display to the pixels:
+
+  // colorAll(strip.Color(255, 128, 0),10);
+  // Some example procedures showing ow to display to the pixels:
   // Do not run more than 15 seconds of these, or the b/g tasks
   // will be blocked.
   // --------------------------------------------------------------
-  colorWipe(strip.Color(255, 0, 0), 50); // Red
+ 
+ 
+  // colorWipe(strip.Color(255, 0, 0), 50); // Red
   // colorWipe(strip.Color(0, 255, 0), 50); // Green
   // colorWipe(strip.Color(0, 0, 255), 50); // Blue
   // colorWipe(strip.Color(0, 0, 0, 255), 50); // White
@@ -119,7 +151,7 @@ void loop() {
   // fullWhite();
   // delay(2000);
 
-  // rainbowFade2White(3,3,1);
+  rainbowFade2White(3,3,1);
 }
 
 // Input a value 0 to 255 to get a color value.
@@ -161,7 +193,7 @@ void pulseWhite(uint8_t wait) {
   Serial.println("IN PULSE WHITE");
   for(int j = 0; j < 256 ; j++) {
     for(uint16_t i=0; i<strip.numPixels(); i++) {
-      strip.setPixelColor(i, strip.Color(0,0,0, gamma[j] ) );
+      strip.setPixelColor(i, strip.Color(255,255,255, gamma[j] ) );
     }
     delay(wait);
     strip.show();
@@ -179,61 +211,84 @@ void pulseWhite(uint8_t wait) {
 
 void rainbowFade2White(uint8_t wait, int rainbowLoops, int whiteLoops) {
   Serial.println("IN RAINBOW FADE");
-  // float fadeMax = 100.0;
-  // int fadeVal = 0;
-  // uint32_t wheelVal;
-  // int redVal, greenVal, blueVal;
+  float fadeMax = 100.0;
+  int fadeVal = 0;
+  uint32_t wheelVal;
+  int redVal, greenVal, blueVal;
+float count = 0;
+  for(int k = 0 ; k < rainbowLoops ; k ++) {
+    for(int j=0; j<1000; j++) { // 5 cycles of all colors on wheel
+      for(int i=0; i< strip.numPixels(); i++) {
 
-  // for(int k = 0 ; k < rainbowLoops ; k ++) {
-  //   for(int j=0; j<256; j++) { // 5 cycles of all colors on wheel
-  //     for(int i=0; i< strip.numPixels(); i++) {
-  //       wheelVal = Wheel(((i * 256 / strip.numPixels()) + j) & 255);
-  //       redVal = red(wheelVal) * float(fadeVal/fadeMax);
-  //       Serial.print("redVal : " );
-  //       Serial.println(redVal);
+        wheelVal = Wheel(((i * 256 / strip.numPixels()) + j) & 255);
+        redVal = red(wheelVal) * float(fadeVal/fadeMax);
+        Serial.print("wheelVal : " );
+        Serial.println(wheelVal);
 
-  //       greenVal = green(wheelVal) * float(fadeVal/fadeMax);
-  //       blueVal = blue(wheelVal) * float(fadeVal/fadeMax);
+        greenVal = green(wheelVal) * float(fadeVal/fadeMax);
+        blueVal = blue(wheelVal) * float(fadeVal/fadeMax);
 
+// redVal = map(redVal, 0, 255, 150, 255);
+// greenVal = map(greenVal, 0, 255, 78,230);
+// blueVal = map(blueVal, 0, 255, 0, 200);
 
-  //       strip.setPixelColor( i, strip.Color(255, 128, 0));
-  //     }
-
-  //     // First loop, fade in!
-  //     if(k == 0 && fadeVal < fadeMax-1) {
-  //       fadeVal++;
-  //     }
-  //     // Last loop, fade out!
-  //     else if(k == rainbowLoops - 1 && j > 255 - fadeMax ) {
-  //       fadeVal--;
-  //     }
-
-  //     strip.show();
-  //     delay(wait);
-  //   }
-  // }
-
-  delay(500);
-
-  for(int k = 0 ; k < whiteLoops ; k ++) {
-    for(int j = 0; j < 256 ; j++) {
-      for(uint16_t i=0; i < strip.numPixels(); i++) {
-        strip.setPixelColor(i, strip.Color(0,0,0, gamma[j] ) );
+        // strip.setPixelColor( i, strip.Color(redVal, greenVal, blueVal));
+          // strip.setPixelColor( i, strip.Color(redVal*wheelVal, 50, 0, wheelVal)); //good glitch
+            // strip.setPixelColor( i, strip.Color(255, greenVal, blueVal));
+              // strip.setPixelColor( i, strip.Color(255, 128, 0));
+              // strip.setColorDimmed((rand() % (strip.numPixels() - 0 + 1)), 255, 128,0, wheelVal); //orange wave
+            // strip.setColorDimmed(7, 255, 128,0, wheelVal); //orange wave
+        
       }
-      strip.show();
-    }
+      
+    // while(count<500){
+      float val = (rand() % (strip.numPixels() - 0 + 1));
+            // strip.show();
+      delay(wait);
+      // strip.setPixelColor(val, 255, 128,0);
+       strip.show();
+      delay(wait);
+       strip.setColorDimmed(val, 255, 128,0, j);
+       
+      //  strip.setColorDimmed((rand() % (strip.numPixels() - 0 + 1)), 255, 128,0, -j);
+        // count++;
+    // }
 
-    delay(2000);
-    for(int j = 255; j >= 0 ; j--) {
-      for(uint16_t i=0; i < strip.numPixels(); i++) {
-        strip.setPixelColor(i, strip.Color(0,0,0, gamma[j] ) );
+      // First loop, fade in!
+      if(k == 0 && fadeVal < fadeMax-1) {
+        fadeVal++;
       }
-      strip.show();
+      // // Last loop, fade out!
+      // else if(k == rainbowLoops - 1 && j > 255 - fadeMax ) {
+      //   fadeVal--;
+      // }
+
+     
     }
   }
 
-  delay(500);
+  // delay(500);
+
+  // for(int k = 0 ; k < whiteLoops ; k ++) {
+  //   for(int j = 0; j < 256 ; j++) {
+  //     for(uint16_t i=0; i < strip.numPixels(); i++) {
+  //       strip.setPixelColor(i, strip.Color(0,0,0, gamma[j] ) );
+  //     }
+  //     strip.show();
+  //   }
+
+  //   delay(2000);
+  //   for(int j = 255; j >= 0 ; j--) {
+  //     for(uint16_t i=0; i < strip.numPixels(); i++) {
+  //       strip.setPixelColor(i, strip.Color(0,0,0, gamma[j] ) );
+  //     }
+  //     strip.show();
+  //   }
+  // }
+
+  // delay(500);
 }
+
 
 void whiteOverRainbow(uint8_t wait, uint8_t whiteSpeed, uint8_t whiteLength ) {
 Serial.println("IN white over rainbow");
@@ -298,16 +353,15 @@ Serial.println("IN rainbow cycle");
   }
 }
 
-void rainbow(uint8_t wait) {
-  Serial.println("IN rainbow");
-  uint16_t i, j;
+// void rainbow(uint8_t wait) {
+//   Serial.println("IN rainbow");
+//   uint16_t i, j;
 
-  for(j=0; j<256; j++) {
-    for(i=0; i<strip.numPixels(); i++) {
-      strip.setPixelColor(i, Wheel((i+j) & 255));
-    }
-    strip.show();
-    delay(wait);
-  }
-}
-
+//   for(j=0; j<256; j++) {
+//     for(i=0; i<strip.numPixels(); i++) {
+//       strip.setPixelColor(i, Wheel((i+j) & 255));
+//     }
+//     strip.show();
+//     delay(wait);
+//   }
+// }

@@ -34,7 +34,7 @@ Jumpers on the breakout board will do this for you.)
 #define M_PI 3.14159265358979323846
 LSM9DS1 imu;
 // #define LED_PIN 8
-#define LED_PIN D5
+#define LED_PIN D2
 #define NUM_LED 20
 // Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LED, 8, NEO_GRB + NEO_KHZ800);
 // Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LED, LED_PIN, WS2812B);
@@ -157,6 +157,8 @@ void setup()
   state = 0;
   gainThreshold = 0.5;
   lossThreshold = 2;
+
+  //  strip.begin();
 }
 
 // Simple NeoPixel test.  Lights just a few pixels at a time so a
@@ -179,8 +181,9 @@ void setup()
  
 void loop()
 {
-setPixels(strip.Color(0,255,0));
-
+// setPixels(strip.Color(0,255,0));
+prosperity();
+// bleach();
   }
 
 // void loop()
@@ -350,11 +353,11 @@ setPixels(strip.Color(0,255,0));
 //   if (average <= 0.2) state = 3;
 // }
 
-// void prosperity(){
-//   Serial.println("prosperity");
-//   setPixels(strip.Color(0,255,0));
-//   spinStepper(500);
-// }
+void prosperity(){
+  Serial.println("prosperity");
+  setPixels(strip.Color(0,255,0));
+  // spinStepper(500);
+}
 
 // void maintaining(){
 //   Serial.println("prosperity");
@@ -368,10 +371,10 @@ setPixels(strip.Color(0,255,0));
 //   spinStepper(2000);
 // }
 
-// void bleach() {
-//   Serial.println("bleach");
-//   setPixels(strip.Color(255, 0, 0));
-// }
+void bleach() {
+  Serial.println("bleach");
+  setPixels(strip.Color(255, 0, 0));
+}
 
 // // Fill the dots one after the other with a color
 void setPixels(uint32_t c) {
