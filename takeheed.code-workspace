@@ -20,6 +20,9 @@
 		},
 		{
 			"path": "neopixelActivity"
+		},
+		{
+			"path": "motors"
 		}
 	],
 	"settings": {

@@ -13,6 +13,7 @@ OSCMessage::OSCMessage(const char * address)
 
 void OSCMessage::setupMessage()
 {
+
     incomingBuffer = NULL;
     inputDatas = NULL;
     incomingBufferSize = 0;
