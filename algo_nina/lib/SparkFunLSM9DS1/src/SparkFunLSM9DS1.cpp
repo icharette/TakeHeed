@@ -20,7 +20,8 @@ This code is released under the MIT license.
 Distributed as-is; no warranty is given.
 ******************************************************************************/
 
-#include "SparkFunLSM9DS1.h"
+
+
 #include "LSM9DS1_Registers.h"
 #include "LSM9DS1_Types.h"
 #include "application.h"

@@ -23,6 +23,9 @@
 		},
 		{
 			"path": "motors"
+		},
+		{
+			"path": "motors_IMU"
 		}
 	],
 	"settings": {

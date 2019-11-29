@@ -11,7 +11,6 @@
 SYSTEM_THREAD(ENABLED);
 SYSTEM_MODE(SEMI_AUTOMATIC);
 
-
 unsigned int localPort = 8888;
 IPAddress ipAddress;
 int port;
@@ -22,16 +21,19 @@ int enableLeft = A2;
 int stepLeft = A1;
 int directionLeft = A0;
 
-int rightShoulderMotors[3];
-int leftShoulderMotors[3];
-
 //pins for motor on right shoulder
 int enableRight = A5;
 int stepRight = A4;
 int directionRight = A3;
 
+//arrays to help set up the pins
+int rightShoulderMotors[3];
+int leftShoulderMotors[3];
 
-// int stepperIndex; necessary?
+//variables that set the stepping of the motors
+int pace = 500;
+int wait = 1000;
+int stepperIndexCap = 2000;
 
 void setupMotorLeft(){
   pinMode(enableLeft, OUTPUT); //Enable
@@ -56,11 +58,27 @@ void setupMotorRight(){
   rightShoulderMotors[1]= stepRight;
   rightShoulderMotors[2]= enableRight;
 }
+
+void setupMotor(int motorPinsArray[], int enable, int step, int direction){
+  pinMode(enable, OUTPUT); //Enable
+  pinMode(step, OUTPUT); //Step
+  pinMode(direction, OUTPUT); //Direction
+
+  digitalWrite(enable, LOW);
+
+  motorPinsArray[0]= direction;
+  motorPinsArray[1]= step;
+  motorPinsArray[2]= enable;
+}
 // setup() runs once, when the device is first turned on.
 void setup() {
    Serial.begin(9600);
-   setupMotorLeft();
-   setupMotorRight();
+
+   //void setupMotor(int[] motorPinsArray, int enable, int step, int direction){
+  setupMotor(rightShoulderMotors, enableRight, stepRight, directionRight);
+  setupMotor(leftShoulderMotors, enableLeft, stepLeft, directionLeft);
+  // setupMotorLeft();
+  // setupMotorRight();
   
 
   //waiting for serial to correctly initialze and allocate memory
@@ -78,13 +96,48 @@ void setup() {
 
   }
 
+void setValuesAccordingToState(char state){
+  switch(state){
+
+    //life
+    case 'L':
+      pace = 500;
+      wait = 1000;
+      stepperIndexCap = 2000;
+    break;
+
+    //bleaching
+    case 'B':
+      pace = 2000;
+      wait = 1000;
+      stepperIndexCap = 2000;
+    break;
+
+    //dead
+    case 'D':
+    //not moving
+      stepperIndexCap = 0;
+    break;
+
+    //symbiosis, coming back to life
+    case 'S':
+      pace = 2000;
+      wait = 1000;
+      stepperIndexCap = 2000;
+    break;
+  }
+}
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
   // The core of your code will likely live here.
 
-int pace = 500;
-int wait = 1000;
-int stepperIndexCap = 2000;
+/*
+L: life
+B: bleaching
+D: dead
+S: symbiosis, coming back to life
+*/
+setValuesAccordingToState('L');
 
 //spinStepperRightSolo(int motorPins[], int pace, int wait, int stepperIndexCap){
 spinStepperRightSolo(rightShoulderMotors, pace, wait, stepperIndexCap);
