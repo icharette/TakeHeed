@@ -19,21 +19,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   7 .module_info_crc 00000004  080a3c08  080a3c08  00023c08  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  8 .debug_info   000aeef4  00000000  00000000  00023c0c  2**0
+  8 .debug_info   000aeef5  00000000  00000000  00023c0c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_abbrev 0000fee1  00000000  00000000  000d2b00  2**0
+  9 .debug_abbrev 0000fee1  00000000  00000000  000d2b01  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    0001652f  00000000  00000000  000e29e1  2**0
+ 10 .debug_loc    0001652f  00000000  00000000  000e29e2  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_aranges 00002210  00000000  00000000  000f8f10  2**0
+ 11 .debug_aranges 00002210  00000000  00000000  000f8f11  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000035c8  00000000  00000000  000fb120  2**0
+ 12 .debug_ranges 000035c8  00000000  00000000  000fb121  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_macro  000249b8  00000000  00000000  000fe6e8  2**0
+ 13 .debug_macro  000249b8  00000000  00000000  000fe6e9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_line   00024a4a  00000000  00000000  001230a0  2**0
+ 14 .debug_line   00024a4a  00000000  00000000  001230a1  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_str    000a6c08  00000000  00000000  00147aea  2**0
+ 15 .debug_str    000a6c08  00000000  00000000  00147aeb  2**0
                   CONTENTS, READONLY, DEBUGGING
  16 .debug_frame  0000c040  00000000  00000000  001ee6f4  2**2
                   CONTENTS, READONLY, DEBUGGING
@@ -481,9 +481,9 @@ void setup()
  80a022a:	a906      	add	r1, sp, #24
  80a022c:	4630      	mov	r0, r6
  80a022e:	f001 fa4e 	bl	80a16ce <_ZN5Print7printlnERK9Printable>
-    Serial.begin(9600);
+  Serial.begin(115200);
  80a0232:	f001 ff63 	bl	80a20fc <_Z16_fetch_usbserialv>
- 80a0236:	f44f 5116 	mov.w	r1, #9600	; 0x2580
+ 80a0236:	f44f 31e1 	mov.w	r1, #115200	; 0x1c200
  80a023a:	f001 ff3f 	bl	80a20bc <_ZN9USBSerial5beginEl>
     iVx = 0;
  80a023e:	4b0c      	ldr	r3, [pc, #48]	; (80a0270 <setup+0xe4>)

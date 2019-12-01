@@ -26,6 +26,12 @@
 		},
 		{
 			"path": "motors_IMU"
+		},
+		{
+			"path": "algue"
+		},
+		{
+			"path": "motors_IMU_neopixels"
 		}
 	],
 	"settings": {

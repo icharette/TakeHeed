@@ -128,7 +128,7 @@ void setup()
     WiFi.setHostname("HQRouter_PUBLISH");
     Serial.println(WiFi.hostname());
     Serial.println(WiFi.localIP());
-    Serial.begin(9600);
+  Serial.begin(115200);
     iVx = 0;
     iVy = 0;
     iVz = 0;

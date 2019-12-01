@@ -101,7 +101,10 @@ float dX, dY, dZ;
 float avMvmt;
 int state;
 float gainThreshold, lossThreshold;
-
+ float fluxX = 0;
+ float fluxY = 0;
+ float fluxZ = 0;
+int speedLimit = 200;
 // float origin ;
 // float originPitch, originRoll;
 boolean calibrated = false;
@@ -163,9 +166,35 @@ void setupImu(){
   Serial.println("calibration started");
   imu.calibrate(true);
   imu.calibrateMag(1);
-  
+  calibrateSensor();
   Serial.println("Calibration finished");
 }
+
+void calibrateSensor(){
+  int count = 100;
+  Serial.print("calibrating sensor. acc.");
+  for(int i = 0; i < count; i++){
+    if ( imu.accelAvailable() )
+    {
+      imu.readAccel();
+    }
+    refX += imu.calcAccel(imu.ax);
+    refY += imu.calcAccel(imu.ay);
+    refZ += imu.calcAccel(imu.az);
+  }
+  refX = refX / count;
+  refY = refY / count;
+  refZ = refZ / count; 
+  Serial.println("done");
+//  Serial.print("ref X: ");
+//  Serial.print(refX);
+//  Serial.print(" refY: ");
+//  Serial.print(refY);
+//  Serial.print(" refZ: ");
+//  Serial.print(refZ);
+//  Serial.println(" ");
+}
+
 /////---------------------------------------------------------------- IMU
 
 
@@ -235,11 +264,18 @@ void setValuesAccordingToState(char state){
 }
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
-
-// updateTimer.Update();
-
 getMouvement();
-printMvmt();
+updateTimer.Update();
+
+
+//if receiving message
+//checking current state if having moved a lot during past few seconds
+checkSpeed();
+//if both people are slow: regenerate
+//if one is too fast: keep dying
+
+ //should this be OnTimer too?
+// printMvmt();
   // The core of your code will likely live here.
 analogWrite(mosfetSwitch, 255);
 /*
@@ -251,6 +287,10 @@ S: symbiosis, coming back to life
 setValuesAccordingToState('L');
 
 
+
+}
+
+void motorTesting(){
 //spinStepperRightSolo(int motorPins[], int pace, int wait, int stepperIndexCap){
 spinStepperRightSolo(rightShoulderMotors, pace, wait, stepperIndexCap);
 spinStepperRightSolo(leftShoulderMotors, pace, wait, stepperIndexCap);
@@ -263,7 +303,6 @@ spinStepperRightDuo(rightShoulderMotors, leftShoulderMotors, pace, wait, stepper
 spinStepperLeftDuo(rightShoulderMotors, leftShoulderMotors, pace, wait, stepperIndexCap);
 
 }
-
 void spinStepperRightSolo(int motorPins[], int pace, int wait, int stepperIndexCap){
   Serial.println("STEP RIGHT SOLO");
   /*
@@ -359,26 +398,43 @@ void spinStepperLeftDuo(int motorPins[], int motorPins2[], int pace, int wait, i
 
 void OnTimer(void) {  //Handler for the timer, will be called automatically
  printMvmt();
+
+     fluxX = 0;
+     fluxY = 0;
+     fluxZ = 0;
+
 }
 
+boolean checkSpeed(){
+  if((fluxX + fluxY + fluxZ) <= speedLimit){
+    return true;
+  }else{
+    return false;
+  }
+}
 void getMouvement(){
 //    reset values
     dX = 0;
     dY = 0;
     dZ = 0;
     avMvmt = 0;
-    for (int i = 0; i < 10; i++){
+
+
+    for (int i = 0; i < 100; i++){
     if ( imu.accelAvailable() )
     {
       imu.readAccel();
     }
-    dX += abs(imu.calcAccel(imu.ax) - refX);
-    dY += abs(imu.calcAccel(imu.ay) - refY);
-    dZ += abs(imu.calcAccel(imu.az) - refZ);
-   
-    avMvmt = (dX + dY + dZ) / 3;
-    // delay(100);
+    dX=imu.calcAccel(imu.ax);
+    dY=imu.calcAccel(imu.ay);
+    dZ=imu.calcAccel(imu.az);
+
+    fluxX += abs(imu.calcAccel(imu.ax) - refX);
+    fluxY += abs(imu.calcAccel(imu.ay) - refY);
+    fluxZ += abs(imu.calcAccel(imu.az) - refZ);
     }
+
+
     // if (avMvmt < gainThreshold && pixelPointer <= NUM_LED){
     //  if (avMvmt < gainThreshold){
     // //   pixels[pixelPointer] = 1;
@@ -391,13 +447,20 @@ void getMouvement(){
     
 }
 void printMvmt(){
-    Serial.print("x: ");
-    Serial.print(dX);
-    Serial.print( " Y:");
-    Serial.print(dY);
-    Serial.print(" Z:");
-    Serial.print(dZ);
-    Serial.print(" av: ");
-    Serial.print(avMvmt);
-    Serial.println(" ");
+    // Serial.print("x: ");
+    // Serial.print(dX);
+    // Serial.print( " Y:");
+    // Serial.print(dY);
+    // Serial.print(" Z:");
+    // Serial.print(dZ);
+    // Serial.print(" av: ");
+    // Serial.print(avMvmt);
+    // Serial.println(" ");
+
+        Serial.print("fluxX : ");
+    Serial.println(fluxX);
+    Serial.print("fluxY : ");
+    Serial.println(fluxY);
+    Serial.print("fluxZ : ");
+    Serial.println(fluxZ);
 }

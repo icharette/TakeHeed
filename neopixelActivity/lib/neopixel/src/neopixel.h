@@ -73,7 +73,7 @@ class Adafruit_NeoPixel {
  public:
 
   // Constructor: number of LEDs, pin number, LED type
-  Adafruit_NeoPixel(uint16_t n, uint8_t p=2, uint8_t t=WS2812B);
+  Adafruit_NeoPixel(uint16_t n, uint8_t p=2, uint8_t t=WS2812);
   ~Adafruit_NeoPixel();
 
   void
