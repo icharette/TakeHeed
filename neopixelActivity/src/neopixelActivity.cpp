@@ -30,6 +30,9 @@ void setup();
 void colorAll(uint32_t c, uint8_t wait);
 static void chase(uint32_t c);
 void loop();
+void fadeIn(uint8_t wait, int red, int green, int blue);
+void fadeOut(uint8_t wait, int red, int green, int blue);
+void colorWipe(uint8_t wait);
 void symbiosis(uint8_t wait);
 void slowOrangeWave(uint8_t wait, int rainbowLoops, int whiteLoops);
 void randomPixels(uint8_t wait, int rainbowLoops, int whiteLoops);
@@ -64,7 +67,7 @@ void rainbow(uint8_t wait);
 
 // IMPORTANT: Set pixel COUNT, PIN and TYPE
 #define PIXEL_PIN D2
-#define PIXEL_COUNT 80
+#define PIXEL_COUNT 50
 #define PIXEL_TYPE SK6812RGBW
 #define BRIGHTNESS 50 // 0 - 255
 
@@ -144,7 +147,7 @@ void loop() {
   // --------------------------------------------------------------
  
  
-  // colorWipe(strip.Color(255, 0, 0), 3000); // Red
+
 
   
   // colorWipe(strip.Color(0, 255, 0), 50); // Green
@@ -160,11 +163,16 @@ void loop() {
 
   //NICE TRANSITION: slow wave, then blink out randomnly, then blink back randomly  and into fadded color
   //would nice a cycle value bigger for function randomPixels
-  rainbowFade2White(10,10,1);
-  slowOrangeWave(1,1,1);
+  // rainbowFade2White(10,10,1);
+    // colorWipe(3000);
+    // rainbowFade2White(10,10,1);
+
+
+
+  // slowOrangeWave(1,1,1);//too slow
   randomPixels(3,1,1);
   
-  symbiosis(100);
+  // symbiosis(100);
   // pulseWhite(10);
 }
 
@@ -208,7 +216,7 @@ void rainbowFade2White(uint8_t wait, int rainbowLoops, int whiteLoops) {
         greenVal = green(wheelVal) * float(fadeVal/fadeMax);
         blueVal = blue(wheelVal) * float(fadeVal/fadeMax);
 
-        strip.setPixelColor( i, strip.Color( redVal, 128, 0 ) );
+        strip.setPixelColor( i, strip.Color( redVal, 255, 0 ) );
       }
 
       // First loop, fade in!
@@ -227,30 +235,34 @@ void rainbowFade2White(uint8_t wait, int rainbowLoops, int whiteLoops) {
 
   delay(500);
 
-  for(int k = 0 ; k < whiteLoops ; k ++) {
-    for(int j = 0; j < 256 ; j++) {
-      for(uint16_t i=0; i < strip.numPixels(); i++) {
-        strip.setPixelColor(i, strip.Color(0,0,0, gamma[j] ) );
-      }
-      strip.show();
-    }
+  // for(int k = 0 ; k < whiteLoops ; k ++) {
+  //   for(int j = 0; j < 256 ; j++) {
+  //     for(uint16_t i=0; i < strip.numPixels(); i++) {
+  //       strip.setPixelColor(i, strip.Color(0,0,0, gamma[j] ) );
+  //     }
+  //     strip.show();
+  //   }
 
-    delay(2000);
-    for(int j = 255; j >= 0 ; j--) {
-      for(uint16_t i=0; i < strip.numPixels(); i++) {
-        strip.setPixelColor(i, strip.Color(0,0,0, gamma[j] ) );
-      }
-      strip.show();
-    }
-  }
+  //   delay(2000);
+  //   for(int j = 255; j >= 0 ; j--) {
+  //     for(uint16_t i=0; i < strip.numPixels(); i++) {
+  //       strip.setPixelColor(i, strip.Color(0,0,0, gamma[j] ) );
+  //     }
+  //     strip.show();
+  //   }
+  // }
 
-  delay(500);
+  // delay(500);
 }
-// Fill the dots one after the other with a color
-void colorWipe(uint32_t c, uint8_t wait) {
 
-  Serial.println(strip.numPixels());
+void fadeIn(uint8_t wait, int red, int green, int blue){
 int randomNumList[strip.numPixels()];
+
+//clean array
+for(int k = 0; k < strip.numPixels(); k++){
+  randomNumList[k] = -1;
+}
+
 bool checkNum = false;
 bool full = false;
 int val=0;
@@ -273,9 +285,9 @@ int val=0;
        Serial.print(i);
        Serial.print(" ::  ");
        Serial.println(val);
-    
-    for(int j = 0; j <= 255 ; j++){
- strip.setPixelColor(val, strip.Color(j, 0, 0));
+    int k = 255;
+    for(int k = 255; k >=0 ; k--){
+ strip.setPixelColor(val, strip.Color(k, 255, k));
         randomNumList[i] = val;
  delay(10);
 
@@ -287,7 +299,17 @@ strip.show();
   }
 
   delay(2000);
-  int randomNumList2[strip.numPixels()];
+ 
+}
+
+void fadeOut(uint8_t wait, int red, int green, int blue){
+  bool checkNum = false;
+  int val=0;
+ int randomNumList2[strip.numPixels()];
+ //clean array
+for(int k = 0; k < strip.numPixels(); k++){
+  randomNumList2[k] = -1;
+}
 Serial.println("turning off");
    for(uint16_t i=0; i<strip.numPixels(); i++) {
 
@@ -310,12 +332,13 @@ Serial.println("turning off");
        Serial.println(val);
     
     
-    for(int j = 255; j >=0 ; j--){
- strip.setPixelColor(val, strip.Color(j, 0, 0));
+    // for(int j = 255; j >=0 ; j--){
+      for(int j = 0; j <= 255 ; j++){
+ strip.setPixelColor(val, strip.Color(j, 255, j));
         randomNumList2[i] = val;
  
     strip.show();
-     
+     delay(10);
     }
  
     delay(wait);
@@ -323,6 +346,12 @@ Serial.println("turning off");
 
     delay(2000);
 
+}
+// Fill the dots one after the other with a color
+void colorWipe(uint8_t wait) {
+// fadeIn(wait, 255,128,0);
+fadeOut(wait, 255,128,0);
+fadeIn(wait, 255,128,0);
 }
 
 void pulseWhite(uint8_t wait) {
@@ -426,7 +455,7 @@ float count = 0;
         greenVal = green(wheelVal) * float(fadeVal/fadeMax);
         blueVal = blue(wheelVal) * float(fadeVal/fadeMax);
            strip.show();
-      delay(wait);
+      // delay(wait);
    
       }
  
