@@ -209,6 +209,15 @@ void setup() {
   // setupMotorRight();
   
 
+//   int enableLeft = A2;
+// int stepLeft = A1;
+// int directionLeft = A0;
+ pinMode(6, OUTPUT); //Enable
+  pinMode(5, OUTPUT); //Step
+  pinMode(4, OUTPUT); //Direction
+
+  digitalWrite(6,LOW);
+
   //waiting for serial to correctly initialze and allocate memory
   //serial object
   while(!Serial);
@@ -226,9 +235,9 @@ void setup() {
     iVy = 0;
     iVz = 0;
 
-    setupImu();
+    // setupImu();
     
-  updateTimer.SetCallback(OnTimer);
+  // updateTimer.SetCallback(OnTimer);
   }
 
 void setValuesAccordingToState(char state){
@@ -262,32 +271,54 @@ void setValuesAccordingToState(char state){
     break;
   }
 }
+
+int Index;
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
-getMouvement();
-updateTimer.Update();
+// getMouvement();
+// updateTimer.Update();
 
 
 //if receiving message
 //checking current state if having moved a lot during past few seconds
-checkSpeed();
+// checkSpeed();
 //if both people are slow: regenerate
 //if one is too fast: keep dying
 
  //should this be OnTimer too?
 // printMvmt();
   // The core of your code will likely live here.
-analogWrite(mosfetSwitch, 255);
+// analogWrite(mosfetSwitch, 255);
 /*
 L: life
 B: bleaching
 D: dead
 S: symbiosis, coming back to life
 */
-setValuesAccordingToState('L');
+// setValuesAccordingToState('L');
 
+// motorTesting();
+ digitalWrite(4,HIGH);
 
+  for(Index = 0; Index < 2000; Index++)
+  {
+    digitalWrite(5,HIGH);
+    delayMicroseconds(500);
+    digitalWrite(5,LOW);
+    delayMicroseconds(500);
+  }
+  delay(1000);
 
+  digitalWrite(4,LOW);
+
+  for(Index = 0; Index < 2000; Index++)
+  {
+    digitalWrite(5,HIGH);
+    delayMicroseconds(500);
+    digitalWrite(5,LOW);
+    delayMicroseconds(500);
+  }
+  delay(1000);
 }
 
 void motorTesting(){
@@ -392,6 +423,7 @@ void spinStepperLeftDuo(int motorPins[], int motorPins2[], int pace, int wait, i
     digitalWrite(motorPins[2],LOW);
     delayMicroseconds(pace);
   }
+  
   delay(wait);
 }
 

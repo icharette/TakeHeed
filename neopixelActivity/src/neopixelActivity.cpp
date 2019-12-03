@@ -67,7 +67,7 @@ void rainbow(uint8_t wait);
 
 // IMPORTANT: Set pixel COUNT, PIN and TYPE
 #define PIXEL_PIN D2
-#define PIXEL_COUNT 50
+#define PIXEL_COUNT 10
 #define PIXEL_TYPE SK6812RGBW
 #define BRIGHTNESS 50 // 0 - 255
 
@@ -163,14 +163,16 @@ void loop() {
 
   //NICE TRANSITION: slow wave, then blink out randomnly, then blink back randomly  and into fadded color
   //would nice a cycle value bigger for function randomPixels
-  // rainbowFade2White(10,10,1);
-    // colorWipe(3000);
-    // rainbowFade2White(10,10,1);
+
+  //CORRECT CYCLE !!!!
+  rainbowFade2White(10,10,1);
+    colorWipe(3000);
+    rainbowFade2White(10,10,1);
 
 
 
   // slowOrangeWave(1,1,1);//too slow
-  randomPixels(3,1,1);
+  // randomPixels(3,1,1); //GLITCHY ORGANIC FADES ORANGES/RED/YELLOW
   
   // symbiosis(100);
   // pulseWhite(10);
@@ -234,25 +236,6 @@ void rainbowFade2White(uint8_t wait, int rainbowLoops, int whiteLoops) {
   }
 
   delay(500);
-
-  // for(int k = 0 ; k < whiteLoops ; k ++) {
-  //   for(int j = 0; j < 256 ; j++) {
-  //     for(uint16_t i=0; i < strip.numPixels(); i++) {
-  //       strip.setPixelColor(i, strip.Color(0,0,0, gamma[j] ) );
-  //     }
-  //     strip.show();
-  //   }
-
-  //   delay(2000);
-  //   for(int j = 255; j >= 0 ; j--) {
-  //     for(uint16_t i=0; i < strip.numPixels(); i++) {
-  //       strip.setPixelColor(i, strip.Color(0,0,0, gamma[j] ) );
-  //     }
-  //     strip.show();
-  //   }
-  // }
-
-  // delay(500);
 }
 
 void fadeIn(uint8_t wait, int red, int green, int blue){
