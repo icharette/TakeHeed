@@ -44,7 +44,7 @@ float gainThreshold, lossThreshold;
  float fluxX = 0;
  float fluxY = 0;
  float fluxZ = 0;
-int speedLimit = 200;
+int speedLimit = 20;
 // float origin ;
 // float originPitch, originRoll;
 boolean calibrated = false;
@@ -60,7 +60,7 @@ boolean calibrated = false;
 // http://www.ngdc.noaa.gov/geomag-web/#declination
 #define DECLINATION -14.17181// Declination (degrees) montreal
 
-SparkCorePolledTimer updateTimer(1000);  //Create a timer object and set it's timeout in milliseconds
+SparkCorePolledTimer updateTimer(500);  //Create a timer object and set it's timeout in milliseconds
 void OnTimer(void);   //Prototype for timer callback method
 
 /* roll pitch and yaw angles computed by iecompass */
@@ -92,6 +92,7 @@ void setupImu(){
   // and turns it on.
   if (!imu.begin())
   {
+    digitalWrite(D7, HIGH);
     Serial.println("Failed to communicate with LSM9DS1.");
     Serial.println("Double-check wiring.");
     Serial.println("Default settings in this sketch will " \
@@ -140,6 +141,8 @@ void calibrateSensor(){
 
 // setup() runs once, when the device is first turned on.
 void setup() {
+  pinMode(D7, OUTPUT);
+  digitalWrite(D7, LOW);
   //waiting for serial to correctly initialze and allocate memory
   //serial object
   while(!Serial);
@@ -158,13 +161,14 @@ void setup() {
     iVz = 0;
 
   setupImu();
-    
   updateTimer.SetCallback(OnTimer);
   }
 
 
 void loop() {
+
 getMouvement();
+
 updateTimer.Update();
 }
 
@@ -173,31 +177,43 @@ void send(){
   unsigned int localPort = 8888;
 
 ///from 
-  OSCMessage outMessage("/izzyParticle");
+
   int speedInt = 0;
   if(checkSpeed()){
     speedInt = 1;
   }else{
     speedInt = 0;
   }
-  outMessage.addInt(speedInt);
+  String message = "";
+if(speedInt){
+message = "still";
+}else{
+  message = "move";
+}
+    OSCMessage outMessage(message);
   outMessage.send(udp, ipAddress, localPort);
   Serial.println("in send method");
+ 
+  Serial.println(speedInt);
 }
 
 void OnTimer(void) {  //Handler for the timer, will be called automatically
  send();
-
-     fluxX = 0;
+   fluxX = 0;
      fluxY = 0;
      fluxZ = 0;
-
 }
 
 boolean checkSpeed(){
   if((fluxX + fluxY + fluxZ) <= speedLimit){
+     int total= fluxX + fluxY + fluxZ;
+     Serial.print("total: :");
+  Serial.println(total);
     return true;
   }else{
+     int total= fluxX + fluxY + fluxZ;
+          Serial.print("total: :");
+  Serial.println(total);
     return false;
   }
 }
@@ -214,9 +230,9 @@ void getMouvement(){
     {
       imu.readAccel();
     }
-    dX=imu.calcAccel(imu.ax);
-    dY=imu.calcAccel(imu.ay);
-    dZ=imu.calcAccel(imu.az);
+    // dX=imu.calcAccel(imu.ax);
+    // dY=imu.calcAccel(imu.ay);
+    // dZ=imu.calcAccel(imu.az);
 
     fluxX += abs(imu.calcAccel(imu.ax) - refX);
     fluxY += abs(imu.calcAccel(imu.ay) - refY);

@@ -166,8 +166,8 @@ void loop() {
 
   //CORRECT CYCLE !!!!
   rainbowFade2White(10,10,1);
-    colorWipe(3000);
-    rainbowFade2White(10,10,1);
+    // colorWipe(3000);
+    // rainbowFade2White(10,10,1);
 
 
 

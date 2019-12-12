@@ -19,6 +19,7 @@
 #include "math.h"
 #include "SparkCorePolledTimer.h"
 #include "neopixel.h"
+#include "simple-OSC.h"
 
 void setupMotor(int motorPinsArray[], int enable, int step, int direction);
 void setupImu();
@@ -26,20 +27,18 @@ void calibrateSensor();
 void setup();
 void loop();
 void colorAll(uint32_t c, uint8_t wait);
-void motorTesting();
-void spinStepperRightSolo(int motorPins[], int pace, int wait, int stepperIndexCap);
-void spinStepperLeftSolo(int motorPins[], int pace, int wait, int stepperIndexCap);
-void spinStepperRightDuo(int motorPins[], int motorPins2[], int pace, int wait, int stepperIndexCap);
-void spinStepperLeftDuo(int motorPins[], int motorPins2[], int pace, int wait, int stepperIndexCap);
 boolean checkSpeed();
+void STILL(OSCMessage &inMessag);
+void MOVE(OSCMessage &inMessag);
+void checkMatch(bool alge);
 void getMouvement();
 void printMvmt();
-bool checkComplete();
+void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops);
 void trouble();
 void fadeIn(uint8_t wait, int red, int green, int blue);
 void fadeOut(uint8_t wait, int red, int green, int blue);
 void colorWipe(uint8_t wait);
-#line 18 "/Users/ninjacat/Documents/Particle/TakeHeed/motors_IMU_neopixels/src/motors_IMU_neopixels.ino"
+#line 19 "/Users/ninjacat/Documents/Particle/TakeHeed/motors_IMU_neopixels/src/motors_IMU_neopixels.ino"
 SYSTEM_THREAD(ENABLED);
 SYSTEM_MODE(SEMI_AUTOMATIC);
 
@@ -59,9 +58,9 @@ void pulseWhite(uint8_t wait);
 void healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops);
 
 //pins for motor on left shoulder
-int enableLeft = A2;
-int stepLeft = A1;
-int directionLeft = A0;
+// int enableLeft = A2;
+// int stepLeft = A1;
+// int directionLeft = A0;
 
 //pins for motor on right shoulder
 int enableRight = A5;
@@ -80,11 +79,13 @@ int stepperIndexCap = 2000;
 //------NEOPIXEL
 // IMPORTANT: Set pixel COUNT, PIN and TYPE
 #define PIXEL_PIN D2
-#define PIXEL_COUNT 5
+#define PIXEL_COUNT 80
 #define PIXEL_TYPE SK6812RGBW
+
 #define BRIGHTNESS 50 // 0 - 255
 int troubleCount = 0;
 Adafruit_NeoPixel strip(PIXEL_COUNT, PIXEL_PIN);
+uint32_t  colorArrSaved[PIXEL_COUNT];
 bool pixels[PIXEL_COUNT];
 int pixelPointer;
 void setupMotor(int motorPinsArray[], int enable, int step, int direction){
@@ -171,6 +172,7 @@ void setupImu(){
   // and turns it on.
   if (!imu.begin())
   {
+    digitalWrite(D7, HIGH);
     Serial.println("Failed to communicate with LSM9DS1.");
     Serial.println("Double-check wiring.");
     Serial.println("Default settings in this sketch will " \
@@ -215,20 +217,30 @@ void calibrateSensor(){
 }
 
 /////---------------------------------------------------------------- IMU
+// LSM9DS1 --------- Photon
+// SCL -------------- D1 (SCL)
+// SDA -------------- D0 (SDA)
+// VDD ------------- 3.3V
+// GND ------------- GND
 
-
+   //new driver motor motorTesting
+#include "Stepper.h"
+ 
+// change this to the number of steps on your motor
+#define STEPS 300
+ 
+// create an instance of the stepper class, specifying
+// the number of steps of the motor and the pins it's
+// attached to
+Stepper stepper(STEPS, A1, A2, A3, A4);
+// Stepper stepperRgith(STEPS, D3, D4, D5, D6);
 // setup() runs once, when the device is first turned on.
 void setup() {
-  
+  pinMode(D7, OUTPUT);
+  digitalWrite(D7, LOW);
   for(int i = 0; i < PIXEL_COUNT; i++){
     pixels[i] = true;
   }
-   //void setupMotor(int[] motorPinsArray, int enable, int step, int direction){
-  setupMotor(rightShoulderMotors, enableRight, stepRight, directionRight);
-  setupMotor(leftShoulderMotors, enableLeft, stepLeft, directionLeft);
-  // setupMotorLeft();
-  // setupMotorRight();
-  
 
   //waiting for serial to correctly initialze and allocate memory
   //serial object
@@ -241,7 +253,7 @@ void setup() {
   udp.begin(localPort);
   WiFi.setHostname("HQRouter_PUBLISH");
   Serial.println(WiFi.hostname());
-  Serial.println(WiFi.localIP());
+  Serial.println(WiFi.localIP()); 
    Serial.begin(9600);
     iVx = 0;
     iVy = 0;
@@ -252,9 +264,10 @@ void setup() {
   
   updateTimer.SetCallback(OnTimer);
 
-    strip.setBrightness(BRIGHTNESS);
-  strip.begin();
-  strip.show();
+  // strip.setBrightness(BRIGHTNESS);
+  // strip.begin();
+  // strip.show();
+    stepper.setSpeed(20);
   }
 
 // void setValuesAccordingToState(char state){
@@ -290,8 +303,14 @@ void setup() {
 // }
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
-// getMouvement();
-// updateTimer.Update();
+  // Serial.println("Forward");
+  // stepper.step(STEPS);
+  // Serial.println("Backward");
+
+  // delay(100);
+  // stepper.step(-STEPS);
+  getMouvement();
+updateTimer.Update();
 
 
 //if receiving message
@@ -318,14 +337,9 @@ S: symbiosis, coming back to life
 
 //NEOPIXELS
 //CORRECT CYCLE !!!!
-  healthyWave(10,10,1);
+  // healthyWave(10,10,1);
   // colorWipe(3000);
   // healthyWave(10,10,1);
-
-
-    //Motors
-// motorTesting();
-
 }
 //-----------------------//-----------------------//-----------------------//-----------------------NEOPIXEL
 
@@ -344,119 +358,50 @@ void colorAll(uint32_t c, uint8_t wait) {
 //-----------------------//-----------------------//-----------------------//-----------------------NEOPIXEL
 
 //-----------------------//-----------------------//-----------------------//-----------------------MOTORS
-void motorTesting(){
-//spinStepperRightSolo(int motorPins[], int pace, int wait, int stepperIndexCap){
-spinStepperRightSolo(rightShoulderMotors, pace, wait, stepperIndexCap);
-spinStepperRightSolo(leftShoulderMotors, pace, wait, stepperIndexCap);
-//spinStepperRightSolo(int motorPins[], int pace, int wait, int stepperIndexCap){
-spinStepperLeftSolo(rightShoulderMotors, pace, wait, stepperIndexCap);
-spinStepperLeftSolo(leftShoulderMotors, pace, wait, stepperIndexCap);
-// spinStepperRightDuo(int motorPins[], int motorPins2[], int pace, int wait, int stepperIndexCap)
-spinStepperRightDuo(rightShoulderMotors, leftShoulderMotors, pace, wait, stepperIndexCap);
-// spinStepperLeftDuo(int motorPins[], int motorPins2[], int pace, int wait, int stepperIndexCap)
-spinStepperLeftDuo(rightShoulderMotors, leftShoulderMotors, pace, wait, stepperIndexCap);
 
-}
-void spinStepperRightSolo(int motorPins[], int pace, int wait, int stepperIndexCap){
-  Serial.println("STEP RIGHT SOLO");
-  /*
-  pin order in array:
-  motorPins[0]= directionRight;
-  motorPins[1]= stepRight;
-  motorPins[2]= enableRight;
-
-  */
-  digitalWrite(motorPins[0],HIGH);
-
-  for(int stepperIndex = 0; stepperIndex < stepperIndexCap; stepperIndex++)
-  {
-    digitalWrite(motorPins[1], HIGH);
-    delayMicroseconds(pace);
-    digitalWrite(motorPins[1],LOW);
-    delayMicroseconds(pace);
-  }
-  delay(wait);
-}
-
-void spinStepperLeftSolo(int motorPins[], int pace, int wait, int stepperIndexCap){
-  Serial.println("STEP LEFT SOLO");
-  /*
-  pin order in array:
-  motorPins[0]= directionRight;
-  motorPins[1]= stepRight;
-  motorPins[2]= enableRight;
-
-  */
-  digitalWrite(motorPins[0],LOW);
-
-  for(int stepperIndex = 0; stepperIndex < stepperIndexCap; stepperIndex++)
-  {
-    digitalWrite(motorPins[1], HIGH);
-    delayMicroseconds(pace); //possibliy not necessary
-    digitalWrite(motorPins[1],LOW);
-    delayMicroseconds(pace); //how fast the motor turns because of time between successive step pulses
-  }
-  delay(wait);
-}
-
-//spin motors on both shoulders
-void spinStepperRightDuo(int motorPins[], int motorPins2[], int pace, int wait, int stepperIndexCap){
-  Serial.println("STEP RIGHT DUO");
-  /*
-  pin order in array:
-  motorPins[0]= directionRight;
-  motorPins[1]= stepRight;
-  motorPins[2]= enableRight;
-
-  */
-  digitalWrite(motorPins[0],HIGH);
-  digitalWrite(motorPins2[0],HIGH);
-
-  for(int stepperIndex = 0; stepperIndex < stepperIndexCap; stepperIndex++)
-  {
-    digitalWrite(motorPins[1], HIGH);
-    digitalWrite(motorPins2[1], HIGH);
-    delayMicroseconds(pace);
-    digitalWrite(motorPins[1],LOW);
-    digitalWrite(motorPins[2],LOW);
-    delayMicroseconds(pace);
-  }
-  delay(wait);
-}
-
-//spin motors on both shoulders
-void spinStepperLeftDuo(int motorPins[], int motorPins2[], int pace, int wait, int stepperIndexCap){
-  Serial.println("STEP LEFT DUO");
-  /*
-  pin order in array:
-  motorPins[0]= directionRight;
-  motorPins[1]= stepRight;
-  motorPins[2]= enableRight;
-
-  */
-  digitalWrite(motorPins[0],LOW);
-  digitalWrite(motorPins2[0],LOW);
-
-  for(int stepperIndex = 0; stepperIndex < stepperIndexCap; stepperIndex++)
-  {
-    digitalWrite(motorPins[1], HIGH);
-    digitalWrite(motorPins2[1], HIGH);
-    delayMicroseconds(pace);
-    digitalWrite(motorPins[1],LOW);
-    digitalWrite(motorPins[2],LOW);
-    delayMicroseconds(pace);
-  }
-  delay(wait);
-}
 
 //-----------------------//-----------------------//-----------------------//-----------------------MOTORS
+bool match = true;
+
+
 
 void OnTimer(void) {  //Handler for the timer, will be called automatically
-  printMvmt();
+    int size = 0;
+     OSCMessage inMessage;
+        
+       
+  // Check if data has been received
+      if ((size = udp.parsePacket()) > 0) {
+        Serial.println("receiving message");
+        // toggle=!toggle;
+     
+        char c;
+        while(size--){
+          Serial.println("---in while---");
+          c=udp.read();
+          Serial.println(c);
+          inMessage.fill(c);
+          
+        }
+
+        // Serial.print("alge: : ");
+        // Serial.println(inMessage.getInt(0));
+        //this works
+  //  light(inMessage);
+        if(inMessage.parse()){
+
+          //this doesn't for some reason. 
+          //is it reading/sending the right message?
+          inMessage.route("still", STILL);
+          inMessage.route("move", MOVE);
+        }
+        Serial.println();
+      }
+  // printMvmt();
   checkSpeed();
-     fluxX = 0;
-     fluxY = 0;
-     fluxZ = 0;
+    //  fluxX = 0;
+    //  fluxY = 0;
+    //  fluxZ = 0;
 
 }
 
@@ -468,10 +413,10 @@ boolean checkSpeed(){
   Serial.print("Speed limit : ");
   Serial.println(speedLimit);
   if((total) < speedLimit){
-      fluxX = 0;
-     fluxY = 0;
-     fluxZ = 0;
-     total = 0;
+    //   fluxX = 0;
+    //  fluxY = 0;
+    //  fluxZ = 0;
+    //  total = 0;
     return true;
   }else if(total >= speedLimit){
       fluxX = 0;
@@ -482,27 +427,42 @@ boolean checkSpeed(){
   }
 
 }
+
+void STILL(OSCMessage &inMessag){
+checkMatch(true);
+}
+
+void MOVE(OSCMessage &inMessag){
+checkMatch(false);
+}
+
+void checkMatch(bool alge){
+  if(alge && checkSpeed()){
+    match =  true;
+  }else{
+    match = false;
+  }
+
+    Serial.print("IN CHECK MATCH :: ");
+    Serial.println(match);
+}
 void getMouvement(){
-//    reset values
-    dX = 0;
-    dY = 0;
-    dZ = 0;
-    avMvmt = 0;
 
-
-    for (int i = 0; i < 100; i++){
+    // for (int i = 0; i < 10; i++){
     if ( imu.accelAvailable() )
     {
       imu.readAccel();
     }
-    dX=imu.calcAccel(imu.ax);
-    dY=imu.calcAccel(imu.ay);
-    dZ=imu.calcAccel(imu.az);
+    // dX=imu.calcAccel(imu.ax);
+    // dY=imu.calcAccel(imu.ay);
+    // dZ=imu.calcAccel(imu.az);
 
     fluxX += abs(imu.calcAccel(imu.ax) - refX);
     fluxY += abs(imu.calcAccel(imu.ay) - refY);
     fluxZ += abs(imu.calcAccel(imu.az) - refZ);
-    }
+    // 
+    // printMvmt();
+    // }
 
 
     // if (avMvmt < gainThreshold && pixelPointer <= NUM_LED){
@@ -565,22 +525,37 @@ uint8_t blue(uint32_t c) {
   return (c);
 }
 
-void healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops) {
-  
+void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops) {
+  bool toggle = true;
   float fadeMax = 100.0;
   int fadeVal = 0;
   uint32_t wheelVal;
   int redVal, greenVal, blueVal;
 
   for(int k = 0 ; k < rainbowLoops ; k ++) {
-    getMouvement();
+    // if(toggle){
+    //   stepperLeft.step(STEPS);
+    //   toggle = false;
+    // }else{
+    //   stepperLeft.step(-STEPS);
+    //   toggle = true;
+    // }
+    
+    // getMouvement();
   
      if(checkSpeed() == 0){
+       
+       for(int i = 0; i < strip.numPixels() ; i++){
+         colorArrSaved[i] = strip.getPixelColor(i);
+       }
        trouble();
      }
     for(int j=0; j<256; j++) { // 5 cycles of all colors on wheel
+    getMouvement();
+          
       for(int i=0; i< strip.numPixels(); i++) {
-        wheelVal = Wheel(((i * 256 / strip.numPixels()) + j) & 255);
+ 
+         wheelVal = Wheel(((i * 256 / strip.numPixels()) + j) & 255);
 
         redVal = red(wheelVal) * float(fadeVal/fadeMax);
         greenVal = green(wheelVal) * float(fadeVal/fadeMax);
@@ -607,9 +582,6 @@ void healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops) {
   delay(500);
 }
 
-bool checkComplete(){
- 
-}
 void trouble(){
   
   bool complete = false;
@@ -621,29 +593,36 @@ void trouble(){
 
   int delayIn = 10;
   int delayOut = 0;
+
   
+   wait = 10;
+      delayIn = 3;
+      delayOut = 3;
+
     if(troubleCount == 0){
       chunk = strip.numPixels()/4;
-      wait = 100;
-      delayIn = 3;
-      delayOut = 10;
+      // wait = 100;
+      // delayIn = 3;
+      // delayOut = 10;
+      stepper.step(STEPS);
   }else if(troubleCount == 1){
     chunk = strip.numPixels()/3;
-    wait = 500;
-    delayIn = 6;
-      delayOut = 8;
+    // wait = 500;
+    // delayIn = 6;
+    //   delayOut = 8;
+       stepper.step(-STEPS);
   }else if(troubleCount ==2){
       chunk = strip.numPixels()/2;
-      wait = 1000;
-      delayIn = 8;
-       delayOut = 4;
+      // wait = 1000;
+      // delayIn = 8;
+      //  delayOut = 4;
+        stepper.step(STEPS);
   }else if(troubleCount == 3){
-chunk = strip.numPixels();
-wait = 2000;
- delayIn = 10;
-       delayOut = 0;
-
-
+      chunk = strip.numPixels();
+      // wait = 2000;
+      // delayIn = 10;
+      // delayOut = 0;
+       stepper.step(-STEPS);
 
   }
 
@@ -659,6 +638,7 @@ int randomNumList[chunk];
     Serial.println(troubleCount);
 
     for(uint16_t i=0; i<chunk; i++) {
+      getMouvement();
        Serial.print("chunk :: ");
     Serial.println(chunk);
      while(checkNum){
@@ -675,6 +655,8 @@ int randomNumList[chunk];
       }
         checkNum = true;
       for(int k = 0; k <255 ; k++){
+      
+          // Serial.println((strip.getPixelColor(i)));
           strip.setPixelColor(val, strip.Color(k, 255, k));
           randomNumList[i] = val;
           delay(delayOut);
@@ -690,17 +672,41 @@ int randomNumList[chunk];
 
 if(troubleCount==3){
   delay(5000);
+  troubleCount = 0;
 }
     if(checkSpeed()==1){
       for(uint16_t i=0; i<chunk; i++) {
           for(int k = 255; k >=0 ; k--){
               strip.setPixelColor(randomNumList[i], strip.Color(k, 255, k));
               delay(10);
+strip.show();
+          }
+
+//next while loop : https://arduino.stackexchange.com/questions/23174/how-to-get-neopixel-to-fade-colorwipe/23179
+    // uint8_t curr_r, curr_g, curr_b;
+    
+    // curr_b = 0; 
+    // curr_g = 255;
+    // curr_r = 0;
+
+    // uint8_t r = colorArrSaved[randomNumList[i]] & 0xFF; 
+    // uint8_t g = (colorArrSaved[randomNumList[i]] >> 8) & 0xFF; 
+    // uint8_t b = (colorArrSaved[randomNumList[i]] >> 16) & 0xFF; 
+    //   while ((curr_r != r) || (curr_g != g) || (curr_b != b)){  // while the curr color is not yet the target color
+    //     if (curr_r < r) curr_r++; else if (curr_r > r) curr_r--;  // increment or decrement the old color values
+    //     if (curr_g < g) curr_g++; else if (curr_g > g) curr_g--;
+    //     if (curr_b < b) curr_b++; else if (curr_b > b) curr_b--;
+    //       // for(int k = 255; k >=0 ; k--){
+    //           strip.setPixelColor(randomNumList[i], curr_r, curr_g, curr_b);
+    //           delay(10);
+
+
+    //   }
               pixels[val] = true;
               strip.show();
           }
         delay(delayIn);
-      }
+      // }
     }
  
  
@@ -712,8 +718,14 @@ if(troubleCount==3){
     }
 
   complete= true;
-troubleCount++;
+  troubleCount++;
+    
+
   }
+
+//   if(complete){
+// healthyWave(10,10,1);
+//   }
 }
 
 void fadeIn(uint8_t wait, int red, int green, int blue){
@@ -759,7 +771,7 @@ strip.show();
     delay(wait);
   }
 
-  delay(2000);
+  // delay(2000);
  
 }
 

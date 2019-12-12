@@ -41,6 +41,7 @@ void loop();
 void prosperity();
 void bleach();
 void setPixels(uint32_t c);
+void spinStepper(int pace);
 #line 31 "/Users/ninjacat/Documents/Particle/TakeHeed/algo_nina/src/algo_nina.ino"
 #ifdef __AVR__
 #include <avr/power.h>
@@ -370,7 +371,7 @@ prosperity();
 void prosperity(){
   Serial.println("prosperity");
   setPixels(strip.Color(0,255,0));
-  // spinStepper(500);
+  spinStepper(500);
 }
 
 // void maintaining(){
@@ -399,29 +400,29 @@ void setPixels(uint32_t c) {
   }
 }
 
-// void spinStepper(int pace){
-//   digitalWrite(4,HIGH);
+void spinStepper(int pace){
+  digitalWrite(4,HIGH);
 
-//   for(stepperIndex = 0; stepperIndex < 2000; stepperIndex++)
-//   {
-//     digitalWrite(5,HIGH);
-//     delayMicroseconds(pace);
-//     digitalWrite(5,LOW);
-//     delayMicroseconds(pace);
-//   }
-//   delay(1000);
+  for(stepperIndex = 0; stepperIndex < 2000; stepperIndex++)
+  {
+    digitalWrite(5,HIGH);
+    delayMicroseconds(pace);
+    digitalWrite(5,LOW);
+    delayMicroseconds(pace);
+  }
+  delay(1000);
 
-//   digitalWrite(4,LOW);
+  digitalWrite(4,LOW);
 
-//   for(stepperIndex = 0; stepperIndex < 2000; stepperIndex++)
-//   {
-//     digitalWrite(5,HIGH);
-//     delayMicroseconds(pace);
-//     digitalWrite(5,LOW);
-//     delayMicroseconds(pace);
-//   }
-//   delay(1000);
-// }
+  for(stepperIndex = 0; stepperIndex < 2000; stepperIndex++)
+  {
+    digitalWrite(5,HIGH);
+    delayMicroseconds(pace);
+    digitalWrite(5,LOW);
+    delayMicroseconds(pace);
+  }
+  delay(1000);
+}
 
 
 // void printMvmt(){
