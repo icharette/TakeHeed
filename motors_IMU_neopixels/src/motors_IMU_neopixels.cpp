@@ -262,14 +262,14 @@ void setup() {
     iVy = 0;
     iVz = 0;
 
-    setupImu();
+    // setupImu();
     
   
-  updateTimer.SetCallback(OnTimer);
+  // updateTimer.SetCallback(OnTimer);
 
-  strip.setBrightness(BRIGHTNESS);
-  strip.begin();
-  strip.show();
+  // strip.setBrightness(BRIGHTNESS);
+  // strip.begin();
+  // strip.show();
     stepper.setSpeed(20);
   }
 
@@ -307,7 +307,7 @@ void setup() {
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
   // Serial.println("Forward");
-  // stepper.step(STEPS);
+  stepper.step(STEPS);
   // Serial.println("Backward");
 
   // delay(100);
@@ -339,8 +339,16 @@ S: symbiosis, coming back to life
 // setValuesAccordingToState('L');
 
 //NEOPIXELS
+
+
+
 //CORRECT CYCLE !!!!
-  healthyWave(10,10,1);
+//following two lines for activity final------
+// updateTimer.Update();
+//   healthyWave(10,10,1);
+//-----------
+
+
   // colorWipe(3000);
   // healthyWave(10,10,1);
 }
@@ -618,6 +626,7 @@ void trouble(){
       wait = 50;
       delayIn = 5;
       delayOut = 5;
+      stepper.setSpeed(50);
       stepper.step(STEPS);
   }else if(troubleCount == 1){
     chunk = strip.numPixels()/3;
@@ -627,6 +636,7 @@ void trouble(){
          wait = 50;
       delayIn = 5;
       delayOut = 5;
+      stepper.setSpeed(50);
        stepper.step(-STEPS);
   }else if(troubleCount ==2){
       chunk = strip.numPixels()/2;
@@ -636,6 +646,7 @@ void trouble(){
            wait = 50;
       delayIn = 5;
       delayOut = 5;
+      stepper.setSpeed(40);
         stepper.step(STEPS);
   }else if(troubleCount == 3){
       chunk = strip.numPixels();
@@ -645,6 +656,7 @@ void trouble(){
            wait = 50;
       delayIn = 5;
       delayOut = 5;
+      stepper.setSpeed(30);
        stepper.step(-STEPS);
 
   }
@@ -734,6 +746,10 @@ strip.show();
               strip.show();
           }
         delay(delayIn);
+
+
+        stepper.setSpeed(50);
+        stepper.step(STEPS);
       // }
     }
  
