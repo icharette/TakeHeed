@@ -132,6 +132,9 @@ void calibrateSensor(){
     if ( imu.accelAvailable() )
     {
       imu.readAccel();
+        //  digitalWrite(D7, LOW);
+    }else{
+        //  digitalWrite(D7, HIGH);
     }
     refX += imu.calcAccel(imu.ax);
     refY += imu.calcAccel(imu.ay);
@@ -184,6 +187,7 @@ void loop() {
 getMouvement();
 
 updateTimer.Update();
+send();
 }
 
 void send(){
@@ -191,15 +195,20 @@ void send(){
   unsigned int localPort = 8888;
 
 ///from 
-  OSCMessage outMessage("/ALE");
+
   int speedInt = 0;
   if(checkSpeed()){
     speedInt = 1;
   }else{
     speedInt = 0;
   }
-  outMessage.addInt(speedInt);
-  outMessage.addFloat(speedInt);
+  String message = "";
+if(speedInt){
+message = "still";
+}else{
+  message = "/move";
+}
+    OSCMessage outMessage(message);
   outMessage.send(udp, ipAddress, localPort);
   Serial.println("in send method");
  
@@ -207,7 +216,7 @@ void send(){
 }
 
 void OnTimer(void) {  //Handler for the timer, will be called automatically
- send();
+//  send();
    fluxX = 0;
      fluxY = 0;
      fluxZ = 0;
@@ -238,6 +247,9 @@ void getMouvement(){
     if ( imu.accelAvailable() )
     {
       imu.readAccel();
+      // digitalWrite(D7, LOW);
+    }else{
+      // digitalWrite(D7, HIGH);
     }
     // dX=imu.calcAccel(imu.ax);
     // dY=imu.calcAccel(imu.ay);

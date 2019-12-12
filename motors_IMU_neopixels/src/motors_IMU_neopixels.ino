@@ -50,13 +50,13 @@ int leftShoulderMotors[3];
 
 //variables that set the stepping of the motors
 int pace = 500;
-int wait = 1000;
+int waitStep = 1000;
 int stepperIndexCap = 2000;
 
 //------NEOPIXEL
 // IMPORTANT: Set pixel COUNT, PIN and TYPE
 #define PIXEL_PIN D2
-#define PIXEL_COUNT 80
+#define PIXEL_COUNT 20
 #define PIXEL_TYPE SK6812RGBW
 
 #define BRIGHTNESS 50 // 0 - 255
@@ -117,7 +117,7 @@ boolean calibrated = false;
 // http://www.ngdc.noaa.gov/geomag-web/#declination
 #define DECLINATION -14.17181// Declination (degrees) montreal
 
-SparkCorePolledTimer updateTimer(1000);  //Create a timer object and set it's timeout in milliseconds
+SparkCorePolledTimer updateTimer(500);  //Create a timer object and set it's timeout in milliseconds
 void OnTimer(void);   //Prototype for timer callback method
 
 /* roll pitch and yaw angles computed by iecompass */
@@ -175,6 +175,9 @@ void calibrateSensor(){
     if ( imu.accelAvailable() )
     {
       imu.readAccel();
+        //  digitalWrite(D7, LOW);
+    }else{
+        //  digitalWrite(D7, HIGH);
     }
     refX += imu.calcAccel(imu.ax);
     refY += imu.calcAccel(imu.ay);
@@ -241,9 +244,9 @@ void setup() {
   
   updateTimer.SetCallback(OnTimer);
 
-  // strip.setBrightness(BRIGHTNESS);
-  // strip.begin();
-  // strip.show();
+  strip.setBrightness(BRIGHTNESS);
+  strip.begin();
+  strip.show();
     stepper.setSpeed(20);
   }
 
@@ -286,8 +289,8 @@ void loop() {
 
   // delay(100);
   // stepper.step(-STEPS);
-  getMouvement();
-updateTimer.Update();
+  // getMouvement();
+
 
 
 //if receiving message
@@ -314,7 +317,7 @@ S: symbiosis, coming back to life
 
 //NEOPIXELS
 //CORRECT CYCLE !!!!
-  // healthyWave(10,10,1);
+  healthyWave(10,10,1);
   // colorWipe(3000);
   // healthyWave(10,10,1);
 }
@@ -345,7 +348,8 @@ bool match = true;
 void OnTimer(void) {  //Handler for the timer, will be called automatically
     int size = 0;
      OSCMessage inMessage;
-        
+      
+      Serial.println("LISTENING---------------");
        
   // Check if data has been received
       if ((size = udp.parsePacket()) > 0) {
@@ -371,12 +375,16 @@ Serial.println("PARSING");
           //this doesn't for some reason. 
           //is it reading/sending the right message?
           inMessage.route("still", STILL);
-          inMessage.route("move", MOVE);
+          inMessage.route("/move", MOVE);
         }
         Serial.println();
+      }else{
+        if(!checkSpeed()){
+          trouble();
+        }
       }
   // printMvmt();
-  checkSpeed();
+  // checkSpeed();
     //  fluxX = 0;
     //  fluxY = 0;
     //  fluxZ = 0;
@@ -391,10 +399,10 @@ boolean checkSpeed(){
   Serial.print("Speed limit : ");
   Serial.println(speedLimit);
   if((total) < speedLimit){
-    //   fluxX = 0;
-    //  fluxY = 0;
-    //  fluxZ = 0;
-    //  total = 0;
+      fluxX = 0;
+     fluxY = 0;
+     fluxZ = 0;
+     total = 0;
     return true;
   }else if(total >= speedLimit){
       fluxX = 0;
@@ -407,10 +415,12 @@ boolean checkSpeed(){
 }
 
 void STILL(OSCMessage &inMessag){
+  Serial.println("STILL");
 checkMatch(true);
 }
 
 void MOVE(OSCMessage &inMessag){
+  Serial.println("MOVE");
 checkMatch(false);
 }
 
@@ -430,6 +440,9 @@ void getMouvement(){
     if ( imu.accelAvailable() )
     {
       imu.readAccel();
+        //  digitalWrite(D7, LOW);
+    }else{
+        //  digitalWrite(D7, HIGH);
     }
     // dX=imu.calcAccel(imu.ax);
     // dY=imu.calcAccel(imu.ay);
@@ -520,8 +533,8 @@ void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops) {
     // }
     
     // getMouvement();
-  
-     if(checkSpeed() == 0){
+  updateTimer.Update();
+     if(!match){
        
        for(int i = 0; i < strip.numPixels() ; i++){
          colorArrSaved[i] = strip.getPixelColor(i);
@@ -572,34 +585,43 @@ void trouble(){
   int delayIn = 10;
   int delayOut = 0;
 
-  
-   wait = 10;
-      delayIn = 3;
-      delayOut = 3;
+  int wait=10;
+  //  wait = 10;
+  //     delayIn = 3;
+  //     delayOut = 3;
 
     if(troubleCount == 0){
       chunk = strip.numPixels()/4;
-      // wait = 100;
-      // delayIn = 3;
-      // delayOut = 10;
+      wait = 50;
+      delayIn = 5;
+      delayOut = 5;
       stepper.step(STEPS);
   }else if(troubleCount == 1){
     chunk = strip.numPixels()/3;
     // wait = 500;
     // delayIn = 6;
     //   delayOut = 8;
+         wait = 50;
+      delayIn = 5;
+      delayOut = 5;
        stepper.step(-STEPS);
   }else if(troubleCount ==2){
       chunk = strip.numPixels()/2;
       // wait = 1000;
       // delayIn = 8;
       //  delayOut = 4;
+           wait = 50;
+      delayIn = 5;
+      delayOut = 5;
         stepper.step(STEPS);
   }else if(troubleCount == 3){
       chunk = strip.numPixels();
       // wait = 2000;
       // delayIn = 10;
       // delayOut = 0;
+           wait = 50;
+      delayIn = 5;
+      delayOut = 5;
        stepper.step(-STEPS);
 
   }
@@ -641,7 +663,7 @@ int randomNumList[chunk];
           pixels[val] = false;
           strip.show();
       }
-    // delay(wait);
+    delay(wait);
 
     Serial.print(i);
        Serial.print(" ::  ");
@@ -651,8 +673,13 @@ int randomNumList[chunk];
 if(troubleCount==3){
   delay(5000);
   troubleCount = 0;
+  
 }
-    if(checkSpeed()==1){
+
+// match = false;
+
+
+    if(checkSpeed()){
       for(uint16_t i=0; i<chunk; i++) {
           for(int k = 255; k >=0 ; k--){
               strip.setPixelColor(randomNumList[i], strip.Color(k, 255, k));
@@ -737,6 +764,7 @@ int val=0;
        Serial.print(" ::  ");
        Serial.println(val);
     // int k = 255;
+    
     for(int k = 255; k >=0 ; k--){
  strip.setPixelColor(val, strip.Color(k, 255, k));
         randomNumList[i] = val;
