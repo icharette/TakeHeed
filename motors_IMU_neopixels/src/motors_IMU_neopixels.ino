@@ -239,14 +239,14 @@ void setup() {
     iVy = 0;
     iVz = 0;
 
-    // setupImu();
+    setupImu();
     
   
-  // updateTimer.SetCallback(OnTimer);
+  updateTimer.SetCallback(OnTimer);
 
-  // strip.setBrightness(BRIGHTNESS);
-  // strip.begin();
-  // strip.show();
+  strip.setBrightness(BRIGHTNESS);
+  strip.begin();
+  strip.show();
     stepper.setSpeed(20);
   }
 
@@ -283,9 +283,9 @@ void setup() {
 // }
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
-  // Serial.println("Forward");
-  stepper.step(STEPS);
-  // Serial.println("Backward");
+  Serial.println("Forward");
+  // stepper.step(STEPS);
+  Serial.println("Backward");
 
   // delay(100);
   // stepper.step(-STEPS);
@@ -321,13 +321,33 @@ S: symbiosis, coming back to life
 
 //CORRECT CYCLE !!!!
 //following two lines for activity final------
-// updateTimer.Update();
-//   healthyWave(10,10,1);
+updateTimer.Update();
+  // healthyWave(10,10,1);
+  motorRun();
 //-----------
 
-
+// colorAll(strip.Color(0, 255, 255), 50);
+  
   // colorWipe(3000);
   // healthyWave(10,10,1);
+}
+
+bool match = true;
+
+void motorRun(){
+  updateTimer.Update();
+     if(!match){
+       motorTrouble();
+     }
+    for(int j=0; j<256; j++) { // 5 cycles of all colors on wheel
+     getMouvement();
+    }
+
+    printMvmt();
+}
+
+void motorTrouble(){
+trouble(); // to be adjusted for only motors
 }
 //-----------------------//-----------------------//-----------------------//-----------------------NEOPIXEL
 
@@ -349,7 +369,7 @@ void colorAll(uint32_t c, uint8_t wait) {
 
 
 //-----------------------//-----------------------//-----------------------//-----------------------MOTORS
-bool match = true;
+
 
 
 
@@ -692,6 +712,10 @@ if(troubleCount==3){
 
 
     if(checkSpeed()){
+
+      stepper.setSpeed(50);
+        stepper.step(STEPS);
+
       for(uint16_t i=0; i<chunk; i++) {
           for(int k = 255; k >=0 ; k--){
               strip.setPixelColor(randomNumList[i], strip.Color(k, 255, k));
@@ -725,8 +749,7 @@ strip.show();
         delay(delayIn);
 
 
-        stepper.setSpeed(50);
-        stepper.step(STEPS);
+        
       // }
     }
  
@@ -845,7 +868,7 @@ Serial.println("turning off");
 }
 // Fill the dots one after the other with a color
 void colorWipe(uint8_t wait) {
-// fadeIn(wait, 255,128,0);
+fadeIn(wait, 255,128,0);
 fadeOut(wait, 255,128,0);
 fadeIn(wait, 255,128,0);
 }
