@@ -5,14 +5,17 @@
 #line 1 "/Users/ninjacat/Documents/Particle/TakeHeed/motors_IMU_neopixels/src/motors_IMU_neopixels.ino"
 /*
  * Project motors
- * Description: stepper motor control for the nema8 stepper motors on each shoulder of wearable Take Heed
- * Author: Isabelle Charette
+ * Description: IMU sensor data from alge program + IMU from this program determine nema8 and LED activity
+ * Author: Isabelle Charette & Nina Parenteau
  * Date: Fall 2019
+ * 
+ * Sources:
+ * Examples from following included libraries
+ * https://github.com/sparkfun/SparkFun_LSM9DS1_Particle_Library
+ * // http://www.ngdc.noaa.gov/geomag-web/#declination
  */
 
-// #include "application.h"
 #include <Particle.h>
-
 #include "SparkFunLSM9DS1.h"
 #include "LSM9DS1_Registers.h"
 #include "LSM9DS1_Types.h"
@@ -26,8 +29,6 @@ void setupImu();
 void calibrateSensor();
 void setup();
 void loop();
-void motorRun();
-void motorTrouble();
 void colorAll(uint32_t c, uint8_t wait);
 boolean checkSpeed();
 void STILL(OSCMessage &inMessag);
@@ -37,10 +38,7 @@ void getMouvement();
 void printMvmt();
 void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops);
 void trouble();
-void fadeIn(uint8_t wait, int red, int green, int blue);
-void fadeOut(uint8_t wait, int red, int green, int blue);
-void colorWipe(uint8_t wait);
-#line 19 "/Users/ninjacat/Documents/Particle/TakeHeed/motors_IMU_neopixels/src/motors_IMU_neopixels.ino"
+#line 22 "/Users/ninjacat/Documents/Particle/TakeHeed/motors_IMU_neopixels/src/motors_IMU_neopixels.ino"
 SYSTEM_THREAD(ENABLED);
 SYSTEM_MODE(SEMI_AUTOMATIC);
 
@@ -58,11 +56,6 @@ uint8_t blue(uint32_t c);
 void colorWipe(uint32_t c, uint8_t wait);
 void pulseWhite(uint8_t wait);
 void healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops);
-
-//pins for motor on left shoulder
-// int enableLeft = A2;
-// int stepLeft = A1;
-// int directionLeft = A0;
 
 //pins for motor on right shoulder
 int enableRight = A5;
@@ -105,16 +98,6 @@ void setupMotor(int motorPinsArray[], int enable, int step, int direction){
 
 /////---------------------------------------------------------------- IMU
 
-
-/***************************************************************** SOURCES
-LSM9DS1_Basic_I2C.ino
-SFE_LSM9DS1 Library Simple Example Code - I2C Interface
-Jim Lindblom @ SparkFun Electronics
-Original Creation Date: April 30, 2015
-https://github.com/sparkfun/SparkFun_LSM9DS1_Particle_Library
-
-*****************************************************************/
-
 LSM9DS1 imu;
 
 //sensor variables
@@ -127,8 +110,6 @@ float gainThreshold, lossThreshold;
  float fluxY = 0;
  float fluxZ = 0;
 int speedLimit = 20;
-// float origin ;
-// float originPitch, originRoll;
 boolean calibrated = false;
 
 #define LSM9DS1_M	0x1E // Would be 0x1C if SDO_M is LOW
@@ -139,7 +120,6 @@ boolean calibrated = false;
 #define PRINT_SPEED 250 // 250 ms between prints
 
 // a declination to get a more accurate heading. 
-// http://www.ngdc.noaa.gov/geomag-web/#declination
 #define DECLINATION -14.17181// Declination (degrees) montreal
 
 SparkCorePolledTimer updateTimer(500);  //Create a timer object and set it's timeout in milliseconds
@@ -164,14 +144,14 @@ const int16_t K2 = -1645;
 const int16_t K3 = 446;
 
 void setupImu(){
+
+
   imu.settings.device.commInterface = IMU_MODE_I2C;
   imu.settings.device.mAddress = LSM9DS1_M;
   imu.settings.device.agAddress = LSM9DS1_AG;
   lossThreshold = 5;
   gainThreshold = 1;
-  // The above lines will only take effect AFTER calling
-  // imu.begin(), which verifies communication with the IMU
-  // and turns it on.
+
   if (!imu.begin())
   {
     digitalWrite(D7, HIGH);
@@ -197,13 +177,8 @@ void calibrateSensor(){
   int count = 100;
   Serial.print("calibrating sensor. acc.");
   for(int i = 0; i < count; i++){
-    if ( imu.accelAvailable() )
-    {
       imu.readAccel();
-        //  digitalWrite(D7, LOW);
-    }else{
-        //  digitalWrite(D7, HIGH);
-    }
+
     refX += imu.calcAccel(imu.ax);
     refY += imu.calcAccel(imu.ay);
     refZ += imu.calcAccel(imu.az);
@@ -234,12 +209,9 @@ void calibrateSensor(){
 // change this to the number of steps on your motor
 #define STEPS 300
  
-// create an instance of the stepper class, specifying
-// the number of steps of the motor and the pins it's
-// attached to
 Stepper stepper(STEPS, A1, A2, A3, A4);
-// Stepper stepperRgith(STEPS, D3, D4, D5, D6);
-// setup() runs once, when the device is first turned on.
+
+
 void setup() {
   pinMode(D7, OUTPUT);
   digitalWrite(D7, LOW);
@@ -275,105 +247,13 @@ void setup() {
     stepper.setSpeed(20);
   }
 
-// void setValuesAccordingToState(char state){
-//   switch(state){
-
-//     //life
-//     case 'L':
-//       pace = 500;
-//       wait = 1000;
-//       stepperIndexCap = 2000;
-//     break;
-
-//     //bleaching
-//     case 'B':
-//       pace = 2000;
-//       wait = 1000;
-//       stepperIndexCap = 2000;
-//     break;
-
-//     //dead
-//     case 'D':
-//     //not moving
-//       stepperIndexCap = 0;
-//     break;
-
-//     //symbiosis, coming back to life
-//     case 'S':
-//       pace = 2000;
-//       wait = 1000;
-//       stepperIndexCap = 2000;
-//     break;
-//   }
-// }
-// loop() runs over and over again, as quickly as it can execute.
 void loop() {
-  Serial.println("Forward");
-  // stepper.step(STEPS);
-  Serial.println("Backward");
 
-  // delay(100);
-  // stepper.step(-STEPS);
-  // getMouvement();
-
-
-
-//if receiving message
-//checking current state if having moved a lot during past few seconds
-
-// checkSpeed();
-
-//if both people are slow: regenerate
-//if one is too fast: keep dying
-
- //should this be OnTimer too?
-// printMvmt();
-  // The core of your code will likely live here.
-
-// analogWrite(mosfetSwitch, 255);
-
-/*
-L: life
-B: bleaching
-D: dead
-S: symbiosis, coming back to life
-*/
-// setValuesAccordingToState('L');
-
-//NEOPIXELS
-
-
-
-//CORRECT CYCLE !!!!
-//following two lines for activity final------
-updateTimer.Update();
-  // healthyWave(10,10,1);
-  motorRun();
-//-----------
-
-// colorAll(strip.Color(0, 255, 255), 50);
-  
-  // colorWipe(3000);
-  // healthyWave(10,10,1);
-}
-
-bool match = true;
-
-void motorRun(){
   updateTimer.Update();
-     if(!match){
-       motorTrouble();
-     }
-    for(int j=0; j<256; j++) { // 5 cycles of all colors on wheel
-     getMouvement();
-    }
+  healthyWave(10,10,1);
 
-    printMvmt();
 }
 
-void motorTrouble(){
-trouble(); // to be adjusted for only motors
-}
 //-----------------------//-----------------------//-----------------------//-----------------------NEOPIXEL
 
 
@@ -390,13 +270,6 @@ void colorAll(uint32_t c, uint8_t wait) {
 
 //-----------------------//-----------------------//-----------------------//-----------------------NEOPIXEL
 
-//-----------------------//-----------------------//-----------------------//-----------------------MOTORS
-
-
-//-----------------------//-----------------------//-----------------------//-----------------------MOTORS
-
-
-
 
 void OnTimer(void) {  //Handler for the timer, will be called automatically
     int size = 0;
@@ -407,8 +280,7 @@ void OnTimer(void) {  //Handler for the timer, will be called automatically
   // Check if data has been received
       if ((size = udp.parsePacket()) > 0) {
         Serial.println("receiving message");
-        // toggle=!toggle;
-     
+
         char c;
         while(size--){
           Serial.println("---in while---");
@@ -418,15 +290,10 @@ void OnTimer(void) {  //Handler for the timer, will be called automatically
           
         }
 
-        // Serial.print("alge: : ");
-        // Serial.println(inMessage.getInt(0));
-        //this works
-  //  light(inMessage);
         if(inMessage.parse()){
 
-Serial.println("PARSING");
-          //this doesn't for some reason. 
-          //is it reading/sending the right message?
+        Serial.println("PARSING");
+
           inMessage.route("still", STILL);
           inMessage.route("/move", MOVE);
         }
@@ -436,12 +303,6 @@ Serial.println("PARSING");
           trouble();
         }
       }
-  // printMvmt();
-  // checkSpeed();
-    //  fluxX = 0;
-    //  fluxY = 0;
-    //  fluxZ = 0;
-
 }
 
 //-----------------------//-----------------------//-----------------------//-----------------------IMU
@@ -477,60 +338,29 @@ void MOVE(OSCMessage &inMessag){
 checkMatch(false);
 }
 
+boolean match = true;
+
 void checkMatch(bool alge){
   if(alge && checkSpeed()){
     match =  true;
   }else{
     match = false;
   }
-
-    Serial.print("IN CHECK MATCH :: ");
     Serial.println(match);
 }
 void getMouvement(){
 
-    // for (int i = 0; i < 10; i++){
     if ( imu.accelAvailable() )
     {
       imu.readAccel();
-        //  digitalWrite(D7, LOW);
-    }else{
-        //  digitalWrite(D7, HIGH);
     }
-    // dX=imu.calcAccel(imu.ax);
-    // dY=imu.calcAccel(imu.ay);
-    // dZ=imu.calcAccel(imu.az);
 
     fluxX += abs(imu.calcAccel(imu.ax) - refX);
     fluxY += abs(imu.calcAccel(imu.ay) - refY);
     fluxZ += abs(imu.calcAccel(imu.az) - refZ);
-    // 
-    // printMvmt();
-    // }
-
-
-    // if (avMvmt < gainThreshold && pixelPointer <= NUM_LED){
-    //  if (avMvmt < gainThreshold){
-    // //   pixels[pixelPointer] = 1;
-    //   pixelPointer++;
-    // }
-    // if (avMvmt > lossThreshold && pixelPointer >= 0){
-    // //   pixels[pixelPointer] = 0;
-    //   pixelPointer--;
-    // }
-    
 }
-void printMvmt(){
-    // Serial.print("x: ");
-    // Serial.print(dX);
-    // Serial.print( " Y:");
-    // Serial.print(dY);
-    // Serial.print(" Z:");
-    // Serial.print(dZ);
-    // Serial.print(" av: ");
-    // Serial.print(avMvmt);
-    // Serial.println(" ");
 
+void printMvmt(){
     Serial.print("fluxX : ");
     Serial.println(fluxX);
     Serial.print("fluxY : ");
@@ -626,12 +456,14 @@ void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops) {
   delay(500);
 }
 
+//generates behavior state of coral in distress
 void trouble(){
   
   bool complete = false;
   bool checkNum = true;
   int val = -1;
 
+//how many LED to bleach in the LED strip
   int chunk = 0;
   
 
@@ -639,9 +471,6 @@ void trouble(){
   int delayOut = 0;
 
   int wait=10;
-  //  wait = 10;
-  //     delayIn = 3;
-  //     delayOut = 3;
 
     if(troubleCount == 0){
       chunk = strip.numPixels()/4;
@@ -652,9 +481,6 @@ void trouble(){
       stepper.step(STEPS);
   }else if(troubleCount == 1){
     chunk = strip.numPixels()/3;
-    // wait = 500;
-    // delayIn = 6;
-    //   delayOut = 8;
          wait = 50;
       delayIn = 5;
       delayOut = 5;
@@ -662,9 +488,6 @@ void trouble(){
        stepper.step(-STEPS);
   }else if(troubleCount ==2){
       chunk = strip.numPixels()/2;
-      // wait = 1000;
-      // delayIn = 8;
-      //  delayOut = 4;
            wait = 50;
       delayIn = 5;
       delayOut = 5;
@@ -672,9 +495,6 @@ void trouble(){
         stepper.step(STEPS);
   }else if(troubleCount == 3){
       chunk = strip.numPixels();
-      // wait = 2000;
-      // delayIn = 10;
-      // delayOut = 0;
            wait = 50;
       delayIn = 5;
       delayOut = 5;
@@ -700,7 +520,6 @@ int randomNumList[chunk];
     Serial.println(chunk);
      while(checkNum){
         checkNum = false;
-        //int nRandonNumber = rand()%((nMax+1)-nMin) + nMin;
         val = (rand() % ((strip.numPixels())));
         Serial.print("VAL:: ");
         Serial.println(val);
@@ -712,8 +531,6 @@ int randomNumList[chunk];
       }
         checkNum = true;
       for(int k = 0; k <255 ; k++){
-      
-          // Serial.println((strip.getPixelColor(i)));
           strip.setPixelColor(val, strip.Color(k, 255, k));
           randomNumList[i] = val;
           delay(delayOut);
@@ -733,9 +550,6 @@ if(troubleCount==3){
   
 }
 
-// match = false;
-
-
     if(checkSpeed()){
 
       stepper.setSpeed(50);
@@ -748,7 +562,7 @@ if(troubleCount==3){
 strip.show();
           }
 
-//next while loop : https://arduino.stackexchange.com/questions/23174/how-to-get-neopixel-to-fade-colorwipe/23179
+//next while loop source: https://arduino.stackexchange.com/questions/23174/how-to-get-neopixel-to-fade-colorwipe/23179
     // uint8_t curr_r, curr_g, curr_b;
     
     // curr_b = 0; 
@@ -795,106 +609,5 @@ strip.show();
 //   if(complete){
 // healthyWave(10,10,1);
 //   }
-}
-
-void fadeIn(uint8_t wait, int red, int green, int blue){
-int randomNumList[strip.numPixels()];
-
-//clean array
-for(int k = 0; k < strip.numPixels(); k++){
-  randomNumList[k] = -1;
-}
-
-bool checkNum = false;
-// bool full = false;
-int val=0;
-  Serial.println("lignthing");
-  for(uint16_t i=0; i<strip.numPixels(); i++) {
-  
-     while(checkNum){
-        checkNum = false;
-        //int nRandonNumber = rand()%((nMax+1)-nMin) + nMin;
-        val = (rand() % ((strip.numPixels())));
-        for(int k = 0; k < strip.numPixels(); k++){
-          if(randomNumList[k] == val){
-            checkNum = true;
-          }
-        }
-        
-
-      }
-        checkNum = true;
-       Serial.print(i);
-       Serial.print(" ::  ");
-       Serial.println(val);
-    // int k = 255;
-    
-    for(int k = 255; k >=0 ; k--){
- strip.setPixelColor(val, strip.Color(k, 255, k));
-        randomNumList[i] = val;
- delay(10);
- pixels[val] = true;
-strip.show();
-     
-    }
-     
-    delay(wait);
-  }
-
-  // delay(2000);
- 
-}
-
-void fadeOut(uint8_t wait, int red, int green, int blue){
-  bool checkNum = false;
-  int val=0;
- int randomNumList2[strip.numPixels()];
- //clean array
-for(int k = 0; k < strip.numPixels(); k++){
-  randomNumList2[k] = -1;
-}
-Serial.println("turning off");
-   for(uint16_t i=0; i<strip.numPixels(); i++) {
-
-     while(checkNum){
-        checkNum = false;
-        // val = (rand() % (strip.numPixels() - 0 + 1)+1);
-        val = (rand() % ((strip.numPixels())));
-            Serial.print("checknum");
-        for(int k = 0; k < strip.numPixels(); k++){
-          if(randomNumList2[k] == val){
-            checkNum = true;
-          }
-        }
-        
-
-      }
-        checkNum = true;
-        Serial.print(i);
-       Serial.print(" ::  ");
-       Serial.println(val);
-    
-    
-    // for(int j = 255; j >=0 ; j--){
-      for(int j = 0; j <= 255 ; j++){
- strip.setPixelColor(val, strip.Color(j, 255, j));
-        randomNumList2[i] = val;
- 
-    pixels[val] = false;
-    strip.show();
-     delay(10);
-    }
- 
-    delay(wait);
-  }
-
-    delay(2000);
-
-}
-// Fill the dots one after the other with a color
-void colorWipe(uint8_t wait) {
-fadeIn(wait, 255,128,0);
-fadeOut(wait, 255,128,0);
-fadeIn(wait, 255,128,0);
 }
 //-----------------------//-----------------------//-----------------------//-----------------------NEOPIXELS
