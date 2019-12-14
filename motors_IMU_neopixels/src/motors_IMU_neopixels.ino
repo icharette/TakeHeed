@@ -182,12 +182,15 @@ void calibrateSensor(){
 //  Serial.println(" ");
 }
 
-/////---------------------------------------------------------------- IMU
+
 // LSM9DS1 --------- Photon
 // SCL -------------- D1 (SCL)
 // SDA -------------- D0 (SDA)
 // VDD ------------- 3.3V
 // GND ------------- GND
+/////---------------------------------------------------------------- IMU
+
+/////---------------------------------------------------------------- SETUP
 
    //new driver motor motorTesting
 #include "Stepper.h"
@@ -232,12 +235,21 @@ void setup() {
     stepper.setSpeed(20);
   }
 
+/////---------------------------------------------------------------- SETUP
+
+
+
+//-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 void loop() {
 
   updateTimer.Update();
   healthyWave(10,10,1);
 
 }
+
+//-----------------------//-----------------------//-----------------------//-----------------------LOOPING
+
+
 
 //-----------------------//-----------------------//-----------------------//-----------------------COMMUNICATION
 
@@ -274,29 +286,6 @@ void OnTimer(void) {  //Handler for the timer, will be called automatically
           trouble();
         }
       }
-}
-
-//-----------------------//-----------------------//-----------------------//-----------------------IMU
-boolean checkSpeed(){
-  float total = fluxX + fluxY + fluxZ;
-  Serial.print("Total movement: ");
-  Serial.println(total);
-  Serial.print("Speed limit : ");
-  Serial.println(speedLimit);
-  if((total) < speedLimit){
-      fluxX = 0;
-     fluxY = 0;
-     fluxZ = 0;
-     total = 0;
-    return true;
-  }else if(total >= speedLimit){
-      fluxX = 0;
-     fluxY = 0;
-     fluxZ = 0;
-     total = 0;
-    return false;
-  }
-
 }
 
 void STILL(OSCMessage &inMessag){
@@ -343,6 +332,28 @@ void printMvmt(){
     Serial.println(fluxY);
     Serial.print("fluxZ : ");
     Serial.println(fluxZ);
+}
+
+boolean checkSpeed(){
+  float total = fluxX + fluxY + fluxZ;
+  Serial.print("Total movement: ");
+  Serial.println(total);
+  Serial.print("Speed limit : ");
+  Serial.println(speedLimit);
+  if((total) < speedLimit){
+      fluxX = 0;
+     fluxY = 0;
+     fluxZ = 0;
+     total = 0;
+    return true;
+  }else if(total >= speedLimit){
+      fluxX = 0;
+     fluxY = 0;
+     fluxZ = 0;
+     total = 0;
+    return false;
+  }
+
 }
 
 //-----------------------//-----------------------//-----------------------//-----------------------IMU

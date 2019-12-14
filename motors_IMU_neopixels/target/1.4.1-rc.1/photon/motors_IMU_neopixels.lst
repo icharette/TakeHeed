@@ -19,23 +19,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   7 .module_info_crc 00000004  080a5cd0  080a5cd0  00035cd0  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  8 .debug_info   000ca4b7  00000000  00000000  00035cd4  2**0
+  8 .debug_info   000ca4bb  00000000  00000000  00035cd4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_abbrev 00012a97  00000000  00000000  0010018b  2**0
+  9 .debug_abbrev 00012a87  00000000  00000000  0010018f  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00018f4b  00000000  00000000  00112c22  2**0
+ 10 .debug_loc    00018f4b  00000000  00000000  00112c16  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_aranges 00002458  00000000  00000000  0012bb6d  2**0
+ 11 .debug_aranges 00002458  00000000  00000000  0012bb61  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000038a8  00000000  00000000  0012dfc5  2**0
+ 12 .debug_ranges 000038a8  00000000  00000000  0012dfb9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_macro  0002a0f6  00000000  00000000  0013186d  2**0
+ 13 .debug_macro  0002a0f6  00000000  00000000  00131861  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_line   0002c645  00000000  00000000  0015b963  2**0
+ 14 .debug_line   0002c644  00000000  00000000  0015b957  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_str    000aaa21  00000000  00000000  00187fa8  2**0
+ 15 .debug_str    000aaa21  00000000  00000000  00187f9b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_frame  0000c744  00000000  00000000  002329cc  2**2
+ 16 .debug_frame  0000c744  00000000  00000000  002329bc  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -726,287 +726,287 @@ void setup() {
  80a0378:	20000238 	.word	0x20000238
  80a037c:	20000188 	.word	0x20000188
 
-080a0380 <_Z10checkSpeedv>:
-        }
-      }
-}
-
-//-----------------------//-----------------------//-----------------------//-----------------------IMU
-boolean checkSpeed(){
- 80a0380:	e92d 41f3 	stmdb	sp!, {r0, r1, r4, r5, r6, r7, r8, lr}
-  float total = fluxX + fluxY + fluxZ;
- 80a0384:	4e23      	ldr	r6, [pc, #140]	; (80a0414 <_Z10checkSpeedv+0x94>)
- 80a0386:	4d24      	ldr	r5, [pc, #144]	; (80a0418 <_Z10checkSpeedv+0x98>)
- 80a0388:	4c24      	ldr	r4, [pc, #144]	; (80a041c <_Z10checkSpeedv+0x9c>)
- 80a038a:	6829      	ldr	r1, [r5, #0]
- 80a038c:	6830      	ldr	r0, [r6, #0]
- 80a038e:	f004 fe01 	bl	80a4f94 <__addsf3>
- 80a0392:	6821      	ldr	r1, [r4, #0]
- 80a0394:	f004 fdfe 	bl	80a4f94 <__addsf3>
- 80a0398:	4607      	mov	r7, r0
-  Serial.print("Total movement: ");
- 80a039a:	f003 fdef 	bl	80a3f7c <_Z16_fetch_usbserialv>
- 80a039e:	4920      	ldr	r1, [pc, #128]	; (80a0420 <_Z10checkSpeedv+0xa0>)
- 80a03a0:	f003 f872 	bl	80a3488 <_ZN5Print5printEPKc>
-  Serial.println(total);
- 80a03a4:	f003 fdea 	bl	80a3f7c <_Z16_fetch_usbserialv>
- 80a03a8:	4680      	mov	r8, r0
- 80a03aa:	4638      	mov	r0, r7
- 80a03ac:	f004 faa0 	bl	80a48f0 <__aeabi_f2d>
- 80a03b0:	2302      	movs	r3, #2
- 80a03b2:	4602      	mov	r2, r0
- 80a03b4:	9300      	str	r3, [sp, #0]
- 80a03b6:	4640      	mov	r0, r8
- 80a03b8:	460b      	mov	r3, r1
-  Serial.print("Speed limit : ");
-  Serial.println(speedLimit);
- 80a03ba:	f8df 806c 	ldr.w	r8, [pc, #108]	; 80a0428 <_Z10checkSpeedv+0xa8>
-
-//-----------------------//-----------------------//-----------------------//-----------------------IMU
-boolean checkSpeed(){
-  float total = fluxX + fluxY + fluxZ;
-  Serial.print("Total movement: ");
-  Serial.println(total);
- 80a03be:	f003 f9a3 	bl	80a3708 <_ZN5Print7printlnEdi>
-  Serial.print("Speed limit : ");
- 80a03c2:	f003 fddb 	bl	80a3f7c <_Z16_fetch_usbserialv>
- 80a03c6:	4917      	ldr	r1, [pc, #92]	; (80a0424 <_Z10checkSpeedv+0xa4>)
- 80a03c8:	f003 f85e 	bl	80a3488 <_ZN5Print5printEPKc>
-  Serial.println(speedLimit);
- 80a03cc:	f003 fdd6 	bl	80a3f7c <_Z16_fetch_usbserialv>
- 80a03d0:	f8d8 1000 	ldr.w	r1, [r8]
- 80a03d4:	220a      	movs	r2, #10
- 80a03d6:	f003 f8de 	bl	80a3596 <_ZN5Print7printlnEii>
-  if((total) < speedLimit){
- 80a03da:	f8d8 0000 	ldr.w	r0, [r8]
- 80a03de:	f004 fe8d 	bl	80a50fc <__aeabi_i2f>
- 80a03e2:	4680      	mov	r8, r0
- 80a03e4:	4601      	mov	r1, r0
- 80a03e6:	4638      	mov	r0, r7
- 80a03e8:	f005 f87a 	bl	80a54e0 <__aeabi_fcmplt>
- 80a03ec:	b128      	cbz	r0, 80a03fa <_Z10checkSpeedv+0x7a>
-      fluxX = 0;
- 80a03ee:	2300      	movs	r3, #0
- 80a03f0:	6033      	str	r3, [r6, #0]
-     fluxY = 0;
- 80a03f2:	602b      	str	r3, [r5, #0]
-     fluxZ = 0;
- 80a03f4:	6023      	str	r3, [r4, #0]
-     total = 0;
-    return true;
- 80a03f6:	2001      	movs	r0, #1
- 80a03f8:	e009      	b.n	80a040e <_Z10checkSpeedv+0x8e>
-  }else if(total >= speedLimit){
- 80a03fa:	4641      	mov	r1, r8
- 80a03fc:	4638      	mov	r0, r7
- 80a03fe:	f005 f883 	bl	80a5508 <__aeabi_fcmpge>
- 80a0402:	b120      	cbz	r0, 80a040e <_Z10checkSpeedv+0x8e>
-      fluxX = 0;
- 80a0404:	2300      	movs	r3, #0
- 80a0406:	6033      	str	r3, [r6, #0]
-     fluxY = 0;
- 80a0408:	602b      	str	r3, [r5, #0]
-     fluxZ = 0;
- 80a040a:	6023      	str	r3, [r4, #0]
-     total = 0;
-    return false;
- 80a040c:	2000      	movs	r0, #0
-  }
-
-}
- 80a040e:	b002      	add	sp, #8
- 80a0410:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
- 80a0414:	200001b4 	.word	0x200001b4
- 80a0418:	200001e8 	.word	0x200001e8
- 80a041c:	200001bc 	.word	0x200001bc
- 80a0420:	080a57db 	.word	0x080a57db
- 80a0424:	080a57ec 	.word	0x080a57ec
- 80a0428:	20000004 	.word	0x20000004
-
-080a042c <_Z10checkMatchb>:
-checkMatch(false);
-}
-
-boolean match = true;
-
-void checkMatch(bool alge){
- 80a042c:	b510      	push	{r4, lr}
- 80a042e:	4c09      	ldr	r4, [pc, #36]	; (80a0454 <_Z10checkMatchb+0x28>)
-  if(alge && checkSpeed()){
- 80a0430:	b110      	cbz	r0, 80a0438 <_Z10checkMatchb+0xc>
- 80a0432:	f7ff ffa5 	bl	80a0380 <_Z10checkSpeedv>
- 80a0436:	b948      	cbnz	r0, 80a044c <_Z10checkMatchb+0x20>
-    match =  true;
-  }else{
-    match = false;
- 80a0438:	2300      	movs	r3, #0
- 80a043a:	7023      	strb	r3, [r4, #0]
-  }
-    Serial.println(match);
- 80a043c:	f003 fd9e 	bl	80a3f7c <_Z16_fetch_usbserialv>
- 80a0440:	7821      	ldrb	r1, [r4, #0]
- 80a0442:	220a      	movs	r2, #10
-}
- 80a0444:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
-  if(alge && checkSpeed()){
-    match =  true;
-  }else{
-    match = false;
-  }
-    Serial.println(match);
- 80a0448:	f003 b8a5 	b.w	80a3596 <_ZN5Print7printlnEii>
-
-boolean match = true;
-
-void checkMatch(bool alge){
-  if(alge && checkSpeed()){
-    match =  true;
- 80a044c:	2301      	movs	r3, #1
- 80a044e:	7023      	strb	r3, [r4, #0]
- 80a0450:	e7f4      	b.n	80a043c <_Z10checkMatchb+0x10>
- 80a0452:	bf00      	nop
- 80a0454:	20000008 	.word	0x20000008
-
-080a0458 <_Z5STILLR10OSCMessage>:
-    return false;
-  }
-
-}
-
-void STILL(OSCMessage &inMessag){
- 80a0458:	b508      	push	{r3, lr}
-  Serial.println("STILL");
- 80a045a:	f003 fd8f 	bl	80a3f7c <_Z16_fetch_usbserialv>
- 80a045e:	4904      	ldr	r1, [pc, #16]	; (80a0470 <_Z5STILLR10OSCMessage+0x18>)
- 80a0460:	f003 f82b 	bl	80a34ba <_ZN5Print7printlnEPKc>
-checkMatch(true);
-}
- 80a0464:	e8bd 4008 	ldmia.w	sp!, {r3, lr}
-
-}
-
-void STILL(OSCMessage &inMessag){
-  Serial.println("STILL");
-checkMatch(true);
- 80a0468:	2001      	movs	r0, #1
- 80a046a:	f7ff bfdf 	b.w	80a042c <_Z10checkMatchb>
- 80a046e:	bf00      	nop
- 80a0470:	080a57fb 	.word	0x080a57fb
-
-080a0474 <_Z4MOVER10OSCMessage>:
-}
-
-void MOVE(OSCMessage &inMessag){
- 80a0474:	b508      	push	{r3, lr}
-  Serial.println("MOVE");
- 80a0476:	f003 fd81 	bl	80a3f7c <_Z16_fetch_usbserialv>
- 80a047a:	4904      	ldr	r1, [pc, #16]	; (80a048c <_Z4MOVER10OSCMessage+0x18>)
- 80a047c:	f003 f81d 	bl	80a34ba <_ZN5Print7printlnEPKc>
-checkMatch(false);
-}
- 80a0480:	e8bd 4008 	ldmia.w	sp!, {r3, lr}
-checkMatch(true);
-}
-
-void MOVE(OSCMessage &inMessag){
-  Serial.println("MOVE");
-checkMatch(false);
- 80a0484:	2000      	movs	r0, #0
- 80a0486:	f7ff bfd1 	b.w	80a042c <_Z10checkMatchb>
- 80a048a:	bf00      	nop
- 80a048c:	080a5801 	.word	0x080a5801
-
-080a0490 <_Z12getMouvementv>:
+080a0380 <_Z12getMouvementv>:
 
 //-----------------------//-----------------------//-----------------------//-----------------------COMMUNICATION
 
 
 //-----------------------//-----------------------//-----------------------//-----------------------IMU
 void getMouvement(){
- 80a0490:	b538      	push	{r3, r4, r5, lr}
+ 80a0380:	b538      	push	{r3, r4, r5, lr}
 
     if ( imu.accelAvailable() )
- 80a0492:	4824      	ldr	r0, [pc, #144]	; (80a0524 <_Z12getMouvementv+0x94>)
- 80a0494:	f000 fdcd 	bl	80a1032 <_ZN7LSM9DS114accelAvailableEv>
- 80a0498:	4c22      	ldr	r4, [pc, #136]	; (80a0524 <_Z12getMouvementv+0x94>)
- 80a049a:	b110      	cbz	r0, 80a04a2 <_Z12getMouvementv+0x12>
+ 80a0382:	4824      	ldr	r0, [pc, #144]	; (80a0414 <_Z12getMouvementv+0x94>)
+ 80a0384:	f000 fe55 	bl	80a1032 <_ZN7LSM9DS114accelAvailableEv>
+ 80a0388:	4c22      	ldr	r4, [pc, #136]	; (80a0414 <_Z12getMouvementv+0x94>)
+ 80a038a:	b110      	cbz	r0, 80a0392 <_Z12getMouvementv+0x12>
     {
       imu.readAccel();
- 80a049c:	4620      	mov	r0, r4
- 80a049e:	f000 fe93 	bl	80a11c8 <_ZN7LSM9DS19readAccelEv>
+ 80a038c:	4620      	mov	r0, r4
+ 80a038e:	f000 ff1b 	bl	80a11c8 <_ZN7LSM9DS19readAccelEv>
     }
 
     fluxX += abs(imu.calcAccel(imu.ax) - refX);
- 80a04a2:	f9b4 102e 	ldrsh.w	r1, [r4, #46]	; 0x2e
- 80a04a6:	481f      	ldr	r0, [pc, #124]	; (80a0524 <_Z12getMouvementv+0x94>)
- 80a04a8:	f000 fb6f 	bl	80a0b8a <_ZN7LSM9DS19calcAccelEs>
- 80a04ac:	4b1e      	ldr	r3, [pc, #120]	; (80a0528 <_Z12getMouvementv+0x98>)
- 80a04ae:	4d1f      	ldr	r5, [pc, #124]	; (80a052c <_Z12getMouvementv+0x9c>)
- 80a04b0:	6819      	ldr	r1, [r3, #0]
- 80a04b2:	f004 fd6d 	bl	80a4f90 <__aeabi_fsub>
- 80a04b6:	f005 f83b 	bl	80a5530 <__aeabi_f2iz>
- 80a04ba:	2800      	cmp	r0, #0
- 80a04bc:	bfb8      	it	lt
- 80a04be:	4240      	neglt	r0, r0
- 80a04c0:	f004 fe1c 	bl	80a50fc <__aeabi_i2f>
- 80a04c4:	6829      	ldr	r1, [r5, #0]
- 80a04c6:	f004 fd65 	bl	80a4f94 <__addsf3>
+ 80a0392:	f9b4 102e 	ldrsh.w	r1, [r4, #46]	; 0x2e
+ 80a0396:	481f      	ldr	r0, [pc, #124]	; (80a0414 <_Z12getMouvementv+0x94>)
+ 80a0398:	f000 fbf7 	bl	80a0b8a <_ZN7LSM9DS19calcAccelEs>
+ 80a039c:	4b1e      	ldr	r3, [pc, #120]	; (80a0418 <_Z12getMouvementv+0x98>)
+ 80a039e:	4d1f      	ldr	r5, [pc, #124]	; (80a041c <_Z12getMouvementv+0x9c>)
+ 80a03a0:	6819      	ldr	r1, [r3, #0]
+ 80a03a2:	f004 fdf5 	bl	80a4f90 <__aeabi_fsub>
+ 80a03a6:	f005 f8c3 	bl	80a5530 <__aeabi_f2iz>
+ 80a03aa:	2800      	cmp	r0, #0
+ 80a03ac:	bfb8      	it	lt
+ 80a03ae:	4240      	neglt	r0, r0
+ 80a03b0:	f004 fea4 	bl	80a50fc <__aeabi_i2f>
+ 80a03b4:	6829      	ldr	r1, [r5, #0]
+ 80a03b6:	f004 fded 	bl	80a4f94 <__addsf3>
     fluxY += abs(imu.calcAccel(imu.ay) - refY);
- 80a04ca:	f9b4 1030 	ldrsh.w	r1, [r4, #48]	; 0x30
+ 80a03ba:	f9b4 1030 	ldrsh.w	r1, [r4, #48]	; 0x30
     if ( imu.accelAvailable() )
     {
       imu.readAccel();
     }
 
     fluxX += abs(imu.calcAccel(imu.ax) - refX);
- 80a04ce:	6028      	str	r0, [r5, #0]
+ 80a03be:	6028      	str	r0, [r5, #0]
     fluxY += abs(imu.calcAccel(imu.ay) - refY);
- 80a04d0:	4814      	ldr	r0, [pc, #80]	; (80a0524 <_Z12getMouvementv+0x94>)
- 80a04d2:	f000 fb5a 	bl	80a0b8a <_ZN7LSM9DS19calcAccelEs>
- 80a04d6:	4b16      	ldr	r3, [pc, #88]	; (80a0530 <_Z12getMouvementv+0xa0>)
- 80a04d8:	4d16      	ldr	r5, [pc, #88]	; (80a0534 <_Z12getMouvementv+0xa4>)
- 80a04da:	6819      	ldr	r1, [r3, #0]
- 80a04dc:	f004 fd58 	bl	80a4f90 <__aeabi_fsub>
- 80a04e0:	f005 f826 	bl	80a5530 <__aeabi_f2iz>
- 80a04e4:	2800      	cmp	r0, #0
- 80a04e6:	bfb8      	it	lt
- 80a04e8:	4240      	neglt	r0, r0
- 80a04ea:	f004 fe07 	bl	80a50fc <__aeabi_i2f>
- 80a04ee:	6829      	ldr	r1, [r5, #0]
- 80a04f0:	f004 fd50 	bl	80a4f94 <__addsf3>
+ 80a03c0:	4814      	ldr	r0, [pc, #80]	; (80a0414 <_Z12getMouvementv+0x94>)
+ 80a03c2:	f000 fbe2 	bl	80a0b8a <_ZN7LSM9DS19calcAccelEs>
+ 80a03c6:	4b16      	ldr	r3, [pc, #88]	; (80a0420 <_Z12getMouvementv+0xa0>)
+ 80a03c8:	4d16      	ldr	r5, [pc, #88]	; (80a0424 <_Z12getMouvementv+0xa4>)
+ 80a03ca:	6819      	ldr	r1, [r3, #0]
+ 80a03cc:	f004 fde0 	bl	80a4f90 <__aeabi_fsub>
+ 80a03d0:	f005 f8ae 	bl	80a5530 <__aeabi_f2iz>
+ 80a03d4:	2800      	cmp	r0, #0
+ 80a03d6:	bfb8      	it	lt
+ 80a03d8:	4240      	neglt	r0, r0
+ 80a03da:	f004 fe8f 	bl	80a50fc <__aeabi_i2f>
+ 80a03de:	6829      	ldr	r1, [r5, #0]
+ 80a03e0:	f004 fdd8 	bl	80a4f94 <__addsf3>
     fluxZ += abs(imu.calcAccel(imu.az) - refZ);
- 80a04f4:	f9b4 1032 	ldrsh.w	r1, [r4, #50]	; 0x32
+ 80a03e4:	f9b4 1032 	ldrsh.w	r1, [r4, #50]	; 0x32
     {
       imu.readAccel();
     }
 
     fluxX += abs(imu.calcAccel(imu.ax) - refX);
     fluxY += abs(imu.calcAccel(imu.ay) - refY);
- 80a04f8:	6028      	str	r0, [r5, #0]
+ 80a03e8:	6028      	str	r0, [r5, #0]
     fluxZ += abs(imu.calcAccel(imu.az) - refZ);
- 80a04fa:	480a      	ldr	r0, [pc, #40]	; (80a0524 <_Z12getMouvementv+0x94>)
- 80a04fc:	f000 fb45 	bl	80a0b8a <_ZN7LSM9DS19calcAccelEs>
- 80a0500:	4b0d      	ldr	r3, [pc, #52]	; (80a0538 <_Z12getMouvementv+0xa8>)
- 80a0502:	4c0e      	ldr	r4, [pc, #56]	; (80a053c <_Z12getMouvementv+0xac>)
- 80a0504:	6819      	ldr	r1, [r3, #0]
- 80a0506:	f004 fd43 	bl	80a4f90 <__aeabi_fsub>
- 80a050a:	f005 f811 	bl	80a5530 <__aeabi_f2iz>
- 80a050e:	2800      	cmp	r0, #0
- 80a0510:	bfb8      	it	lt
- 80a0512:	4240      	neglt	r0, r0
- 80a0514:	f004 fdf2 	bl	80a50fc <__aeabi_i2f>
- 80a0518:	6821      	ldr	r1, [r4, #0]
- 80a051a:	f004 fd3b 	bl	80a4f94 <__addsf3>
- 80a051e:	6020      	str	r0, [r4, #0]
- 80a0520:	bd38      	pop	{r3, r4, r5, pc}
- 80a0522:	bf00      	nop
- 80a0524:	20000104 	.word	0x20000104
- 80a0528:	200001c0 	.word	0x200001c0
- 80a052c:	200001b4 	.word	0x200001b4
- 80a0530:	200001c4 	.word	0x200001c4
- 80a0534:	200001e8 	.word	0x200001e8
- 80a0538:	200001c8 	.word	0x200001c8
- 80a053c:	200001bc 	.word	0x200001bc
+ 80a03ea:	480a      	ldr	r0, [pc, #40]	; (80a0414 <_Z12getMouvementv+0x94>)
+ 80a03ec:	f000 fbcd 	bl	80a0b8a <_ZN7LSM9DS19calcAccelEs>
+ 80a03f0:	4b0d      	ldr	r3, [pc, #52]	; (80a0428 <_Z12getMouvementv+0xa8>)
+ 80a03f2:	4c0e      	ldr	r4, [pc, #56]	; (80a042c <_Z12getMouvementv+0xac>)
+ 80a03f4:	6819      	ldr	r1, [r3, #0]
+ 80a03f6:	f004 fdcb 	bl	80a4f90 <__aeabi_fsub>
+ 80a03fa:	f005 f899 	bl	80a5530 <__aeabi_f2iz>
+ 80a03fe:	2800      	cmp	r0, #0
+ 80a0400:	bfb8      	it	lt
+ 80a0402:	4240      	neglt	r0, r0
+ 80a0404:	f004 fe7a 	bl	80a50fc <__aeabi_i2f>
+ 80a0408:	6821      	ldr	r1, [r4, #0]
+ 80a040a:	f004 fdc3 	bl	80a4f94 <__addsf3>
+ 80a040e:	6020      	str	r0, [r4, #0]
+ 80a0410:	bd38      	pop	{r3, r4, r5, pc}
+ 80a0412:	bf00      	nop
+ 80a0414:	20000104 	.word	0x20000104
+ 80a0418:	200001c0 	.word	0x200001c0
+ 80a041c:	200001b4 	.word	0x200001b4
+ 80a0420:	200001c4 	.word	0x200001c4
+ 80a0424:	200001e8 	.word	0x200001e8
+ 80a0428:	200001c8 	.word	0x200001c8
+ 80a042c:	200001bc 	.word	0x200001bc
+
+080a0430 <_Z10checkSpeedv>:
+    Serial.println(fluxY);
+    Serial.print("fluxZ : ");
+    Serial.println(fluxZ);
+}
+
+boolean checkSpeed(){
+ 80a0430:	e92d 41f3 	stmdb	sp!, {r0, r1, r4, r5, r6, r7, r8, lr}
+  float total = fluxX + fluxY + fluxZ;
+ 80a0434:	4e23      	ldr	r6, [pc, #140]	; (80a04c4 <_Z10checkSpeedv+0x94>)
+ 80a0436:	4d24      	ldr	r5, [pc, #144]	; (80a04c8 <_Z10checkSpeedv+0x98>)
+ 80a0438:	4c24      	ldr	r4, [pc, #144]	; (80a04cc <_Z10checkSpeedv+0x9c>)
+ 80a043a:	6829      	ldr	r1, [r5, #0]
+ 80a043c:	6830      	ldr	r0, [r6, #0]
+ 80a043e:	f004 fda9 	bl	80a4f94 <__addsf3>
+ 80a0442:	6821      	ldr	r1, [r4, #0]
+ 80a0444:	f004 fda6 	bl	80a4f94 <__addsf3>
+ 80a0448:	4607      	mov	r7, r0
+  Serial.print("Total movement: ");
+ 80a044a:	f003 fd97 	bl	80a3f7c <_Z16_fetch_usbserialv>
+ 80a044e:	4920      	ldr	r1, [pc, #128]	; (80a04d0 <_Z10checkSpeedv+0xa0>)
+ 80a0450:	f003 f81a 	bl	80a3488 <_ZN5Print5printEPKc>
+  Serial.println(total);
+ 80a0454:	f003 fd92 	bl	80a3f7c <_Z16_fetch_usbserialv>
+ 80a0458:	4680      	mov	r8, r0
+ 80a045a:	4638      	mov	r0, r7
+ 80a045c:	f004 fa48 	bl	80a48f0 <__aeabi_f2d>
+ 80a0460:	2302      	movs	r3, #2
+ 80a0462:	4602      	mov	r2, r0
+ 80a0464:	9300      	str	r3, [sp, #0]
+ 80a0466:	4640      	mov	r0, r8
+ 80a0468:	460b      	mov	r3, r1
+  Serial.print("Speed limit : ");
+  Serial.println(speedLimit);
+ 80a046a:	f8df 806c 	ldr.w	r8, [pc, #108]	; 80a04d8 <_Z10checkSpeedv+0xa8>
+}
+
+boolean checkSpeed(){
+  float total = fluxX + fluxY + fluxZ;
+  Serial.print("Total movement: ");
+  Serial.println(total);
+ 80a046e:	f003 f94b 	bl	80a3708 <_ZN5Print7printlnEdi>
+  Serial.print("Speed limit : ");
+ 80a0472:	f003 fd83 	bl	80a3f7c <_Z16_fetch_usbserialv>
+ 80a0476:	4917      	ldr	r1, [pc, #92]	; (80a04d4 <_Z10checkSpeedv+0xa4>)
+ 80a0478:	f003 f806 	bl	80a3488 <_ZN5Print5printEPKc>
+  Serial.println(speedLimit);
+ 80a047c:	f003 fd7e 	bl	80a3f7c <_Z16_fetch_usbserialv>
+ 80a0480:	f8d8 1000 	ldr.w	r1, [r8]
+ 80a0484:	220a      	movs	r2, #10
+ 80a0486:	f003 f886 	bl	80a3596 <_ZN5Print7printlnEii>
+  if((total) < speedLimit){
+ 80a048a:	f8d8 0000 	ldr.w	r0, [r8]
+ 80a048e:	f004 fe35 	bl	80a50fc <__aeabi_i2f>
+ 80a0492:	4680      	mov	r8, r0
+ 80a0494:	4601      	mov	r1, r0
+ 80a0496:	4638      	mov	r0, r7
+ 80a0498:	f005 f822 	bl	80a54e0 <__aeabi_fcmplt>
+ 80a049c:	b128      	cbz	r0, 80a04aa <_Z10checkSpeedv+0x7a>
+      fluxX = 0;
+ 80a049e:	2300      	movs	r3, #0
+ 80a04a0:	6033      	str	r3, [r6, #0]
+     fluxY = 0;
+ 80a04a2:	602b      	str	r3, [r5, #0]
+     fluxZ = 0;
+ 80a04a4:	6023      	str	r3, [r4, #0]
+     total = 0;
+    return true;
+ 80a04a6:	2001      	movs	r0, #1
+ 80a04a8:	e009      	b.n	80a04be <_Z10checkSpeedv+0x8e>
+  }else if(total >= speedLimit){
+ 80a04aa:	4641      	mov	r1, r8
+ 80a04ac:	4638      	mov	r0, r7
+ 80a04ae:	f005 f82b 	bl	80a5508 <__aeabi_fcmpge>
+ 80a04b2:	b120      	cbz	r0, 80a04be <_Z10checkSpeedv+0x8e>
+      fluxX = 0;
+ 80a04b4:	2300      	movs	r3, #0
+ 80a04b6:	6033      	str	r3, [r6, #0]
+     fluxY = 0;
+ 80a04b8:	602b      	str	r3, [r5, #0]
+     fluxZ = 0;
+ 80a04ba:	6023      	str	r3, [r4, #0]
+     total = 0;
+    return false;
+ 80a04bc:	2000      	movs	r0, #0
+  }
+
+}
+ 80a04be:	b002      	add	sp, #8
+ 80a04c0:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+ 80a04c4:	200001b4 	.word	0x200001b4
+ 80a04c8:	200001e8 	.word	0x200001e8
+ 80a04cc:	200001bc 	.word	0x200001bc
+ 80a04d0:	080a57f6 	.word	0x080a57f6
+ 80a04d4:	080a5807 	.word	0x080a5807
+ 80a04d8:	20000004 	.word	0x20000004
+
+080a04dc <_Z10checkMatchb>:
+checkMatch(false);
+}
+
+boolean match = true;
+
+void checkMatch(bool alge){
+ 80a04dc:	b510      	push	{r4, lr}
+ 80a04de:	4c09      	ldr	r4, [pc, #36]	; (80a0504 <_Z10checkMatchb+0x28>)
+  if(alge && checkSpeed()){
+ 80a04e0:	b110      	cbz	r0, 80a04e8 <_Z10checkMatchb+0xc>
+ 80a04e2:	f7ff ffa5 	bl	80a0430 <_Z10checkSpeedv>
+ 80a04e6:	b948      	cbnz	r0, 80a04fc <_Z10checkMatchb+0x20>
+    match =  true;
+  }else{
+    match = false;
+ 80a04e8:	2300      	movs	r3, #0
+ 80a04ea:	7023      	strb	r3, [r4, #0]
+  }
+    Serial.println(match);
+ 80a04ec:	f003 fd46 	bl	80a3f7c <_Z16_fetch_usbserialv>
+ 80a04f0:	7821      	ldrb	r1, [r4, #0]
+ 80a04f2:	220a      	movs	r2, #10
+}
+ 80a04f4:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
+  if(alge && checkSpeed()){
+    match =  true;
+  }else{
+    match = false;
+  }
+    Serial.println(match);
+ 80a04f8:	f003 b84d 	b.w	80a3596 <_ZN5Print7printlnEii>
+
+boolean match = true;
+
+void checkMatch(bool alge){
+  if(alge && checkSpeed()){
+    match =  true;
+ 80a04fc:	2301      	movs	r3, #1
+ 80a04fe:	7023      	strb	r3, [r4, #0]
+ 80a0500:	e7f4      	b.n	80a04ec <_Z10checkMatchb+0x10>
+ 80a0502:	bf00      	nop
+ 80a0504:	20000008 	.word	0x20000008
+
+080a0508 <_Z5STILLR10OSCMessage>:
+          trouble();
+        }
+      }
+}
+
+void STILL(OSCMessage &inMessag){
+ 80a0508:	b508      	push	{r3, lr}
+  Serial.println("STILL");
+ 80a050a:	f003 fd37 	bl	80a3f7c <_Z16_fetch_usbserialv>
+ 80a050e:	4904      	ldr	r1, [pc, #16]	; (80a0520 <_Z5STILLR10OSCMessage+0x18>)
+ 80a0510:	f002 ffd3 	bl	80a34ba <_ZN5Print7printlnEPKc>
+checkMatch(true);
+}
+ 80a0514:	e8bd 4008 	ldmia.w	sp!, {r3, lr}
+      }
+}
+
+void STILL(OSCMessage &inMessag){
+  Serial.println("STILL");
+checkMatch(true);
+ 80a0518:	2001      	movs	r0, #1
+ 80a051a:	f7ff bfdf 	b.w	80a04dc <_Z10checkMatchb>
+ 80a051e:	bf00      	nop
+ 80a0520:	080a5816 	.word	0x080a5816
+
+080a0524 <_Z4MOVER10OSCMessage>:
+}
+
+void MOVE(OSCMessage &inMessag){
+ 80a0524:	b508      	push	{r3, lr}
+  Serial.println("MOVE");
+ 80a0526:	f003 fd29 	bl	80a3f7c <_Z16_fetch_usbserialv>
+ 80a052a:	4904      	ldr	r1, [pc, #16]	; (80a053c <_Z4MOVER10OSCMessage+0x18>)
+ 80a052c:	f002 ffc5 	bl	80a34ba <_ZN5Print7printlnEPKc>
+checkMatch(false);
+}
+ 80a0530:	e8bd 4008 	ldmia.w	sp!, {r3, lr}
+checkMatch(true);
+}
+
+void MOVE(OSCMessage &inMessag){
+  Serial.println("MOVE");
+checkMatch(false);
+ 80a0534:	2000      	movs	r0, #0
+ 80a0536:	f7ff bfd1 	b.w	80a04dc <_Z10checkMatchb>
+ 80a053a:	bf00      	nop
+ 80a053c:	080a581c 	.word	0x080a581c
 
 080a0540 <_Z5Wheelh>:
 
@@ -1290,7 +1290,7 @@ int randomNumList[chunk];
  80a066c:	455c      	cmp	r4, fp
  80a066e:	dd5f      	ble.n	80a0730 <_Z7troublev+0x198>
       getMouvement();
- 80a0670:	f7ff ff0e 	bl	80a0490 <_Z12getMouvementv>
+ 80a0670:	f7ff fe86 	bl	80a0380 <_Z12getMouvementv>
        Serial.print("chunk :: ");
  80a0674:	f003 fc82 	bl	80a3f7c <_Z16_fetch_usbserialv>
  80a0678:	4957      	ldr	r1, [pc, #348]	; (80a07d8 <_Z7troublev+0x240>)
@@ -1464,7 +1464,7 @@ if(troubleCount==3){
 }
 
     if(checkSpeed()){
- 80a0744:	f7ff fe1c 	bl	80a0380 <_Z10checkSpeedv>
+ 80a0744:	f7ff fe74 	bl	80a0430 <_Z10checkSpeedv>
  80a0748:	b3a0      	cbz	r0, 80a07b4 <_Z7troublev+0x21c>
       stepper.setSpeed(50);
  80a074a:	2132      	movs	r1, #50	; 0x32
@@ -1585,7 +1585,7 @@ strip.show();
  80a07e4:	080a5844 	.word	0x080a5844
 
 080a07e8 <_Z7OnTimerv>:
-}
+
 
 //-----------------------//-----------------------//-----------------------//-----------------------COMMUNICATION
 
@@ -1674,7 +1674,7 @@ void OnTimer(void) {  //Handler for the timer, will be called automatically
  80a086c:	e004      	b.n	80a0878 <_Z7OnTimerv+0x90>
       }else{
         if(!checkSpeed()){
- 80a086e:	f7ff fd87 	bl	80a0380 <_Z10checkSpeedv>
+ 80a086e:	f7ff fddf 	bl	80a0430 <_Z10checkSpeedv>
  80a0872:	b908      	cbnz	r0, 80a0878 <_Z7OnTimerv+0x90>
           trouble();
  80a0874:	f7ff fe90 	bl	80a0598 <_Z7troublev>
@@ -1700,9 +1700,9 @@ void OnTimer(void) {  //Handler for the timer, will be called automatically
  80a088c:	080a5863 	.word	0x080a5863
  80a0890:	080a5875 	.word	0x080a5875
  80a0894:	080a5884 	.word	0x080a5884
- 80a0898:	080a0459 	.word	0x080a0459
+ 80a0898:	080a0509 	.word	0x080a0509
  80a089c:	080a588c 	.word	0x080a588c
- 80a08a0:	080a0475 	.word	0x080a0475
+ 80a08a0:	080a0525 	.word	0x080a0525
  80a08a4:	080a5892 	.word	0x080a5892
 
 080a08a8 <_Z11healthyWavehii>:
@@ -1785,7 +1785,7 @@ void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops) {
      }
     for(int j=0; j<256; j++) { // 5 cycles of all colors on wheel
     getMouvement();
- 80a08e6:	f7ff fdd3 	bl	80a0490 <_Z12getMouvementv>
+ 80a08e6:	f7ff fd4b 	bl	80a0380 <_Z12getMouvementv>
           
       for(int i=0; i< strip.numPixels(); i++) {
  80a08ea:	2700      	movs	r7, #0
@@ -1924,11 +1924,11 @@ void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops) {
  80a09ac:	431b0000 	.word	0x431b0000
 
 080a09b0 <loop>:
-  strip.begin();
-  strip.show();
-    stepper.setSpeed(20);
-  }
+/////---------------------------------------------------------------- SETUP
 
+
+
+//-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 void loop() {
  80a09b0:	b508      	push	{r3, lr}
 
@@ -1939,8 +1939,8 @@ void loop() {
 
 }
  80a09b8:	e8bd 4008 	ldmia.w	sp!, {r3, lr}
-  }
 
+//-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 void loop() {
 
   updateTimer.Update();
@@ -16362,11 +16362,11 @@ SPIClass SPI1(HAL_SPI_INTERFACE2);
  80a57a8:	6174 7472 6465 4300 6c61 6269 6172 6974     tarted.Calibrati
  80a57b8:	6e6f 6620 6e69 7369 6568 0064 6553 7574     on finished.Setu
  80a57c8:	0070 5148 6f52 7475 7265 505f 4255 494c     p.HQRouter_PUBLI
- 80a57d8:	4853 5400 746f 6c61 6d20 766f 6d65 6e65     SH.Total movemen
- 80a57e8:	3a74 0020 7053 6565 2064 696c 696d 2074     t: .Speed limit 
- 80a57f8:	203a 5300 4954 4c4c 4d00 564f 0045 6c66     : .STILL.MOVE.fl
- 80a5808:	7875 2058 203a 6600 756c 5978 3a20 0020     uxX : .fluxY : .
- 80a5818:	6c66 7875 205a 203a 5400 4f52 4255 454c     fluxZ : .TROUBLE
+ 80a57d8:	4853 6600 756c 5878 3a20 0020 6c66 7875     SH.fluxX : .flux
+ 80a57e8:	2059 203a 6600 756c 5a78 3a20 0020 6f54     Y : .fluxZ : .To
+ 80a57f8:	6174 206c 6f6d 6576 656d 746e 203a 5300     tal movement: .S
+ 80a5808:	6570 6465 6c20 6d69 7469 3a20 0020 5453     peed limit : .ST
+ 80a5818:	4c49 004c 4f4d 4556 5400 4f52 4255 454c     ILL.MOVE.TROUBLE
  80a5828:	4320 554f 544e 3a20 203a 6300 7568 6b6e      COUNT :: .chunk
  80a5838:	3a20 203a 5600 4c41 3a3a 0020 3a20 203a      :: .VAL:: . :: 
  80a5848:	0020 494c 5453 4e45 4e49 2d47 2d2d 2d2d      .LISTENING-----
