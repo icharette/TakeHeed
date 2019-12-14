@@ -5,9 +5,14 @@
  * Date: Fall 2019
  * 
  * Sources:
- * Examples from following included libraries
- * https://github.com/sparkfun/SparkFun_LSM9DS1_Particle_Library
- * // http://www.ngdc.noaa.gov/geomag-web/#declination
+ * 
+ * https://github.com/sparkfun/SparkFun_LSM9DS1_Particle_Library //IMU SENSOR
+ * https://github.com/msalaciak/senseNet/blob/master/REV1%20code.ino //WIFI SETUP + PARTICLE COMMUNICATION
+ * http://www.ngdc.noaa.gov/geomag-web/#declination // CALCULATION OF RIGHT DECLINATION VALUE
+ * https://arduino.stackexchange.com/questions/23174/how-to-get-neopixel-to-fade-colorwipe/23179 // LED STRIP
+ * http://cache.freescale.com/files/sensors/doc/app_note/AN4248.pdf // IMU SENSOR FOR COMPASS FUNCTION
+ * https://learn.adafruit.com/adafruit-tb6612-h-bridge-dc-stepper-motor-driver-breakout/using-stepper-motors // nema8 stepper motors
+ * Also from examples from following included libraries
  */
 
 #include <Particle.h>
@@ -44,7 +49,6 @@ int directionRight = A3;
 
 //arrays to help set up the pins
 int rightShoulderMotors[3];
-int leftShoulderMotors[3];
 
 //variables that set the stepping of the motors
 int pace = 500;
@@ -63,6 +67,7 @@ Adafruit_NeoPixel strip(PIXEL_COUNT, PIXEL_PIN);
 uint32_t  colorArrSaved[PIXEL_COUNT];
 bool pixels[PIXEL_COUNT];
 int pixelPointer;
+
 void setupMotor(int motorPinsArray[], int enable, int step, int direction){
   pinMode(enable, OUTPUT); //Enable
   pinMode(step, OUTPUT); //Step
@@ -95,6 +100,7 @@ boolean calibrated = false;
 #define LSM9DS1_M	0x1E // Would be 0x1C if SDO_M is LOW
 #define LSM9DS1_AG	0x6B // Would be 0x6A if SDO_AG is LOW
 
+//COMPASS SOURCE COMPASS: //SOURCE : http://cache.freescale.com/files/sensors/doc/app_note/AN4248.pdf
 #define PRINT_CALCULATED
 //#define PRINT_RAW
 #define PRINT_SPEED 250 // 250 ms between prints
@@ -186,7 +192,6 @@ void calibrateSensor(){
    //new driver motor motorTesting
 #include "Stepper.h"
  
-// change this to the number of steps on your motor
 #define STEPS 300
  
 Stepper stepper(STEPS, A1, A2, A3, A4);
@@ -234,21 +239,7 @@ void loop() {
 
 }
 
-//-----------------------//-----------------------//-----------------------//-----------------------NEOPIXEL
-
-
-// Set all pixels in the strip to a solid color, then wait (ms)
-void colorAll(uint32_t c, uint8_t wait) {
-  uint16_t i;
-
-  for(i=0; i<strip.numPixels(); i++) {
-    strip.setPixelColor(i, c);
-  }
-  strip.show();
-  delay(wait);
-}
-
-//-----------------------//-----------------------//-----------------------//-----------------------NEOPIXEL
+//-----------------------//-----------------------//-----------------------//-----------------------COMMUNICATION
 
 
 void OnTimer(void) {  //Handler for the timer, will be called automatically
@@ -328,6 +319,11 @@ void checkMatch(bool alge){
   }
     Serial.println(match);
 }
+
+//-----------------------//-----------------------//-----------------------//-----------------------COMMUNICATION
+
+
+//-----------------------//-----------------------//-----------------------//-----------------------IMU
 void getMouvement(){
 
     if ( imu.accelAvailable() )
@@ -354,8 +350,7 @@ void printMvmt(){
 
 //-----------------------//-----------------------//-----------------------//-----------------------NEOPIXELS
 
-// Input a value 0 to 255 to get a color value.
-// The colours are a transition r - g - b - back to r.
+//FROM EXAMPLES IN NEOPIXEL LIBRARY
 uint32_t Wheel(byte WheelPos) {
   WheelPos = 255 - WheelPos;
   if(WheelPos < 85) {
@@ -379,6 +374,7 @@ uint8_t blue(uint32_t c) {
   return (c);
 }
 
+//FROM EXAMPLES IN NEOPIXEL LIBRARY + MODIFICATIONS
 void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops) {
   bool toggle = true;
   float fadeMax = 100.0;
@@ -526,12 +522,10 @@ int randomNumList[chunk];
 
 if(troubleCount==3){
   delay(5000);
-  troubleCount = 0;
-  
+  troubleCount = 0; 
 }
 
     if(checkSpeed()){
-
       stepper.setSpeed(50);
         stepper.step(STEPS);
 

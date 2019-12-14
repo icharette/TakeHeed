@@ -19,23 +19,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   7 .module_info_crc 00000004  080a5cd0  080a5cd0  00035cd0  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  8 .debug_info   000ca57b  00000000  00000000  00035cd4  2**0
+  8 .debug_info   000ca4b7  00000000  00000000  00035cd4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_abbrev 00012ab6  00000000  00000000  0010024f  2**0
+  9 .debug_abbrev 00012a97  00000000  00000000  0010018b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00018ff9  00000000  00000000  00112d05  2**0
+ 10 .debug_loc    00018f4b  00000000  00000000  00112c22  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_aranges 00002460  00000000  00000000  0012bcfe  2**0
+ 11 .debug_aranges 00002458  00000000  00000000  0012bb6d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000038b0  00000000  00000000  0012e15e  2**0
+ 12 .debug_ranges 000038a8  00000000  00000000  0012dfc5  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_macro  0002a0f6  00000000  00000000  00131a0e  2**0
+ 13 .debug_macro  0002a0f6  00000000  00000000  0013186d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_line   0002c66a  00000000  00000000  0015bb04  2**0
+ 14 .debug_line   0002c645  00000000  00000000  0015b963  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_str    000aaa4b  00000000  00000000  0018816e  2**0
+ 15 .debug_str    000aaa21  00000000  00000000  00187fa8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_frame  0000c76c  00000000  00000000  00232bbc  2**2
+ 16 .debug_frame  0000c744  00000000  00000000  002329cc  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -917,11 +917,11 @@ checkMatch(false);
  80a048c:	080a5801 	.word	0x080a5801
 
 080a0490 <_Z12getMouvementv>:
-  }else{
-    match = false;
-  }
-    Serial.println(match);
-}
+
+//-----------------------//-----------------------//-----------------------//-----------------------COMMUNICATION
+
+
+//-----------------------//-----------------------//-----------------------//-----------------------IMU
 void getMouvement(){
  80a0490:	b538      	push	{r3, r4, r5, lr}
 
@@ -1009,10 +1009,10 @@ void getMouvement(){
  80a053c:	200001bc 	.word	0x200001bc
 
 080a0540 <_Z5Wheelh>:
+
 //-----------------------//-----------------------//-----------------------//-----------------------NEOPIXELS
 
-// Input a value 0 to 255 to get a color value.
-// The colours are a transition r - g - b - back to r.
+//FROM EXAMPLES IN NEOPIXEL LIBRARY
 uint32_t Wheel(byte WheelPos) {
   WheelPos = 255 - WheelPos;
  80a0540:	43c0      	mvns	r0, r0
@@ -1457,17 +1457,15 @@ if(troubleCount==3){
   delay(5000);
  80a0736:	f241 3088 	movw	r0, #5000	; 0x1388
  80a073a:	f002 fd33 	bl	80a31a4 <delay>
-  troubleCount = 0;
+  troubleCount = 0; 
  80a073e:	4b21      	ldr	r3, [pc, #132]	; (80a07c4 <_Z7troublev+0x22c>)
  80a0740:	2200      	movs	r2, #0
  80a0742:	601a      	str	r2, [r3, #0]
-  
 }
 
     if(checkSpeed()){
  80a0744:	f7ff fe1c 	bl	80a0380 <_Z10checkSpeedv>
  80a0748:	b3a0      	cbz	r0, 80a07b4 <_Z7troublev+0x21c>
-
       stepper.setSpeed(50);
  80a074a:	2132      	movs	r1, #50	; 0x32
  80a074c:	481f      	ldr	r0, [pc, #124]	; (80a07cc <_Z7troublev+0x234>)
@@ -1502,7 +1500,7 @@ if(troubleCount==3){
 strip.show();
  80a0790:	480d      	ldr	r0, [pc, #52]	; (80a07c8 <_Z7troublev+0x230>)
  80a0792:	f000 ff0d 	bl	80a15b0 <_ZN17Adafruit_NeoPixel4showEv>
-
+    if(checkSpeed()){
       stepper.setSpeed(50);
         stepper.step(STEPS);
 
@@ -1530,8 +1528,8 @@ strip.show();
  80a07a4:	f10a 0a01 	add.w	sl, sl, #1
               strip.show();
  80a07a8:	f000 ff02 	bl	80a15b0 <_ZN17Adafruit_NeoPixel4showEv>
-    if(checkSpeed()){
 
+    if(checkSpeed()){
       stepper.setSpeed(50);
         stepper.step(STEPS);
 
@@ -1589,7 +1587,7 @@ strip.show();
 080a07e8 <_Z7OnTimerv>:
 }
 
-//-----------------------//-----------------------//-----------------------//-----------------------NEOPIXEL
+//-----------------------//-----------------------//-----------------------//-----------------------COMMUNICATION
 
 
 void OnTimer(void) {  //Handler for the timer, will be called automatically
@@ -1680,7 +1678,7 @@ void OnTimer(void) {  //Handler for the timer, will be called automatically
  80a0872:	b908      	cbnz	r0, 80a0878 <_Z7OnTimerv+0x90>
           trouble();
  80a0874:	f7ff fe90 	bl	80a0598 <_Z7troublev>
-//-----------------------//-----------------------//-----------------------//-----------------------NEOPIXEL
+//-----------------------//-----------------------//-----------------------//-----------------------COMMUNICATION
 
 
 void OnTimer(void) {  //Handler for the timer, will be called automatically
@@ -1708,11 +1706,11 @@ void OnTimer(void) {  //Handler for the timer, will be called automatically
  80a08a4:	080a5892 	.word	0x080a5892
 
 080a08a8 <_Z11healthyWavehii>:
-}
 uint8_t blue(uint32_t c) {
   return (c);
 }
 
+//FROM EXAMPLES IN NEOPIXEL LIBRARY + MODIFICATIONS
 void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops) {
  80a08a8:	e92d 47f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
   float fadeMax = 100.0;
@@ -1722,11 +1720,11 @@ void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops) {
 
   for(int k = 0 ; k < rainbowLoops ; k ++) {
  80a08ac:	2500      	movs	r5, #0
-}
 uint8_t blue(uint32_t c) {
   return (c);
 }
 
+//FROM EXAMPLES IN NEOPIXEL LIBRARY + MODIFICATIONS
 void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops) {
  80a08ae:	4681      	mov	r9, r0
  80a08b0:	4688      	mov	r8, r1
@@ -2072,9 +2070,9 @@ SparkCorePolledTimer updateTimer(500);  //Create a timer object and set it's tim
  80a0a32:	f44f 71fa 	mov.w	r1, #500	; 0x1f4
  80a0a36:	4811      	ldr	r0, [pc, #68]	; (80a0a7c <_GLOBAL__sub_I_SystemMode+0xb0>)
  80a0a38:	f000 f82a 	bl	80a0a90 <_ZN20SparkCorePolledTimerC1Em>
+   //new driver motor motorTesting
 #include "Stepper.h"
  
-// change this to the number of steps on your motor
 #define STEPS 300
  
 Stepper stepper(STEPS, A1, A2, A3, A4);
