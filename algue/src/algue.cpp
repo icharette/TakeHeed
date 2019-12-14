@@ -4,11 +4,22 @@
 
 #line 1 "/Users/ninjacat/Documents/Particle/TakeHeed/algue/src/algue.ino"
 /*
- * Project: Take Heed
- * Description: communication of Algue movement
- * Author: Isabelle Charette
+ * Project Corals
+ * Description: IMU sensor data from alge program sending to corals
+ * Author: Isabelle Charette & Nina Parenteau
  * Date: Fall 2019
+ * 
+ * Sources:
+ * 
+ * https://github.com/sparkfun/SparkFun_LSM9DS1_Particle_Library //IMU SENSOR
+ * https://github.com/msalaciak/senseNet/blob/master/REV1%20code.ino //WIFI SETUP + PARTICLE COMMUNICATION
+ * http://www.ngdc.noaa.gov/geomag-web/#declination // CALCULATION OF RIGHT DECLINATION VALUE
+ * https://arduino.stackexchange.com/questions/23174/how-to-get-neopixel-to-fade-colorwipe/23179 // LED STRIP
+ * http://cache.freescale.com/files/sensors/doc/app_note/AN4248.pdf // IMU SENSOR FOR COMPASS FUNCTION
+ * https://learn.adafruit.com/adafruit-tb6612-h-bridge-dc-stepper-motor-driver-breakout/using-stepper-motors // nema8 stepper motors
+ * Also from examples from following included libraries
  */
+
 
 #include <Particle.h>
 #include "SparkFunLSM9DS1.h"
@@ -26,7 +37,7 @@ void send();
 boolean checkSpeed();
 void getMouvement();
 void printMvmt();
-#line 16 "/Users/ninjacat/Documents/Particle/TakeHeed/algue/src/algue.ino"
+#line 27 "/Users/ninjacat/Documents/Particle/TakeHeed/algue/src/algue.ino"
 SYSTEM_THREAD(ENABLED);
 SYSTEM_MODE(SEMI_AUTOMATIC);
 
@@ -34,18 +45,6 @@ unsigned int localPort = 8888;
 IPAddress ipAddress;
 int port;
 UDP udp;
-
-/////---------------------------------------------------------------- IMU
-
-
-/***************************************************************** SOURCES
-LSM9DS1_Basic_I2C.ino
-SFE_LSM9DS1 Library Simple Example Code - I2C Interface
-Jim Lindblom @ SparkFun Electronics
-Original Creation Date: April 30, 2015
-https://github.com/sparkfun/SparkFun_LSM9DS1_Particle_Library
-
-*****************************************************************/
 
 LSM9DS1 imu;
 
@@ -101,9 +100,7 @@ void setupImu(){
   imu.settings.device.agAddress = LSM9DS1_AG;
   lossThreshold = 5;
   gainThreshold = 1;
-  // The above lines will only take effect AFTER calling
-  // imu.begin(), which verifies communication with the IMU
-  // and turns it on.
+ 
   if (!imu.begin())
   {
     digitalWrite(D7, HIGH);
@@ -144,24 +141,15 @@ void calibrateSensor(){
   refY = refY / count;
   refZ = refZ / count; 
   Serial.println("done");
-//  Serial.print("ref X: ");
-//  Serial.print(refX);
-//  Serial.print(" refY: ");
-//  Serial.print(refY);
-//  Serial.print(" refZ: ");
-//  Serial.print(refZ);
-//  Serial.println(" ");
 }
 
 /////---------------------------------------------------------------- IMU
 
 
-// setup() runs once, when the device is first turned on.
 void setup() {
   pinMode(D7, OUTPUT);
   digitalWrite(D7, LOW);
-  //waiting for serial to correctly initialze and allocate memory
-  //serial object
+
   while(!Serial);
   WiFi.connect();
 
@@ -194,8 +182,6 @@ void send(){
   IPAddress ipAddress(192,168,0,100);
   unsigned int localPort = 8888;
 
-///from 
-
   int speedInt = 0;
   if(checkSpeed()){
     speedInt = 1;
@@ -215,8 +201,7 @@ message = "still";
   Serial.println(speedInt);
 }
 
-void OnTimer(void) {  //Handler for the timer, will be called automatically
-//  send();
+void OnTimer(void) {  
    fluxX = 0;
      fluxY = 0;
      fluxZ = 0;
@@ -236,53 +221,17 @@ boolean checkSpeed(){
   }
 }
 void getMouvement(){
-//    reset values
-    dX = 0;
-    dY = 0;
-    dZ = 0;
-    avMvmt = 0;
-
-
     for (int i = 0; i < 100; i++){
     if ( imu.accelAvailable() )
     {
       imu.readAccel();
-      // digitalWrite(D7, LOW);
-    }else{
-      // digitalWrite(D7, HIGH);
     }
-    // dX=imu.calcAccel(imu.ax);
-    // dY=imu.calcAccel(imu.ay);
-    // dZ=imu.calcAccel(imu.az);
-
     fluxX += abs(imu.calcAccel(imu.ax) - refX);
     fluxY += abs(imu.calcAccel(imu.ay) - refY);
     fluxZ += abs(imu.calcAccel(imu.az) - refZ);
     }
-
-
-    // if (avMvmt < gainThreshold && pixelPointer <= NUM_LED){
-    //  if (avMvmt < gainThreshold){
-    // //   pixels[pixelPointer] = 1;
-    //   pixelPointer++;
-    // }
-    // if (avMvmt > lossThreshold && pixelPointer >= 0){
-    // //   pixels[pixelPointer] = 0;
-    //   pixelPointer--;
-    // }
-    
 }
 void printMvmt(){
-    // Serial.print("x: ");
-    // Serial.print(dX);
-    // Serial.print( " Y:");
-    // Serial.print(dY);
-    // Serial.print(" Z:");
-    // Serial.print(dZ);
-    // Serial.print(" av: ");
-    // Serial.print(avMvmt);
-    // Serial.println(" ");
-
         Serial.print("fluxX : ");
     Serial.println(fluxX);
     Serial.print("fluxY : ");
