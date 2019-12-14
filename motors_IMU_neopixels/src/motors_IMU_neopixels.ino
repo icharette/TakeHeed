@@ -1,5 +1,5 @@
 /*
- * Project motors
+ * Project Corals
  * Description: IMU sensor data from alge program + IMU from this program determine nema8 and LED activity
  * Author: Isabelle Charette & Nina Parenteau
  * Date: Fall 2019

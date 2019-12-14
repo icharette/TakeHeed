@@ -4,7 +4,7 @@
 
 #line 1 "/Users/ninjacat/Documents/Particle/TakeHeed/motors_IMU_neopixels/src/motors_IMU_neopixels.ino"
 /*
- * Project motors
+ * Project Corals
  * Description: IMU sensor data from alge program + IMU from this program determine nema8 and LED activity
  * Author: Isabelle Charette & Nina Parenteau
  * Date: Fall 2019
@@ -16,6 +16,7 @@
  * http://www.ngdc.noaa.gov/geomag-web/#declination // CALCULATION OF RIGHT DECLINATION VALUE
  * https://arduino.stackexchange.com/questions/23174/how-to-get-neopixel-to-fade-colorwipe/23179 // LED STRIP
  * http://cache.freescale.com/files/sensors/doc/app_note/AN4248.pdf // IMU SENSOR FOR COMPASS FUNCTION
+ * https://learn.adafruit.com/adafruit-tb6612-h-bridge-dc-stepper-motor-driver-breakout/using-stepper-motors // nema8 stepper motors
  * Also from examples from following included libraries
  */
 
@@ -41,7 +42,7 @@ void getMouvement();
 void printMvmt();
 void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops);
 void trouble();
-#line 26 "/Users/ninjacat/Documents/Particle/TakeHeed/motors_IMU_neopixels/src/motors_IMU_neopixels.ino"
+#line 27 "/Users/ninjacat/Documents/Particle/TakeHeed/motors_IMU_neopixels/src/motors_IMU_neopixels.ino"
 SYSTEM_THREAD(ENABLED);
 SYSTEM_MODE(SEMI_AUTOMATIC);
 
