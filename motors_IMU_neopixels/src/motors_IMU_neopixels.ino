@@ -1,8 +1,8 @@
 /*
- * Project Corals
- * Description: IMU sensor data from alge program + IMU from this program determine nema8 and LED activity
+ * Project Take Heed _ Iteration 2
+ * Description: ...
  * Author: Isabelle Charette & Nina Parenteau
- * Date: Fall 2019
+ * Date: Winter 2020
  * 
  * Sources:
  * 
