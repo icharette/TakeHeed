@@ -262,29 +262,42 @@ void setup() {
 //-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 void loop() {
 //STEPPER motors
+//pin setup:
+//Stepper stepper(STEPS, A1, A2, A3, A4);
 /*
 stepper.setSpeed(50);
 digitalWrite(D7, HIGH);
+Serial.println("LED ON");
 stepper.step(-STEPS);
-stepper.setSpeed(44               ;
+stepper.setSpeed(44); 
+digitalWrite(D7, LOW);  
+Serial.println("LED OFF");            ;
 stepper.step(STEPS);
-digitalWrite(D7, LOW);
 */
 
 //LED STRIP
-/*examples from neopixels library
+//examples from neopixels library
+// PIXEL_PIN D2
+// PIXEL_COUNT 20; can change at line 61
+// /*
 strip.Color(255,255,255);
+Serial.println("Red"); 
 colorWipe(strip.Color(255, 0, 0), 50); // Red
+Serial.println("Green"); 
 colorWipe(strip.Color(0, 255, 0), 50); // Green
+Serial.println("Blue"); 
 colorWipe(strip.Color(0, 0, 255), 50); // Blue
-*/
+// */
 
 //IMU
 /*
-***set onlyMotor boolean to false *** -->set back to TRUE when this is commented out.
+***-->IMPORTANT: set onlyMotor boolean to false when uncommenting following functions
+*** -->set back to TRUE when this is commented out. not needed.
 **other wise you get a wierd error, the board flashes red and even if you flash the right
 ***code afterwards, it still flashes red and won't work sometimes. If this happens, audit the environment, clean it and reset the particle into DFU mode (flashing yellow, then try flashing again)
 *DFU mode: hold told *reset* and *setup*, only release *reset* and keep holding down *setup* until the led cycles to yellow light
+*if D7 LED on particle board lights up; problem with IMU sensor connection
+
 getMouvement();
 printMvmt();
 */
