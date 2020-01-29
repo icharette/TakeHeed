@@ -199,6 +199,7 @@ void calibrateSensor(){
  
 Stepper stepper(STEPS, A1, A2, A3, A4);
 
+bool onlyMotor = true;
 
 void setup() {
   pinMode(D7, OUTPUT);
@@ -224,15 +225,15 @@ void setup() {
     iVy = 0;
     iVz = 0;
 
-    setupImu();
+    if(!onlyMotor)setupImu();
     
   
-  updateTimer.SetCallback(OnTimer);
+  if(!onlyMotor)updateTimer.SetCallback(OnTimer);
 
   strip.setBrightness(BRIGHTNESS);
   strip.begin();
   strip.show();
-    stepper.setSpeed(20);
+  stepper.setSpeed(20);
   }
 
 /////---------------------------------------------------------------- SETUP
@@ -241,10 +242,39 @@ void setup() {
 
 //-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 void loop() {
+//STEPPER motors
+/*
+stepper.setSpeed(50);
+digitalWrite(D7, HIGH);
+stepper.step(-STEPS);
+stepper.setSpeed(44               ;
+stepper.step(STEPS);
+digitalWrite(D7, LOW);
+*/
 
-  updateTimer.Update();
-  healthyWave(10,10,1);
+//LED STRIP
+/*examples from neopixels library
+strip.Color(255,255,255);
+colorWipe(strip.Color(255, 0, 0), 50); // Red
+colorWipe(strip.Color(0, 255, 0), 50); // Green
+colorWipe(strip.Color(0, 0, 255), 50); // Blue
+*/
 
+//IMU
+/*
+***set onlyMotor boolean to false *** -->set back to TRUE when this is commented out.
+**other wise you get a wierd error, the board flashes red and even if you flash the right
+***code afterwards, it still flashes red and won't work sometimes. If this happens, audit the environment, clean it and reset the particle into DFU mode (flashing yellow, then try flashing again)
+*DFU mode: hold told *reset* and *setup*, only release *reset* and keep holding down *setup* until the led cycles to yellow light
+getMouvement();
+printMvmt();
+*/
+
+//coral activity 
+/*
+updateTimer.Update();
+healthyWave(10,10,1);
+*/
 }
 
 //-----------------------//-----------------------//-----------------------//-----------------------LOOPING
@@ -594,5 +624,14 @@ strip.show();
 //   if(complete){
 // healthyWave(10,10,1);
 //   }
+}
+
+
+void colorWipe(uint32_t c, uint8_t wait) {
+  for(uint16_t i=0; i<strip.numPixels(); i++) {
+    strip.setPixelColor(i, c);
+    strip.show();
+    delay(wait);
+  }
 }
 //-----------------------//-----------------------//-----------------------//-----------------------NEOPIXELS
