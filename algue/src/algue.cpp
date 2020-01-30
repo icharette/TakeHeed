@@ -149,9 +149,9 @@ void setup() {
   //wifi function
   while(!WiFi.ready());
   Serial.println("Setup");
-  udp.begin(7000);
+  udp.begin(8888);
   //udp.begin(localPort);
-  WiFi.setHostname("HQRouter_PUBLISH");
+  WiFi.setHostname("Photon_ALE");
   Serial.println(WiFi.hostname());
   Serial.println(WiFi.localIP());
    Serial.begin(9600);
@@ -159,41 +159,42 @@ void setup() {
     iVy = 0;
     iVz = 0;
 
- // setupImu();
- // updateTimer.SetCallback(OnTimer);
+ setupImu();
+ updateTimer.SetCallback(OnTimer);
   }
 
 
 void loop() {
 
-//getMouvement();
+getMouvement();
 
-//updateTimer.Update();
+updateTimer.Update();
 send();
 }
 
 void send(){
    //my computer IP address: 132.205.229.249
-   //172.31.120.192.
-  IPAddress ipAddress(172,31,120,192);
-  //IPAddress ipAddress(192,168,0,100);
+ //	192.168.0.101
+  //IPAddress ipAddress(172,31,13,183);
+  IPAddress ipAddress(192,168,0,102);
   unsigned int localPort = 8888;
  unsigned int outPort = 7000;
   int speedInt = 0;
-//   if(checkSpeed()){
-//     speedInt = 1;
-//   }else{
-//     speedInt = 0;
-//   }
-//   String message = "";
-// if(speedInt){
-// message = "still";
-// }else{
-//   message = "/move";
-// }
-String message = "testing";
+  if(checkSpeed()){
+    speedInt = 1;
+  }else{
+    speedInt = 0;
+  }
+  String message = "";
+if(speedInt){
+message = "still";
+}else{
+  message = "/move";
+}
+// String message = "testing";
     OSCMessage outMessage(message);
-  outMessage.send(udp, ipAddress, outPort);
+
+  outMessage.send(udp, ipAddress, localPort);
 
 //  udp.stop();
  

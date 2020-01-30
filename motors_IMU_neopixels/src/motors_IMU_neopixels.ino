@@ -58,7 +58,7 @@ int stepperIndexCap = 2000;
 //------NEOPIXEL
 // IMPORTANT: Set pixel COUNT, PIN and TYPE
 #define PIXEL_PIN D2
-#define PIXEL_COUNT 20
+#define PIXEL_COUNT 200
 #define PIXEL_TYPE SK6812RGBW
 
 #define BRIGHTNESS 50 // 0 - 255
@@ -244,9 +244,9 @@ void setup() {
 void loop() {
 
 testCase(0);
-testCase(1);
+// testCase(1);
 //-->IMPORTANT: only set boolean onlyMotor to true when using next testcase
-//testCase(2);
+// testCase(2);
 }
 
 //-----------------------//-----------------------//-----------------------//-----------------------LOOPING
