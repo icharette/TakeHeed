@@ -233,7 +233,7 @@ void setup() {
   strip.setBrightness(BRIGHTNESS);
   strip.begin();
   strip.show();
-  stepper.setSpeed(20);
+  // stepper.setSpeed(20);
   }
 
 /////---------------------------------------------------------------- SETUP
@@ -259,22 +259,28 @@ void testCase(int component){
     //PIN SETUP: Stepper stepper(STEPS, A1, A2, A3, A4);
 
     stepper.setSpeed(50);
-    digitalWrite(D7, HIGH);
-    Serial.println("LED ON");
-    stepper.step(-STEPS);
-    stepper.setSpeed(50); 
-    digitalWrite(D7, LOW);  
-    Serial.println("LED OFF");            ;
-    stepper.step(STEPS);
+    // digitalWrite(D7, HIGH);
+    // Serial.println("LED ON");
+    stepper.step(1000);
+        stepper.step(1000);
+            stepper.step(1000);
+    delay(1000);
+       stepper.step(-1000);
+        stepper.step(-1000);
+            stepper.step(-1000);
+    // stepper.setSpeed(50); 
+    // digitalWrite(D7, LOW);  
+    // Serial.println("LED OFF");            ;
+    // stepper.step(STEPS);
 
-    stepper.setSpeed(80);
-    digitalWrite(D7, HIGH);
-    Serial.println("LED ON");
-    stepper.step(-STEPS);
-    stepper.setSpeed(80); 
-    digitalWrite(D7, LOW);  
-    Serial.println("LED OFF");            ;
-    stepper.step(STEPS);
+    // stepper.setSpeed(80);
+    // digitalWrite(D7, HIGH);
+    // Serial.println("LED ON");
+    // stepper.step(-STEPS);
+    // stepper.setSpeed(80); 
+    // digitalWrite(D7, LOW);  
+    // Serial.println("LED OFF");            ;
+    // stepper.step(STEPS);
     break;
 
     case 1:
