@@ -199,7 +199,7 @@ void calibrateSensor(){
  
 Stepper stepper(STEPS, A1, A2, A3, A4);
 
-bool onlyMotor = false;
+bool onlyMotor = true;
 
 void setup() {
   pinMode(D7, OUTPUT);
@@ -243,24 +243,35 @@ void setup() {
 //-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 void loop() {
 
-testCase(0);
-// testCase(1);
-//-->IMPORTANT: only set boolean onlyMotor to true when using next testcase
-// testCase(2);
+testCase(0); //motors
+// testCase(1); //leds
+//-->IMPORTANT: only set boolean onlyMotor to false when using next testcase
+// testCase(2); //IMU
 }
 
 //-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 
 void testCase(int component){
+
   switch(component){
     case 0:
     //STEPPER motors--------------------------------------------------------------------------------------------------------------------------------------
     //PIN SETUP: Stepper stepper(STEPS, A1, A2, A3, A4);
+
     stepper.setSpeed(50);
     digitalWrite(D7, HIGH);
     Serial.println("LED ON");
     stepper.step(-STEPS);
-    stepper.setSpeed(44); 
+    stepper.setSpeed(50); 
+    digitalWrite(D7, LOW);  
+    Serial.println("LED OFF");            ;
+    stepper.step(STEPS);
+
+    stepper.setSpeed(80);
+    digitalWrite(D7, HIGH);
+    Serial.println("LED ON");
+    stepper.step(-STEPS);
+    stepper.setSpeed(80); 
     digitalWrite(D7, LOW);  
     Serial.println("LED OFF");            ;
     stepper.step(STEPS);
