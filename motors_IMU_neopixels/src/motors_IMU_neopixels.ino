@@ -58,7 +58,7 @@ int stepperIndexCap = 2000;
 //------NEOPIXEL
 // IMPORTANT: Set pixel COUNT, PIN and TYPE
 #define PIXEL_PIN D2
-#define PIXEL_COUNT 200
+#define PIXEL_COUNT 24
 #define PIXEL_TYPE SK6812RGBW
 
 #define BRIGHTNESS 50 // 0 - 255
@@ -242,9 +242,11 @@ void setup() {
 
 //-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 void loop() {
-
-testCase(0); //motors
+// healthyWave(10,3,3);
+// testCase(0); //motors
 // testCase(1); //leds
+theaterChase(strip.Color(255,0,0),1000);
+theaterChase(strip.Color(255,0,255),100);
 //-->IMPORTANT: only set boolean onlyMotor to false when using next testcase
 // testCase(2); //IMU
 }
@@ -288,13 +290,13 @@ void testCase(int component){
     //examples from neopixels library
     // PIN SETUP: PIXEL_PIN D2
     // PIXEL_COUNT 20; can change at line 61
-    strip.Color(255,255,255);
+    // strip.Color(255,255,255);
     Serial.println("Red"); 
-    colorWipe(strip.Color(255, 0, 0), 50); // Red
+    colorWipe(50); // Red
     Serial.println("Green"); 
-    colorWipe(strip.Color(0, 255, 0), 50); // Green
+    // colorWipe(strip.Color(0, 255, 0), 50); // Green
     Serial.println("Blue"); 
-    colorWipe(strip.Color(0, 0, 255), 50); // Blue
+    // colorWipe(strip.Color(0, 0, 255), 50); // Blue
     break;
 
     case 2:
@@ -473,19 +475,19 @@ void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops) {
     //   toggle = true;
     // }
     
-    // getMouvement();
-  updateTimer.Update();
-     if(!match){
+  //   // getMouvement();
+  // updateTimer.Update();
+  //    if(!match){
        
-       for(int i = 0; i < strip.numPixels() ; i++){
-         colorArrSaved[i] = strip.getPixelColor(i);
-       }
-       trouble();
-     }
+  //      for(int i = 0; i < strip.numPixels() ; i++){
+  //        colorArrSaved[i] = strip.getPixelColor(i);
+  //      }
+  //      trouble();
+  //    }
     for(int j=0; j<256; j++) { // 5 cycles of all colors on wheel
-    getMouvement();
-          
-      for(int i=0; i< strip.numPixels(); i++) {
+    // getMouvement();
+          int val =  strip.numPixels()/2;
+      for(int i= strip.numPixels()/2; i>0; i--) {
  
          wheelVal = Wheel(((i * 256 / strip.numPixels()) + j) & 255);
 
@@ -494,7 +496,9 @@ void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops) {
         blueVal = blue(wheelVal) * float(fadeVal/fadeMax);
 
 
-        strip.setPixelColor( i, strip.Color( redVal, 255, 0 ) );
+        strip.setPixelColor( i, strip.Color( 0, greenVal, blueVal ) );
+        strip.setPixelColor( val, strip.Color( 0, greenVal, blueVal ) );
+        val++;
       }
 
       // First loop, fade in!
@@ -511,7 +515,7 @@ void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops) {
     }
   }
 
-  delay(500);
+  // delay(500);
 }
 
 //generates behavior state of coral in distress
@@ -667,12 +671,108 @@ strip.show();
 //   }
 }
 
+void theaterChase(uint32_t color, int wait)
+{
+  int j = strip.numPixels()/2;
+  int a = strip.numPixels()/2;
+    for (; a > 8; a--)
+    { // Repeat 10 times...
+        // for (int b = 0; b < 3; b++)
+        // {                  //  'b' counts from 0 to 2...
+            
+            strip.clear(); //   Set all pixels in RAM to 0 (off)
+            // 'c' counts up from 'b' to end of strip in steps of 3...
+            // for (int c = b; c < strip.numPixels(); c += 3)
+            // {
+               strip.setPixelColor(a-1, strip.Color(0,0,255)); // Set pixel 'c' to value 'color'
+                // strip.setPixelColor(j-1, strip.Color(0,0,255));
+                strip.setPixelColor(a-2, strip.Color(0,0,255));
+                // strip.setPixelColor(j-2, strip.Color(0,0,255));
 
-void colorWipe(uint32_t c, uint8_t wait) {
-  for(uint16_t i=0; i<strip.numPixels(); i++) {
-    strip.setPixelColor(i, c);
-    strip.show();
-    delay(wait);
+                strip.setPixelColor(a-3, color);
+                 strip.setPixelColor(a, strip.Color(0,0,255));
+                strip.setPixelColor(j, strip.Color(0,0,255));
+              
+                // strip.setPixelColor(a+1, strip.Color(0,0,255));
+                  strip.setPixelColor(j+1, strip.Color(0,0,255));
+                // strip.setPixelColor(a+2, strip.Color(0,0,255));
+                   strip.setPixelColor(j+2, strip.Color(0,0,255));
+                  strip.setPixelColor(j+3, color);
+
+                 // Set pixel 'c' to value 'color'
+         
+
+              
+             
+            // }
+            j++;
+            strip.show(); // Update strip with new contents
+            delay(wait);  // Pause for a moment
+        // }
+    }
+      
+    for (; a!=strip.numPixels()/2; a++)
+    { // Repeat 10 times...
+        // for (int b = 0; b < 3; b++)
+        // {                  //  'b' counts from 0 to 2...
+            
+            strip.clear(); //   Set all pixels in RAM to 0 (off)
+            // 'c' counts up from 'b' to end of strip in steps of 3...
+            // for (int c = b; c < strip.numPixels(); c += 3)
+            // {
+               strip.setPixelColor(a-1, strip.Color(0,0,255)); // Set pixel 'c' to value 'color'
+                // strip.setPixelColor(j-1, strip.Color(0,0,255));
+                strip.setPixelColor(a-2, color);
+                // strip.setPixelColor(j-2, strip.Color(0,0,255));
+
+                strip.setPixelColor(a-3, color);
+                 strip.setPixelColor(a, strip.Color(0,0,255));
+                strip.setPixelColor(j, strip.Color(0,0,255));
+              
+                // strip.setPixelColor(a+1, strip.Color(0,0,255));
+                  strip.setPixelColor(j+1, strip.Color(0,0,255));
+                // strip.setPixelColor(a+2, strip.Color(0,0,255));
+                   strip.setPixelColor(j+2, color);
+                  strip.setPixelColor(j+3, color);
+
+                 // Set pixel 'c' to value 'color'
+         
+
+              
+             
+            // }
+            j--;
+            strip.show(); // Update strip with new contents
+            delay(wait);  // Pause for a moment
+        // }
+    }
+
+}
+void colorWipe(uint8_t wait) {
+  uint32_t c;
+  uint8_t _wait = wait;
+  _wait-=10;
+  uint16_t j = strip.numPixels()/2;
+  int increment=0;
+  for(int round = 0; round < 3 ; round ++){
+j = strip.numPixels()/2;
+  
+    for(uint16_t i=strip.numPixels()/2; i>0; i--) {
+      if(round==0){
+        c =strip.Color(255, 0, 0);
+      }else if(round==1){
+        c =strip.Color(0, 255, 0);
+      }else if(round==2){
+        c = strip.Color(255, 0, 255);
+      }
+      strip.setPixelColor(i, c);
+      strip.show();
+      strip.setPixelColor(j, c);
+      strip.show();
+      j++;
+
+      delay(_wait);
+    }
   }
 }
 //-----------------------//-----------------------//-----------------------//-----------------------NEOPIXELS
