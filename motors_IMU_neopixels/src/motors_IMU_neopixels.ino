@@ -242,11 +242,12 @@ void setup() {
 
 //-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 void loop() {
-// healthyWave(10,3,3);
+// healthyWave(500,3,3);
+
 // testCase(0); //motors
 // testCase(1); //leds
 theaterChase(strip.Color(255,0,0),1000);
-theaterChase(strip.Color(255,0,255),100);
+// theaterChase(strip.Color(255,0,255),100);
 //-->IMPORTANT: only set boolean onlyMotor to false when using next testcase
 // testCase(2); //IMU
 }
@@ -487,18 +488,23 @@ void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops) {
     for(int j=0; j<256; j++) { // 5 cycles of all colors on wheel
     // getMouvement();
           int val =  strip.numPixels()/2;
-      for(int i= strip.numPixels()/2; i>0; i--) {
+          
+      for(int i= strip.numPixels()/2; i>7; i--) {
+        //for (; down > limit; down--)
  
          wheelVal = Wheel(((i * 256 / strip.numPixels()) + j) & 255);
 
         redVal = red(wheelVal) * float(fadeVal/fadeMax);
         greenVal = green(wheelVal) * float(fadeVal/fadeMax);
         blueVal = blue(wheelVal) * float(fadeVal/fadeMax);
+        strip.clear();
+        sectionSqueezeWave(7,i,val,strip.Color( 0, greenVal, blueVal ),strip.Color( redVal, 0, blueVal ));
 
-
-        strip.setPixelColor( i, strip.Color( 0, greenVal, blueVal ) );
-        strip.setPixelColor( val, strip.Color( 0, greenVal, blueVal ) );
+        // strip.setPixelColor( i, strip.Color( 0, greenVal, blueVal ) );
+        // strip.setPixelColor( val, strip.Color( 0, greenVal, blueVal ) );
         val++;
+         strip.show();
+      delay(wait);
       }
 
       // First loop, fade in!
@@ -510,8 +516,7 @@ void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops) {
         fadeVal--;
       }
 
-      strip.show();
-      delay(wait);
+     
     }
   }
 
@@ -670,81 +675,123 @@ strip.show();
 // healthyWave(10,10,1);
 //   }
 }
+void sectionSqueezeWave(int numLimit, int down, int up, uint32_t colorUP, uint32_t colorDOWN) {
 
+  int valUP;
+  int valDOWN;
+  int numHalfPixels=strip.numPixels()/2;
+   Serial.print("NUM_LIMIT--:");
+  Serial.println(numLimit);
+  for(int step = 0; step < numLimit ; step++){
+    valUP=up+step;
+    valDOWN=down-step;
+
+  uint32_t colorOFF = strip.Color(0,0,0);
+  Serial.print("UP--:");
+  Serial.println(valUP);
+  
+  Serial.print("DOWN--:");
+  Serial.println(valDOWN);
+    // if(valUP==numHalfPixels){
+    //   strip.setPixelColor(valUP, colorOFF); 
+    // }else if(valDOWN==numHalfPixels){
+    //   strip.setPixelColor(valDOWN, colorOFF); 
+    // }else{
+
+      strip.setPixelColor(valDOWN, colorDOWN); 
+      strip.setPixelColor(valUP, colorUP);
+    // }
+   
+  }
+}
+void sectionSqueeze(int numLimit, int down, int up) {
+
+  int valUP;
+  int valDOWN;
+  int numHalfPixels=strip.numPixels()/2;
+   Serial.print("NUM_LIMIT--:");
+  Serial.println(numLimit);
+   Serial.print("UP--:");
+  Serial.println(up);
+  
+  Serial.print("DOWN--:");
+  Serial.println(down);
+  for(int step = 0; step < numLimit ; step++){
+    valUP=up+step;
+    valDOWN=down-step;
+
+  uint32_t colorUP = strip.Color(0,0,255);
+  uint32_t colorDOWN = strip.Color(255,0,255);
+  uint32_t colorOFF = strip.Color(0,0,0);
+ 
+ 
+    if(valUP<=numHalfPixels){
+      strip.setPixelColor(valUP, colorOFF); 
+    }else if(valDOWN>=numHalfPixels){
+      strip.setPixelColor(valDOWN, colorOFF); 
+    }else{
+      strip.setPixelColor(valDOWN, colorDOWN); 
+      strip.setPixelColor(valUP, colorUP);
+    }
+   
+  }
+}
 void theaterChase(uint32_t color, int wait)
 {
-  int j = strip.numPixels()/2;
-  int a = strip.numPixels()/2;
-    for (; a > 8; a--)
-    { // Repeat 10 times...
-        // for (int b = 0; b < 3; b++)
-        // {                  //  'b' counts from 0 to 2...
-            
+  
+  int limit = 5;
+
+  int numHalfPixels=strip.numPixels()/2;
+  int numLimit = numHalfPixels-limit;
+
+  int up = limit;
+  int down = strip.numPixels()-limit;
+    for (; down > limit; down--)
+    {     
             strip.clear(); //   Set all pixels in RAM to 0 (off)
-            // 'c' counts up from 'b' to end of strip in steps of 3...
-            // for (int c = b; c < strip.numPixels(); c += 3)
-            // {
-               strip.setPixelColor(a-1, strip.Color(0,0,255)); // Set pixel 'c' to value 'color'
-                // strip.setPixelColor(j-1, strip.Color(0,0,255));
-                strip.setPixelColor(a-2, strip.Color(0,0,255));
-                // strip.setPixelColor(j-2, strip.Color(0,0,255));
+            sectionSqueeze(numLimit,down,up);
+            /*
+            strip.setPixelColor(down-1, strip.Color(0,0,255)); // Set pixel 'c' to value 'color'
+            strip.setPixelColor(down-2, strip.Color(0,0,255));
+            strip.setPixelColor(down-3, color);
+            strip.setPixelColor(down, strip.Color(0,0,255));
 
-                strip.setPixelColor(a-3, color);
-                 strip.setPixelColor(a, strip.Color(0,0,255));
-                strip.setPixelColor(j, strip.Color(0,0,255));
-              
-                // strip.setPixelColor(a+1, strip.Color(0,0,255));
-                  strip.setPixelColor(j+1, strip.Color(0,0,255));
-                // strip.setPixelColor(a+2, strip.Color(0,0,255));
-                   strip.setPixelColor(j+2, strip.Color(0,0,255));
-                  strip.setPixelColor(j+3, color);
+            strip.setPixelColor(up, strip.Color(0,0,255));
+            strip.setPixelColor(up+1, strip.Color(0,0,255));
+            strip.setPixelColor(up+2, strip.Color(0,0,255));
+            strip.setPixelColor(up+3, color);
+            */
 
-                 // Set pixel 'c' to value 'color'
-         
 
-              
-             
-            // }
-            j++;
+            up++;
             strip.show(); // Update strip with new contents
             delay(wait);  // Pause for a moment
         // }
     }
-      
-    for (; a!=strip.numPixels()/2; a++)
-    { // Repeat 10 times...
-        // for (int b = 0; b < 3; b++)
-        // {                  //  'b' counts from 0 to 2...
-            
+      Serial.println("END FIRST LOOP");
+      Serial.print("LIMIT--");
+      Serial.println(limit);
+        Serial.print("DOWN--");
+      Serial.println(down);
+    for (; down<numHalfPixels*2; down++)
+    { 
+      Serial.println("SECOND LOOP");
             strip.clear(); //   Set all pixels in RAM to 0 (off)
-            // 'c' counts up from 'b' to end of strip in steps of 3...
-            // for (int c = b; c < strip.numPixels(); c += 3)
-            // {
-               strip.setPixelColor(a-1, strip.Color(0,0,255)); // Set pixel 'c' to value 'color'
-                // strip.setPixelColor(j-1, strip.Color(0,0,255));
-                strip.setPixelColor(a-2, color);
-                // strip.setPixelColor(j-2, strip.Color(0,0,255));
+            sectionSqueeze(numLimit,down,up);
+            /*
+            strip.setPixelColor(a-1, strip.Color(0,0,255)); // Set pixel 'c' to value 'color'
+            strip.setPixelColor(a-2, color);
+            strip.setPixelColor(a-3, color);
+            strip.setPixelColor(a, strip.Color(0,0,255));
 
-                strip.setPixelColor(a-3, color);
-                 strip.setPixelColor(a, strip.Color(0,0,255));
-                strip.setPixelColor(j, strip.Color(0,0,255));
-              
-                // strip.setPixelColor(a+1, strip.Color(0,0,255));
-                  strip.setPixelColor(j+1, strip.Color(0,0,255));
-                // strip.setPixelColor(a+2, strip.Color(0,0,255));
-                   strip.setPixelColor(j+2, color);
-                  strip.setPixelColor(j+3, color);
-
-                 // Set pixel 'c' to value 'color'
-         
-
-              
-             
-            // }
-            j--;
+            strip.setPixelColor(j, strip.Color(0,0,255));
+            strip.setPixelColor(j+1, strip.Color(0,0,255));
+            strip.setPixelColor(j+2, color);
+            strip.setPixelColor(j+3, color);
+            */
+            up--;
             strip.show(); // Update strip with new contents
             delay(wait);  // Pause for a moment
-        // }
     }
 
 }
