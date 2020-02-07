@@ -740,23 +740,29 @@ void sectionSqueeze(int numLimit, int down, int up) {
   
   Serial.print("DOWN--:");
   Serial.println(down);
+  uint32_t colorBlue = strip.Color(0,0,255);
+  uint32_t colorPink = strip.Color(255,0,255);
+  uint32_t colorOFF = strip.Color(0,0,0);
+
+  uint32_t colorStep;
   for(int step = 0; step < numLimit ; step++){
     valUP=up+step;
     valDOWN=down-step;
 
-  uint32_t colorUP = strip.Color(0,0,255);
-  uint32_t colorDOWN = strip.Color(255,0,255);
-  uint32_t colorOFF = strip.Color(0,0,0);
+  if(step<numLimit/2){
+    colorStep=colorBlue;
+  }else{
+    colorStep=colorPink;
+  }
  
  
-    if(valUP<=numHalfPixels){
+    if(valUP<numHalfPixels){
       strip.setPixelColor(valUP, colorOFF); 
-    }else if(valDOWN>=numHalfPixels){
+    }else if(valDOWN>numHalfPixels){
       strip.setPixelColor(valDOWN, colorOFF); 
     }else{
-
-      strip.setPixelColor(valDOWN, colorDOWN); 
-      strip.setPixelColor(valUP, colorUP);
+      strip.setPixelColor(valDOWN, colorStep); 
+      strip.setPixelColor(valUP, colorStep);
     }
    
   }
