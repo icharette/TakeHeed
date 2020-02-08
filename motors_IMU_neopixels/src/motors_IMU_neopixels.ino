@@ -753,6 +753,13 @@ void theaterChase(uint32_t color, int wait)
   int stretch = numHalfPixels;
   int up = numHalfPixels-limit;
   int down = numHalfPixels+limit;
+
+  /*
+  calculations of wait:
+  sin(pulseCounter)*SCALE
+    pulseCounter += pulseSpeed;
+  */
+
     for (; down > stretch; down--)
     {     
             strip.clear(); //   Set all pixels in RAM to 0 (off)
