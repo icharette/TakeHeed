@@ -721,11 +721,11 @@ void sectionSqueeze(int numLimit, int down, int up) {
   uint32_t colorOFF = strip.Color(0,0,0);
 
   uint32_t colorStep;
-  for(int step = 0; step < numLimit ; step++){
+  for(int step = 0; step < numLimit; step++){
     valUP=up+step;
     valDOWN=down-step;
 
-  if(step<numLimit/2){
+  if(step>numLimit/3){
     colorStep=colorBlue;
   }else{
     colorStep=colorPink;
@@ -746,17 +746,17 @@ void sectionSqueeze(int numLimit, int down, int up) {
 void theaterChase(uint32_t color, int wait)
 {
   
-  int limit = 5;
+  int limit = 12;
 
   int numHalfPixels=strip.numPixels()/2;
   int numLimit = numHalfPixels-limit;
-
-  int up = limit;
-  int down = strip.numPixels()-limit;
-    for (; down > limit; down--)
+  int stretch = numHalfPixels;
+  int up = numHalfPixels-limit;
+  int down = numHalfPixels+limit;
+    for (; down > stretch; down--)
     {     
             strip.clear(); //   Set all pixels in RAM to 0 (off)
-            sectionSqueeze(numLimit,down,up);
+            sectionSqueeze(limit,down,up);
             /*
             strip.setPixelColor(down-1, strip.Color(0,0,255)); // Set pixel 'c' to value 'color'
             strip.setPixelColor(down-2, strip.Color(0,0,255));
@@ -772,9 +772,11 @@ void theaterChase(uint32_t color, int wait)
 
             up++;
             strip.show(); // Update strip with new contents
-            delay(wait);  // Pause for a moment
+            delay(wait*=0.8);  // Pause for a moment
         // }
     }
+
+    wait = 1000;
       Serial.println("END FIRST LOOP");
       Serial.print("LIMIT--");
       Serial.println(limit);
@@ -784,7 +786,7 @@ void theaterChase(uint32_t color, int wait)
     { 
       Serial.println("SECOND LOOP");
             strip.clear(); //   Set all pixels in RAM to 0 (off)
-            sectionSqueeze(numLimit,down,up);
+            sectionSqueeze(limit,down,up);
             /*
             strip.setPixelColor(a-1, strip.Color(0,0,255)); // Set pixel 'c' to value 'color'
             strip.setPixelColor(a-2, color);
@@ -798,7 +800,7 @@ void theaterChase(uint32_t color, int wait)
             */
             up--;
             strip.show(); // Update strip with new contents
-            delay(wait);  // Pause for a moment
+           delay(wait*=0.8); // Pause for a moment
     }
 
 }
