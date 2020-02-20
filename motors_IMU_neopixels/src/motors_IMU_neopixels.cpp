@@ -45,6 +45,7 @@ void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops);
 void trouble();
 void sectionSqueezeWave(int numLimit, int down, int up, uint32_t colorUP, uint32_t colorDOWN);
 void sectionSqueeze(int numLimit, int down, int up);
+void colorFace(uint32_t color);
 void theaterChase(uint32_t color, int wait);
 void colorWipe(uint8_t wait);
 #line 27 "/Users/ninjacat/Documents/Particle/TakeHeed/motors_IMU_neopixels/src/motors_IMU_neopixels.ino"
@@ -745,25 +746,61 @@ void sectionSqueeze(int numLimit, int down, int up) {
   uint32_t colorOFF = strip.Color(0,0,0);
 
   uint32_t colorStep;
+  int colorStepRed;
+  int colorStepGreen;
+  int colorStepBlue;
+int jump = 100;
   for(int step = 0; step < numLimit; step++){
     valUP=up+step;
     valDOWN=down-step;
 
-  if(step>numLimit/3){
-    colorStep=colorBlue;
-  }else{
-    colorStep=colorPink;
-  }
+  
  
- 
+    float pulseCounter = 0;
+    int SCALE = 50;
+    float pulseSpeed = 0.1;
+
     if(valUP<numHalfPixels){
       strip.setPixelColor(valUP, colorOFF); 
     }else if(valDOWN>numHalfPixels){
       strip.setPixelColor(valDOWN, colorOFF); 
     }else{
-      strip.setPixelColor(valDOWN, colorStep); 
-      strip.setPixelColor(valUP, colorStep);
+      // for(int i = 0; i < 255; i++){
+        // colorBlue = strip.Color(0,0,i);
+        // colorPink = strip.Color(i,0,i);
+
+        if(step>numLimit/3){
+          colorStep=colorBlue;
+          colorStepRed=0;
+          colorStepGreen=0;
+          colorStepBlue=255;
+        }else{
+          colorStep=colorPink;
+          colorStepRed=255;
+          colorStepGreen=0;
+          colorStepBlue=255;
+        }
+        // delay(5);
+       // strip.setPixelColor(valDOWN, colorStep); 
+     //   strip.setPixelColor(valUP, colorStep);
+     if(jump<255){
+jump+=10;
+     }else{
+jump-=10;
+     }
+        strip.setColorDimmed(valUP, colorStepRed, colorStepGreen, colorStepBlue,jump );
+        strip.setColorDimmed(valDOWN, colorStepRed, colorStepGreen, colorStepBlue, jump);
+      // }
+
+      //  delay(tan(pulseCounter)*SCALE);
+      //       pulseCounter += pulseSpeed;
     }
+   
+  }
+}
+
+void colorFace(uint32_t color){
+  for(int i = 0; i < 255; i++){
    
   }
 }
@@ -777,6 +814,16 @@ void theaterChase(uint32_t color, int wait)
   int stretch = numHalfPixels;
   int up = numHalfPixels-limit;
   int down = numHalfPixels+limit;
+
+  /*
+  calculations of wait:
+  sin(pulseCounter)*SCALE
+    pulseCounter += pulseSpeed;
+  */
+  float pulseCounter = 0;
+  int SCALE = 1000;
+  float pulseSpeed = 0.03;
+
     for (; down > stretch; down--)
     {     
             strip.clear(); //   Set all pixels in RAM to 0 (off)
@@ -796,11 +843,15 @@ void theaterChase(uint32_t color, int wait)
 
             up++;
             strip.show(); // Update strip with new contents
-            delay(wait*=0.8);  // Pause for a moment
+            delay(sin(pulseCounter)*SCALE);
+            Serial.print("SIN-----");
+            Serial.println(tan(pulseCounter)*SCALE);
+            pulseCounter += pulseSpeed;
+           // delay(wait*=0.8);  // Pause for a moment
         // }
     }
-
-    wait = 1000;
+pulseCounter = 0;
+    //wait = 1000;
       Serial.println("END FIRST LOOP");
       Serial.print("LIMIT--");
       Serial.println(limit);
@@ -824,7 +875,9 @@ void theaterChase(uint32_t color, int wait)
             */
             up--;
             strip.show(); // Update strip with new contents
-           delay(wait*=0.8); // Pause for a moment
+            delay(sin(pulseCounter)*SCALE);
+            pulseCounter += pulseSpeed;
+           //delay(wait*=0.8); // Pause for a moment
     }
 
 }
