@@ -769,10 +769,15 @@ int jump = 100;
         // colorBlue = strip.Color(0,0,i);
         // colorPink = strip.Color(i,0,i);
 
-        if(step>numLimit/3){
+        if(step>numLimit/2){
           colorStep=colorBlue;
           colorStepRed=0;
           colorStepGreen=0;
+          colorStepBlue=255;
+        }else if(step>numLimit/3){
+          // colorStep=colorPink;
+          colorStepRed=0;
+          colorStepGreen=255;
           colorStepBlue=255;
         }else{
           colorStep=colorPink;
@@ -807,7 +812,7 @@ void colorFace(uint32_t color){
 void theaterChase(uint32_t color, int wait)
 {
   
-  int limit = 12;
+  int limit = 15;
 
   int numHalfPixels=strip.numPixels()/2;
   int numLimit = numHalfPixels-limit;
@@ -822,7 +827,7 @@ void theaterChase(uint32_t color, int wait)
   */
   float pulseCounter = 0;
   int SCALE = 1000;
-  float pulseSpeed = 0.03;
+  float pulseSpeed = 0.05;
 
     for (; down > stretch; down--)
     {     
