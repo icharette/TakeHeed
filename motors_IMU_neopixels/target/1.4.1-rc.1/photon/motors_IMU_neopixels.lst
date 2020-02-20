@@ -23,19 +23,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_abbrev 00012afd  00000000  00000000  00102731  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00019626  00000000  00000000  0011522e  2**0
+ 10 .debug_loc    0001963c  00000000  00000000  0011522e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_aranges 00002488  00000000  00000000  0012e854  2**0
+ 11 .debug_aranges 00002488  00000000  00000000  0012e86a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00003918  00000000  00000000  00130cdc  2**0
+ 12 .debug_ranges 00003918  00000000  00000000  00130cf2  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_macro  0002a0f6  00000000  00000000  001345f4  2**0
+ 13 .debug_macro  0002a0f6  00000000  00000000  0013460a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_line   0002c813  00000000  00000000  0015e6ea  2**0
+ 14 .debug_line   0002c809  00000000  00000000  0015e700  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_str    000aabaa  00000000  00000000  0018aefd  2**0
+ 15 .debug_str    000aabaa  00000000  00000000  0018af09  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_frame  0000caa4  00000000  00000000  00235aa8  2**2
+ 16 .debug_frame  0000caa4  00000000  00000000  00235ab4  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -1902,199 +1902,195 @@ int jump = 100;
 }
 void theaterChase(uint32_t color, int wait)
 {
- 80a0980:	e92d 47f3 	stmdb	sp!, {r0, r1, r4, r5, r6, r7, r8, r9, sl, lr}
+ 80a0980:	e92d 43f7 	stmdb	sp!, {r0, r1, r2, r4, r5, r6, r7, r8, r9, lr}
   
   int limit = 20;
 
   int numHalfPixels=strip.numPixels()/2;
  80a0984:	4846      	ldr	r0, [pc, #280]	; (80a0aa0 <_Z12theaterChasemi+0x120>)
  80a0986:	f001 ffd8 	bl	80a293a <_ZNK17Adafruit_NeoPixel9numPixelsEv>
- 80a098a:	f3c0 044f 	ubfx	r4, r0, #1, #16
- 80a098e:	4626      	mov	r6, r4
   int numLimit = numHalfPixels-limit;
   int stretch = numHalfPixels;
   int up = numHalfPixels-limit;
   int down = numHalfPixels+limit;
- 80a0990:	2514      	movs	r5, #20
-  /*
-  calculations of wait:
-  sin(pulseCounter)*SCALE
-    pulseCounter += pulseSpeed;
-  */
+ 80a098a:	2514      	movs	r5, #20
+void theaterChase(uint32_t color, int wait)
+{
+  
+  int limit = 20;
+
+  int numHalfPixels=strip.numPixels()/2;
+ 80a098c:	f3c0 044f 	ubfx	r4, r0, #1, #16
+  int numLimit = numHalfPixels-limit;
+  int stretch = numHalfPixels;
+  int up = numHalfPixels-limit;
+  int down = numHalfPixels+limit;
+
   float pulseCounter = 0;
- 80a0992:	2700      	movs	r7, #0
- 80a0994:	ebc5 0904 	rsb	r9, r5, r4
- 80a0998:	eb05 0804 	add.w	r8, r5, r4
+ 80a0990:	2600      	movs	r6, #0
+ 80a0992:	ebc5 0804 	rsb	r8, r5, r4
+ 80a0996:	192f      	adds	r7, r5, r4
   int SCALE = 1000;
   float pulseSpeed = 0.05;
 
     for (; down > stretch; down--)
- 80a099c:	f115 35ff 	adds.w	r5, r5, #4294967295	; 0xffffffff
- 80a09a0:	d336      	bcc.n	80a0a10 <_Z12theaterChasemi+0x90>
+ 80a0998:	f115 35ff 	adds.w	r5, r5, #4294967295	; 0xffffffff
+ 80a099c:	d336      	bcc.n	80a0a0c <_Z12theaterChasemi+0x8c>
     {     
             strip.clear(); //   Set all pixels in RAM to 0 (off)
- 80a09a2:	483f      	ldr	r0, [pc, #252]	; (80a0aa0 <_Z12theaterChasemi+0x120>)
- 80a09a4:	f001 fff1 	bl	80a298a <_ZN17Adafruit_NeoPixel5clearEv>
+ 80a099e:	4840      	ldr	r0, [pc, #256]	; (80a0aa0 <_Z12theaterChasemi+0x120>)
+ 80a09a0:	f001 fff3 	bl	80a298a <_ZN17Adafruit_NeoPixel5clearEv>
             sectionSqueeze(limit,down,up);
- 80a09a8:	464a      	mov	r2, r9
- 80a09aa:	4641      	mov	r1, r8
- 80a09ac:	2014      	movs	r0, #20
- 80a09ae:	f7ff ff53 	bl	80a0858 <_Z14sectionSqueezeiii>
+ 80a09a4:	4642      	mov	r2, r8
+ 80a09a6:	4639      	mov	r1, r7
+ 80a09a8:	2014      	movs	r0, #20
+ 80a09aa:	f7ff ff55 	bl	80a0858 <_Z14sectionSqueezeiii>
             strip.setPixelColor(up+3, color);
             */
 
 
             up++;
             strip.show(); // Update strip with new contents
- 80a09b2:	483b      	ldr	r0, [pc, #236]	; (80a0aa0 <_Z12theaterChasemi+0x120>)
- 80a09b4:	f000 fe66 	bl	80a1684 <_ZN17Adafruit_NeoPixel4showEv>
+ 80a09ae:	483c      	ldr	r0, [pc, #240]	; (80a0aa0 <_Z12theaterChasemi+0x120>)
+ 80a09b0:	f000 fe68 	bl	80a1684 <_ZN17Adafruit_NeoPixel4showEv>
             delay(sin(pulseCounter)*SCALE);
- 80a09b8:	4638      	mov	r0, r7
- 80a09ba:	f005 fb2f 	bl	80a601c <__aeabi_f2d>
- 80a09be:	4680      	mov	r8, r0
- 80a09c0:	4689      	mov	r9, r1
- 80a09c2:	f003 fe8f 	bl	80a46e4 <sin>
- 80a09c6:	2200      	movs	r2, #0
- 80a09c8:	4b36      	ldr	r3, [pc, #216]	; (80a0aa4 <_Z12theaterChasemi+0x124>)
- 80a09ca:	f005 fb7b 	bl	80a60c4 <__aeabi_dmul>
- 80a09ce:	f005 fe51 	bl	80a6674 <__aeabi_d2uiz>
- 80a09d2:	f002 fc45 	bl	80a3260 <delay>
+ 80a09b4:	4630      	mov	r0, r6
+ 80a09b6:	f005 fb31 	bl	80a601c <__aeabi_f2d>
+ 80a09ba:	4680      	mov	r8, r0
+ 80a09bc:	4689      	mov	r9, r1
+ 80a09be:	f003 fe91 	bl	80a46e4 <sin>
+ 80a09c2:	2200      	movs	r2, #0
+ 80a09c4:	4b37      	ldr	r3, [pc, #220]	; (80a0aa4 <_Z12theaterChasemi+0x124>)
+ 80a09c6:	f005 fb7d 	bl	80a60c4 <__aeabi_dmul>
+ 80a09ca:	f005 fe53 	bl	80a6674 <__aeabi_d2uiz>
+ 80a09ce:	f002 fc47 	bl	80a3260 <delay>
             Serial.print("SIN-----");
- 80a09d6:	f003 fb2f 	bl	80a4038 <_Z16_fetch_usbserialv>
- 80a09da:	4933      	ldr	r1, [pc, #204]	; (80a0aa8 <_Z12theaterChasemi+0x128>)
- 80a09dc:	f002 fdb2 	bl	80a3544 <_ZN5Print5printEPKc>
+ 80a09d2:	f003 fb31 	bl	80a4038 <_Z16_fetch_usbserialv>
+ 80a09d6:	4934      	ldr	r1, [pc, #208]	; (80a0aa8 <_Z12theaterChasemi+0x128>)
+ 80a09d8:	f002 fdb4 	bl	80a3544 <_ZN5Print5printEPKc>
             Serial.println(tan(pulseCounter)*SCALE);
- 80a09e0:	f003 fb2a 	bl	80a4038 <_Z16_fetch_usbserialv>
- 80a09e4:	4649      	mov	r1, r9
- 80a09e6:	4682      	mov	sl, r0
- 80a09e8:	4640      	mov	r0, r8
- 80a09ea:	f003 fec3 	bl	80a4774 <tan>
- 80a09ee:	2200      	movs	r2, #0
- 80a09f0:	4b2c      	ldr	r3, [pc, #176]	; (80a0aa4 <_Z12theaterChasemi+0x124>)
- 80a09f2:	f005 fb67 	bl	80a60c4 <__aeabi_dmul>
- 80a09f6:	2302      	movs	r3, #2
- 80a09f8:	4602      	mov	r2, r0
- 80a09fa:	9300      	str	r3, [sp, #0]
- 80a09fc:	4650      	mov	r0, sl
- 80a09fe:	460b      	mov	r3, r1
- 80a0a00:	f002 fee0 	bl	80a37c4 <_ZN5Print7printlnEdi>
+ 80a09dc:	f003 fb2c 	bl	80a4038 <_Z16_fetch_usbserialv>
+ 80a09e0:	4649      	mov	r1, r9
+ 80a09e2:	4607      	mov	r7, r0
+ 80a09e4:	4640      	mov	r0, r8
+ 80a09e6:	f003 fec5 	bl	80a4774 <tan>
+ 80a09ea:	2200      	movs	r2, #0
+ 80a09ec:	4b2d      	ldr	r3, [pc, #180]	; (80a0aa4 <_Z12theaterChasemi+0x124>)
+ 80a09ee:	f005 fb69 	bl	80a60c4 <__aeabi_dmul>
+ 80a09f2:	2302      	movs	r3, #2
+ 80a09f4:	4602      	mov	r2, r0
+ 80a09f6:	9300      	str	r3, [sp, #0]
+ 80a09f8:	4638      	mov	r0, r7
+ 80a09fa:	460b      	mov	r3, r1
+ 80a09fc:	f002 fee2 	bl	80a37c4 <_ZN5Print7printlnEdi>
             pulseCounter += pulseSpeed;
- 80a0a04:	4638      	mov	r0, r7
- 80a0a06:	4929      	ldr	r1, [pc, #164]	; (80a0aac <_Z12theaterChasemi+0x12c>)
- 80a0a08:	f005 fe5a 	bl	80a66c0 <__addsf3>
- 80a0a0c:	4607      	mov	r7, r0
-  */
+ 80a0a00:	4630      	mov	r0, r6
+ 80a0a02:	492a      	ldr	r1, [pc, #168]	; (80a0aac <_Z12theaterChasemi+0x12c>)
+ 80a0a04:	f005 fe5c 	bl	80a66c0 <__addsf3>
+ 80a0a08:	4606      	mov	r6, r0
+
   float pulseCounter = 0;
   int SCALE = 1000;
   float pulseSpeed = 0.05;
 
     for (; down > stretch; down--)
- 80a0a0e:	e7c1      	b.n	80a0994 <_Z12theaterChasemi+0x14>
+ 80a0a0a:	e7c2      	b.n	80a0992 <_Z12theaterChasemi+0x12>
            // delay(wait*=0.8);  // Pause for a moment
         // }
     }
 pulseCounter = 0;
     //wait = 1000;
       Serial.println("END FIRST LOOP");
- 80a0a10:	f003 fb12 	bl	80a4038 <_Z16_fetch_usbserialv>
- 80a0a14:	4926      	ldr	r1, [pc, #152]	; (80a0ab0 <_Z12theaterChasemi+0x130>)
- 80a0a16:	f002 fdae 	bl	80a3576 <_ZN5Print7printlnEPKc>
+ 80a0a0c:	f003 fb14 	bl	80a4038 <_Z16_fetch_usbserialv>
+ 80a0a10:	4927      	ldr	r1, [pc, #156]	; (80a0ab0 <_Z12theaterChasemi+0x130>)
+ 80a0a12:	f002 fdb0 	bl	80a3576 <_ZN5Print7printlnEPKc>
       Serial.print("LIMIT--");
- 80a0a1a:	f003 fb0d 	bl	80a4038 <_Z16_fetch_usbserialv>
- 80a0a1e:	4925      	ldr	r1, [pc, #148]	; (80a0ab4 <_Z12theaterChasemi+0x134>)
- 80a0a20:	f002 fd90 	bl	80a3544 <_ZN5Print5printEPKc>
+ 80a0a16:	f003 fb0f 	bl	80a4038 <_Z16_fetch_usbserialv>
+ 80a0a1a:	4926      	ldr	r1, [pc, #152]	; (80a0ab4 <_Z12theaterChasemi+0x134>)
+ 80a0a1c:	f002 fd92 	bl	80a3544 <_ZN5Print5printEPKc>
       Serial.println(limit);
- 80a0a24:	f003 fb08 	bl	80a4038 <_Z16_fetch_usbserialv>
- 80a0a28:	220a      	movs	r2, #10
- 80a0a2a:	2114      	movs	r1, #20
- 80a0a2c:	f002 fe11 	bl	80a3652 <_ZN5Print7printlnEii>
+ 80a0a20:	f003 fb0a 	bl	80a4038 <_Z16_fetch_usbserialv>
+ 80a0a24:	220a      	movs	r2, #10
+ 80a0a26:	2114      	movs	r1, #20
+ 80a0a28:	f002 fe13 	bl	80a3652 <_ZN5Print7printlnEii>
         Serial.print("DOWN--");
- 80a0a30:	f003 fb02 	bl	80a4038 <_Z16_fetch_usbserialv>
- 80a0a34:	4920      	ldr	r1, [pc, #128]	; (80a0ab8 <_Z12theaterChasemi+0x138>)
- 80a0a36:	f002 fd85 	bl	80a3544 <_ZN5Print5printEPKc>
+ 80a0a2c:	f003 fb04 	bl	80a4038 <_Z16_fetch_usbserialv>
+ 80a0a30:	4921      	ldr	r1, [pc, #132]	; (80a0ab8 <_Z12theaterChasemi+0x138>)
+ 80a0a32:	f002 fd87 	bl	80a3544 <_ZN5Print5printEPKc>
       Serial.println(down);
- 80a0a3a:	f003 fafd 	bl	80a4038 <_Z16_fetch_usbserialv>
- 80a0a3e:	220a      	movs	r2, #10
- 80a0a40:	4621      	mov	r1, r4
- 80a0a42:	f002 fe06 	bl	80a3652 <_ZN5Print7printlnEii>
-    for (; down<numHalfPixels*2; down++)
- 80a0a46:	0067      	lsls	r7, r4, #1
+ 80a0a36:	f003 faff 	bl	80a4038 <_Z16_fetch_usbserialv>
+ 80a0a3a:	220a      	movs	r2, #10
+ 80a0a3c:	4621      	mov	r1, r4
+ 80a0a3e:	f002 fe08 	bl	80a3652 <_ZN5Print7printlnEii>
+ 80a0a42:	2500      	movs	r5, #0
             Serial.println(tan(pulseCounter)*SCALE);
             pulseCounter += pulseSpeed;
            // delay(wait*=0.8);  // Pause for a moment
         // }
     }
 pulseCounter = 0;
- 80a0a48:	2500      	movs	r5, #0
+ 80a0a44:	2600      	movs	r6, #0
+ 80a0a46:	ebc5 0804 	rsb	r8, r5, r4
+ 80a0a4a:	192f      	adds	r7, r5, r4
+ 80a0a4c:	3501      	adds	r5, #1
       Serial.println("END FIRST LOOP");
       Serial.print("LIMIT--");
       Serial.println(limit);
         Serial.print("DOWN--");
       Serial.println(down);
-    for (; down<numHalfPixels*2; down++)
- 80a0a4a:	42bc      	cmp	r4, r7
- 80a0a4c:	da24      	bge.n	80a0a98 <_Z12theaterChasemi+0x118>
+    for (; down<numHalfPixels+limit; down++)
+ 80a0a4e:	2d15      	cmp	r5, #21
+ 80a0a50:	d022      	beq.n	80a0a98 <_Z12theaterChasemi+0x118>
     { 
       Serial.println("SECOND LOOP");
- 80a0a4e:	f003 faf3 	bl	80a4038 <_Z16_fetch_usbserialv>
- 80a0a52:	491a      	ldr	r1, [pc, #104]	; (80a0abc <_Z12theaterChasemi+0x13c>)
- 80a0a54:	f002 fd8f 	bl	80a3576 <_ZN5Print7printlnEPKc>
+ 80a0a52:	f003 faf1 	bl	80a4038 <_Z16_fetch_usbserialv>
+ 80a0a56:	4919      	ldr	r1, [pc, #100]	; (80a0abc <_Z12theaterChasemi+0x13c>)
+ 80a0a58:	f002 fd8d 	bl	80a3576 <_ZN5Print7printlnEPKc>
             strip.clear(); //   Set all pixels in RAM to 0 (off)
- 80a0a58:	4811      	ldr	r0, [pc, #68]	; (80a0aa0 <_Z12theaterChasemi+0x120>)
- 80a0a5a:	f001 ff96 	bl	80a298a <_ZN17Adafruit_NeoPixel5clearEv>
+ 80a0a5c:	4810      	ldr	r0, [pc, #64]	; (80a0aa0 <_Z12theaterChasemi+0x120>)
+ 80a0a5e:	f001 ff94 	bl	80a298a <_ZN17Adafruit_NeoPixel5clearEv>
             sectionSqueeze(limit,down,up);
- 80a0a5e:	4632      	mov	r2, r6
- 80a0a60:	4621      	mov	r1, r4
- 80a0a62:	2014      	movs	r0, #20
- 80a0a64:	f7ff fef8 	bl	80a0858 <_Z14sectionSqueezeiii>
+ 80a0a62:	4642      	mov	r2, r8
+ 80a0a64:	4639      	mov	r1, r7
+ 80a0a66:	2014      	movs	r0, #20
+ 80a0a68:	f7ff fef6 	bl	80a0858 <_Z14sectionSqueezeiii>
             strip.setPixelColor(j+1, strip.Color(0,0,255));
             strip.setPixelColor(j+2, color);
             strip.setPixelColor(j+3, color);
             */
             up--;
             strip.show(); // Update strip with new contents
- 80a0a68:	480d      	ldr	r0, [pc, #52]	; (80a0aa0 <_Z12theaterChasemi+0x120>)
- 80a0a6a:	f000 fe0b 	bl	80a1684 <_ZN17Adafruit_NeoPixel4showEv>
+ 80a0a6c:	480c      	ldr	r0, [pc, #48]	; (80a0aa0 <_Z12theaterChasemi+0x120>)
+ 80a0a6e:	f000 fe09 	bl	80a1684 <_ZN17Adafruit_NeoPixel4showEv>
             delay(sin(pulseCounter)*SCALE);
- 80a0a6e:	4628      	mov	r0, r5
- 80a0a70:	f005 fad4 	bl	80a601c <__aeabi_f2d>
- 80a0a74:	f003 fe36 	bl	80a46e4 <sin>
- 80a0a78:	2200      	movs	r2, #0
- 80a0a7a:	4b0a      	ldr	r3, [pc, #40]	; (80a0aa4 <_Z12theaterChasemi+0x124>)
- 80a0a7c:	f005 fb22 	bl	80a60c4 <__aeabi_dmul>
- 80a0a80:	f005 fdf8 	bl	80a6674 <__aeabi_d2uiz>
- 80a0a84:	f002 fbec 	bl	80a3260 <delay>
+ 80a0a72:	4630      	mov	r0, r6
+ 80a0a74:	f005 fad2 	bl	80a601c <__aeabi_f2d>
+ 80a0a78:	f003 fe34 	bl	80a46e4 <sin>
+ 80a0a7c:	2200      	movs	r2, #0
+ 80a0a7e:	4b09      	ldr	r3, [pc, #36]	; (80a0aa4 <_Z12theaterChasemi+0x124>)
+ 80a0a80:	f005 fb20 	bl	80a60c4 <__aeabi_dmul>
+ 80a0a84:	f005 fdf6 	bl	80a6674 <__aeabi_d2uiz>
+ 80a0a88:	f002 fbea 	bl	80a3260 <delay>
             pulseCounter += pulseSpeed;
- 80a0a88:	4628      	mov	r0, r5
- 80a0a8a:	4908      	ldr	r1, [pc, #32]	; (80a0aac <_Z12theaterChasemi+0x12c>)
- 80a0a8c:	f005 fe18 	bl	80a66c0 <__addsf3>
-            strip.setPixelColor(j, strip.Color(0,0,255));
-            strip.setPixelColor(j+1, strip.Color(0,0,255));
-            strip.setPixelColor(j+2, color);
-            strip.setPixelColor(j+3, color);
-            */
-            up--;
- 80a0a90:	3e01      	subs	r6, #1
-            strip.show(); // Update strip with new contents
-            delay(sin(pulseCounter)*SCALE);
-            pulseCounter += pulseSpeed;
- 80a0a92:	4605      	mov	r5, r0
+ 80a0a8c:	4630      	mov	r0, r6
+ 80a0a8e:	4907      	ldr	r1, [pc, #28]	; (80a0aac <_Z12theaterChasemi+0x12c>)
+ 80a0a90:	f005 fe16 	bl	80a66c0 <__addsf3>
+ 80a0a94:	4606      	mov	r6, r0
       Serial.println("END FIRST LOOP");
       Serial.print("LIMIT--");
       Serial.println(limit);
         Serial.print("DOWN--");
       Serial.println(down);
-    for (; down<numHalfPixels*2; down++)
- 80a0a94:	3401      	adds	r4, #1
- 80a0a96:	e7d8      	b.n	80a0a4a <_Z12theaterChasemi+0xca>
+    for (; down<numHalfPixels+limit; down++)
+ 80a0a96:	e7d6      	b.n	80a0a46 <_Z12theaterChasemi+0xc6>
             delay(sin(pulseCounter)*SCALE);
             pulseCounter += pulseSpeed;
            //delay(wait*=0.8); // Pause for a moment
     }
 
 }
- 80a0a98:	b002      	add	sp, #8
- 80a0a9a:	e8bd 87f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, pc}
+ 80a0a98:	b003      	add	sp, #12
+ 80a0a9a:	e8bd 83f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
  80a0a9e:	bf00      	nop
  80a0aa0:	200001f0 	.word	0x200001f0
  80a0aa4:	408f4000 	.word	0x408f4000

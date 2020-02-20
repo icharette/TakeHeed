@@ -820,11 +820,6 @@ void theaterChase(uint32_t color, int wait)
   int up = numHalfPixels-limit;
   int down = numHalfPixels+limit;
 
-  /*
-  calculations of wait:
-  sin(pulseCounter)*SCALE
-    pulseCounter += pulseSpeed;
-  */
   float pulseCounter = 0;
   int SCALE = 1000;
   float pulseSpeed = 0.05;
@@ -862,7 +857,7 @@ pulseCounter = 0;
       Serial.println(limit);
         Serial.print("DOWN--");
       Serial.println(down);
-    for (; down<numHalfPixels*2; down++)
+    for (; down<numHalfPixels+limit; down++)
     { 
       Serial.println("SECOND LOOP");
             strip.clear(); //   Set all pixels in RAM to 0 (off)
