@@ -749,7 +749,7 @@ int jump = 100;
           colorStepRed=0;
           colorStepGreen=0;
           colorStepBlue=255;
-        }else if(step>numLimit/3){
+        }else if(step>numLimit/4){
           // colorStep=colorPink;
           colorStepRed=0;
           colorStepGreen=255;
@@ -787,7 +787,7 @@ void colorFace(uint32_t color){
 void theaterChase(uint32_t color, int wait)
 {
   
-  int limit = 15;
+  int limit = 20;
 
   int numHalfPixels=strip.numPixels()/2;
   int numLimit = numHalfPixels-limit;

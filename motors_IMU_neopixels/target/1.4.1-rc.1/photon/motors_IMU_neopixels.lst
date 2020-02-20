@@ -1741,8 +1741,8 @@ void sectionSqueeze(int numLimit, int down, int up) {
           colorStepRed=0;
           colorStepGreen=0;
           colorStepBlue=255;
-        }else if(step>numLimit/3){
- 80a08d6:	2303      	movs	r3, #3
+        }else if(step>numLimit/4){
+ 80a08d6:	2304      	movs	r3, #4
  80a08d8:	fb9a f3f3 	sdiv	r3, sl, r3
   
   Serial.print("DOWN--:");
@@ -1756,7 +1756,7 @@ void sectionSqueeze(int numLimit, int down, int up) {
           colorStepRed=0;
           colorStepGreen=0;
           colorStepBlue=255;
-        }else if(step>numLimit/3){
+        }else if(step>numLimit/4){
  80a08de:	9305      	str	r3, [sp, #20]
   uint32_t colorStep;
   int colorStepRed;
@@ -1904,7 +1904,7 @@ void theaterChase(uint32_t color, int wait)
 {
  80a0980:	e92d 47f3 	stmdb	sp!, {r0, r1, r4, r5, r6, r7, r8, r9, sl, lr}
   
-  int limit = 15;
+  int limit = 20;
 
   int numHalfPixels=strip.numPixels()/2;
  80a0984:	4846      	ldr	r0, [pc, #280]	; (80a0aa0 <_Z12theaterChasemi+0x120>)
@@ -1915,7 +1915,7 @@ void theaterChase(uint32_t color, int wait)
   int stretch = numHalfPixels;
   int up = numHalfPixels-limit;
   int down = numHalfPixels+limit;
- 80a0990:	250f      	movs	r5, #15
+ 80a0990:	2514      	movs	r5, #20
   /*
   calculations of wait:
   sin(pulseCounter)*SCALE
@@ -1938,7 +1938,7 @@ void theaterChase(uint32_t color, int wait)
             sectionSqueeze(limit,down,up);
  80a09a8:	464a      	mov	r2, r9
  80a09aa:	4641      	mov	r1, r8
- 80a09ac:	200f      	movs	r0, #15
+ 80a09ac:	2014      	movs	r0, #20
  80a09ae:	f7ff ff53 	bl	80a0858 <_Z14sectionSqueezeiii>
             strip.setPixelColor(up+3, color);
             */
@@ -2006,7 +2006,7 @@ pulseCounter = 0;
       Serial.println(limit);
  80a0a24:	f003 fb08 	bl	80a4038 <_Z16_fetch_usbserialv>
  80a0a28:	220a      	movs	r2, #10
- 80a0a2a:	210f      	movs	r1, #15
+ 80a0a2a:	2114      	movs	r1, #20
  80a0a2c:	f002 fe11 	bl	80a3652 <_ZN5Print7printlnEii>
         Serial.print("DOWN--");
  80a0a30:	f003 fb02 	bl	80a4038 <_Z16_fetch_usbserialv>
@@ -2045,7 +2045,7 @@ pulseCounter = 0;
             sectionSqueeze(limit,down,up);
  80a0a5e:	4632      	mov	r2, r6
  80a0a60:	4621      	mov	r1, r4
- 80a0a62:	200f      	movs	r0, #15
+ 80a0a62:	2014      	movs	r0, #20
  80a0a64:	f7ff fef8 	bl	80a0858 <_Z14sectionSqueezeiii>
             strip.setPixelColor(j+1, strip.Color(0,0,255));
             strip.setPixelColor(j+2, color);
