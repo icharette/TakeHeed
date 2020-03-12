@@ -32,6 +32,9 @@
 		},
 		{
 			"path": "motors_IMU_neopixels"
+		},
+		{
+			"path": "particle_template"
 		}
 	],
 	"settings": {
