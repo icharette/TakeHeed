@@ -2,6 +2,12 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "/Users/ninjacat/Documents/Particle/TakeHeed/IR_Receiver"
+		},
+		{
+			"path": "/Users/ninjacat/Documents/Particle/TakeHeed/IR_Transmitter"
 		}
 	],
 	"settings": {

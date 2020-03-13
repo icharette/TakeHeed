@@ -5,7 +5,7 @@
     "files.associations": {
         "*.ino": "cpp"
     },
-    "particle.targetDevice": "ALE",
+    "particle.targetDevice": "beastie",
     "particle.firmwareVersion": "1.4.1-rc.1",
     "particle.targetPlatform": "photon"
 }

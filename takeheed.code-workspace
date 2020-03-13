@@ -35,6 +35,12 @@
 		},
 		{
 			"path": "particle_template"
+		},
+		{
+			"path": "IR_Receiver"
+		},
+		{
+			"path": "IR_Transmitter"
 		}
 	],
 	"settings": {

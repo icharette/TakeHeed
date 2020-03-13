@@ -151,7 +151,7 @@ void setup() {
   Serial.println("Setup");
   udp.begin(8888);
   //udp.begin(localPort);
-  WiFi.setHostname("Photon_ALE");
+  WiFi.setHostname("Photon_beastie");
   Serial.println(WiFi.hostname());
   Serial.println(WiFi.localIP());
    Serial.begin(9600);
@@ -176,7 +176,7 @@ void send(){
    //my computer IP address: 132.205.229.249
  //	192.168.0.101
   //IPAddress ipAddress(172,31,13,183);
-  IPAddress ipAddress(192,168,0,102);
+  IPAddress ipAddress(192,168,0,101);
   unsigned int localPort = 8888;
  unsigned int outPort = 7000;
   int speedInt = 0;

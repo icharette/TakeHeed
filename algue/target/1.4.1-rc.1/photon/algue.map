@@ -32457,93 +32457,93 @@ END GROUP
                 0x00000000080a37bc       0x14 /Users/ninjacat/Documents/Particle/TakeHeed/algue/target/1.4.1-rc.1/photon//obj/src/user_export.o
                 0x00000000080a37bc                dynalib_user
  .rodata.str1.1
-                0x00000000080a37d0      0x158 ../../../build/target/user/platform-6-m/algue//libuser.a(algue.o)
-                                        0x159 (size before relaxing)
+                0x00000000080a37d0      0x15c ../../../build/target/user/platform-6-m/algue//libuser.a(algue.o)
+                                        0x15d (size before relaxing)
  .rodata.CSWTCH.57
-                0x00000000080a3928        0x9 ../../../build/target/user/platform-6-m/algue//libuser.a(SparkFunLSM9DS1.o)
+                0x00000000080a392c        0x9 ../../../build/target/user/platform-6-m/algue//libuser.a(SparkFunLSM9DS1.o)
  .rodata.str1.1
-                0x00000000080a3931        0x6 ../../../build/target/user/platform-6-m/algue//libuser.a(simple-OSC.o)
+                0x00000000080a3935        0x6 ../../../build/target/user/platform-6-m/algue//libuser.a(simple-OSC.o)
                                           0xd (size before relaxing)
- *fill*         0x00000000080a3937        0x1 
+ *fill*         0x00000000080a393b        0x1 
  .rodata._ZTV7TwoWire
-                0x00000000080a3938       0x28 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_i2c.o)
-                0x00000000080a3938                vtable for TwoWire
+                0x00000000080a393c       0x28 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_i2c.o)
+                0x00000000080a393c                vtable for TwoWire
  .rodata._ZTV9IPAddress
-                0x00000000080a3960       0x14 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_ipaddress.o)
-                0x00000000080a3960                vtable for IPAddress
+                0x00000000080a3964       0x14 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_ipaddress.o)
+                0x00000000080a3964                vtable for IPAddress
  .rodata.str1.1
-                0x00000000080a3974       0xe4 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_logging.o)
+                0x00000000080a3978       0xe4 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_logging.o)
                                         0x109 (size before relaxing)
  .rodata._ZTVN5spark12NetworkClassE
-                0x00000000080a3a58       0x34 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_network.o)
-                0x00000000080a3a58                vtable for spark::NetworkClass
+                0x00000000080a3a5c       0x34 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_network.o)
+                0x00000000080a3a5c                vtable for spark::NetworkClass
  .rodata._ZTV8SPIClass
-                0x00000000080a3a8c       0x10 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_spi.o)
-                0x00000000080a3a8c                vtable for SPIClass
+                0x00000000080a3a90       0x10 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_spi.o)
+                0x00000000080a3a90                vtable for SPIClass
  .rodata._ZL14clock_divisors
-                0x00000000080a3a9c        0x8 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_spi.o)
+                0x00000000080a3aa0        0x8 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_spi.o)
  .rodata.str1.1
-                0x00000000080a3aa4       0x29 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_time.o)
- *fill*         0x00000000080a3acd        0x3 
+                0x00000000080a3aa8       0x29 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_time.o)
+ *fill*         0x00000000080a3ad1        0x3 
  .rodata._ZTV3UDP
-                0x00000000080a3ad0       0x70 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_udp.o)
-                0x00000000080a3ad0                vtable for UDP
+                0x00000000080a3ad4       0x70 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_udp.o)
+                0x00000000080a3ad4                vtable for UDP
  .rodata._ZTV11USARTSerial
-                0x00000000080a3b40       0x30 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_usartserial.o)
-                0x00000000080a3b40                vtable for USARTSerial
+                0x00000000080a3b44       0x30 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_usartserial.o)
+                0x00000000080a3b44                vtable for USARTSerial
  .rodata._ZTV9USBSerial
-                0x00000000080a3b70       0x30 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_usbserial.o)
-                0x00000000080a3b70                vtable for USBSerial
+                0x00000000080a3b74       0x30 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_usbserial.o)
+                0x00000000080a3b74                vtable for USBSerial
  .rodata._ZTVN5spark9WiFiClassE
-                0x00000000080a3ba0       0x34 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_wifi.o)
-                0x00000000080a3ba0                vtable for spark::WiFiClass
+                0x00000000080a3ba4       0x34 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_wifi.o)
+                0x00000000080a3ba4                vtable for spark::WiFiClass
  .rodata.__sf_fake_stdin
-                0x00000000080a3bd4       0x20 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-findfp.o)
-                0x00000000080a3bd4                __sf_fake_stdin
+                0x00000000080a3bd8       0x20 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-findfp.o)
+                0x00000000080a3bd8                __sf_fake_stdin
  .rodata.__sf_fake_stdout
-                0x00000000080a3bf4       0x20 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-findfp.o)
-                0x00000000080a3bf4                __sf_fake_stdout
+                0x00000000080a3bf8       0x20 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-findfp.o)
+                0x00000000080a3bf8                __sf_fake_stdout
  .rodata.__sf_fake_stderr
-                0x00000000080a3c14       0x20 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-findfp.o)
-                0x00000000080a3c14                __sf_fake_stderr
+                0x00000000080a3c18       0x20 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-findfp.o)
+                0x00000000080a3c18                __sf_fake_stderr
  .rodata.str1.1
-                0x00000000080a3c34        0x2 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-impure.o)
-                0x00000000080a3c36                link_const_variable_data_end = .
-                0x00000000080a3c38                . = ALIGN (0x4)
- *fill*         0x00000000080a3c36        0x2 
-                0x00000000080a3c38                link_constructors_location = .
+                0x00000000080a3c38        0x2 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-impure.o)
+                0x00000000080a3c3a                link_const_variable_data_end = .
+                0x00000000080a3c3c                . = ALIGN (0x4)
+ *fill*         0x00000000080a3c3a        0x2 
+                0x00000000080a3c3c                link_constructors_location = .
  *(.preinit_array)
  *(.init_array)
- .init_array    0x00000000080a3c38        0x4 ../../../build/target/user/platform-6-m/algue//libuser.a(algue.o)
- .init_array    0x00000000080a3c3c        0x4 ../../../build/target/user/platform-6-m/algue//libuser.a(SparkCorePolledTimer.o)
- .init_array    0x00000000080a3c40        0x4 ../../../build/target/user/platform-6-m/algue//libuser.a(SparkFunLSM9DS1.o)
- .init_array    0x00000000080a3c44        0x4 ../../../build/target/user/platform-6-m/algue//libuser.a(simple-OSC.o)
- .init_array    0x00000000080a3c48        0x4 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_logging.o)
- .init_array    0x00000000080a3c4c        0x4 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_network.o)
- .init_array    0x00000000080a3c50        0x4 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_rgb.o)
- .init_array    0x00000000080a3c54        0x4 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_system.o)
- .init_array    0x00000000080a3c58        0x4 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_time.o)
- .init_array    0x00000000080a3c5c        0x4 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_wifi.o)
- .init_array    0x00000000080a3c60        0x4 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_ipaddress.o)
- .init_array    0x00000000080a3c64        0x4 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_spi.o)
- .init_array    0x00000000080a3c68        0x4 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(wlocale-inst.o)
- .init_array    0x00000000080a3c6c        0x4 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(cxx11-locale-inst.o)
- .init_array    0x00000000080a3c70        0x4 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(cxx11-wlocale-inst.o)
- .init_array    0x00000000080a3c74        0x4 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(locale-inst.o)
+ .init_array    0x00000000080a3c3c        0x4 ../../../build/target/user/platform-6-m/algue//libuser.a(algue.o)
+ .init_array    0x00000000080a3c40        0x4 ../../../build/target/user/platform-6-m/algue//libuser.a(SparkCorePolledTimer.o)
+ .init_array    0x00000000080a3c44        0x4 ../../../build/target/user/platform-6-m/algue//libuser.a(SparkFunLSM9DS1.o)
+ .init_array    0x00000000080a3c48        0x4 ../../../build/target/user/platform-6-m/algue//libuser.a(simple-OSC.o)
+ .init_array    0x00000000080a3c4c        0x4 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_logging.o)
+ .init_array    0x00000000080a3c50        0x4 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_network.o)
+ .init_array    0x00000000080a3c54        0x4 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_rgb.o)
+ .init_array    0x00000000080a3c58        0x4 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_system.o)
+ .init_array    0x00000000080a3c5c        0x4 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_time.o)
+ .init_array    0x00000000080a3c60        0x4 ../../../build/target/wiring/platform-6-m//libwiring.a(spark_wiring_wifi.o)
+ .init_array    0x00000000080a3c64        0x4 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_ipaddress.o)
+ .init_array    0x00000000080a3c68        0x4 ../../../build/target/wiring_globals/platform-6-m//libwiring_globals.a(wiring_globals_spi.o)
+ .init_array    0x00000000080a3c6c        0x4 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(wlocale-inst.o)
+ .init_array    0x00000000080a3c70        0x4 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(cxx11-locale-inst.o)
+ .init_array    0x00000000080a3c74        0x4 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(cxx11-wlocale-inst.o)
+ .init_array    0x00000000080a3c78        0x4 /Users/ninjacat/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(locale-inst.o)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x00000000080a3c78                link_constructors_end = .
-                0x00000000080a3c78                . = ALIGN (0x4)
-                0x00000000080a3c78                link_destructors_location = .
+                0x00000000080a3c7c                link_constructors_end = .
+                0x00000000080a3c7c                . = ALIGN (0x4)
+                0x00000000080a3c7c                link_destructors_location = .
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x00000000080a3c78                link_destructors_end = .
+                0x00000000080a3c7c                link_destructors_end = .
                 0x00000000080a3c80                . = ALIGN (0x10)
- *fill*         0x00000000080a3c78        0x8 
+ *fill*         0x00000000080a3c7c        0x4 
 
 .iplt           0x00000000080a3c80        0x0
  .iplt          0x00000000080a3c80        0x0 /Users/ninjacat/Documents/Particle/TakeHeed/algue/target/1.4.1-rc.1/photon//obj/src/module_info.o

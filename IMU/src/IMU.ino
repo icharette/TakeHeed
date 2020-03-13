@@ -81,6 +81,7 @@ void setupImu(){
   // and turns it on.
   if (!imu.begin())
   {
+       digitalWrite(D7, HIGH);
     Serial.println("Failed to communicate with LSM9DS1.");
     Serial.println("Double-check wiring.");
     Serial.println("Default settings in this sketch will " \
@@ -111,7 +112,7 @@ void setup()
     WiFi.setHostname("HQRouter_PUBLISH");
     Serial.println(WiFi.hostname());
     Serial.println(WiFi.localIP());
-  Serial.begin(115200);
+    Serial.begin(115200);
     iVx = 0;
     iVy = 0;
     iVz = 0;
