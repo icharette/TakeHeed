@@ -1,7 +1,7 @@
 /*
  * Project Take Heed _ Iteration 2
- * Description: ...
- * Author: Isabelle Charette & Nina Parenteau
+ * Description: This program tests each component of the circuit individually. See switch cases in loop()
+ * Author: Isabelle Charette 
  * Date: Winter 2020
  * 
  * Sources:
@@ -260,30 +260,12 @@ void testCase(int component){
     case 0:
     //STEPPER motors--------------------------------------------------------------------------------------------------------------------------------------
     //PIN SETUP: Stepper stepper(STEPS, A1, A2, A3, A4);
-
+    int steps = 3000;
     stepper.setSpeed(50);
-    // digitalWrite(D7, HIGH);
-    // Serial.println("LED ON");
-    stepper.step(1000);
-        stepper.step(1000);
-            stepper.step(1000);
+    stepper.step(steps);
     delay(1000);
-       stepper.step(-1000);
-        stepper.step(-1000);
-            stepper.step(-1000);
-    // stepper.setSpeed(50); 
-    // digitalWrite(D7, LOW);  
-    // Serial.println("LED OFF");            ;
-    // stepper.step(STEPS);
-
-    // stepper.setSpeed(80);
-    // digitalWrite(D7, HIGH);
-    // Serial.println("LED ON");
-    // stepper.step(-STEPS);
-    // stepper.setSpeed(80); 
-    // digitalWrite(D7, LOW);  
-    // Serial.println("LED OFF");            ;
-    // stepper.step(STEPS);
+    stepper.setSpeed(80); 
+    stepper.step(-steps);
     break;
 
     case 1:
@@ -294,10 +276,6 @@ void testCase(int component){
     // strip.Color(255,255,255);
     Serial.println("Red"); 
     colorWipe(50); // Red
-    Serial.println("Green"); 
-    // colorWipe(strip.Color(0, 255, 0), 50); // Green
-    Serial.println("Blue"); 
-    // colorWipe(strip.Color(0, 0, 255), 50); // Blue
     break;
 
     case 2:

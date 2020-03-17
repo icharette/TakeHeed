@@ -2,11 +2,11 @@
 //       THIS IS A GENERATED FILE - DO NOT EDIT       //
 /******************************************************/
 
-#line 1 "/Users/ninjacat/Documents/Particle/TakeHeed/motors_IMU_neopixels/src/motors_IMU_neopixels.ino"
+#line 1 "/Users/ninjacat/Documents/Particle/TakeHeed/components_test/src/components_test.ino"
 /*
  * Project Take Heed _ Iteration 2
- * Description: ...
- * Author: Isabelle Charette & Nina Parenteau
+ * Description: This program tests each component of the circuit individually. See switch cases in loop()
+ * Author: Isabelle Charette 
  * Date: Winter 2020
  * 
  * Sources:
@@ -48,7 +48,7 @@ void sectionSqueeze(int numLimit, int down, int up);
 void colorFace(uint32_t color);
 void theaterChase(uint32_t color, int wait);
 void colorWipe(uint8_t wait);
-#line 27 "/Users/ninjacat/Documents/Particle/TakeHeed/motors_IMU_neopixels/src/motors_IMU_neopixels.ino"
+#line 27 "/Users/ninjacat/Documents/Particle/TakeHeed/components_test/src/components_test.ino"
 SYSTEM_THREAD(ENABLED);
 SYSTEM_MODE(SEMI_AUTOMATIC);
 
@@ -83,7 +83,7 @@ int stepperIndexCap = 2000;
 //------NEOPIXEL
 // IMPORTANT: Set pixel COUNT, PIN and TYPE
 #define PIXEL_PIN D2
-#define PIXEL_COUNT 200
+#define PIXEL_COUNT 24
 #define PIXEL_TYPE SK6812RGBW
 
 #define BRIGHTNESS 50 // 0 - 255
@@ -219,17 +219,10 @@ void calibrateSensor(){
 
    //new driver motor motorTesting
 #include "Stepper.h"
- #include "IRremote.h"
-#include "IRTransmitter.h"
+ 
 #define STEPS 300
  
 Stepper stepper(STEPS, A1, A2, A3, A4);
-
-int RECV_PIN = 6;
-
-IRrecv irrecv(RECV_PIN);
-
-decode_results results;
 
 bool onlyMotor = true;
 
@@ -258,8 +251,7 @@ void setup() {
     iVz = 0;
 
     if(!onlyMotor)setupImu();
-    //might need to comment this out without IR
-    irrecv.enableIRIn(); 
+    
   
   if(!onlyMotor)updateTimer.SetCallback(OnTimer);
 
@@ -277,9 +269,9 @@ void setup() {
 void loop() {
 // healthyWave(500,3,3);
 
-testCase(0); //motors
+// testCase(0); //motors
 // testCase(1); //leds
-// theaterChase(strip.Color(255,0,0),1000);
+theaterChase(strip.Color(255,0,0),1000);
 // theaterChase(strip.Color(255,0,255),100);
 //-->IMPORTANT: only set boolean onlyMotor to false when using next testcase
 // testCase(2); //IMU
@@ -324,13 +316,13 @@ void testCase(int component){
     //examples from neopixels library
     // PIN SETUP: PIXEL_PIN D2
     // PIXEL_COUNT 20; can change at line 61
-    strip.Color(255,255,255);
+    // strip.Color(255,255,255);
     Serial.println("Red"); 
     colorWipe(50); // Red
     Serial.println("Green"); 
-    colorWipe(strip.Color(0, 255, 0)); // Green
+    // colorWipe(strip.Color(0, 255, 0), 50); // Green
     Serial.println("Blue"); 
-    colorWipe(strip.Color(0, 0, 255)); // Blue
+    // colorWipe(strip.Color(0, 0, 255), 50); // Blue
     break;
 
     case 2:
@@ -350,15 +342,6 @@ void testCase(int component){
     // 	 GND ------------- GND
     getMouvement();
     printMvmt();
-    break;
-
-    case 3:
-    if (irrecv.decode(&results)) {
-    Serial.println(results.value, hex);
-    irrecv.resume(); // Receive the next value
-    }else{
-      Serial.println("No IR signal recognized");
-    }
     break;
 
     default:
