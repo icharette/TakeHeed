@@ -1,37 +1,16 @@
 {
 	"folders": [
 		{
-			"path": "TakeHeed_ParticleSetup"
-		},
-		{
 			"path": "button_subscriber"
 		},
 		{
 			"path": "button"
 		},
 		{
-			"path": "algo_nina"
-		},
-		{
 			"path": "IMU"
 		},
 		{
-			"path": "LSM9DS1_Breakout-master"
-		},
-		{
-			"path": "neopixelActivity"
-		},
-		{
-			"path": "motors"
-		},
-		{
-			"path": "motors_IMU"
-		},
-		{
 			"path": "algue"
-		},
-		{
-			"path": "motors_IMU_neopixels"
 		},
 		{
 			"path": "particle_template"
