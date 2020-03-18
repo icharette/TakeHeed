@@ -1,3 +1,8 @@
+/******************************************************/
+//       THIS IS A GENERATED FILE - DO NOT EDIT       //
+/******************************************************/
+
+#line 1 "/Users/ninjacat/Documents/Particle/TakeHeed/receive/src/receive.ino"
 /*
  * Project Take Heed _ Iteration 2
  * Description: template for receiving with Particle communication
@@ -9,6 +14,11 @@
 #include <simple-OSC.h>
 #include "SparkCorePolledTimer.h"
 
+void setup();
+void loop();
+void STILL(OSCMessage &inMessag);
+void MOVE(OSCMessage &inMessag);
+#line 12 "/Users/ninjacat/Documents/Particle/TakeHeed/receive/src/receive.ino"
 SYSTEM_THREAD(ENABLED);
 SYSTEM_MODE(SEMI_AUTOMATIC);
 
@@ -73,7 +83,6 @@ void OnTimer(void) {  //Handler for the timer, will be called automatically
 
         Serial.println("PARSING");
           //trigger method according to message received
-          inMessage.route("test", TEST);
           inMessage.route("still", STILL);
           inMessage.route("/move", MOVE);
         }
@@ -83,10 +92,6 @@ void OnTimer(void) {  //Handler for the timer, will be called automatically
       }
 }
 
-void TEST(OSCMessage &inMessag){
-  Serial.println("Receiving message with object -test- and triggering TEST method.");
-
-}
 void STILL(OSCMessage &inMessag){
   Serial.println("STILL");
 
