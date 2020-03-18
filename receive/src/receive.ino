@@ -5,21 +5,27 @@
  * Date: Winter 2020
  */
 
+//-----------------------//-----------------------//-----------------------//-----------------------#INCLUDES
 #include <Particle.h>
 #include <simple-OSC.h>
 #include "SparkCorePolledTimer.h"
 
+//-----------------------//-----------------------//-----------------------//-----------------------PARTICLE
 SYSTEM_THREAD(ENABLED);
 SYSTEM_MODE(SEMI_AUTOMATIC);
 
+//-----------------------//-----------------------//-----------------------//-----------------------WIFI
 unsigned int localPort = 8888;
 IPAddress ipAddress;
 int port;
 UDP udp;
 
+//-----------------------//-----------------------//-----------------------//-----------------------HEADERS
 SparkCorePolledTimer updateTimer(500);  //Create a timer object and set it's timeout in milliseconds
 void OnTimer(void);   //Prototype for timer callback method
 
+
+//-----------------------//-----------------------//-----------------------//-----------------------SETUP
 void setup() {
   //waiting for serial to correctly initialze and allocate memory
   //serial object
@@ -30,7 +36,7 @@ void setup() {
   while(!WiFi.ready());
   Serial.println("Setup");
   udp.begin(localPort);
-  WiFi.setHostname("HQRouter_PUBLISH");
+  WiFi.setHostname("HQRouter_RECEIVE");
   Serial.println(WiFi.hostname());
   Serial.println(WiFi.localIP()); 
   Serial.begin(9600);
@@ -38,7 +44,7 @@ void setup() {
    updateTimer.SetCallback(OnTimer);
   }
 
-/////---------------------------------------------------------------- SETUP
+//-----------------------//-----------------------//-----------------------//-----------------------SETUP
 
 
 
@@ -49,6 +55,7 @@ void loop() {
 
 //-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 
+//-----------------------//-----------------------//-----------------------//-----------------------ONTIMER
 void OnTimer(void) {  //Handler for the timer, will be called automatically
     int size = 0;
      OSCMessage inMessage;
@@ -82,7 +89,9 @@ void OnTimer(void) {  //Handler for the timer, will be called automatically
         Serial.println("No message");
       }
 }
+//-----------------------//-----------------------//-----------------------//-----------------------SETUP
 
+//-----------------------//-----------------------//-----------------------//-----------------------PARSED-METHODS
 void TEST(OSCMessage &inMessag){
   Serial.println("Receiving message with object -test- and triggering TEST method.");
 
@@ -96,3 +105,4 @@ void MOVE(OSCMessage &inMessag){
   Serial.println("MOVE");
 
 }
+//-----------------------//-----------------------//-----------------------//-----------------------PARSED-METHODS
