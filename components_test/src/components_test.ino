@@ -42,19 +42,6 @@ void colorWipe(uint32_t c, uint8_t wait);
 void pulseWhite(uint8_t wait);
 void healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops);
 
-//pins for motor on right shoulder
-int enableRight = A5;
-int stepRight = A4;
-int directionRight = A3;
-
-//arrays to help set up the pins
-int rightShoulderMotors[3];
-
-//variables that set the stepping of the motors
-int pace = 500;
-int waitStep = 1000;
-int stepperIndexCap = 2000;
-
 //------NEOPIXEL
 // IMPORTANT: Set pixel COUNT, PIN and TYPE
 #define PIXEL_PIN D2
@@ -67,19 +54,6 @@ Adafruit_NeoPixel strip(PIXEL_COUNT, PIXEL_PIN);
 uint32_t  colorArrSaved[PIXEL_COUNT];
 bool pixels[PIXEL_COUNT];
 int pixelPointer;
-
-void setupMotor(int motorPinsArray[], int enable, int step, int direction){
-  pinMode(enable, OUTPUT); //Enable
-  pinMode(step, OUTPUT); //Step
-  pinMode(direction, OUTPUT); //Direction
-
-  digitalWrite(enable, LOW);
-
-  motorPinsArray[0]= direction;
-  motorPinsArray[1]= step;
-  motorPinsArray[2]= enable;
-}
-
 
 /////---------------------------------------------------------------- IMU
 
@@ -242,25 +216,27 @@ void setup() {
 
 //-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 void loop() {
-// healthyWave(500,3,3);
 
 // testCase(0); //motors
 // testCase(1); //leds
-theaterChase(strip.Color(255,0,0),1000);
-// theaterChase(strip.Color(255,0,255),100);
 //-->IMPORTANT: only set boolean onlyMotor to false when using next testcase
 // testCase(2); //IMU
+
+//--->LED testing with activity/personality
+// healthyWave(500,3,3);
+// theaterChase(strip.Color(255,0,0),1000); // testing LED pulsing pattern, I haven't tried it on the full LED strip yet
+// theaterChase(strip.Color(255,0,255),100);
 }
 
 //-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 
 void testCase(int component){
-
+int steps = 3000;
   switch(component){
     case 0:
     //STEPPER motors--------------------------------------------------------------------------------------------------------------------------------------
     //PIN SETUP: Stepper stepper(STEPS, A1, A2, A3, A4);
-    int steps = 3000;
+    // 
     stepper.setSpeed(50);
     stepper.step(steps);
     delay(1000);

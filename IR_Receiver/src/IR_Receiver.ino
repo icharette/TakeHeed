@@ -49,7 +49,7 @@ void setup() {
 //-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 void loop() {
   if (irrecv.decode(&results)) {
-    Serial.println(results.value, hex);
+    Serial.println(results.value, HEX);
     irrecv.resume(); // Receive the next value
   }
 }

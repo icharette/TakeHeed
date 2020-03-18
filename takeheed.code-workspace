@@ -23,6 +23,12 @@
 		},
 		{
 			"path": "components_test"
+		},
+		{
+			"path": "receive"
+		},
+		{
+			"path": "send"
 		}
 	],
 	"settings": {
