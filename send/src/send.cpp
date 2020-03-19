@@ -10,25 +10,31 @@
  * Date: Winter 2020
  */
 
+//-----------------------//-----------------------//-----------------------//-----------------------#INCLUDES
 #include <Particle.h>
 #include <simple-OSC.h>
 #include "SparkCorePolledTimer.h"
 
+//-----------------------//-----------------------//-----------------------//-----------------------PARTICLE
 void setup();
 void loop();
 void send();
-#line 12 "/Users/ninjacat/Documents/Particle/TakeHeed/send/src/send.ino"
+#line 14 "/Users/ninjacat/Documents/Particle/TakeHeed/send/src/send.ino"
 SYSTEM_THREAD(ENABLED);
 SYSTEM_MODE(SEMI_AUTOMATIC);
 
+//-----------------------//-----------------------//-----------------------//-----------------------WIFI
 unsigned int localPort = 8888;
 IPAddress ipAddress;
 int port;
 UDP udp;
 
+//-----------------------//-----------------------//-----------------------//-----------------------HEADERS
 SparkCorePolledTimer updateTimer(500);  //Create a timer object and set it's timeout in milliseconds
 void OnTimer(void);   //Prototype for timer callback method
 
+
+//-----------------------//-----------------------//-----------------------//-----------------------SETUP
 void setup() {
   //waiting for serial to correctly initialze and allocate memory
   //serial object
@@ -39,15 +45,15 @@ void setup() {
   while(!WiFi.ready());
   Serial.println("Setup");
   udp.begin(localPort);
-  WiFi.setHostname("HQRouter_PUBLISH");
+  WiFi.setHostname("HQRouter_SEND");
   Serial.println(WiFi.hostname());
   Serial.println(WiFi.localIP()); 
   Serial.begin(9600);
 
-   updateTimer.SetCallback(OnTimer);
+  updateTimer.SetCallback(OnTimer);
   }
 
-/////---------------------------------------------------------------- SETUP
+//-----------------------//-----------------------//-----------------------//-----------------------SETUP
 
 
 
@@ -58,11 +64,10 @@ void loop() {
 
 //-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 
+//-----------------------//-----------------------//-----------------------//-----------------------SEND
 void send(){
-  //my computer IP address: 132.205.229.249
   IPAddress ipAddress(192,168,0,101);
-  unsigned int localPort = 8888;
-  unsigned int outPort = 7000;
+  unsigned int localPort = 8888; //necessary?
 
   String message = "test";
   OSCMessage outMessage(message);
@@ -72,7 +77,10 @@ void send(){
   
   Serial.println("in send method");
 }
+//-----------------------//-----------------------//-----------------------//-----------------------SEND
 
+//-----------------------//-----------------------//-----------------------//-----------------------ONTIMER
 void OnTimer(void) {  
   send();
 }
+//-----------------------//-----------------------//-----------------------//-----------------------ONTIMER

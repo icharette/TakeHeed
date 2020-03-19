@@ -7,35 +7,35 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   1 .dynalib      00000004  080a0018  080a0018  00010018  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  2 .text         00001f94  080a001c  080a001c  0001001c  2**2
+  2 .text         00001f84  080a001c  080a001c  0001001c  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  3 .backup       00000004  40024000  080a1fb0  00014000  2**2
+  3 .backup       00000004  40024000  080a1fa0  00014000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  4 .data         0000006c  20000000  080a1fb4  00020000  2**2
+  4 .data         0000006c  20000000  080a1fa4  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
   5 .bss          000005ec  2000006c  2000006c  0003006c  2**2
                   ALLOC
-  6 .module_info_suffix 00000028  080a2020  080a2020  00022020  2**0
+  6 .module_info_suffix 00000028  080a2010  080a2010  00022010  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  7 .module_info_crc 00000004  080a2048  080a2048  00022048  2**0
+  7 .module_info_crc 00000004  080a2038  080a2038  00022038  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  8 .debug_info   0009be70  00000000  00000000  0002204c  2**0
+  8 .debug_info   0009be62  00000000  00000000  0002203c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_abbrev 0000e254  00000000  00000000  000bdebc  2**0
+  9 .debug_abbrev 0000e254  00000000  00000000  000bde9e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    000132c4  00000000  00000000  000cc110  2**0
+ 10 .debug_loc    000132c4  00000000  00000000  000cc0f2  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_aranges 00001d50  00000000  00000000  000df3d4  2**0
+ 11 .debug_aranges 00001d50  00000000  00000000  000df3b6  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00003080  00000000  00000000  000e1124  2**0
+ 12 .debug_ranges 00003080  00000000  00000000  000e1106  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_macro  00021e22  00000000  00000000  000e41a4  2**0
+ 13 .debug_macro  00021e22  00000000  00000000  000e4186  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_line   00020283  00000000  00000000  00105fc6  2**0
+ 14 .debug_line   00020281  00000000  00000000  00105fa8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_str    000a4bde  00000000  00000000  00126249  2**0
+ 15 .debug_str    000a4bde  00000000  00000000  00126229  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_frame  0000b324  00000000  00000000  001cae28  2**2
+ 16 .debug_frame  0000b324  00000000  00000000  001cae08  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -81,7 +81,7 @@ void* module_user_pre_init() {
  80a0040:	bd08      	pop	{r3, pc}
  80a0042:	bf00      	nop
  80a0044:	20000000 	.word	0x20000000
- 80a0048:	080a1fb4 	.word	0x080a1fb4
+ 80a0048:	080a1fa4 	.word	0x080a1fa4
  80a004c:	2000006c 	.word	0x2000006c
  80a0050:	2000006c 	.word	0x2000006c
  80a0054:	20000658 	.word	0x20000658
@@ -127,8 +127,8 @@ void module_user_init()
 }
  80a007c:	bd70      	pop	{r4, r5, r6, pc}
  80a007e:	bf00      	nop
- 80a0080:	080a1f68 	.word	0x080a1f68
- 80a0084:	080a1fa4 	.word	0x080a1fa4
+ 80a0080:	080a1f64 	.word	0x080a1f64
+ 80a0084:	080a1fa0 	.word	0x080a1fa0
 
 080a0088 <module_user_setup>:
 
@@ -215,7 +215,7 @@ public:
  80a00ca:	4620      	mov	r0, r4
  80a00cc:	bd10      	pop	{r4, pc}
  80a00ce:	bf00      	nop
- 80a00d0:	080a1e08 	.word	0x080a1e08
+ 80a00d0:	080a1e04 	.word	0x080a1e04
 
 080a00d4 <_ZN9IPAddressD0Ev>:
  80a00d4:	b510      	push	{r4, lr}
@@ -237,11 +237,11 @@ public:
 	...
 
 080a00f8 <setup>:
-UDP udp;
-
 SparkCorePolledTimer updateTimer(500);  //Create a timer object and set it's timeout in milliseconds
 void OnTimer(void);   //Prototype for timer callback method
 
+
+//-----------------------//-----------------------//-----------------------//-----------------------SETUP
 void setup() {
  80a00f8:	b570      	push	{r4, r5, r6, lr}
  80a00fa:	b096      	sub	sp, #88	; 0x58
@@ -302,7 +302,7 @@ void setup() {
  80a0140:	4a21      	ldr	r2, [pc, #132]	; (80a01c8 <setup+0xd0>)
  80a0142:	6868      	ldr	r0, [r5, #4]
  80a0144:	f000 fb32 	bl	80a07ac <network_set_hostname>
-  WiFi.setHostname("HQRouter_PUBLISH");
+  WiFi.setHostname("HQRouter_SEND");
   Serial.println(WiFi.hostname());
  80a0148:	f001 f866 	bl	80a1218 <_Z16_fetch_usbserialv>
  80a014c:	4606      	mov	r6, r0
@@ -369,7 +369,7 @@ void setup() {
  80a01a2:	f44f 5116 	mov.w	r1, #9600	; 0x2580
  80a01a6:	f001 f817 	bl	80a11d8 <_ZN9USBSerial5beginEl>
 
-   updateTimer.SetCallback(OnTimer);
+  updateTimer.SetCallback(OnTimer);
  80a01aa:	4908      	ldr	r1, [pc, #32]	; (80a01cc <setup+0xd4>)
  80a01ac:	4808      	ldr	r0, [pc, #32]	; (80a01d0 <setup+0xd8>)
  80a01ae:	f000 f8b9 	bl	80a0324 <_ZN20SparkCorePolledTimer11SetCallbackEPFvvE>
@@ -402,19 +402,18 @@ void loop() {
 
 //-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 
+//-----------------------//-----------------------//-----------------------//-----------------------SEND
 void send(){
  80a01e0:	b530      	push	{r4, r5, lr}
-  //my computer IP address: 132.205.229.249
   IPAddress ipAddress(192,168,0,101);
  80a01e2:	2365      	movs	r3, #101	; 0x65
- updateTimer.Update();
 }
 
 //-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 
+//-----------------------//-----------------------//-----------------------//-----------------------SEND
 void send(){
  80a01e4:	b0a9      	sub	sp, #164	; 0xa4
-  //my computer IP address: 132.205.229.249
   IPAddress ipAddress(192,168,0,101);
  80a01e6:	22a8      	movs	r2, #168	; 0xa8
  80a01e8:	9300      	str	r3, [sp, #0]
@@ -422,8 +421,7 @@ void send(){
  80a01ec:	2300      	movs	r3, #0
  80a01ee:	a807      	add	r0, sp, #28
  80a01f0:	f000 fb5c 	bl	80a08ac <_ZN9IPAddressC1Ehhhh>
-  unsigned int localPort = 8888;
-  unsigned int outPort = 7000;
+  unsigned int localPort = 8888; //necessary?
 
   String message = "test";
  80a01f4:	4913      	ldr	r1, [pc, #76]	; (80a0244 <_Z4sendv+0x64>)
@@ -463,18 +461,18 @@ class IPAddress : public Printable {
  80a022a:	f000 fff5 	bl	80a1218 <_Z16_fetch_usbserialv>
  80a022e:	4908      	ldr	r1, [pc, #32]	; (80a0250 <_Z4sendv+0x70>)
  80a0230:	f000 fc09 	bl	80a0a46 <_ZN5Print7printlnEPKc>
+void send(){
   IPAddress ipAddress(192,168,0,101);
-  unsigned int localPort = 8888;
-  unsigned int outPort = 7000;
+  unsigned int localPort = 8888; //necessary?
 
   String message = "test";
   OSCMessage outMessage(message);
  80a0234:	a813      	add	r0, sp, #76	; 0x4c
  80a0236:	f000 f8a5 	bl	80a0384 <_ZN10OSCMessageD1Ev>
-  //my computer IP address: 132.205.229.249
+//-----------------------//-----------------------//-----------------------//-----------------------SEND
+void send(){
   IPAddress ipAddress(192,168,0,101);
-  unsigned int localPort = 8888;
-  unsigned int outPort = 7000;
+  unsigned int localPort = 8888; //necessary?
 
   String message = "test";
  80a023a:	a803      	add	r0, sp, #12
@@ -487,18 +485,21 @@ class IPAddress : public Printable {
 }
  80a0240:	b029      	add	sp, #164	; 0xa4
  80a0242:	bd30      	pop	{r4, r5, pc}
- 80a0244:	080a1c77 	.word	0x080a1c77
- 80a0248:	080a1ca0 	.word	0x080a1ca0
+ 80a0244:	080a1c74 	.word	0x080a1c74
+ 80a0248:	080a1c9c 	.word	0x080a1c9c
  80a024c:	20000084 	.word	0x20000084
- 80a0250:	080a1c7c 	.word	0x080a1c7c
+ 80a0250:	080a1c79 	.word	0x080a1c79
 
 080a0254 <_Z7OnTimerv>:
+//-----------------------//-----------------------//-----------------------//-----------------------SEND
 
+//-----------------------//-----------------------//-----------------------//-----------------------ONTIMER
 void OnTimer(void) {  
   send();
  80a0254:	f7ff bfc4 	b.w	80a01e0 <_Z4sendv>
 
 080a0258 <_GLOBAL__sub_I_SystemMode>:
+}
  80a0258:	b538      	push	{r3, r4, r5, lr}
 inline int32_t pinReadFast(pin_t _pin)
 {
@@ -507,11 +508,11 @@ inline int32_t pinReadFast(pin_t _pin)
 #elif defined(STM32F2XX)
 static Hal_Pin_Info* PIN_MAP = HAL_Pin_Map();
  80a025a:	f000 f963 	bl	80a0524 <HAL_Pin_Map>
-
 #include <Particle.h>
 #include <simple-OSC.h>
 #include "SparkCorePolledTimer.h"
 
+//-----------------------//-----------------------//-----------------------//-----------------------PARTICLE
 SYSTEM_THREAD(ENABLED);
  80a025e:	2100      	movs	r1, #0
  80a0260:	2001      	movs	r0, #1
@@ -529,6 +530,7 @@ struct SleepResult {
  80a026e:	f64f 72ff 	movw	r2, #65535	; 0xffff
 SYSTEM_MODE(SEMI_AUTOMATIC);
 
+//-----------------------//-----------------------//-----------------------//-----------------------WIFI
 unsigned int localPort = 8888;
 IPAddress ipAddress;
  80a0272:	4c10      	ldr	r4, [pc, #64]	; (80a02b4 <_GLOBAL__sub_I_SystemMode+0x5c>)
@@ -548,10 +550,10 @@ public:
 int port;
 UDP udp;
  80a0286:	4c0d      	ldr	r4, [pc, #52]	; (80a02bc <_GLOBAL__sub_I_SystemMode+0x64>)
-
 SYSTEM_THREAD(ENABLED);
 SYSTEM_MODE(SEMI_AUTOMATIC);
 
+//-----------------------//-----------------------//-----------------------//-----------------------WIFI
 unsigned int localPort = 8888;
 IPAddress ipAddress;
  80a0288:	462a      	mov	r2, r5
@@ -565,17 +567,18 @@ UDP udp;
  80a0298:	490a      	ldr	r1, [pc, #40]	; (80a02c4 <_GLOBAL__sub_I_SystemMode+0x6c>)
  80a029a:	4620      	mov	r0, r4
  80a029c:	f001 f954 	bl	80a1548 <__aeabi_atexit>
-  Serial.println("in send method");
-}
+//-----------------------//-----------------------//-----------------------//-----------------------SEND
 
+//-----------------------//-----------------------//-----------------------//-----------------------ONTIMER
 void OnTimer(void) {  
   send();
+}
  80a02a0:	e8bd 4038 	ldmia.w	sp!, {r3, r4, r5, lr}
-unsigned int localPort = 8888;
 IPAddress ipAddress;
 int port;
 UDP udp;
 
+//-----------------------//-----------------------//-----------------------//-----------------------HEADERS
 SparkCorePolledTimer updateTimer(500);  //Create a timer object and set it's timeout in milliseconds
  80a02a4:	f44f 71fa 	mov.w	r1, #500	; 0x1f4
  80a02a8:	4807      	ldr	r0, [pc, #28]	; (80a02c8 <_GLOBAL__sub_I_SystemMode+0x70>)
@@ -784,7 +787,7 @@ OSCMessage::OSCMessage(const char * address)
  80a037a:	4620      	mov	r0, r4
  80a037c:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
  80a037e:	bf00      	nop
- 80a0380:	080a1d56 	.word	0x080a1d56
+ 80a0380:	080a1d52 	.word	0x080a1d52
 
 080a0384 <_ZN10OSCMessageD1Ev>:
     outputDatas = NULL;
@@ -1011,7 +1014,7 @@ void OSCMessage::send(UDP &udp, IPAddress remoteIP, unsigned int outPort)
  80a04e2:	46bd      	mov	sp, r7
  80a04e4:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
  80a04e8:	3fe00000 	.word	0x3fe00000
- 80a04ec:	080a1ca0 	.word	0x080a1ca0
+ 80a04ec:	080a1c9c 	.word	0x080a1c9c
 
 080a04f0 <_GLOBAL__sub_I__ZN10OSCMessageC2Ev>:
  80a04f0:	f000 b818 	b.w	80a0524 <HAL_Pin_Map>
@@ -1703,7 +1706,7 @@ IPAddress::IPAddress()
  80a0852:	4620      	mov	r0, r4
  80a0854:	bd10      	pop	{r4, pc}
  80a0856:	bf00      	nop
- 80a0858:	080a1ca0 	.word	0x080a1ca0
+ 80a0858:	080a1c9c 	.word	0x080a1c9c
 
 080a085c <_ZN9IPAddressC1ERK16_HAL_IPAddress_t>:
 
@@ -1723,7 +1726,7 @@ IPAddress::IPAddress(const HAL_IPAddress& address)
  80a0878:	701a      	strb	r2, [r3, #0]
 }
  80a087a:	bd10      	pop	{r4, pc}
- 80a087c:	080a1ca0 	.word	0x080a1ca0
+ 80a087c:	080a1c9c 	.word	0x080a1c9c
 
 080a0880 <_ZN9IPAddressC1Em>:
 IPAddress::IPAddress(uint8_t first_octet, uint8_t second_octet, uint8_t third_octet, uint8_t fourth_octet)
@@ -1759,7 +1762,7 @@ IPAddress::IPAddress(uint32_t address)
     *this = address;
 }
  80a088a:	4770      	bx	lr
- 80a088c:	080a1ca0 	.word	0x080a1ca0
+ 80a088c:	080a1c9c 	.word	0x080a1c9c
 
 080a0890 <_ZN9IPAddress8set_ipv4Ehhhh>:
     return address.ipv4!=0;
@@ -1798,7 +1801,7 @@ IPAddress::IPAddress(uint8_t first_octet, uint8_t second_octet, uint8_t third_oc
 }
  80a08bc:	b003      	add	sp, #12
  80a08be:	bd30      	pop	{r4, r5, pc}
- 80a08c0:	080a1ca0 	.word	0x080a1ca0
+ 80a08c0:	080a1c9c 	.word	0x080a1c9c
 
 080a08c4 <_ZN9IPAddressaSEPKh>:
     address.ipv4 = b0<<24 | b1 << 16 | b2 << 8 | b3;
@@ -1833,7 +1836,7 @@ inline spark::Logger::Logger(const char *name) :
  80a08de:	4b02      	ldr	r3, [pc, #8]	; (80a08e8 <_GLOBAL__sub_I__ZN5spark3LogE+0xc>)
  80a08e0:	601a      	str	r2, [r3, #0]
  80a08e2:	4770      	bx	lr
- 80a08e4:	080a1d22 	.word	0x080a1d22
+ 80a08e4:	080a1d1e 	.word	0x080a1d1e
  80a08e8:	200000e8 	.word	0x200000e8
 
 080a08ec <_ZN5spark12NetworkClass7connectEj>:
@@ -2024,7 +2027,7 @@ IPAddress NetworkClass::resolve(const char* name) {
  80a09c4:	605a      	str	r2, [r3, #4]
  80a09c6:	4770      	bx	lr
  80a09c8:	200000ec 	.word	0x200000ec
- 80a09cc:	080a1d98 	.word	0x080a1d98
+ 80a09cc:	080a1d94 	.word	0x080a1d94
 
 080a09d0 <_ZN5Print5writeEPKhj>:
 
@@ -2433,7 +2436,7 @@ SPIClass::SPIClass(HAL_SPI_Interface spi)
  80a0b1e:	4620      	mov	r0, r4
  80a0b20:	bd70      	pop	{r4, r5, r6, pc}
  80a0b22:	bf00      	nop
- 80a0b24:	080a1dcc 	.word	0x080a1dcc
+ 80a0b24:	080a1dc8 	.word	0x080a1dc8
 
 080a0b28 <_ZN6StringD1Ev>:
 	init();
@@ -3400,7 +3403,7 @@ class IPAddress : public Printable {
 }
  80a0e92:	b014      	add	sp, #80	; 0x50
  80a0e94:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
- 80a0e98:	080a1ca0 	.word	0x080a1ca0
+ 80a0e98:	080a1c9c 	.word	0x080a1c9c
 
 080a0e9c <_ZN3UDP8remoteIPEv>:
      */
@@ -3421,7 +3424,7 @@ class IPAddress : public Printable {
  80a0eb2:	4630      	mov	r0, r6
  80a0eb4:	7023      	strb	r3, [r4, #0]
  80a0eb6:	bd70      	pop	{r4, r5, r6, pc}
- 80a0eb8:	080a1ca0 	.word	0x080a1ca0
+ 80a0eb8:	080a1c9c 	.word	0x080a1c9c
 
 080a0ebc <_ZN3UDP10sendPacketEPKcj9IPAddresst>:
      * @param ip
@@ -3464,7 +3467,7 @@ class IPAddress : public Printable {
  80a0eea:	b009      	add	sp, #36	; 0x24
  80a0eec:	bdf0      	pop	{r4, r5, r6, r7, pc}
  80a0eee:	bf00      	nop
- 80a0ef0:	080a1ca0 	.word	0x080a1ca0
+ 80a0ef0:	080a1c9c 	.word	0x080a1c9c
 
 080a0ef4 <_ZN3UDP9endPacketEv>:
     flush_buffer(); // clear buffer
@@ -3514,7 +3517,7 @@ int UDP::endPacket()
  80a0f2e:	b009      	add	sp, #36	; 0x24
  80a0f30:	bdf0      	pop	{r4, r5, r6, r7, pc}
  80a0f32:	bf00      	nop
- 80a0f34:	080a1ca0 	.word	0x080a1ca0
+ 80a0f34:	080a1c9c 	.word	0x080a1c9c
 
 080a0f38 <_ZN3UDPC1Ev>:
 static bool inline isOpen(sock_handle_t sd)
@@ -3559,7 +3562,7 @@ UDP::UDP() : _sock(socket_handle_invalid()), _offset(0), _total(0), _buffer(0), 
 }
  80a0f6c:	4620      	mov	r0, r4
  80a0f6e:	bd38      	pop	{r3, r4, r5, pc}
- 80a0f70:	080a1e00 	.word	0x080a1e00
+ 80a0f70:	080a1dfc 	.word	0x080a1dfc
 
 080a0f74 <_ZN3UDP13releaseBufferEv>:
     }
@@ -3973,7 +3976,7 @@ USARTSerial::USARTSerial(HAL_USART_Serial serial, Ring_Buffer *rx_buffer, Ring_B
  80a10d6:	4620      	mov	r0, r4
  80a10d8:	bd10      	pop	{r4, pc}
  80a10da:	bf00      	nop
- 80a10dc:	080a1e78 	.word	0x080a1e78
+ 80a10dc:	080a1e74 	.word	0x080a1e74
 
 080a10e0 <_Z22__fetch_global_Serial1v>:
 static Ring_Buffer* serial1_rx_buffer = NULL;
@@ -4188,7 +4191,7 @@ USBSerial::USBSerial(HAL_USB_USART_Serial serial, const HAL_USB_USART_Config& co
 }
  80a11d0:	4620      	mov	r0, r4
  80a11d2:	bd10      	pop	{r4, pc}
- 80a11d4:	080a1ea8 	.word	0x080a1ea8
+ 80a11d4:	080a1ea4 	.word	0x080a1ea4
 
 080a11d8 <_ZN9USBSerial5beginEl>:
 // Public methods
@@ -4600,7 +4603,7 @@ public:
  80a1390:	601a      	str	r2, [r3, #0]
  80a1392:	4770      	bx	lr
  80a1394:	2000056c 	.word	0x2000056c
- 80a1398:	080a1ed8 	.word	0x080a1ed8
+ 80a1398:	080a1ed4 	.word	0x080a1ed4
 
 080a139c <serialEventRun>:
 
@@ -4717,7 +4720,7 @@ void system_initialize_user_backup_ram()
  80a141c:	f000 bbd2 	b.w	80a1bc4 <memcpy>
  80a1420:	40024000 	.word	0x40024000
  80a1424:	40024004 	.word	0x40024004
- 80a1428:	080a1fb0 	.word	0x080a1fb0
+ 80a1428:	080a1fa0 	.word	0x080a1fa0
 
 080a142c <_Z27ctrl_request_custom_handlerP12ctrl_request>:
 bool __backup_ram_was_valid() { return false; }
@@ -5655,98 +5658,95 @@ SPIClass SPI1(HAL_SPI_INTERFACE2);
 080a1c4c <dynalib_user>:
  80a1c4c:	001d 080a 005d 080a 0089 080a 008d 080a     ....]...........
  80a1c5c:	0000 0000 6553 7574 0070 5148 6f52 7475     ....Setup.HQRout
- 80a1c6c:	7265 505f 4255 494c 4853 7400 7365 0074     er_PUBLISH.test.
- 80a1c7c:	6e69 7320 6e65 2064 656d 6874 646f 2000     in send method. 
- 80a1c8c:	203a 0a00 2d2d 2d2d 0000 0000               : ..----....
+ 80a1c6c:	7265 535f 4e45 0044 6574 7473 6900 206e     er_SEND.test.in 
+ 80a1c7c:	6573 646e 6d20 7465 6f68 0064 3a20 0020     send method. : .
+ 80a1c8c:	2d0a 2d2d 002d 0000                         .----...
 
-080a1c98 <_ZTV9IPAddress>:
+080a1c94 <_ZTV9IPAddress>:
 	...
- 80a1ca0:	080f 080a 00b3 080a 00d5 080a 6162 6475     ............baud
- 80a1cb0:	5300 7265 6169 006c 5355 5342 7265 6169     .Serial.USBSeria
- 80a1cc0:	316c 7400 7079 0065 6170 6172 006d 6d63     l1.type.param.cm
- 80a1cd0:	0064 6469 6800 646e 7300 7274 006d 6966     d.id.hnd.strm.fi
- 80a1ce0:	746c 6c00 6c76 6100 6464 6148 646e 656c     lt.lvl.addHandle
- 80a1cf0:	0072 6572 6f6d 6576 6148 646e 656c 0072     r.removeHandler.
- 80a1d00:	6e65 6d75 6148 646e 656c 7372 4a00 4f53     enumHandlers.JSO
- 80a1d10:	534e 7274 6165 4c6d 676f 6148 646e 656c     NStreamLogHandle
- 80a1d20:	0072 7061 0070 3025 3031 2075 5d00 0020     r.app.%010u .] .
- 80a1d30:	6425 2c00 0020 2928 203a 2000 005b 6f63     %d., .(): . [.co
- 80a1d40:	6564 3d20 0020 6925 6400 7465 6961 736c     de = .%i.details
- 80a1d50:	3d20 0020 0a0d 6600 6c00 006e 6e66 6300      = ....f.ln.fn.c
- 80a1d60:	646f 0065 6564 6174 6c69 6e00 6e6f 0065     ode.detail.none.
- 80a1d70:	7274 6361 0065 6e69 6f66 7700 7261 006e     trace.info.warn.
- 80a1d80:	7265 6f72 0072 6170 696e 0063 6c61 006c     error.panic.all.
+ 80a1c9c:	080f 080a 00b3 080a 00d5 080a 6162 6475     ............baud
+ 80a1cac:	5300 7265 6169 006c 5355 5342 7265 6169     .Serial.USBSeria
+ 80a1cbc:	316c 7400 7079 0065 6170 6172 006d 6d63     l1.type.param.cm
+ 80a1ccc:	0064 6469 6800 646e 7300 7274 006d 6966     d.id.hnd.strm.fi
+ 80a1cdc:	746c 6c00 6c76 6100 6464 6148 646e 656c     lt.lvl.addHandle
+ 80a1cec:	0072 6572 6f6d 6576 6148 646e 656c 0072     r.removeHandler.
+ 80a1cfc:	6e65 6d75 6148 646e 656c 7372 4a00 4f53     enumHandlers.JSO
+ 80a1d0c:	534e 7274 6165 4c6d 676f 6148 646e 656c     NStreamLogHandle
+ 80a1d1c:	0072 7061 0070 3025 3031 2075 5d00 0020     r.app.%010u .] .
+ 80a1d2c:	6425 2c00 0020 2928 203a 2000 005b 6f63     %d., .(): . [.co
+ 80a1d3c:	6564 3d20 0020 6925 6400 7465 6961 736c     de = .%i.details
+ 80a1d4c:	3d20 0020 0a0d 6600 6c00 006e 6e66 6300      = ....f.ln.fn.c
+ 80a1d5c:	646f 0065 6564 6174 6c69 6e00 6e6f 0065     ode.detail.none.
+ 80a1d6c:	7274 6361 0065 6e69 6f66 7700 7261 006e     trace.info.warn.
+ 80a1d7c:	7265 6f72 0072 6170 696e 0063 6c61 006c     error.panic.all.
 
-080a1d90 <_ZTVN5spark12NetworkClassE>:
+080a1d8c <_ZTVN5spark12NetworkClassE>:
 	...
- 80a1d98:	08ed 080a 08f7 080a 0901 080a 090b 080a     ................
- 80a1da8:	0915 080a 0921 080a 092d 080a 0939 080a     ....!...-...9...
- 80a1db8:	0941 080a 094b 080a 0955 080a               A...K...U...
+ 80a1d94:	08ed 080a 08f7 080a 0901 080a 090b 080a     ................
+ 80a1da4:	0915 080a 0921 080a 092d 080a 0939 080a     ....!...-...9...
+ 80a1db4:	0941 080a 094b 080a 0955 080a               A...K...U...
 
-080a1dc4 <_ZTV8SPIClass>:
+080a1dc0 <_ZTV8SPIClass>:
 	...
- 80a1dcc:	0af1 080a 0af3 080a 005a 2b25 3330 3a64     ........Z.%+03d:
- 80a1ddc:	3025 7532 2500 2d59 6d25 252d 5464 4825     %02u.%Y-%m-%dT%H
- 80a1dec:	253a 3a4d 5325 7a25 6100 6373 6974 656d     :%M:%S%z.asctime
- 80a1dfc:	0000 0000                                   ....
+ 80a1dc8:	0af1 080a 0af3 080a 005a 2b25 3330 3a64     ........Z.%+03d:
+ 80a1dd8:	3025 7532 2500 2d59 6d25 252d 5464 4825     %02u.%Y-%m-%dT%H
+ 80a1de8:	253a 3a4d 5325 7a25 6100 6373 6974 656d     :%M:%S%z.asctime
+ 80a1df8:	0000 0000                                   ....
 
-080a1e00 <_ZTV3UDP>:
+080a1dfc <_ZTV3UDP>:
 	...
- 80a1e08:	00b5 080a 00e3 080a 0c4b 080a 0d6b 080a     ........K...k...
- 80a1e18:	0c43 080a 0c61 080a 0c7f 080a 0c99 080a     C...a...........
- 80a1e28:	0cbb 080a 0d05 080a 0d27 080a 0ebd 080a     ........'.......
- 80a1e38:	0dd1 080a 0c2d 080a 0fcd 080a 0e39 080a     ....-.......9...
- 80a1e48:	0ef5 080a 0ffb 080a 0d95 080a 0c39 080a     ............9...
- 80a1e58:	0e9d 080a 0c3f 080a 0c9b 080a fff0 ffff     ....?...........
- 80a1e68:	0000 0000 0cb3 080a                         ........
+ 80a1e04:	00b5 080a 00e3 080a 0c4b 080a 0d6b 080a     ........K...k...
+ 80a1e14:	0c43 080a 0c61 080a 0c7f 080a 0c99 080a     C...a...........
+ 80a1e24:	0cbb 080a 0d05 080a 0d27 080a 0ebd 080a     ........'.......
+ 80a1e34:	0dd1 080a 0c2d 080a 0fcd 080a 0e39 080a     ....-.......9...
+ 80a1e44:	0ef5 080a 0ffb 080a 0d95 080a 0c39 080a     ............9...
+ 80a1e54:	0e9d 080a 0c3f 080a 0c9b 080a fff0 ffff     ....?...........
+ 80a1e64:	0000 0000 0cb3 080a                         ........
 
-080a1e70 <_ZTV11USARTSerial>:
+080a1e6c <_ZTV11USARTSerial>:
 	...
- 80a1e78:	1033 080a 1083 080a 1091 080a 09d1 080a     3...............
- 80a1e88:	1047 080a 1069 080a 1055 080a 107d 080a     G...i...U...}...
- 80a1e98:	1035 080a 1039 080a                         5...9...
+ 80a1e74:	1033 080a 1083 080a 1091 080a 09d1 080a     3...............
+ 80a1e84:	1047 080a 1069 080a 1055 080a 107d 080a     G...i...U...}...
+ 80a1e94:	1035 080a 1039 080a                         5...9...
 
-080a1ea0 <_ZTV9USBSerial>:
+080a1e9c <_ZTV9USBSerial>:
 	...
- 80a1ea8:	1131 080a 1181 080a 118f 080a 09d1 080a     1...............
- 80a1eb8:	116d 080a 1133 080a 1149 080a 117b 080a     m...3...I...{...
- 80a1ec8:	115f 080a 112d 080a                         _...-...
+ 80a1ea4:	1131 080a 1181 080a 118f 080a 09d1 080a     1...............
+ 80a1eb4:	116d 080a 1133 080a 1149 080a 117b 080a     m...3...I...{...
+ 80a1ec4:	115f 080a 112d 080a                         _...-...
 
-080a1ed0 <_ZTVN5spark9WiFiClassE>:
+080a1ecc <_ZTVN5spark9WiFiClassE>:
 	...
- 80a1ed8:	137f 080a 1375 080a 136b 080a 12dd 080a     ....u...k.......
- 80a1ee8:	135f 080a 1353 080a 1347 080a 133f 080a     _...S...G...?...
- 80a1ef8:	1335 080a 132b 080a 12e7 080a               5...+.......
+ 80a1ed4:	137f 080a 1375 080a 136b 080a 12dd 080a     ....u...k.......
+ 80a1ee4:	135f 080a 1353 080a 1347 080a 133f 080a     _...S...G...?...
+ 80a1ef4:	1335 080a 132b 080a 12e7 080a               5...+.......
 
-080a1f04 <__sf_fake_stdin>:
-	...
-
-080a1f24 <__sf_fake_stdout>:
+080a1f00 <__sf_fake_stdin>:
 	...
 
-080a1f44 <__sf_fake_stderr>:
-	...
- 80a1f64:	0043                                        C.
-
-080a1f66 <link_const_variable_data_end>:
+080a1f20 <__sf_fake_stdout>:
 	...
 
-080a1f68 <link_constructors_location>:
- 80a1f68:	080a0259 	.word	0x080a0259
- 80a1f6c:	080a0329 	.word	0x080a0329
- 80a1f70:	080a04f1 	.word	0x080a04f1
- 80a1f74:	080a08dd 	.word	0x080a08dd
- 80a1f78:	080a09bd 	.word	0x080a09bd
- 80a1f7c:	080a0ad5 	.word	0x080a0ad5
- 80a1f80:	080a0c01 	.word	0x080a0c01
- 80a1f84:	080a0c19 	.word	0x080a0c19
- 80a1f88:	080a1389 	.word	0x080a1389
- 80a1f8c:	080a14d5 	.word	0x080a14d5
- 80a1f90:	080a1505 	.word	0x080a1505
- 80a1f94:	080a1559 	.word	0x080a1559
- 80a1f98:	080a161d 	.word	0x080a161d
- 80a1f9c:	080a16a1 	.word	0x080a16a1
- 80a1fa0:	080a1725 	.word	0x080a1725
-
-080a1fa4 <link_constructors_end>:
+080a1f40 <__sf_fake_stderr>:
 	...
+ 80a1f60:	0043                                        C.
+
+080a1f62 <link_const_variable_data_end>:
+	...
+
+080a1f64 <link_constructors_location>:
+ 80a1f64:	080a0259 	.word	0x080a0259
+ 80a1f68:	080a0329 	.word	0x080a0329
+ 80a1f6c:	080a04f1 	.word	0x080a04f1
+ 80a1f70:	080a08dd 	.word	0x080a08dd
+ 80a1f74:	080a09bd 	.word	0x080a09bd
+ 80a1f78:	080a0ad5 	.word	0x080a0ad5
+ 80a1f7c:	080a0c01 	.word	0x080a0c01
+ 80a1f80:	080a0c19 	.word	0x080a0c19
+ 80a1f84:	080a1389 	.word	0x080a1389
+ 80a1f88:	080a14d5 	.word	0x080a14d5
+ 80a1f8c:	080a1505 	.word	0x080a1505
+ 80a1f90:	080a1559 	.word	0x080a1559
+ 80a1f94:	080a161d 	.word	0x080a161d
+ 80a1f98:	080a16a1 	.word	0x080a16a1
+ 80a1f9c:	080a1725 	.word	0x080a1725
