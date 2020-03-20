@@ -31,9 +31,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  13 .debug_macro  0001fcc0  00000000  00000000  000d3a43  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_line   0001c3c1  00000000  00000000  000f3703  2**0
+ 14 .debug_line   0001c3c0  00000000  00000000  000f3703  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_str    000a459f  00000000  00000000  0010fac4  2**0
+ 15 .debug_str    000a459f  00000000  00000000  0010fac3  2**0
                   CONTENTS, READONLY, DEBUGGING
  16 .debug_frame  0000b058  00000000  00000000  001b4064  2**2
                   CONTENTS, READONLY, DEBUGGING
@@ -241,7 +241,7 @@ IPAddress ipAddress;
 int port;
 UDP udp;
 
-
+//-----------------------//-----------------------//-----------------------//-----------------------SETUP
 void setup() {
  80a00f8:	b570      	push	{r4, r5, r6, lr}
  80a00fa:	b096      	sub	sp, #88	; 0x58
@@ -302,7 +302,7 @@ void setup() {
  80a0140:	4a1f      	ldr	r2, [pc, #124]	; (80a01c0 <setup+0xc8>)
  80a0142:	6868      	ldr	r0, [r5, #4]
  80a0144:	f000 f9ce 	bl	80a04e4 <network_set_hostname>
-  WiFi.setHostname("HQRouter_PUBLISH");
+  WiFi.setHostname("HQRouter_Template");
   Serial.println(WiFi.hostname());
  80a0148:	f000 fef0 	bl	80a0f2c <_Z16_fetch_usbserialv>
  80a014c:	4606      	mov	r6, r0
@@ -364,11 +364,11 @@ void setup() {
  80a0196:	a906      	add	r1, sp, #24
  80a0198:	4630      	mov	r0, r6
  80a019a:	f000 fafa 	bl	80a0792 <_ZN5Print7printlnERK9Printable>
-   Serial.begin(9600);
+  Serial.begin(9600);
  80a019e:	f000 fec5 	bl	80a0f2c <_Z16_fetch_usbserialv>
  80a01a2:	f44f 5116 	mov.w	r1, #9600	; 0x2580
  80a01a6:	f000 fea1 	bl	80a0eec <_ZN9USBSerial5beginEl>
-  }
+}
  80a01aa:	b016      	add	sp, #88	; 0x58
  80a01ac:	bd70      	pop	{r4, r5, r6, pc}
  80a01ae:	bf00      	nop
@@ -379,7 +379,7 @@ void setup() {
  80a01c0:	080a15ba 	.word	0x080a15ba
 
 080a01c4 <loop>:
-/////---------------------------------------------------------------- SETUP
+//-----------------------//-----------------------//-----------------------//-----------------------SETUP
 
 
 
@@ -399,11 +399,11 @@ inline int32_t pinReadFast(pin_t _pin)
 #elif defined(STM32F2XX)
 static Hal_Pin_Info* PIN_MAP = HAL_Pin_Map();
  80a01ca:	f000 f847 	bl	80a025c <HAL_Pin_Map>
- * Date: Winter 2020
- */
 
+//-----------------------//-----------------------//-----------------------//-----------------------#INCLUDES
 #include <Particle.h>
 
+//-----------------------//-----------------------//-----------------------//-----------------------PARTICLE
 SYSTEM_THREAD(ENABLED);
  80a01ce:	2100      	movs	r1, #0
  80a01d0:	2001      	movs	r0, #1
@@ -419,8 +419,9 @@ struct SleepResult {
  80a01da:	701a      	strb	r2, [r3, #0]
  80a01dc:	805a      	strh	r2, [r3, #2]
  80a01de:	f64f 72ff 	movw	r2, #65535	; 0xffff
-SYSTEM_MODE(SEMI_AUTOMATIC);
+SYSTEM_MODE(SEMI_AUTOMATIC); //avoid automatic connection to the cloud
 
+//-----------------------//-----------------------//-----------------------//-----------------------WIFI
 unsigned int localPort = 8888;
 IPAddress ipAddress;
  80a01e2:	4c0d      	ldr	r4, [pc, #52]	; (80a0218 <_GLOBAL__sub_I_SystemMode+0x50>)
@@ -440,10 +441,10 @@ public:
 int port;
 UDP udp;
  80a01f6:	4c0a      	ldr	r4, [pc, #40]	; (80a0220 <_GLOBAL__sub_I_SystemMode+0x58>)
-
 SYSTEM_THREAD(ENABLED);
-SYSTEM_MODE(SEMI_AUTOMATIC);
+SYSTEM_MODE(SEMI_AUTOMATIC); //avoid automatic connection to the cloud
 
+//-----------------------//-----------------------//-----------------------//-----------------------WIFI
 unsigned int localPort = 8888;
 IPAddress ipAddress;
  80a01f8:	462a      	mov	r2, r5
@@ -462,8 +463,8 @@ void loop() {
 
 }
  80a020a:	e8bd 4038 	ldmia.w	sp!, {r3, r4, r5, lr}
-SYSTEM_MODE(SEMI_AUTOMATIC);
 
+//-----------------------//-----------------------//-----------------------//-----------------------WIFI
 unsigned int localPort = 8888;
 IPAddress ipAddress;
 int port;
@@ -4760,7 +4761,7 @@ SPIClass SPI1(HAL_SPI_INTERFACE2);
 080a15a0 <dynalib_user>:
  80a15a0:	001d 080a 005d 080a 0089 080a 008d 080a     ....]...........
  80a15b0:	0000 0000 6553 7574 0070 5148 6f52 7475     ....Setup.HQRout
- 80a15c0:	7265 505f 4255 494c 4853 0000               er_PUBLISH..
+ 80a15c0:	7265 545f 6d65 6c70 7461 0065               er_Template.
 
 080a15cc <_ZTV9IPAddress>:
 	...

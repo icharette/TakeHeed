@@ -31,9 +31,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  13 .debug_macro  0002538e  00000000  00000000  000f9c24  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_line   00026e3d  00000000  00000000  0011efb2  2**0
+ 14 .debug_line   00026e3c  00000000  00000000  0011efb2  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_str    000a37ff  00000000  00000000  00145def  2**0
+ 15 .debug_str    000a37ff  00000000  00000000  00145dee  2**0
                   CONTENTS, READONLY, DEBUGGING
  16 .debug_frame  0000c7ec  00000000  00000000  001e95f0  2**2
                   CONTENTS, READONLY, DEBUGGING
@@ -546,11 +546,11 @@ public:
 	...
 
 080a03d0 <setup>:
-
+int RECV_PIN = 6; //necessary to be pin 6 ?
 IRrecv irrecv(RECV_PIN);
-
 decode_results results;
 
+//-----------------------//-----------------------//-----------------------//-----------------------SETUP
 void setup() {
  80a03d0:	b570      	push	{r4, r5, r6, lr}
  80a03d2:	b096      	sub	sp, #88	; 0x58
@@ -611,7 +611,7 @@ void setup() {
  80a0418:	4a23      	ldr	r2, [pc, #140]	; (80a04a8 <setup+0xd8>)
  80a041a:	6868      	ldr	r0, [r5, #4]
  80a041c:	f001 f8aa 	bl	80a1574 <network_set_hostname>
-  WiFi.setHostname("HQRouter_PUBLISH");
+  WiFi.setHostname("HQRouter_Receiver");
   Serial.println(WiFi.hostname());
  80a0420:	f001 fe60 	bl	80a20e4 <_Z16_fetch_usbserialv>
  80a0424:	4606      	mov	r6, r0
@@ -685,7 +685,7 @@ void setup() {
   irrecv.enableIRIn(); // Start the receiver
  80a048e:	4807      	ldr	r0, [pc, #28]	; (80a04ac <setup+0xdc>)
  80a0490:	f000 f988 	bl	80a07a4 <_ZN6IRrecv10enableIRInEv>
-  }
+}
  80a0494:	b016      	add	sp, #88	; 0x58
  80a0496:	bd70      	pop	{r4, r5, r6, pc}
  80a0498:	20000744 	.word	0x20000744
@@ -696,9 +696,7 @@ void setup() {
  80a04ac:	2000008c 	.word	0x2000008c
 
 080a04b0 <loop>:
-/////---------------------------------------------------------------- SETUP
-
-
+//-----------------------//-----------------------//-----------------------//-----------------------SETUP
 
 //-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 void loop() {
@@ -709,10 +707,10 @@ void loop() {
  80a04b6:	4621      	mov	r1, r4
  80a04b8:	f000 fcb2 	bl	80a0e20 <_ZN6IRrecv6decodeEP14decode_results>
  80a04bc:	b150      	cbz	r0, 80a04d4 <loop+0x24>
-    Serial.println(results.value);
+    Serial.println(results.value, HEX); 
  80a04be:	f001 fe11 	bl	80a20e4 <_Z16_fetch_usbserialv>
  80a04c2:	68a1      	ldr	r1, [r4, #8]
- 80a04c4:	220a      	movs	r2, #10
+ 80a04c4:	2210      	movs	r2, #16
  80a04c6:	f001 fa64 	bl	80a1992 <_ZN5Print7printlnEmi>
     irrecv.resume(); // Receive the next value
   }
@@ -722,7 +720,7 @@ void loop() {
 //-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 void loop() {
   if (irrecv.decode(&results)) {
-    Serial.println(results.value);
+    Serial.println(results.value, HEX); 
     irrecv.resume(); // Receive the next value
  80a04ce:	4803      	ldr	r0, [pc, #12]	; (80a04dc <loop+0x2c>)
  80a04d0:	f000 b986 	b.w	80a07e0 <_ZN6IRrecv6resumeEv>
@@ -742,11 +740,11 @@ inline int32_t pinReadFast(pin_t _pin)
 #elif defined(STM32F2XX)
 static Hal_Pin_Info* PIN_MAP = HAL_Pin_Map();
  80a04e2:	f000 fe91 	bl	80a1208 <HAL_Pin_Map>
- */
-
+//-----------------------//-----------------------//-----------------------//-----------------------#INCLUDES
 #include <Particle.h>
 #include "IRremote.h"
 #include "IRTransmitter.h"
+//-----------------------//-----------------------//-----------------------//-----------------------PARTICLE
 SYSTEM_THREAD(ENABLED);
  80a04e6:	2100      	movs	r1, #0
  80a04e8:	2001      	movs	r0, #1
@@ -762,8 +760,9 @@ struct SleepResult {
  80a04f2:	701a      	strb	r2, [r3, #0]
  80a04f4:	805a      	strh	r2, [r3, #2]
  80a04f6:	f64f 72ff 	movw	r2, #65535	; 0xffff
-SYSTEM_MODE(SEMI_AUTOMATIC);
+SYSTEM_MODE(SEMI_AUTOMATIC); //avoid automatic connection to the cloud
 
+//-----------------------//-----------------------//-----------------------//-----------------------WIFI
 unsigned int localPort = 8888;
 IPAddress ipAddress;
  80a04fa:	4c10      	ldr	r4, [pc, #64]	; (80a053c <_GLOBAL__sub_I_SystemMode+0x5c>)
@@ -783,10 +782,10 @@ public:
 int port;
 UDP udp;
  80a050e:	4c0d      	ldr	r4, [pc, #52]	; (80a0544 <_GLOBAL__sub_I_SystemMode+0x64>)
-#include "IRTransmitter.h"
 SYSTEM_THREAD(ENABLED);
-SYSTEM_MODE(SEMI_AUTOMATIC);
+SYSTEM_MODE(SEMI_AUTOMATIC); //avoid automatic connection to the cloud
 
+//-----------------------//-----------------------//-----------------------//-----------------------WIFI
 unsigned int localPort = 8888;
 IPAddress ipAddress;
  80a0510:	462a      	mov	r2, r5
@@ -801,25 +800,25 @@ UDP udp;
  80a0522:	4620      	mov	r0, r4
  80a0524:	f001 fff8 	bl	80a2518 <__aeabi_atexit>
 
+//-----------------------//-----------------------//-----------------------//-----------------------IR
 // receiver variables
-int RECV_PIN = 6;
-
+int RECV_PIN = 6; //necessary to be pin 6 ?
 IRrecv irrecv(RECV_PIN);
  80a0528:	4b09      	ldr	r3, [pc, #36]	; (80a0550 <_GLOBAL__sub_I_SystemMode+0x70>)
  80a052a:	480a      	ldr	r0, [pc, #40]	; (80a0554 <_GLOBAL__sub_I_SystemMode+0x74>)
  80a052c:	6819      	ldr	r1, [r3, #0]
 void loop() {
   if (irrecv.decode(&results)) {
-    Serial.println(results.value);
+    Serial.println(results.value, HEX); 
     irrecv.resume(); // Receive the next value
   }
 }
  80a052e:	e8bd 4038 	ldmia.w	sp!, {r3, r4, r5, lr}
 UDP udp;
 
+//-----------------------//-----------------------//-----------------------//-----------------------IR
 // receiver variables
-int RECV_PIN = 6;
-
+int RECV_PIN = 6; //necessary to be pin 6 ?
 IRrecv irrecv(RECV_PIN);
  80a0532:	f000 b92f 	b.w	80a0794 <_ZN6IRrecvC1Ei>
  80a0536:	bf00      	nop
@@ -9797,7 +9796,7 @@ SPIClass SPI1(HAL_SPI_INTERFACE2);
 080a3154 <dynalib_user>:
  80a3154:	0021 080a 0061 080a 008d 080a 0091 080a     !...a...........
  80a3164:	0000 0000 6553 7574 0070 5148 6f52 7475     ....Setup.HQRout
- 80a3174:	7265 505f 4255 494c 4853 0000               er_PUBLISH..
+ 80a3174:	7265 525f 6365 6965 6576 0072               er_Receiver.
 
 080a3180 <_ZTV7TwoWire>:
 	...

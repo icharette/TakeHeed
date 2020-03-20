@@ -1,12 +1,6 @@
 {
 	"folders": [
 		{
-			"path": "button_subscriber"
-		},
-		{
-			"path": "button"
-		},
-		{
 			"path": "IMU"
 		},
 		{
@@ -29,6 +23,12 @@
 		},
 		{
 			"path": "send"
+		},
+		{
+			"path": "squeeze"
+		},
+		{
+			"path": "test_circuit"
 		}
 	],
 	"settings": {

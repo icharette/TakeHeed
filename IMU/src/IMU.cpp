@@ -3,35 +3,12 @@
 /******************************************************/
 
 #line 1 "/Users/ninjacat/Documents/Particle/TakeHeed/IMU/src/IMU.ino"
-#include <Particle.h>
-// #include "application.h"
-#include "SparkFunLSM9DS1.h"
-#include "LSM9DS1_Registers.h"
-#include "LSM9DS1_Types.h"
-#include "math.h"
-#include "SparkCorePolledTimer.h"
-
-
-void setupImu();
-void setup();
-void IMUActivity();
-void loop();
-void getMouvement();
-void printMvmt();
-static void iecompass(int16_t iBpx, int16_t iBpy, int16_t iBpz, int16_t iGpx, int16_t iGpy, int16_t iGpz);
-static int16_t iTrig(int16_t ix, int16_t iy);
-static int16_t iHundredAtan2Deg(int16_t iy, int16_t ix);
-static int16_t iHundredAtanDeg(int16_t iy, int16_t ix);
-static int16_t iDivide(int16_t iy, int16_t ix);
-#line 10 "/Users/ninjacat/Documents/Particle/TakeHeed/IMU/src/IMU.ino"
-SYSTEM_THREAD(ENABLED);
-SYSTEM_MODE(SEMI_AUTOMATIC);
-
-
-unsigned int localPort = 8888;
-IPAddress ipAddress;
-int port;
-UDP udp;
+/*
+ * Project Take Heed _ Iteration 2
+ * Description: program to test the IMU sensor
+ * Author: Isabelle Charette 
+ * Date: Winter 2020
+ */
 
 /***************************************************************** SOURCES
 LSM9DS1_Basic_I2C.ino
@@ -42,19 +19,45 @@ https://github.com/sparkfun/SparkFun_LSM9DS1_Particle_Library
 
 *****************************************************************/
 
-LSM9DS1 imu;
+//-----------------------//-----------------------//-----------------------//-----------------------#INCLUDES
+#include <Particle.h>
+#include "SparkFunLSM9DS1.h"
+#include "LSM9DS1_Registers.h"
+#include "LSM9DS1_Types.h"
+#include "math.h"
+#include "SparkCorePolledTimer.h"
+//-----------------------//-----------------------//-----------------------//-----------------------PARTICLE
+void setup();
+void loop();
+void getMouvement();
+void printMvmt();
+void IMUActivity();
+static void iecompass(int16_t iBpx, int16_t iBpy, int16_t iBpz, int16_t iGpx, int16_t iGpy, int16_t iGpz);
+static int16_t iTrig(int16_t ix, int16_t iy);
+static int16_t iHundredAtan2Deg(int16_t iy, int16_t ix);
+static int16_t iHundredAtanDeg(int16_t iy, int16_t ix);
+static int16_t iDivide(int16_t iy, int16_t ix);
+#line 25 "/Users/ninjacat/Documents/Particle/TakeHeed/IMU/src/IMU.ino"
+SYSTEM_THREAD(ENABLED);
+SYSTEM_MODE(SEMI_AUTOMATIC); //avoid automatic connection to the cloud
 
-//sensor variables
+//-----------------------//-----------------------//-----------------------//-----------------------WIFI
+unsigned int localPort = 8888;
+IPAddress ipAddress;
+int port;
+UDP udp;
+
+//-----------------------//-----------------------//-----------------------//-----------------------IMU
+LSM9DS1 imu;
 float refX, refY, refZ;
 float dX, dY, dZ;
 float avMvmt;
 int state;
 float gainThreshold, lossThreshold;
-
-// float origin ;
-// float originPitch, originRoll;
 boolean calibrated = false;
+void setupImu(); //header in right place?
 
+//-----------------------//-----------------------//-----------------------//-----------------------COMPASS
 #define LSM9DS1_M	0x1E // Would be 0x1C if SDO_M is LOW
 #define LSM9DS1_AG	0x6B // Would be 0x6A if SDO_AG is LOW
 
@@ -65,9 +68,6 @@ boolean calibrated = false;
 // a declination to get a more accurate heading. 
 // http://www.ngdc.noaa.gov/geomag-web/#declination
 #define DECLINATION -14.17181// Declination (degrees) montreal
-
-SparkCorePolledTimer updateTimer(1000);  //Create a timer object and set it's timeout in milliseconds
-void OnTimer(void);   //Prototype for timer callback method
 
 /* roll pitch and yaw angles computed by iecompass */
 static int16_t iPhi, iThe, iPsi;
@@ -86,7 +86,52 @@ const uint16_t MINDELTADIV = 1; /* final step size for iDivide */
 const int16_t K1 = 5701;
 const int16_t K2 = -1645;
 const int16_t K3 = 446;
+//-----------------------//-----------------------//-----------------------//-----------------------TIMER
+SparkCorePolledTimer updateTimer(1000);  //Create a timer object and set it's timeout in milliseconds
+void OnTimer(void);   //Prototype for timer callback method
 
+//-----------------------//-----------------------//-----------------------//-----------------------SETUP
+void setup() 
+{
+    while(!Serial);
+    WiFi.connect();
+
+    //wifi function
+    while(!WiFi.ready());
+    Serial.println("Setup");
+    udp.begin(localPort);
+    WiFi.setHostname("HQRouter_IMU");
+    Serial.println(WiFi.hostname());
+    Serial.println(WiFi.localIP());
+    Serial.begin(115200);
+    iVx = 0;
+    iVy = 0;
+    iVz = 0;
+
+    setupImu(); //this needs to be called before any methods from the IMU library. otherwise you get some really wierd errors and need to reset the particle board
+    updateTimer.SetCallback(OnTimer);
+}
+//-----------------------//-----------------------//-----------------------//-----------------------SETUP
+
+
+//-----------------------//-----------------------//-----------------------//-----------------------LOOPING
+void loop() {
+    //IMUActivity();//compass method trigger
+   updateTimer.Update();
+   getMouvement();
+  
+}
+//-----------------------//-----------------------//-----------------------//-----------------------LOOPING
+
+
+//-----------------------//-----------------------//-----------------------//-----------------------TIMER
+void OnTimer(void) {  //Handler for the timer, will be called automatically
+ printMvmt();
+}
+//-----------------------//-----------------------//-----------------------//-----------------------TIMER
+
+
+//-----------------------//-----------------------//-----------------------//-----------------------IMU 
 void setupImu(){
   imu.settings.device.commInterface = IMU_MODE_I2C;
   imu.settings.device.mAddress = LSM9DS1_M;
@@ -98,7 +143,7 @@ void setupImu(){
   // and turns it on.
   if (!imu.begin())
   {
-       digitalWrite(D7, HIGH);
+    digitalWrite(D7, HIGH); //LED lights up on particle when the IMU cannot begin (usually because of bad circuit connections)
     Serial.println("Failed to communicate with LSM9DS1.");
     Serial.println("Double-check wiring.");
     Serial.println("Default settings in this sketch will " \
@@ -108,8 +153,7 @@ void setupImu(){
     while (1)
       ;
   }
-
-     // imu.begin();
+    // imu.begin();
   Serial.println("calibration started");
   imu.calibrate(true);
   imu.calibrateMag(1);
@@ -117,29 +161,39 @@ void setupImu(){
   Serial.println("Calibration finished");
 }
 
-void setup() 
-{
-    pinMode(D7, OUTPUT);
-    while(!Serial);
-    WiFi.connect();
-
-    //wifi function
-    while(!WiFi.ready());
-    Serial.println("Setup");
-    udp.begin(localPort);
-    WiFi.setHostname("HQRouter_PUBLISH");
-    Serial.println(WiFi.hostname());
-    Serial.println(WiFi.localIP());
-    Serial.begin(115200);
-    iVx = 0;
-    iVy = 0;
-    iVz = 0;
-
-    setupImu();
-    
-  updateTimer.SetCallback(OnTimer);
+void getMouvement(){
+//    reset values
+    dX = 0;
+    dY = 0;
+    dZ = 0;
+    avMvmt = 0;
+    for (int i = 0; i < 10; i++){
+    if ( imu.accelAvailable() )
+    {
+      imu.readAccel();
+    }
+    dX += abs(imu.calcAccel(imu.ax) - refX);
+    dY += abs(imu.calcAccel(imu.ay) - refY);
+    dZ += abs(imu.calcAccel(imu.az) - refZ);
+   
+    avMvmt = (dX + dY + dZ) / 3;
+    // delay(100);
+    }
 }
+void printMvmt(){
+    Serial.print("x: ");
+    Serial.print(dX);
+    Serial.print( " Y:");
+    Serial.print(dY);
+    Serial.print(" Z:");
+    Serial.print(dZ);
+    Serial.print(" av: ");
+    Serial.print(avMvmt);
+    Serial.println(" ");
+}
+//-----------------------//-----------------------//-----------------------//-----------------------IMU 
 
+//-----------------------//-----------------------//-----------------------//-----------------------COMPASS
 void IMUActivity(){
     imu.readMag();
     imu.readAccel();
@@ -173,71 +227,6 @@ void IMUActivity(){
     Serial.println(acceptedRange);
     delay(1000);
 }
-
-void loop() {
-//   IMUActivity();
-   updateTimer.Update();
-   getMouvement();
-  
-}
-
-void OnTimer(void) {  //Handler for the timer, will be called automatically
- printMvmt();
-}
-
-void getMouvement(){
-//    reset values
-    dX = 0;
-    dY = 0;
-    dZ = 0;
-    avMvmt = 0;
-    for (int i = 0; i < 10; i++){
-    if ( imu.accelAvailable() )
-    {
-      imu.readAccel();
-    }
-    dX += abs(imu.calcAccel(imu.ax) - refX);
-    dY += abs(imu.calcAccel(imu.ay) - refY);
-    dZ += abs(imu.calcAccel(imu.az) - refZ);
-   
-    avMvmt = (dX + dY + dZ) / 3;
-    // delay(100);
-    }
-    // if (avMvmt < gainThreshold && pixelPointer <= NUM_LED){
-    //  if (avMvmt < gainThreshold){
-    // //   pixels[pixelPointer] = 1;
-    //   pixelPointer++;
-    // }
-    // if (avMvmt > lossThreshold && pixelPointer >= 0){
-    // //   pixels[pixelPointer] = 0;
-    //   pixelPointer--;
-    // }
-    
-}
-void printMvmt(){
-    Serial.print("x: ");
-    Serial.print(dX);
-    Serial.print( " Y:");
-    Serial.print(dY);
-    Serial.print(" Z:");
-    Serial.print(dZ);
-    Serial.print(" av: ");
-    Serial.print(avMvmt);
-    Serial.println(" ");
-}
-// void getState(){
-//   float average = 0;
-//   for(int i = 0; i < NUM_LED; i++){
-//     average += pixels[i];
-//   }
-//   average = average / NUM_LED;
-//   if (average > 0.8) state = 0;
-//   if (average <= 0.8 && average > 0.5) state = 1;
-//   if (average <=0.5 && average > 0.2) state = 2;
-//   if (average <= 0.2) state = 3;
-// }
-
-////////////COMPASS 
 //SOURCE : http://cache.freescale.com/files/sensors/doc/app_note/AN4248.pdf
 static void iecompass(int16_t iBpx, int16_t iBpy, int16_t iBpz, int16_t iGpx, int16_t iGpy, int16_t iGpz)
 {
@@ -433,3 +422,4 @@ static int16_t iDivide(int16_t iy, int16_t ix)
     } while (idelta >= MINDELTADIV); /* last loop is performed for idelta=MINDELTADIV */
     return (ir);
 }
+//-----------------------//-----------------------//-----------------------//-----------------------COMPASS

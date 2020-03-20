@@ -55,9 +55,10 @@ void loop() {
 
 //-----------------------//-----------------------//-----------------------//-----------------------LOOPING
 
-//-----------------------//-----------------------//-----------------------//-----------------------ONTIMER
-void OnTimer(void) {  //Handler for the timer, will be called automatically
-    int size = 0;
+//-----------------------//-----------------------//-----------------------//-----------------------RECEIVE
+
+void receive(){
+int size = 0;
      OSCMessage inMessage;
       
       Serial.println("LISTENING---------------");
@@ -88,6 +89,12 @@ void OnTimer(void) {  //Handler for the timer, will be called automatically
       }else{
         Serial.println("No message");
       }
+}
+//-----------------------//-----------------------//-----------------------//-----------------------RECEIVE
+
+//-----------------------//-----------------------//-----------------------//-----------------------ONTIMER
+void OnTimer(void) {  //Handler for the timer, will be called automatically
+    receive();
 }
 //-----------------------//-----------------------//-----------------------//-----------------------SETUP
 

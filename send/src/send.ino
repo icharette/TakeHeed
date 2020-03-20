@@ -57,7 +57,9 @@ void loop() {
 
 //-----------------------//-----------------------//-----------------------//-----------------------SEND
 void send(){
-  IPAddress ipAddress(192,168,0,101);
+  //make sure you're sending to the right IP address, will  be 100 or 101 according to who is connected to router first
+  IPAddress ipAddress(192,168,0,101); 
+
   unsigned int localPort = 8888; //necessary?
 
   String message = "test";
