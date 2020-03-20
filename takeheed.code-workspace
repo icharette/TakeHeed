@@ -16,9 +16,6 @@
 			"path": "IR_Transmitter"
 		},
 		{
-			"path": "components_test"
-		},
-		{
 			"path": "receive"
 		},
 		{
