@@ -1,3 +1,8 @@
+/******************************************************/
+//       THIS IS A GENERATED FILE - DO NOT EDIT       //
+/******************************************************/
+
+#line 1 "/Users/ninjacat/Documents/Particle/TakeHeed/squeeze/src/squeeze.ino"
 /*
  * Project Take Heed _ Iteration 2
  * Description: testing LED activity
@@ -11,6 +16,18 @@
 #include "neopixel.h"
 #include "math.h"
 //-----------------------//-----------------------//-----------------------//-----------------------PARTICLE
+void setup();
+void loop();
+uint32_t Wheel(byte WheelPos);
+uint8_t red(uint32_t c);
+uint8_t green(uint32_t c);
+uint8_t blue(uint32_t c);
+void  healthyWave(uint8_t wait, int rainbowLoops, int whiteLoops);
+void sectionSqueezeWave(int numLimit, int down, int up, uint32_t colorUP, uint32_t colorDOWN);
+void sectionSqueeze(int numLimit, int down, int up);
+void colorFace(uint32_t color);
+void theaterChase(uint32_t color, int wait);
+#line 14 "/Users/ninjacat/Documents/Particle/TakeHeed/squeeze/src/squeeze.ino"
 SYSTEM_THREAD(ENABLED);
 SYSTEM_MODE(SEMI_AUTOMATIC); //avoid automatic connection to the cloud
 

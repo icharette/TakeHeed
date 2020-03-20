@@ -114,6 +114,8 @@ void colorWipe(uint8_t wait);
 
 //-----------------------//-----------------------//-----------------------//-----------------------SETUP
 void setup() {
+  pinMode(D7, OUTPUT);
+  digitalWrite(D7, LOW);
   //-----------------------//-----------------------//-----------------------//SETUP-WIFI
   while(!Serial);
   WiFi.connect();

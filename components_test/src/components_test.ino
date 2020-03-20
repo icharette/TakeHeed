@@ -223,7 +223,7 @@ void loop() {
 // testCase(2); //IMU
 
 //--->LED testing with activity/personality
-// healthyWave(500,3,3);
+healthyWave(500,3,3);
 // theaterChase(strip.Color(255,0,0),1000); // testing LED pulsing pattern, I haven't tried it on the full LED strip yet
 // theaterChase(strip.Color(255,0,255),100);
 }
